@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="How to draw multiple different kinds of things in WebGL" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-drawing-multiple-things_en.jpg" />
+<meta name="description" content="How to draw multiple different kinds of things in WebGL">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-drawing-multiple-things_en.jpg">
 
-<meta property="og:title" content="WebGL - Drawing Multiple Things" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-drawing-multiple-things_en.jpg" />
-<meta property="og:description" content="How to draw multiple different kinds of things in WebGL" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-drawing-multiple-things.html" />
+<meta property="og:title" content="WebGL - Drawing Multiple Things">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-drawing-multiple-things_en.jpg">
+<meta property="og:description" content="How to draw multiple different kinds of things in WebGL">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-drawing-multiple-things.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL - Drawing Multiple Things" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-drawing-multiple-things.html" />
-<meta name="twitter:description" content="How to draw multiple different kinds of things in WebGL" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-drawing-multiple-things_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL - Drawing Multiple Things">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-drawing-multiple-things.html">
+<meta name="twitter:description" content="How to draw multiple different kinds of things in WebGL">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-drawing-multiple-things_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL - Drawing Multiple Things</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-drawing-multiple-things.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-drawing-multiple-things.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-drawing-multiple-things.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-drawing-multiple-things.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-drawing-multiple-things.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-drawing-multiple-things.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-drawing-multiple-things.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-drawing-multiple-things.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -223,9 +250,9 @@ parameters to the function you instead have a single function that draws
 stuff and 70+ functions that set up the state for that one function.  So
 for example imagine you had a function that draws a circle.  You could
 program it like this</p>
-<pre class="prettyprint"><code>function drawCircle(centerX, centerY, radius, color) { ... }
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function drawCircle(centerX, centerY, radius, color) { ... }
 </code></pre><p>Or you could code it like this</p>
-<pre class="prettyprint"><code>var centerX;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var centerX;
 var centerY;
 var radius;
 var color;
@@ -246,13 +273,13 @@ function setColor(c) {
 function drawCircle() {
    ...
 }
-</code></pre><p>WebGL works this second way.  Functions like <code>gl.createBuffer</code>,
-<code>gl.bufferData</code>, <code>gl.createTexture</code>, and <code>gl.texImage2D</code> let you upload
+</code></pre><p>WebGL works this second way.  Functions like <code class="notranslate" translate="no">gl.createBuffer</code>,
+<code class="notranslate" translate="no">gl.bufferData</code>, <code class="notranslate" translate="no">gl.createTexture</code>, and <code class="notranslate" translate="no">gl.texImage2D</code> let you upload
 buffer (vertex) and texture (color, etc..) data to WebGL.
-<code>gl.createProgram</code>, <code>gl.createShader</code>, <code>gl.compileShader</code>, and
-<code>gl.linkProgram</code> let you create your GLSL shaders.  Nearly all the rest of
+<code class="notranslate" translate="no">gl.createProgram</code>, <code class="notranslate" translate="no">gl.createShader</code>, <code class="notranslate" translate="no">gl.compileShader</code>, and
+<code class="notranslate" translate="no">gl.linkProgram</code> let you create your GLSL shaders.  Nearly all the rest of
 the functions of WebGL are setting up these global variables or <em>state</em>
-that is used when <code>gl.drawArrays</code> or <code>gl.drawElements</code> is finally called.</p>
+that is used when <code class="notranslate" translate="no">gl.drawArrays</code> or <code class="notranslate" translate="no">gl.drawElements</code> is finally called.</p>
 <p>Knowing this a typical WebGL program basically follows this structure</p>
 <p>At Init time</p>
 <ul>
@@ -265,19 +292,19 @@ that is used when <code>gl.drawArrays</code> or <code>gl.drawElements</code> is 
 <li>clear and set the viewport and other global state
 (enable depth testing, turn on culling, etc..)</li>
 <li>For each thing you want to draw<ul>
-<li>call <code>gl.useProgram</code> for the program needed to draw.</li>
+<li>call <code class="notranslate" translate="no">gl.useProgram</code> for the program needed to draw.</li>
 <li>setup attributes for the thing you want to draw<ul>
-<li>for each attribute call <code>gl.bindBuffer</code>,
-<code>gl.vertexAttribPointer</code>, <code>gl.enableVertexAttribArray</code></li>
+<li>for each attribute call <code class="notranslate" translate="no">gl.bindBuffer</code>,
+<code class="notranslate" translate="no">gl.vertexAttribPointer</code>, <code class="notranslate" translate="no">gl.enableVertexAttribArray</code></li>
 </ul>
 </li>
 <li>setup uniforms for the thing you want to draw<ul>
-<li>call <code>gl.uniformXXX</code> for each uniform</li>
-<li>call <code>gl.activeTexture</code> and <code>gl.bindTexture</code> to assign
+<li>call <code class="notranslate" translate="no">gl.uniformXXX</code> for each uniform</li>
+<li>call <code class="notranslate" translate="no">gl.activeTexture</code> and <code class="notranslate" translate="no">gl.bindTexture</code> to assign
 textures to texture units.</li>
 </ul>
 </li>
-<li>call <code>gl.drawArrays</code> or <code>gl.drawElements</code></li>
+<li>call <code class="notranslate" translate="no">gl.drawArrays</code> or <code class="notranslate" translate="no">gl.drawElements</code></li>
 </ul>
 </li>
 </ul>
@@ -293,8 +320,8 @@ return <a href="webgl-less-code-more-fun.html">bufferInfo objects as described i
 article</a>.</p>
 <p>So here&#39;s the code.  Our shader is the same one simple shader from our
 <a href="webgl-3d-perspective.html">perspective example</a> except we&#39;ve added a
-<code>u_colorMult</code> to multiply the vertex colors by.</p>
-<pre class="prettyprint"><code>// Passed in from the vertex shader.
+<code class="notranslate" translate="no">u_colorMult</code> to multiply the vertex colors by.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Passed in from the vertex shader.
 varying vec4 v_color;
 
 uniform vec4 u_colorMult;
@@ -303,7 +330,7 @@ void main() {
    gl_FragColor = v_color * u_colorMult;
 }
 </code></pre><p>At init time</p>
-<pre class="prettyprint"><code>// Our uniforms for each thing we want to draw
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Our uniforms for each thing we want to draw
 var sphereUniforms = {
   u_colorMult: [0.5, 1, 0.5, 1],
   u_matrix: m4.identity(),
@@ -322,7 +349,7 @@ var sphereTranslation = [  0, 0, 0];
 var cubeTranslation   = [-40, 0, 0];
 var coneTranslation   = [ 40, 0, 0];
 </code></pre><p>At draw time</p>
-<pre class="prettyprint"><code>var sphereXRotation =  time;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var sphereXRotation =  time;
 var sphereYRotation =  time;
 var cubeXRotation   = -time;
 var cubeYRotation   =  time;
@@ -386,8 +413,8 @@ gl.drawArrays(gl.TRIANGLES, 0, coneBufferInfo.numElements);
 
 </p>
 <p>One thing to notice is since we only have a single shader program we only
-called <code>gl.useProgram</code> once.  If we had different shader programs you&#39;d
-need to call <code>gl.useProgram</code> before um...  using each program.</p>
+called <code class="notranslate" translate="no">gl.useProgram</code> once.  If we had different shader programs you&#39;d
+need to call <code class="notranslate" translate="no">gl.useProgram</code> before um...  using each program.</p>
 <p>This is another place where it&#39;s a good idea to simplify.  There are
 effectively 3 main things to combine.</p>
 <ol>
@@ -397,7 +424,7 @@ effectively 3 main things to combine.</p>
 </ol>
 <p>So, a simple simplification would be to make an array of things to draw
 and in that array put the 3 things together</p>
-<pre class="prettyprint"><code>var objectsToDraw = [
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var objectsToDraw = [
   {
     programInfo: programInfo,
     bufferInfo: sphereBufferInfo,
@@ -415,7 +442,7 @@ and in that array put the 3 things together</p>
   },
 ];
 </code></pre><p>At draw time we still need to update the matrices</p>
-<pre class="prettyprint"><code>var sphereXRotation =  time;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var sphereXRotation =  time;
 var sphereYRotation =  time;
 var cubeXRotation   = -time;
 var cubeYRotation   =  time;
@@ -441,7 +468,7 @@ coneUniforms.u_matrix = computeMatrix(
     coneXRotation,
     coneYRotation);
 </code></pre><p>But the drawing code is now just a simple loop</p>
-<pre class="prettyprint"><code>// ------ Draw the objects --------
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// ------ Draw the objects --------
 
 objectsToDraw.forEach(function(object) {
   var programInfo = object.programInfo;
@@ -460,7 +487,7 @@ objectsToDraw.forEach(function(object) {
 });
 </code></pre><p>And this is arguably the main rendering loop of most 3D engines in
 existence.  Somewhere some code or codes decide what goes into the list of
-<code>objectsToDraw</code> but that&#39;s basically it.</p>
+<code class="notranslate" translate="no">objectsToDraw</code> but that&#39;s basically it.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-multiple-objects-list.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-multiple-objects-list.html" target="_blank">click here to open in a separate window</a>
@@ -469,11 +496,11 @@ existence.  Somewhere some code or codes decide what goes into the list of
 </p>
 <p>There are a few basic optimizations.  If the program we&#39;re about to draw
 with is the same as the previous program we drew with then there&#39;s no need
-to call <code>gl.useProgram</code>.  Similarly if we&#39;re drawing with the same
+to call <code class="notranslate" translate="no">gl.useProgram</code>.  Similarly if we&#39;re drawing with the same
 shape/geometry/vertices we previously drew with there&#39;s no need to set
 those up again.</p>
 <p>So, a very simple optimization might look like this</p>
-<pre class="prettyprint"><code>var lastUsedProgramInfo = null;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var lastUsedProgramInfo = null;
 var lastUsedBufferInfo = null;
 
 objectsToDraw.forEach(function(object) {
@@ -506,7 +533,7 @@ objectsToDraw.forEach(function(object) {
 });
 </code></pre><p>This time let&#39;s draw a lot more objects. Instead of just 3 like before let&#39;s make
 the list of things to draw larger</p>
-<pre class="prettyprint"><code>// put the shapes in an array so it&#39;s easy to pick them at random
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// put the shapes in an array so it&#39;s easy to pick them at random
 var shapes = [
   sphereBufferInfo,
   cubeBufferInfo,
@@ -543,7 +570,7 @@ for (var ii = 0; ii &lt; numObjects; ++ii) {
   });
 }
 </code></pre><p>At render time</p>
-<pre class="prettyprint"><code>// Compute the matrices for each object.
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Compute the matrices for each object.
 objects.forEach(function(object) {
   object.uniforms.u_matrix = computeMatrix(
       viewMatrix,
@@ -559,7 +586,7 @@ objects.forEach(function(object) {
 </div>
 
 </p>
-<p>You could also sort the list by <code>programInfo</code> and/or <code>bufferInfo</code> so that
+<p>You could also sort the list by <code class="notranslate" translate="no">programInfo</code> and/or <code class="notranslate" translate="no">bufferInfo</code> so that
 the optimization kicks in more often.  Most game engines do this.
 Unfortunately it&#39;s not that simple.  If everything you&#39;re drawing is
 opaque and then you can just sort.  But, as soon you need to draw
@@ -591,7 +618,7 @@ yourself.  It&#39;s just important to be aware <a href="webgl-2d-vs-3d-library.h
 level</a> so there&#39;s a ton of work for you to do
 if you want to do it yourself and that often includes writing a shader
 generator since different features often require different shaders.</p>
-<p>You&#39;ll notice I didn&#39;t put <code>computeMatrix</code> inside the loop.  That&#39;s
+<p>You&#39;ll notice I didn&#39;t put <code class="notranslate" translate="no">computeMatrix</code> inside the loop.  That&#39;s
 because rendering should arguably be separated from computing matrices.
 It&#39;s common to compute matrices from a <a href="webgl-scene-graph.html">scene graph and we&#39;ll go over that
 in another article</a>.</p>
@@ -701,6 +728,10 @@ text</a>.</p>
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -709,6 +740,11 @@ text</a>.</p>
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -716,8 +752,6 @@ text</a>.</p>
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -729,11 +763,14 @@ text</a>.</p>
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -776,9 +813,17 @@ text</a>.</p>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

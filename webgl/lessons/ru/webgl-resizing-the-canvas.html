@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Изменение размера canvas и связанные с этим проблемы" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ru.jpg" />
+<meta name="description" content="Изменение размера canvas и связанные с этим проблемы">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ru.jpg">
 
-<meta property="og:title" content="Изменение размера Canvas в WebGL" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ru.jpg" />
-<meta property="og:description" content="Изменение размера canvas и связанные с этим проблемы" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-resizing-the-canvas.html" />
+<meta property="og:title" content="Изменение размера Canvas в WebGL">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ru.jpg">
+<meta property="og:description" content="Изменение размера canvas и связанные с этим проблемы">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-resizing-the-canvas.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="Изменение размера Canvas в WebGL" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-resizing-the-canvas.html" />
-<meta name="twitter:description" content="Изменение размера canvas и связанные с этим проблемы" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="Изменение размера Canvas в WebGL">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-resizing-the-canvas.html">
+<meta name="twitter:description" content="Изменение размера canvas и связанные с этим проблемы">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>Изменение размера Canvas в WebGL</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-resizing-the-canvas.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -217,11 +244,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 сколько пикселей помещается в canvas. Второй - размер отображаемого на HTML-странице
 элемента canvas. Этот размер задаётся через CSS.</p>
 <p>Размер буфера отрисовки можно задать двумя способами. Первый - через HTML:</p>
-<pre class="prettyprint"><code>&lt;canvas id=&quot;c&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;canvas id=&quot;c&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
 </code></pre><p>Второй способ - через JavaScript:</p>
-<pre class="prettyprint"><code>&lt;canvas id=&quot;c&quot; &gt;&lt;/canvas&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;canvas id=&quot;c&quot; &gt;&lt;/canvas&gt;
 </code></pre><p>JavaScript</p>
-<pre class="prettyprint"><code>var canvas = document.querySelector(&quot;#c&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var canvas = document.querySelector(&quot;#c&quot;);
 canvas.width = 400;
 canvas.height = 300;
 </code></pre><p>Что касается размера отображаемого элемента, то при отсутствии стилей CSS, которые
@@ -229,9 +256,9 @@ canvas.height = 300;
 2 примерах выше размер буфера отрисовки будет равен 400x300, и размер отображаемого
 элемента будет также равен 400x300.</p>
 <p>А вот пример, когда размер буфера отображения - 10x15, а размер HTML-элемента - 400x300 пикселей:</p>
-<pre class="prettyprint"><code>&lt;canvas id=&quot;c&quot; width=&quot;10&quot; height=&quot;15&quot; style=&quot;width: 400px; height: 300px;&quot;&gt;&lt;/canvas&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;canvas id=&quot;c&quot; width=&quot;10&quot; height=&quot;15&quot; style=&quot;width: 400px; height: 300px;&quot;&gt;&lt;/canvas&gt;
 </code></pre><p>или можно задать так:</p>
-<pre class="prettyprint"><code>&lt;style&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;style&gt;
 #c {
   width: 400px;
   height: 300px;
@@ -249,7 +276,7 @@ canvas.height = 300;
 растягивает его до размера 400x300 пикселей, применяя для этого фильтрацию.</p>
 <p>Так что же делать, если, к примеру, нам нужно, чтобы canvas заполнил всё окно? Для
 начала нам нужны CSS-стили, чтобы браузер растянул canvas на всё окно. Например:</p>
-<pre class="prettyprint"><code>&lt;html&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;html&gt;
   &lt;head&gt;
     &lt;style&gt;
       /* убираем границу */
@@ -270,10 +297,10 @@ canvas.height = 300;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><p>Теперь нам нужно, чтобы размер буфера отрисовки соответствовал размеру HTML-элемента,
-как бы браузер его ни растянул. Мы можем использовать свойствами <code>clientWidth</code> и
-<code>clientHeight</code>, которые есть у любого HTML-элемента и которые позволяют JavaScript
+как бы браузер его ни растянул. Мы можем использовать свойствами <code class="notranslate" translate="no">clientWidth</code> и
+<code class="notranslate" translate="no">clientHeight</code>, которые есть у любого HTML-элемента и которые позволяют JavaScript
 узнавать размер отображаемого элемента.</p>
-<pre class="prettyprint"><code>function resize(canvas) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function resize(canvas) {
   // получаем размер HTML-элемента canvas
   var displayWidth  = canvas.clientWidth;
   var displayHeight = canvas.clientHeight;
@@ -290,7 +317,7 @@ canvas.height = 300;
 </code></pre><p>Большинство приложений WebGL <a href="webgl-animation.html">используют анимацию</a>,
 поэтому будем вызывать эту функцию непосредственно перед отрисовкой, чтобы при отрисовке
 размер canvas всегда соответствовал размеру HTML-элемента.</p>
-<pre class="prettyprint"><code>function drawScene() {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function drawScene() {
    resize(gl.canvas);
 
    ...
@@ -302,15 +329,15 @@ canvas.height = 300;
 
 </p>
 <p>Но что не так? Почему линия не занимает всю область?</p>
-<p>Причина в том, что при изменении размера canvas нам также необходимо вызвать <code>gl.viewport</code>
-для установки размера области просмотра. <code>gl.viewport</code> сообщает WebGL, как и в какую область
+<p>Причина в том, что при изменении размера canvas нам также необходимо вызвать <code class="notranslate" translate="no">gl.viewport</code>
+для установки размера области просмотра. <code class="notranslate" translate="no">gl.viewport</code> сообщает WebGL, как и в какую область
 внутри canvas преобразовывать координаты пространства отсечения (от -1 до +1) в пиксели.
 При первом создании контекста WebGL область просмотра будет соответствовать размеру canvas,
 но после этого вам необходимо следить за её размерами. Если вы меняете размер canvas, вам
 также необходимо сообщить WebGL новые параметры области просмотра.</p>
 <p>Изменим код, чтобы учитывать такую ситуацию. Более того, раз уж ссылка на canvas
 доступна из контекста WebGL, будем передавать его параметром функции resize.</p>
-<pre class="prettyprint"><code>function drawScene() {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function drawScene() {
    resize(gl.canvas);
 
 +   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -340,7 +367,7 @@ canvas.height = 300;
 WebGL вы сами отвечаете за графику, и вам необходимо самим позаботиться об отображении графики с
 более высоким разрешением, если вы хотите получить качество HD-DPI.
 </p>
-<p>Для этого мы можем посмотреть на значение <code>window.devicePixelRatio</code>. Это значение укажет,
+<p>Для этого мы можем посмотреть на значение <code class="notranslate" translate="no">window.devicePixelRatio</code>. Это значение укажет,
 как много действительных пикселей помещаются в одном пикселе CSS. Мы можем внести изменения в функцию
 изменения размера для ориентации на действительный пиксель.</p>
 <pre class="prettyprint">
@@ -372,8 +399,8 @@ function resize(gl) {
 
 
 <p>Настраивать ли программу под использование дисплеев HD-DPI, зависит только от вас. На iPhone4 и iPhone5
-<code>window.devicePixelRatio</code> равен <code>2</code>, что означает, что вы будете отображать в 4
-раза больше пикселей. Думаю, что на iPhone6Plus это значение равно <code>3</code>, то есть вы будете
+<code class="notranslate" translate="no">window.devicePixelRatio</code> равен <code class="notranslate" translate="no">2</code>, что означает, что вы будете отображать в 4
+раза больше пикселей. Думаю, что на iPhone6Plus это значение равно <code class="notranslate" translate="no">3</code>, то есть вы будете
 отображать в 9 раз больше пикселей. Это может замедлить вашу програму. Вообще, для игр типично отображать
 меньше пикселей, чтобы видеокарта сама растянула их. Всё зависит от ваших целей. Например, если вы готовите
 график для печати, то, возможно, вам понадобится поддержка HD-DPI. Для игр, возможно, не понадобится такой
@@ -484,6 +511,10 @@ function resize(gl) {
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -492,6 +523,11 @@ function resize(gl) {
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -499,8 +535,6 @@ function resize(gl) {
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -512,11 +546,14 @@ function resize(gl) {
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -554,9 +591,17 @@ function resize(gl) {
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

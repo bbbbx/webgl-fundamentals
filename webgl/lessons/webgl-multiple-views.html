@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Drawing multiple views" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-multiple-views_en.jpg" />
+<meta name="description" content="Drawing multiple views">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-multiple-views_en.jpg">
 
-<meta property="og:title" content="WebGL Multiple Views, Multiple Canvases" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-multiple-views_en.jpg" />
-<meta property="og:description" content="Drawing multiple views" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-multiple-views.html" />
+<meta property="og:title" content="WebGL Multiple Views, Multiple Canvases">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-multiple-views_en.jpg">
+<meta property="og:description" content="Drawing multiple views">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-multiple-views.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL Multiple Views, Multiple Canvases" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-multiple-views.html" />
-<meta name="twitter:description" content="Drawing multiple views" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-multiple-views_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL Multiple Views, Multiple Canvases">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-multiple-views.html">
+<meta name="twitter:description" content="Drawing multiple views">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-multiple-views_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL Multiple Views, Multiple Canvases</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-multiple-views.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-multiple-views.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-multiple-views.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-multiple-views.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-multiple-views.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-multiple-views.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-multiple-views.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-multiple-views.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -216,9 +243,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <a href="webgl-less-code-more-fun.html">less code more fun</a>
 as it uses the library mentioned there so as to
 unclutter the example. If you don&#39;t understand
-when a function named <code>webglUtils.setBuffersAndAttributes</code>
+when a function named <code class="notranslate" translate="no">webglUtils.setBuffersAndAttributes</code>
 what it means to set the buffers and attributes, or when
-a function named <code>webglUtils.setUniforms</code> what it means
+a function named <code class="notranslate" translate="no">webglUtils.setUniforms</code> what it means
 to set uniforms, etc... then you should probably to go further back and
 <a href="webgl-fundamentals.html">read the fundamentals</a>.</p>
 <p>Let&#39;s say you wanted to draw multiple views of the
@@ -238,17 +265,17 @@ This is great for situation where our views don&#39;t overlap. Even
 better there is no double rendering like the solution above.</p>
 <p>In the <a href="webgl-fundamentals.html">very first article</a> it&#39;s mentioned
 that we set how WebGL converts from clip space to pixel space by calling</p>
-<pre class="prettyprint"><code class="lang-js">gl.viewport(left, bottom, width, height);
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.viewport(left, bottom, width, height);
 </code></pre>
-<p>The most common thing is to set to those to <code>0</code>, <code>0</code>, <code>gl.canvas.width</code>, and <code>gl.canvas.height</code>
+<p>The most common thing is to set to those to <code class="notranslate" translate="no">0</code>, <code class="notranslate" translate="no">0</code>, <code class="notranslate" translate="no">gl.canvas.width</code>, and <code class="notranslate" translate="no">gl.canvas.height</code>
 respectively to cover the entire canvas.</p>
 <p>Instead we can set them to a portion of the canvas and they&#39;ll make it
 so we only draw to that portion of the canvas. 
 WebGL clips vertices in clip space.
-As we mentioned before we set <code>gl_Position</code> in our vertex shader to values that go from -1 to +1 in x, y, z.
+As we mentioned before we set <code class="notranslate" translate="no">gl_Position</code> in our vertex shader to values that go from -1 to +1 in x, y, z.
 WebGL clips the triangles and lines we pass to that range. After the clipping happens then
-the <code>gl.viewport</code> settings are applied so for example if we used</p>
-<pre class="prettyprint"><code class="lang-js">gl.viewport(
+the <code class="notranslate" translate="no">gl.viewport</code> settings are applied so for example if we used</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.viewport(
    10,   // left
    20,   // bottom
    30,   // width
@@ -263,7 +290,7 @@ value of +1 corresponds to a pixel x = 40 (a left of 10 plus a width of 30)
 <p>The vertex and fragment shaders are the same as the ones used in the articles on
 <a href="webgl-3d-orthographic.html">orthographic</a> and <a href="webgl-3d-perspective.html">perspective</a>
 projection.</p>
-<pre class="prettyprint"><code class="lang-glsl">// vertex shader
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">// vertex shader
 attribute vec4 a_position;
 attribute vec4 a_color;
 
@@ -279,7 +306,7 @@ void main() {
   v_color = a_color;
 }
 </code></pre>
-<pre class="prettyprint"><code class="lang-glsl">// fragment shader
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">// fragment shader
 precision mediump float;
 
 // Passed in from the vertex shader.
@@ -291,7 +318,7 @@ void main() {
 </code></pre>
 <p>Then at init time we need to create the program and
 the buffers for the &#39;F&#39;</p>
-<pre class="prettyprint"><code class="lang-js">// setup GLSL programs
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// setup GLSL programs
 // compiles shaders, links program, looks up locations
 const programInfo = webglUtils.createProgramInfo(gl, [&quot;vertex-shader-3d&quot;, &quot;fragment-shader-3d&quot;]);
 
@@ -300,7 +327,7 @@ const bufferInfo = primitives.create3DFBufferInfo(gl);
 </code></pre>
 <p>And to draw let&#39;s make a function we can pass a projection matrix,
 a camera matrix, and a world matrix</p>
-<pre class="prettyprint"><code class="lang-js">function drawScene(projectionMatrix, cameraMatrix, worldMatrix) {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function drawScene(projectionMatrix, cameraMatrix, worldMatrix) {
   // Make a view matrix from the camera matrix.
   const viewMatrix = m4.inverse(cameraMatrix);
 
@@ -325,7 +352,7 @@ a camera matrix, and a world matrix</p>
 }
 </code></pre>
 <p>and then let&#39;s call that function to draw the F.</p>
-<pre class="prettyprint"><code class="lang-js">function degToRad(d) {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function degToRad(d) {
   return d * Math.PI / 180;
 }
 
@@ -376,8 +403,8 @@ except we&#39;re using <a href="webgl-less-code-more-fun.html">our library</a> t
 
 </p>
 <p>Now let&#39;s make it draw 2 views of the &#39;F&#39; side by side
-by using <code>gl.viewport</code></p>
-<pre class="prettyprint"><code class="lang-js">function render() {
+by using <code class="notranslate" translate="no">gl.viewport</code></p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function render() {
   webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
 -  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -443,15 +470,15 @@ we change the projection matrix.</p>
 
 </p>
 <p>Let&#39;s clear both sides to different colors</p>
-<p>First, in <code>drawScene</code> lets call <code>gl.clear</code></p>
-<pre class="prettyprint"><code class="lang-js">  function drawScene(projectionMatrix, cameraMatrix, worldMatrix) {
+<p>First, in <code class="notranslate" translate="no">drawScene</code> lets call <code class="notranslate" translate="no">gl.clear</code></p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">  function drawScene(projectionMatrix, cameraMatrix, worldMatrix) {
 +    // Clear the canvas AND the depth buffer.
 +    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     ...
 </code></pre>
-<p>Then let&#39;s set clear colors before calling <code>drawScene</code></p>
-<pre class="prettyprint"><code class="lang-js">  const {width, height} = gl.canvas;
+<p>Then let&#39;s set clear colors before calling <code class="notranslate" translate="no">drawScene</code></p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">  const {width, height} = gl.canvas;
   const leftWidth = width / 2 | 0;
 
   // draw on left with orthographic camera
@@ -474,18 +501,18 @@ we change the projection matrix.</p>
 
 </p>
 <p>Oops, what happened? Why is there nothing on the left?</p>
-<p>It turns out <code>gl.clear</code> does not look at the <code>viewport</code>
+<p>It turns out <code class="notranslate" translate="no">gl.clear</code> does not look at the <code class="notranslate" translate="no">viewport</code>
 settings. To fix this we can use the <em>scissor test</em>.
 The scissor test lets use define a rectangle. Anything
 outside that rectangle will not be affected if the scissor
 test is enabled.</p>
 <p>The scissor test is off by default. We can enable it
 by calling </p>
-<pre class="prettyprint"><code>gl.enable(gl.SCISSOR_TEST);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.enable(gl.SCISSOR_TEST);
 </code></pre><p>Like the viewport it defaults to the initial size of the canvas
 but we can set with same parameters as the viewport by calling
-<code>gl.scissor</code> as in</p>
-<pre class="prettyprint"><code class="lang-js">gl.scissor(
+<code class="notranslate" translate="no">gl.scissor</code> as in</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.scissor(
    10,   // left
    20,   // bottom
    30,   // width
@@ -493,7 +520,7 @@ but we can set with same parameters as the viewport by calling
 );
 </code></pre>
 <p>So let&#39;s add those in</p>
-<pre class="prettyprint"><code class="lang-js">function render() {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function render() {
   webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
   gl.enable(gl.CULL_FACE);
@@ -537,7 +564,7 @@ for a game an you want to show 3D models of each head in a list so the
 user can select one.
 Or let&#39;s say you wanted to make an e-commerce site and show
 3d models of each product down the page at the same time.</p>
-<p>The most obvious way to do this would be to put a <code>&lt;canvas&gt;</code>
+<p>The most obvious way to do this would be to put a <code class="notranslate" translate="no">&lt;canvas&gt;</code>
 each place you want to show an item. Unfortunately you&#39;d run into a
 bunch of issues.</p>
 <p>First, Each canvas would require a different WebGL context
@@ -550,8 +577,8 @@ as you create a webgl context on the 9th canvas the first
 canvas will lose its context.</p>
 <p>We can work around these issues by making just 1 large canvas
 that covers the entire window. We&#39;ll then put a placeholder
-<code>&lt;div&gt;</code> each place we want to draw an item. We can use
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code>element.getBoundingClientRect</code></a>
+<code class="notranslate" translate="no">&lt;div&gt;</code> each place we want to draw an item. We can use
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code class="notranslate" translate="no">element.getBoundingClientRect</code></a>
 to find out where to set the viewport and scissor to
 draw in that area.</p>
 <p>This will solve both problems mentioned above. We&#39;ll only
@@ -560,13 +587,13 @@ run into the context limit.</p>
 <p>Let&#39;s make an example.</p>
 <p>First let&#39;s make a canvas that goes in the background with some content
 that goes in front. First the HTML</p>
-<pre class="prettyprint"><code class="lang-html">&lt;body&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-html">&lt;body&gt;
   &lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;
   &lt;div id=&quot;content&quot;&gt;&lt;/div&gt;
 &lt;/body&gt;
 </code></pre>
 <p>Then the CSS</p>
-<pre class="prettyprint"><code class="lang-css">body {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-css">body {
   margin: 0;
 }
 #content {
@@ -575,15 +602,15 @@ that goes in front. First the HTML</p>
 #canvas {
   position: absolute;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   z-index: -1;
   display: block;
 }
 </code></pre>
 <p>Now let&#39;s make a few things to draw. <a href="webgl-less-code-more-fun.html">Remember</a> 
-that a <code>BufferInfo</code> is just a list of buffers by name and the settings need to set their attributes</p>
-<pre class="prettyprint"><code class="lang-js">// create buffers and fill with data for various things.
+that a <code class="notranslate" translate="no">BufferInfo</code> is just a list of buffers by name and the settings need to set their attributes</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// create buffers and fill with data for various things.
 const bufferInfos = [
   primitives.createCubeBufferInfo(
       gl,
@@ -610,7 +637,7 @@ const bufferInfos = [
 <p>Now let&#39;s make 100 html items. For each one we&#39;ll create a container div
 and inside will be a view and a label. The view is just an empty div
 where we want to draw the item.</p>
-<pre class="prettyprint"><code class="lang-js">function createElem(type, parent, className) {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function createElem(type, parent, className) {
   const elem = document.createElement(type);
   parent.appendChild(elem);
   if (className) {
@@ -649,7 +676,7 @@ for (let i = 0; i &lt; numItems; ++i) {
 }
 </code></pre>
 <p>Let&#39;s style these items as follows</p>
-<pre class="prettyprint"><code class="lang-css">.item {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-css">.item {
   display: inline-block;
   margin: 1em;
   padding: 1em;
@@ -663,13 +690,13 @@ for (let i = 0; i &lt; numItems; ++i) {
   border: 1px solid black;
 }
 </code></pre>
-<p>The <code>items</code> array has a <code>bufferInfo</code>, a <code>color</code> and an <code>element</code>
+<p>The <code class="notranslate" translate="no">items</code> array has a <code class="notranslate" translate="no">bufferInfo</code>, a <code class="notranslate" translate="no">color</code> and an <code class="notranslate" translate="no">element</code>
 for each item. We loop over all the items one at a time and call
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code>element.getBoundingClientRect</code></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code class="notranslate" translate="no">element.getBoundingClientRect</code></a>
 and use the rectangle returned to see if that element intersects
 with the canvas. If it does we set the viewport and scissor to
 match and then draw that object.</p>
-<pre class="prettyprint"><code class="lang-js">function render(time) {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function render(time) {
   time *= 0.001;  // convert to seconds
 
   webglUtils.resizeCanvasToDisplaySize(gl.canvas);
@@ -691,7 +718,7 @@ match and then draw that object.</p>
     const width  = rect.right - rect.left;
     const height = rect.bottom - rect.top;
     const left   = rect.left;
-    const bottom = gl.canvas.clientHeight - rect.bottom - 1;
+    const bottom = gl.canvas.clientHeight - rect.bottom;
 
     gl.viewport(left, bottom, width, height);
     gl.scissor(left, bottom, width, height);
@@ -723,7 +750,7 @@ requestAnimationFrame(render);
 </code></pre>
 <p>I made the code above use a <a href="webgl-animation.html">requestAnimationFrame loop</a>
 so I could animate the objects. I also passed which bufferInfo to draw
-to <code>drawScene</code>. The shader is just using the normals as colors to keep
+to <code class="notranslate" translate="no">drawScene</code>. The shader is just using the normals as colors to keep
 the shaders simple. If I added <a href="webgl-3d-lighting-spot.html">lighting</a>
 the code would get much more complicated.</p>
 <p><div class="webgl_example_container">
@@ -737,8 +764,9 @@ As long as you set the viewport and scissor correctly and then set up
 your projection matrix to match the aspect of the area it should work.</p>
 <p>One other notable thing about the code is we&#39;re moving the canvas
 with this line</p>
-<pre class="prettyprint"><code>gl.canvas.style.transform = `translateY(${window.scrollY}px)`;
-</code></pre><p>Why? We could instead set the canvas to <code>position: fixed;</code> in which case
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.canvas.style.transform = `translateY(${window.scrollY}px)`;
+</code></pre>
+<p>Why? We could instead set the canvas to <code class="notranslate" translate="no">position: fixed;</code> in which case
 it would not scroll with the page. The difference would be subtle.
 The browser tries to scroll the page as smooth as possible. That might be
 faster than we can draw our objects. Because of this we have 2 options.</p>
@@ -756,6 +784,18 @@ a chance to draw.</p>
 <p>This is the solution used above</p>
 </li>
 </ol>
+<p>If you want to handle horizontal scrolling just change this line</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.canvas.style.transform = `translateY(${window.scrollY}px)`;
+</code></pre>
+<p>to this</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.canvas.style.transform = `translateX(${window.scrollX} translateY(${window.scrollY}px)`;
+</code></pre>
+<p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-multiple-views-items-horizontal-scroll.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-multiple-views-items-horizontal-scroll.html" target="_blank">click here to open in a separate window</a>
+</div>
+
+</p>
 <p>Hopefully this article gave you some ideas how to draw multiple views.
 We&#39;ll use these techniques in a few future articles where
 being able to see multiple views is useful for understanding.</p>
@@ -765,7 +805,7 @@ being able to see multiple views is useful for understanding.</p>
 are referenced by their edges. So for example if we had
 a canvas that was 3x2 pixels big and we set the viewport
 as</p>
-<pre class="prettyprint"><code>
+<pre class="prettyprint"><code class="notranslate" translate="no">
 gl.viewport(
   0, // left
   0, // bottom
@@ -883,6 +923,10 @@ but really to corresponds to the left edge</p>
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -891,6 +935,11 @@ but really to corresponds to the left edge</p>
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -898,8 +947,6 @@ but really to corresponds to the left edge</p>
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -911,11 +958,14 @@ but really to corresponds to the left edge</p>
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -958,9 +1008,17 @@ but really to corresponds to the left edge</p>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

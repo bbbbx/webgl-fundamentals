@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="怎么用WebGL处理图像" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-image-processing_zh-cn.jpg" />
+<meta name="description" content="怎么用WebGL处理图像">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-image-processing_zh-cn.jpg">
 
-<meta property="og:title" content="WebGL 图像处理" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-image-processing_zh-cn.jpg" />
-<meta property="og:description" content="怎么用WebGL处理图像" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-image-processing.html" />
+<meta property="og:title" content="WebGL 图像处理">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-image-processing_zh-cn.jpg">
+<meta property="og:description" content="怎么用WebGL处理图像">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-image-processing.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 图像处理" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-image-processing.html" />
-<meta name="twitter:description" content="怎么用WebGL处理图像" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-image-processing_zh-cn.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 图像处理">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-image-processing.html">
+<meta name="twitter:description" content="怎么用WebGL处理图像">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-image-processing_zh-cn.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 图像处理</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-image-processing.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-image-processing.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-image-processing.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-image-processing.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-image-processing.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-image-processing.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-image-processing.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-image-processing.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/zh_cn/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -224,7 +251,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 是因为它的值有很多个，WebGL会用顶点着色器中值的进行插值，然后传给对应像素执行的片断着色器。</p>
 <p>接着用<a href="webgl-fundamentals.html">上篇文章中最后一个顶点着色器</a>，
 我们需要添加一个属性，用它接收纹理坐标然后传给片断着色器。</p>
-<pre class="prettyprint"><code>attribute vec2 a_texCoord;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec2 a_texCoord;
 ...
 varying vec2 v_texCoord;
 
@@ -235,7 +262,7 @@ void main() {
    v_texCoord = a_texCoord;
 }
 </code></pre><p>然后用片断着色器寻找纹理上对应的颜色</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
 precision mediump float;
 
 // 纹理
@@ -252,7 +279,7 @@ void main() {
 </code></pre><p>最后我们需要加载一个图像，创建一个纹理然后将图像复制到纹理中。
 由于浏览器中的图片是异步加载的，所以我们需要重新组织一下代码，
 等待纹理加载，一旦加载完成就开始绘制。</p>
-<pre class="prettyprint"><code>function main() {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function main() {
   var image = new Image();
   image.src = &quot;http://someimage/on/our/server&quot;;  // 必须在同一域名下
   image.onload = function() {
@@ -303,7 +330,7 @@ function render(image) {
 
 </p>
 <p>这个图片没什么特别的，让我们来对它进行一些操作。把红和蓝调换位置如何？</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">...
 gl_FragColor = texture2D(u_image, v_texCoord).bgra;
 ...
 </code></pre><p>现在红色和蓝色调换位置了。</p>
@@ -315,9 +342,9 @@ gl_FragColor = texture2D(u_image, v_texCoord).bgra;
 </p>
 <p>如果我们的图像处理需要其他像素的颜色值怎么办？
 由于WebGL的纹理坐标范围是 0.0 到 1.0 ， 那我们可以简单计算出移动一个像素对应的距离，
-<code>onePixel = 1.0 / textureSize</code>。</p>
+<code class="notranslate" translate="no">onePixel = 1.0 / textureSize</code>。</p>
 <p>这个片断着色器将每个像素的值设置为与左右像素的均值。</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
 precision mediump float;
 
 // 纹理
@@ -339,7 +366,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>我们需要在JavaScript中传入纹理的大小。</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">...
 
 var textureSizeLocation = gl.getUniformLocation(program, &quot;u_textureSize&quot;);
 
@@ -363,7 +390,7 @@ gl.uniform2f(textureSizeLocation, image.width, image.height);
 <a href="https://docs.gimp.org/2.6/en/plug-in-convmatrix.html">这有一个不错的相关文章</a>，
 <a href="https://www.codeproject.com/KB/graphics/ImageConvolution.aspx">这里是C++实现的一些具体代码</a>。</p>
 <p>我们将在片断着色器中计算卷积，所以创建一个新的片断着色器。</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
 precision mediump float;
 
 // 纹理
@@ -394,7 +421,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>在JavaScript中我们需要提供卷积内核和它的权重</p>
-<pre class="prettyprint"><code> function computeKernelWeight(kernel) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> function computeKernelWeight(kernel) {
    var weight = kernel.reduce(function(prev, curr) {
        return prev + curr;
    });
@@ -423,7 +450,7 @@ void main() {
 <p>我想这篇文章应该回答了“为什么WebGL处理图像非常简单”。
 接下来我们将实现<a href="webgl-image-processing-continued.html">如何对一个图像同时施加多个效果</a>。</p>
 <div class="webgl_bottombar">
-<h3>为什么<code>u_image</code>没有设置还能正常运行？</h3>
+<h3>为什么<code class="notranslate" translate="no">u_image</code>没有设置还能正常运行？</h3>
 <p>
 
 全局变量默认为 0 所以 u_image 默认使用纹理单元 0 。
@@ -443,7 +470,7 @@ var u_imageLoc = gl.getUniformLocation(
 gl.uniform1i(u_imageLoc, textureUnitIndex);
 </pre>
 <p>
-为了将纹理设置在不同的单元你可以调用<code>gl.activeTexture</code>。
+为了将纹理设置在不同的单元你可以调用<code class="notranslate" translate="no">gl.activeTexture</code>。
 例如
 </p>
 <pre class="prettyprint showlinemods">
@@ -462,8 +489,8 @@ gl.bindTexture(gl.TEXTURE_2D, someTexture);
 </pre>
 <p>
 所有支持WebGL的环境，在片断着色器中至少有8个纹理单元，顶点着色器中可以是0个。
-所以如果你使用超过8个纹理单元就应该调用<code>gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS)</code>
-查看单元个数，或者调用<code>gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS)</code>
+所以如果你使用超过8个纹理单元就应该调用<code class="notranslate" translate="no">gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS)</code>
+查看单元个数，或者调用<code class="notranslate" translate="no">gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS)</code>
 查看顶点着色器中可以用几个纹理单元。超过 99% 的机器在顶点着色器中至少有4个纹理单元。
 </p>
 </div>
@@ -535,8 +562,8 @@ u_ 代表全局变量，直接对着色器设置；v_ 代表可变量，是从�
   <li>几何</li>
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-3d-geometry-lathe.html">WebGL 三维几何加工</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-load-obj.html">Loading .obj files</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-load-obj.html">WebGL 加载 .obj 文件</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-load-obj-w-mtl.html">WebGL 加载带 .mtl 的 .obj 文件</a></li>
         </ul>
   <li>纹理</li>
         <ul>
@@ -561,7 +588,7 @@ u_ 代表全局变量，直接对着色器设置；v_ 代表可变量，是从�
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-2d-drawimage.html">WebGL 二维DrawImage</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-2d-matrix-stack.html">WebGL 二维矩阵栈</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-sprites.html">Sprites</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-sprites.html">精灵</a></li>
         </ul>
   <li>三维</li>
         <ul>
@@ -583,13 +610,22 @@ u_ 代表全局变量，直接对着色器设置；v_ 代表可变量，是从�
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/zh_cn/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
-          <li><a href="/webgl/lessons/zh_cn/webgl-smallest-programs.html">Smallest Programs</a></li>
+          <li><a href="/webgl/lessons/zh_cn/webgl-smallest-programs.html">WebGL 最小的程序</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-drawing-without-data.html">Drawing Without Data</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-pulling-vertices.html">Pulling Vertices</a></li>
+        </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/zh_cn/webgl-indexed-vertices.html">顶点索引 （gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-instanced-drawing.html">实例化绘制</a></li>
         </ul>
   <li>杂项</li>
         <ul>
@@ -597,27 +633,28 @@ u_ 代表全局变量，直接对着色器设置；v_ 代表可变量，是从�
 <li><a href="/webgl/lessons/zh_cn/webgl-boilerplate.html">WebGL 样板</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-resizing-the-canvas.html">WebGL 重置画布尺寸</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-animation.html">WebGL 动画</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-instanced-drawing.html">实例化绘制</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-points-lines-triangles.html">WebGL 点、线和三角</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-and-alpha.html">WebGL 和阿尔法通道</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-2d-vs-3d-library.html">WebGL 2D vs 3D 库</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-anti-patterns.html">WebGL 错误模式</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-matrix-vs-math.html">WebGL 矩阵 vs 数学中的矩阵</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-precision-issues.html">Precision Issues</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#screenshot">Taking a screenshot</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#screenshot">截屏</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#preservedrawingbuffer">防止画布被清空</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#tabindex">在画布中获取键盘输入</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#html-background">将 WebGL 作为 HTML 的背景</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-cross-platform-issues.html">WebGL 跨平台相关问题</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
-          <li><a href="/webgl/lessons/zh_cn/webgl-attributes.html">Attributes</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-texture-units.html">Texture Units</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-readpixels.html">readPixels</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-references.html">References</a></li>
+          <li><a href="/webgl/lessons/zh_cn/webgl-attributes.html">WebGL 属性</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-texture-units.html">WebGL 纹理单元</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-framebuffers.html">Framebuffers</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-readpixels.html">WebGL readPixels</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-references.html">WebGL 参考</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">API 帮助文档</a></li>
@@ -653,9 +690,17 @@ u_ 代表全局变量，直接对着色器设置；v_ 代表可变量，是从�
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

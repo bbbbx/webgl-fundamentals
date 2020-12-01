@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Знакомимся с 3D в WebGL, начиная с ортографической проекции." />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ru.jpg" />
+<meta name="description" content="Знакомимся с 3D в WebGL, начиная с ортографической проекции.">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ru.jpg">
 
-<meta property="og:title" content="WebGL 3D - Ортогональ" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ru.jpg" />
-<meta property="og:description" content="Знакомимся с 3D в WebGL, начиная с ортографической проекции." />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-orthographic.html" />
+<meta property="og:title" content="WebGL 3D - Ортогональ">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ru.jpg">
+<meta property="og:description" content="Знакомимся с 3D в WebGL, начиная с ортографической проекции.">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-orthographic.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 3D - Ортогональ" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-orthographic.html" />
-<meta name="twitter:description" content="Знакомимся с 3D в WebGL, начиная с ортографической проекции." />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 3D - Ортогональ">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-orthographic.html">
+<meta name="twitter:description" content="Знакомимся с 3D в WebGL, начиная с ортографической проекции.">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 3D - Ортогональ</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-3d-orthographic.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -227,7 +254,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 по-прежнему будем использовать &#39;F&#39;, но на этот раз это будет &#39;F&#39; в 3D.</p>
 <p>Первым делом нам нужно поменять вершинный шейдер для работы в 3D.
 Вот старый вершинный шейдер:</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform mat3 u_matrix;
@@ -238,7 +265,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>А вот новый:</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 *attribute vec4 a_position;
 
 *uniform mat4 u_matrix;
@@ -248,12 +275,12 @@ void main() {
 *  gl_Position = u_matrix * a_position;
 }
 &lt;/script&gt;
-</code></pre><p>Он стал даже проще! Если в 2D-пространстве мы передавали <code>x</code> и <code>y</code>,
-а <code>z</code> устанавливали в 1, в 3D мы мы передаём <code>x</code>, <code>y</code> и <code>z</code>. Ещё нам
-нужно, чтобы <code>w</code> равнялось единице, но здесь мы воспользуемся тем, что
-для атрибута <code>w</code> значение по умолчанию как раз равно 1.</p>
+</code></pre><p>Он стал даже проще! Если в 2D-пространстве мы передавали <code class="notranslate" translate="no">x</code> и <code class="notranslate" translate="no">y</code>,
+а <code class="notranslate" translate="no">z</code> устанавливали в 1, в 3D мы мы передаём <code class="notranslate" translate="no">x</code>, <code class="notranslate" translate="no">y</code> и <code class="notranslate" translate="no">z</code>. Ещё нам
+нужно, чтобы <code class="notranslate" translate="no">w</code> равнялось единице, но здесь мы воспользуемся тем, что
+для атрибута <code class="notranslate" translate="no">w</code> значение по умолчанию как раз равно 1.</p>
 <p>Теперь нам нужно передать 3D-данные.</p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
 
   // Указываем атрибуту, как получать данные от positionBuffer (ARRAY_BUFFER)
 *  var size = 3;          // 3 компоненты на итерацию
@@ -299,7 +326,7 @@ function setGeometry(gl) {
 }
 </code></pre><p>Теперь нам нужно поменять все функции по работе с матрицами из 2D в 3D.</p>
 <p>Вот предыдущие 2D-версии функций m3.translation, m3.rotation и m3.scaling.</p>
-<pre class="prettyprint"><code>var m3 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m3 = {
   translation: function translation(tx, ty) {
     return [
       1, 0, 0,
@@ -327,7 +354,7 @@ function setGeometry(gl) {
   },
 };
 </code></pre><p>А вот обновлённые версии функций для 3D.</p>
-<pre class="prettyprint"><code>var m4 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m4 = {
   translation: function(tx, ty, tz) {
     return [
        1,  0,  0,  0,
@@ -409,7 +436,7 @@ function setGeometry(gl) {
 <iframe class="external_diagram" src="../resources/axis-diagram.html" style="width: 540px; height: 240px;"></iframe>
 
 <p>Подобным образом мы сделаем упрощённые функции.</p>
-<pre class="prettyprint"><code>  translate: function(m, tx, ty, tz) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  translate: function(m, tx, ty, tz) {
     return m4.multiply(m, m4.translation(tx, ty, tz));
   },
 
@@ -429,7 +456,7 @@ function setGeometry(gl) {
     return m4.multiply(m, m4.scaling(sx, sy, sz));
   },
 </code></pre><p>Нам также нужно изменить проекционную функцию. Старая функция:</p>
-<pre class="prettyprint"><code>  projection: function (width, height) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  projection: function (width, height) {
     // Эта матрица переворачивает Y, чтобы 0 был наверху
     return [
       2 / width, 0, 0,
@@ -440,7 +467,7 @@ function setGeometry(gl) {
 }
 </code></pre><p>которая преобразует пиксели в пространство отсечения. Для нашей
 первой попытки перехода к 3D попробуем следующее:</p>
-<pre class="prettyprint"><code>  projection: function(width, height, depth) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  projection: function(width, height, depth) {
     // Эта матрица переворачивает Y, чтобы 0 был наверху
     return [
        2 / width, 0, 0, 0,
@@ -450,12 +477,12 @@ function setGeometry(gl) {
     ];
   },
 </code></pre><p>Не забываем конвертировать координату Z из пикселей в пространство отсечения,
-как мы делали с координатами X и Y. Мы передаём значение <code>depth</code> для Z по
-аналогии с <code>width</code>, и наше пространство будет 0 пикселей шириной по <code>width</code>,
-0 пикселей высотой по <code>height</code> и от <code>-depth / 2</code> до <code>+depth / 2</code> пикселей
-глубиной по <code>depth</code>.</p>
+как мы делали с координатами X и Y. Мы передаём значение <code class="notranslate" translate="no">depth</code> для Z по
+аналогии с <code class="notranslate" translate="no">width</code>, и наше пространство будет 0 пикселей шириной по <code class="notranslate" translate="no">width</code>,
+0 пикселей высотой по <code class="notranslate" translate="no">height</code> и от <code class="notranslate" translate="no">-depth / 2</code> до <code class="notranslate" translate="no">+depth / 2</code> пикселей
+глубиной по <code class="notranslate" translate="no">depth</code>.</p>
 <p>Наконец, нам нужно изменить код для вычисления матриц.</p>
-<pre class="prettyprint"><code>  // Задаём матрицы
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Задаём матрицы
 *  var matrix = m4.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400);
 *  matrix = m4.translate(matrix, translation[0], translation[1], translation[2]);
 *  matrix = m4.xRotate(matrix, rotation[0]);
@@ -482,7 +509,7 @@ function setGeometry(gl) {
 на каждый и 3 вершины на каждый треугольник - в сумме 96 вершин. Если хотите
 увидеть их все - посмотрите на исходный код примера.</p>
 <p>Итак, нам нужно нарисовать больше вершин.</p>
-<pre class="prettyprint"><code>    // Отрисовка геометрии
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">    // Отрисовка геометрии
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
 *    var count = 16 * 6;
@@ -499,7 +526,7 @@ function setGeometry(gl) {
 атрибут в вершинный шейдер и заведём varying-переменную для передачи значения
 из вершинного во фрагментный шейдер.</p>
 <p>Вот новый вершинный шейдер:</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec4 a_position;
 +attribute vec4 a_color;
 
@@ -516,7 +543,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>Во фрагментном шейдере нам нужно использовать переданный цвет.</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;fragment-shader-3d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;fragment-shader-3d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
 precision mediump float;
 
 +// Передаётся из вершинного шейдера
@@ -528,7 +555,7 @@ void main() {
 &lt;/script&gt;
 </code></pre><p>Нам нужно получить ссылку на атрибут для передачи цветов, установить буфер и
 заполнить этот буфер данными цвета.</p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
   var colorLocation = gl.getAttribLocation(program, &quot;a_color&quot;);
 
   ...
@@ -563,7 +590,7 @@ function setColors(gl) {
 }
 </code></pre><p>Затем при рендеринге мы описываем, как атрибут цвета будет получать
 данные из буфера цветов.</p>
-<pre class="prettyprint"><code>// Включаем атрибут цвета
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Включаем атрибут цвета
 gl.enableVertexAttribArray(colorLocation);
 
 // Привязываем буфер цветов
@@ -603,8 +630,8 @@ gl.vertexAttribPointer(
 <p>В WebGL есть возможность отрисовывать только треугольники лицевой
 стороны или только треугольники тыльной стороны. Мы можем включить
 эту опцию через</p>
-<pre class="prettyprint"><code>  gl.enable(gl.CULL_FACE);
-</code></pre><p>Мы поместим этот код в функцию <code>drawScene</code>. С этой включённой опцией
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  gl.enable(gl.CULL_FACE);
+</code></pre><p>Мы поместим этот код в функцию <code class="notranslate" translate="no">drawScene</code>. С этой включённой опцией
 WebGL &quot;отбраковывает&quot; треугольники с тыльной стороной. Под &quot;отбраковкой&quot;
 здесь можно понимать &quot;не отрисовывать&quot;.</p>
 <p>Следует заметить, что WebGL решает, повёрнут ли треугольник тыльной или
@@ -631,11 +658,11 @@ CULL_FACE, как только треугольники с лицевой сто
 появляются с другой стороны. К счастью, это легко исправить. Нам нужно
 найти треугольники с тыльной стороной и поменять им 2 вершины местами.
 Например, если треугольник с тыльной стороной объявлен так:</p>
-<pre class="prettyprint"><code>           1,   2,   3,
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">           1,   2,   3,
           40,  50,  60,
          700, 800, 900,
 </code></pre><p>нам просто нужно переставить 2 вершины, чтобы сделать его сторону лицевой:</p>
-<pre class="prettyprint"><code>           1,   2,   3,
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">           1,   2,   3,
          700, 800, 900,
           40,  50,  60,
 </code></pre><p>Исправив все треугольники с тыльной стороной, мы получим</p>
@@ -665,9 +692,9 @@ CULL_FACE, как только треугольники с лицевой сто
 шейдера, <em>И</em> пиксель глубины с новым значением глубины. Это означает, что
 пиксели, которые находятся позади других пикселей, не будут отрисовываться.</p>
 <p>Мы можем включить эту опцию почти так же просто, как мы включали CULL_FACE</p>
-<pre class="prettyprint"><code>  gl.enable(gl.DEPTH_TEST);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  gl.enable(gl.DEPTH_TEST);
 </code></pre><p>А ещё нам нужно очистить буфер глубины обратно в 1.0 перед отрисовкой.</p>
-<pre class="prettyprint"><code>  // Отрисовка сцены
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Отрисовка сцены
   function drawScene() {
     ...
 
@@ -684,9 +711,9 @@ CULL_FACE, как только треугольники с лицевой сто
 </p>
 <p>Вот это настоящее 3D!</p>
 <p>Одна небольшая деталь. В большинстве библиотек с 3D-математикой отсутствует
-функция <code>projection</code>, которая преобразовывает пиксели в пространство отсечения.
-Обычно есть функция <code>ortho</code> или <code>orthographic</code>, которая выглядит примерно так:</p>
-<pre class="prettyprint"><code>var m4 = {
+функция <code class="notranslate" translate="no">projection</code>, которая преобразовывает пиксели в пространство отсечения.
+Обычно есть функция <code class="notranslate" translate="no">ortho</code> или <code class="notranslate" translate="no">orthographic</code>, которая выглядит примерно так:</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m4 = {
   orthographic: function(left, right, bottom, top, near, far) {
     return [
       2 / (right - left), 0, 0, 0,
@@ -699,11 +726,11 @@ CULL_FACE, как только треугольники с лицевой сто
       1,
     ];
   }
-</code></pre><p>В отличие от нашей упрощённой функции <code>projection</code>, в которой были лишь ширина, высота и
+</code></pre><p>В отличие от нашей упрощённой функции <code class="notranslate" translate="no">projection</code>, в которой были лишь ширина, высота и
 глубина, в более распространённой ортографической функции мы можем передать левую, правую,
 нижнюю, верхнюю, а также переднюю и заднюю плоскость, что даёт нам большую гибкость. Чтобы
 заменить нашу предыдущую функцию, напишем следующий код:</p>
-<pre class="prettyprint"><code>var left = 0;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var left = 0;
 var right = gl.canvas.clientWidth;
 var bottom = gl.canvas.clientHeight;
 var top = 0;
@@ -858,6 +885,10 @@ x и y, а ещё нужно было установить 1 для z, так к
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -866,6 +897,11 @@ x и y, а ещё нужно было установить 1 для z, так к
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -873,8 +909,6 @@ x и y, а ещё нужно было установить 1 для z, так к
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -886,11 +920,14 @@ x и y, а ещё нужно было установить 1 для z, так к
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -928,9 +965,17 @@ x и y, а ещё нужно было установить 1 для z, так к
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

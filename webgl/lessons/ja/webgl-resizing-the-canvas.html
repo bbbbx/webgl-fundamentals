@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="WebGL使用時にcanvasをリサイズする方法と問題について" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ja.jpg" />
+<meta name="description" content="WebGL使用時にcanvasをリサイズする方法と問題について">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ja.jpg">
 
-<meta property="og:title" content="WebGLとcanvasのリサイズ" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ja.jpg" />
-<meta property="og:description" content="WebGL使用時にcanvasをリサイズする方法と問題について" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-resizing-the-canvas.html" />
+<meta property="og:title" content="WebGLとcanvasのリサイズ">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ja.jpg">
+<meta property="og:description" content="WebGL使用時にcanvasをリサイズする方法と問題について">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-resizing-the-canvas.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGLとcanvasのリサイズ" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-resizing-the-canvas.html" />
-<meta name="twitter:description" content="WebGL使用時にcanvasをリサイズする方法と問題について" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ja.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGLとcanvasのリサイズ">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-resizing-the-canvas.html">
+<meta name="twitter:description" content="WebGL使用時にcanvasをリサイズする方法と問題について">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-resizing-the-canvas_ja.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGLとcanvasのリサイズ</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-resizing-the-canvas.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-resizing-the-canvas.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ja/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -218,11 +245,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ふたつめは、canvasの「表示サイズ」です。canvasの表示上のサイズは、CSS(style)で決定します。</p>
 <p>canvasの「<strong>描画バッファーのサイズ</strong>」を設定する方法は２種類あります。
 ひとつめは、HTMLを使う方法です。</p>
-<pre class="prettyprint"><code>&lt;canvas id=&quot;c&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;canvas id=&quot;c&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
 </code></pre><p>ふたつめは、JavaScriptを使う方法です。こちらの方法では、HTML側は</p>
-<pre class="prettyprint"><code>&lt;canvas id=&quot;c&quot; &gt;&lt;/canvas&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;canvas id=&quot;c&quot; &gt;&lt;/canvas&gt;
 </code></pre><p>JavaScript側は、</p>
-<pre class="prettyprint"><code>var canvas = document.querySelector(&quot;#c&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var canvas = document.querySelector(&quot;#c&quot;);
 canvas.width = 400;
 canvas.height = 300;
 </code></pre><p>といったコードになります。</p>
@@ -233,9 +260,9 @@ canvas.height = 300;
 「表示サイズ」も同じく、400x300となります。</p>
 <p>別の例として「描画バッファが10x15ピクセル、表示サイズが400x300のcanvas」
 を定義する場合はこんなコードになります。</p>
-<pre class="prettyprint"><code>&lt;canvas id=&quot;c&quot; width=&quot;10&quot; height=&quot;15&quot; style=&quot;width: 400px; height: 300px;&quot;&gt;&lt;/canvas&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;canvas id=&quot;c&quot; width=&quot;10&quot; height=&quot;15&quot; style=&quot;width: 400px; height: 300px;&quot;&gt;&lt;/canvas&gt;
 </code></pre><p>同じ意味で、こんな風に書くこともできます。</p>
-<pre class="prettyprint"><code>&lt;style&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;style&gt;
 #c {
   width: 400px;
   height: 300px;
@@ -258,7 +285,7 @@ canvas.height = 300;
 <p>では、canvasをウィンドウいっぱいにリサイズしたい時にはどうすればよいでしょうか？
 まず、CSSを使ってウィンドウいっぱいに引き伸ばしてみましょう。
 コードはこんな感じになります。</p>
-<pre class="prettyprint"><code>&lt;html&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;html&gt;
   &lt;head&gt;
     &lt;style&gt;
       /* border幅は0にしておく */
@@ -280,10 +307,10 @@ canvas.height = 300;
 &lt;/html&gt;
 </code></pre><p>リサイズに際してやるべきことは、「ブラウザーがcanvasの表示サイズを
 引き伸ばしたら、とにかくそのサイズに描画バッファーのサイズを合わせる」ことだけです。
-これを実現するには、<code>clientWidth</code>と<code>clientHeight</code>を使います。
+これを実現するには、<code class="notranslate" translate="no">clientWidth</code>と<code class="notranslate" translate="no">clientHeight</code>を使います。
 これはHTMLのすべての要素が持っているプロパティです。
 これを使えばその要素が実際に表示されているサイズをJavaScriptから取得できます。</p>
-<pre class="prettyprint"><code>function resize(canvas) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function resize(canvas) {
   // ブラウザがcanvasを表示しているサイズを調べる。
   var displayWidth  = canvas.clientWidth;
   var displayHeight = canvas.clientHeight;
@@ -301,7 +328,7 @@ canvas.height = 300;
 </code></pre><p>WebGLアプリケーションの多くは<a href="webgl-animation.html">アニメーションする</a>
 ので、この関数はレンダリングの直前に呼び出すのがよいでしょう。
 このタイミングであれば描画の直前にcanvasを適切なサイズに合わせることができます。</p>
-<pre class="prettyprint"><code>function drawScene() {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function drawScene() {
    resize(gl.canvas);
 
    ...
@@ -313,16 +340,16 @@ canvas.height = 300;
 
 </p>
 <p>何かおかしいですね。表示領域いっぱいに直線が表示されないのはなぜでしょうか？</p>
-<p>結論から言えば、canvasをリサイズしたら同時に<code>gl.viewport</code>を呼んでビューポートを
+<p>結論から言えば、canvasをリサイズしたら同時に<code class="notranslate" translate="no">gl.viewport</code>を呼んでビューポートを
 設定する必要があったためです。
-<code>gl.viewport</code>の役目は、「WebGLがクリップ空間座標(-1～+1)をピクセルに変換する」際に
+<code class="notranslate" translate="no">gl.viewport</code>の役目は、「WebGLがクリップ空間座標(-1～+1)をピクセルに変換する」際に
 「どう変換するか」と「canvas内のどの範囲で変換するか」を指定することです。
 最初にWebGLコンテキストを取得する時には、ビューポートのサイズがcanvasのサイズと同じに
 なるようにWebGLが自動的にセットするのですが、それ以降の管理はあなたに任されています。
 つまり、canvasのサイズ変更があった時には、あなたが明示的にビューポートの設定を更新しなければなりません。</p>
 <p>ではそのようにコードを変更してみます。WebGLコンテキストはcanvasへの参照を
 持っているので、そのサイズをリサイズ処理に反映させましょう。</p>
-<pre class="prettyprint"><code>function drawScene() {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function drawScene() {
    resize(gl.canvas);
 
 +   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -361,7 +388,7 @@ Apple社が「Retinaディスプレイ」と呼んでいるものです。
 明示的に高解像度で描画するようにコードを書く必要があります。
 </p>
 <p>
-これを行うには<code>window.devicePixelRatio</code>の値を利用します。
+これを行うには<code class="notranslate" translate="no">window.devicePixelRatio</code>の値を利用します。
 この値は「１CSSピクセルが実際の何ピクセルに相当するか」を表しています。
 これを使ってリサイズするコードは以下のようになります。</p>
 <pre class="prettyprint">
@@ -394,9 +421,9 @@ function resize(gl) {
 
 
 <p>HD-DPIに対応するかどうかはあなた次第です。
-iPhone4やiPhone5の場合、<code>window.devicePixelRatio</code>の値は
-<code>2</code>、つまりピクセル数で言えば4倍の描画が行われます。
-iPhone6Plusであればこの値は<code>3</code>となっていたかと思います。
+iPhone4やiPhone5の場合、<code class="notranslate" translate="no">window.devicePixelRatio</code>の値は
+<code class="notranslate" translate="no">2</code>、つまりピクセル数で言えば4倍の描画が行われます。
+iPhone6Plusであればこの値は<code class="notranslate" translate="no">3</code>となっていたかと思います。
 これは9倍のピクセルが描画されるという意味です。
 描画すべきピクセル数が増えると、実行速度は低下します。
 実際、ゲーム製作では「描画は少ないピクセル数で行なって
@@ -513,6 +540,10 @@ GPUに拡大表示させる」という最適化手法が一般的です。
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -521,6 +552,11 @@ GPUに拡大表示させる」という最適化手法が一般的です。
 <li><a href="/webgl/lessons/ja/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ja/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>その他のトピック</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-setup-and-installation.html">WebGLの開発環境</a></li>
@@ -528,8 +564,6 @@ GPUに拡大表示させる」という最適化手法が一般的です。
 <li><a href="/webgl/lessons/ja/webgl-resizing-the-canvas.html">WebGLとcanvasのリサイズ</a></li>
 <li><a href="/webgl/lessons/ja/webgl-animation.html">アニメーション</a></li>
 <li><a href="/webgl/lessons/ja/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ja/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ja/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ja/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -541,11 +575,14 @@ GPUに拡大表示させる」という最適化手法が一般的です。
 <li><a href="/webgl/lessons/ja/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ja/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ja/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ja/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ja/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ja/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ja/webgl-references.html">References</a></li>
         </ul></ul>
@@ -583,9 +620,17 @@ GPUに拡大表示させる」という最適化手法が一般的です。
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

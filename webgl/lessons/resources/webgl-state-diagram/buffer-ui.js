@@ -51,10 +51,21 @@ export function createBufferDisplay(parent, name /*, webglObject */) {
     dataElem.textContent = `${value}${data.length > maxValues ? ', ...' : ''}`;
   };
 
+  const updateSubData = (data, offset) => {
+    const maxValues = 9;
+    expand(dataExpander);
+    flashSelfAndExpanderIfClosed(dataElem);
+    const oldData = dataElem.textContent.replace(', ...', '').split(', ').map(parseFloat);
+    oldData.splice(offset, data.length, ...data);
+    const value = formatUniformValue(Array.from(oldData).slice(0, maxValues));
+    dataElem.textContent = `${value}${oldData.length > maxValues ? ', ...' : ''}`;
+  };
+
   makeDraggable(bufElem);
   return {
     elem: bufElem,
     updateData,
+    updateSubData,
   };
 }
 
@@ -85,7 +96,7 @@ export function createFramebufferDisplay(parent, name /*, webglObject */) {
   const fbElem = createTemplate(parent, '#framebuffer-template');
   setName(fbElem, name);
 
-  const attachmentExpander = createExpander(fbElem.querySelector('.attachments'), 'attachment');
+  const attachmentExpander = createExpander(fbElem.querySelector('.attachments'), 'attachments');
   const attachmentsTbody = createTable(attachmentExpander, ['attachment point', 'level', 'face', 'attachment']);
   const maxDrawBuffers = globals.isWebGL2 ? gl.getParameter(gl.MAX_DRAW_BUFFERS) : 1;
   const attachmentPoints = [];
@@ -171,7 +182,7 @@ export function createFramebufferDisplay(parent, name /*, webglObject */) {
       }
 
       const oldAttachmentInfo = oldAttachmentInfos.get(attachmentPoint);
-      if (oldAttachmentInfo && attachment !== oldAttachmentInfo.attachment) {
+      if (!oldAttachmentInfo || attachment !== oldAttachmentInfo.attachment) {
         flashSelfAndExpanderIfClosed(tr);
       }
       newAttachmentInfos.set(attachmentPoint, {attachment, level, face: rawFace});
@@ -196,7 +207,7 @@ export function createFramebufferDisplay(parent, name /*, webglObject */) {
 
   const firstBind = () => {
     if (globals.isWebGL2) {
-      stateTable = createStateTable(globals.stateTables.drawBuffersState, fbElem.querySelector('.draw-buffers'), 'draw buffers', queryFn);
+      stateTable = createStateTable(globals.stateTables.framebufferState, fbElem.querySelector('.state'), 'draw/read buffers', queryFn);
       expand(stateTable);
     }
   };
@@ -208,7 +219,7 @@ export function createFramebufferDisplay(parent, name /*, webglObject */) {
     updateAttachments,
     updateAttachmentContents,
     updateState: () => {
-      updateStateTable(globals.stateTables.drawBuffersState, stateTable, queryFn);
+      updateStateTable(globals.stateTables.framebufferState, stateTable, queryFn);
     },
     firstBind,
   };

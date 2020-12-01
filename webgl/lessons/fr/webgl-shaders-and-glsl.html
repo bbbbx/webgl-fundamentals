@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Présentation des shaders et de GLSL" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shaders-and-glsl_fr.jpg" />
+<meta name="description" content="Présentation des shaders et de GLSL">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shaders-and-glsl_fr.jpg">
 
-<meta property="og:title" content="Shaders et GLSL" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shaders-and-glsl_fr.jpg" />
-<meta property="og:description" content="Présentation des shaders et de GLSL" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-shaders-and-glsl.html" />
+<meta property="og:title" content="Shaders et GLSL">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shaders-and-glsl_fr.jpg">
+<meta property="og:description" content="Présentation des shaders et de GLSL">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-shaders-and-glsl.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="Shaders et GLSL" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-shaders-and-glsl.html" />
-<meta name="twitter:description" content="Présentation des shaders et de GLSL" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shaders-and-glsl_fr.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="Shaders et GLSL">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-shaders-and-glsl.html">
+<meta name="twitter:description" content="Présentation des shaders et de GLSL">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shaders-and-glsl_fr.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>Shaders et GLSL</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-shaders-and-glsl.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-shaders-and-glsl.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-shaders-and-glsl.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-shaders-and-glsl.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-shaders-and-glsl.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-shaders-and-glsl.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-shaders-and-glsl.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-shaders-and-glsl.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/fr/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -223,10 +250,10 @@ Une application WebGL classique a plusieurs programmes de shader.</p>
 <h2 id="le-shader-de-vertex">Le shader de vertex</h2>
 <p>Le rôle d&#39;un shader de vertex est de générer des coordonnées dans l&#39;espace de projection (clipspace). 
 Il prend toujours la forme</p>
-<pre class="prettyprint"><code>void main() {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">void main() {
    gl_Position = quelquesOperationsPourTransformerLesCoordonnées
 }
-</code></pre><p>Ce shader est appelé une fois par vertex. Chaque fois qu&#39;il est exécuté la variable globale <code>gl_Position</code> 
+</code></pre><p>Ce shader est appelé une fois par vertex. Chaque fois qu&#39;il est exécuté la variable globale <code class="notranslate" translate="no">gl_Position</code> 
 doit être renseignée avec des coordonnées.</p>
 <p>Les shaders de vertex ont besoin de données. Ils peuvent la recevoir à partir de trois espèces d&#39;entrées : </p>
 <ol>
@@ -237,14 +264,14 @@ doit être renseignée avec des coordonnées.</p>
 <h3 id="les-attributs">Les attributs</h3>
 <p>La principale façon est celle des <em>attributs</em> associés aux tampons. Les tampons et attributs ont été évoqués dans 
 <a href="webgl-how-it-works.html">WebGL - Comment ça marche</a>. On créé les tampons,</p>
-<pre class="prettyprint"><code>var tampon = gl.createBuffer();
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var tampon = gl.createBuffer();
 </code></pre><p>on y met des données</p>
-<pre class="prettyprint"><code>gl.bindBuffer(gl.ARRAY_BUFFER, tampon);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.bindBuffer(gl.ARRAY_BUFFER, tampon);
 gl.bufferData(gl.ARRAY_BUFFER, mesDonnees, gl.STATIC_DRAW);
 </code></pre><p>Ensuite, étant donné un programme de shader créé plus tôt, on créé l&#39;emplacement de ces attributs</p>
-<pre class="prettyprint"><code>var emplacementPosition = gl.getAttribLocation(programme, &quot;a_position&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var emplacementPosition = gl.getAttribLocation(programme, &quot;a_position&quot;);
 </code></pre><p>et on dit à WebGL comment envoyer ces données des tampons vers ces attributs</p>
-<pre class="prettyprint"><code>// activer l&#39;extraction de données depuis un tampon pour cet attribut 
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// activer l&#39;extraction de données depuis un tampon pour cet attribut 
 gl.enableVertexAttribArray(emplacementPosition);
 
 var composantes = 3;  // (x, y, z)
@@ -257,17 +284,17 @@ var tailleDeLaFenetre = 0;  // taille du déplacement de la lecture entre chaque
 gl.vertexAttribPointer(emplacementPosition, composantes, type, normalisation, tailleDeLaFenetre, decalage);
 </code></pre><p>Dans <a href="webgl-fundamentals.html">WebGL -Les Bases</a> on a vu qu&#39;on pouvait se passer d&#39;opération dans 
 le shader de vertex et juste lui envoyer des données.</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 
 void main() {
    gl_Position = a_position;
 }
 </code></pre><p>Si on met des vertices en espace de projection dans nos tampons alors c&#39;est suffisant.</p>
-<p>Les attributs peuvent être de type <code>float</code>, <code>vec2</code>, <code>vec3</code>, <code>vec4</code>, <code>mat2</code>, <code>mat3</code>, and <code>mat4</code>.</p>
+<p>Les attributs peuvent être de type <code class="notranslate" translate="no">float</code>, <code class="notranslate" translate="no">vec2</code>, <code class="notranslate" translate="no">vec3</code>, <code class="notranslate" translate="no">vec4</code>, <code class="notranslate" translate="no">mat2</code>, <code class="notranslate" translate="no">mat3</code>, and <code class="notranslate" translate="no">mat4</code>.</p>
 <h3 id="les-uniforms-dans-les-shaders-de-vertex">Les uniforms dans les shaders de vertex</h3>
 <p>Pour un vertex shader les uniforms sont des valeurs qui restent identiques pour tous les vertices d&#39;un appel de rendu. 
 Un exemple très simple est d&#39;ajouter un décalage dans le shader de vertex précédent :</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 +uniform vec4 u_decalage;
 
 void main() {
@@ -275,11 +302,11 @@ void main() {
 }
 </code></pre><p>Et maintenant on pourrait décaler chaque vertex d&#39;une certaine distance. D&#39;abord 
 on définit un emplacement pour la uniform :</p>
-<pre class="prettyprint"><code>var emplacementDecalage = gl.getUniformLocation(programme, &quot;u_decalage&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var emplacementDecalage = gl.getUniformLocation(programme, &quot;u_decalage&quot;);
 </code></pre><p>Ensuite, on renseigne la valeur avant l&#39;appel de rendu.</p>
-<pre class="prettyprint"><code>gl.uniform4fv(emplacementDecalage, [1, 0, 0, 0]);  // décale vers la droite de la moitié de l&#39;écran
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.uniform4fv(emplacementDecalage, [1, 0, 0, 0]);  // décale vers la droite de la moitié de l&#39;écran
 </code></pre><p>Les uniforms peuvent avoir de nombreux types. Pour chaque type il faut appeler une fonction spéciale pour la renseigner. </p>
-<pre class="prettyprint"><code>gl.uniform1f (emplacementFloat, v);                 // pour les float
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.uniform1f (emplacementFloat, v);                 // pour les float
 gl.uniform1fv(emplacementFloat, [v]);               // pour les float ou tableaux de float
 gl.uniform2f (emplacementVec2,  v0, v1);            // pour les vec2
 gl.uniform2fv(emplacementVec2,  [v0, v1]);          // pour les vec2 ou tableaux de vec2
@@ -306,9 +333,9 @@ gl.uniform1iv(emplacementSampler2D, [v]);           // pour les sampler2D ou tab
 
 gl.uniform1i (emplacementSamplerCube,   v);         // pour les samplerCube (textures)
 gl.uniform1iv(emplacementSamplerCube, [v]);         // pour les samplerCube ou tableaux de samplerCube
-</code></pre><p>Il y a aussi les types <code>bool</code>, <code>bvec2</code>, <code>bvec3</code> et <code>bvec4</code>. Ils utilisent les fonctions <code>gl.uniform?f?</code> ou <code>gl.uniform?i?</code>.</p>
+</code></pre><p>Il y a aussi les types <code class="notranslate" translate="no">bool</code>, <code class="notranslate" translate="no">bvec2</code>, <code class="notranslate" translate="no">bvec3</code> et <code class="notranslate" translate="no">bvec4</code>. Ils utilisent les fonctions <code class="notranslate" translate="no">gl.uniform?f?</code> ou <code class="notranslate" translate="no">gl.uniform?i?</code>.</p>
 <p>Notons que pour un tableau vous pouvez indiquez toutes les uniforms d&#39;un coup. Par exemple :</p>
-<pre class="prettyprint"><code>// dans le shader
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// dans le shader
 uniform vec2 u_monVec2[3];
 
 // en JavaScript à l&#39;initialisation
@@ -317,7 +344,7 @@ var emplacementDeMonVec2 = gl.getUniformLocation(programme, &quot;u_monVec2&quot
 // avant le rendu
 gl.uniform2fv(emplacementDeMonVec2, [1, 2, 3, 4, 5, 6]);  // renseigne tout le tableau de u_monVec3
 </code></pre><p>Mais si on veut renseigner des éléments individuels dans un tableau il faut chercher l&#39;emplacement de chaque élément.</p>
-<pre class="prettyprint"><code>// en JavaScript à l&#39;initialisation
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// en JavaScript à l&#39;initialisation
 var emplacementDeLElement0DeMonVec2 = gl.getUniformLocation(programme, &quot;u_monVec2[0]&quot;);
 var emplacementDeLElement1DeMonVec2 = gl.getUniformLocation(programme, &quot;u_monVec2[1]&quot;);
 var emplacementDeLElement2DeMonVec2 = gl.getUniformLocation(programme, &quot;u_monVec2[2]&quot;);
@@ -327,25 +354,25 @@ gl.uniform2fv(emplacementDeLElement0DeMonVec2, [1, 2]);  // renseigne l&#39;él�
 gl.uniform2fv(emplacementDeLElement1DeMonVec2, [3, 4]);  // renseigne l&#39;élément 1
 gl.uniform2fv(emplacementDeLElement2DeMonVec2, [5, 6]);  // renseigne l&#39;élément 2
 </code></pre><p>De même si vous créez un struct</p>
-<pre class="prettyprint"><code>struct monStruct {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">struct monStruct {
   bool actif;
   vec2 monVec2;
 };
 uniform monStruct u_quelqueChose;
 </code></pre><p>Il faut renseigner chaque champ individuellement</p>
-<pre class="prettyprint"><code>var someThingActiveLoc = gl.getUniformLocation(programme, &quot;u_quelqueChose.actif&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var someThingActiveLoc = gl.getUniformLocation(programme, &quot;u_quelqueChose.actif&quot;);
 var someThingSomeVec2Loc = gl.getUniformLocation(programme, &quot;u_quelqueChose.monVec2&quot;);
 </code></pre><h3 id="les-textures-dans-les-shaders-de-vertex">Les textures dans les shaders de vertex</h3>
 <p>Voire <a href="#les-textures-dans-les-shaders-de-fragment">Les textures dans les shaders de fragment</a>.</p>
 <h2 id="les-shaders-de-fragment">Les shaders de fragment</h2>
 <p>Le rôle d&#39;un shader de fragment est de colorier le pixel en cours. 
 Il prend toujours la forme</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 void main() {
    gl_FragColor = quelquesOperationPourCalculerLaCouleur;
 }
-</code></pre><p>Le shader de fragment est appelé une fois par pixel. Chaque fois qu&#39;il est exécuté la variable globale <code>gl_FragColor</code> doit être renseignée avec une couleur.</p>
+</code></pre><p>Le shader de fragment est appelé une fois par pixel. Chaque fois qu&#39;il est exécuté la variable globale <code class="notranslate" translate="no">gl_FragColor</code> doit être renseignée avec une couleur.</p>
 <p>Les shader de fragment ont besoin de données. Ils peuvent en recevoir par 3 moyens :</p>
 <ol>
 <li><a href="#les-uniforms-dans-les-shaders-de-fragment">Les uniforms</a> (Valeurs qui restent les mêmes pour chaque pixel pendant un rendu)</li>
@@ -355,9 +382,9 @@ void main() {
 <h3 id="les-uniforms-dans-les-shaders-de-fragment">Les uniforms dans les shaders de fragment</h3>
 <p>Voire <a href="#les-uniforms-dans-les-shaders-de-vertex">Les uniforms dans les shaders de vertex</a>.</p>
 <h3 id="les-textures-dans-les-shaders-de-fragment">Les textures dans les shaders de fragment</h3>
-<p>Pour obtenir une valeur depuis une texture dans un shader, on créé une uniform de type <code>sampler2D</code>et 
-on utilise la fonction <code>texture2D</code>.</p>
-<pre class="prettyprint"><code>precision mediump float;
+<p>Pour obtenir une valeur depuis une texture dans un shader, on créé une uniform de type <code class="notranslate" translate="no">sampler2D</code>et 
+on utilise la fonction <code class="notranslate" translate="no">texture2D</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 uniform sampler2D u_texture;
 
@@ -367,7 +394,7 @@ void main() {
 }
 </code></pre><p>Les données retournées par la fonction <a href="webgl-3d-textures.html">dépendent de plusieurs paramètres</a>.
 Au minimum on a besoin de créer et envoyer des données dans la texture, par exemple :</p>
-<pre class="prettyprint"><code>var tex = gl.createTexture();
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var tex = gl.createTexture();
 gl.bindTexture(gl.TEXTURE_2D, tex);
 var niveau = 0;
 var largeur = 2;
@@ -375,13 +402,13 @@ var hauteur = 1;
 var donnees = new Uint8Array([255, 0, 0, 255, 0, 255, 0, 255]);
 gl.texImage2D(gl.TEXTURE_2D, niveau, gl.RGBA, largeur, hauteur, 0, gl.RGBA, gl.UNSIGNED_BYTE, donnees);
 </code></pre><p>Ensuite on regarde l&#39;emplacement de la uniform dans le programme</p>
-<pre class="prettyprint"><code>var emplacementDeMonSampler = gl.getUniformLocation(programme, &quot;u_texture&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var emplacementDeMonSampler = gl.getUniformLocation(programme, &quot;u_texture&quot;);
 </code></pre><p>WebGL demande de la relier à une unité de texture</p>
-<pre class="prettyprint"><code>var unite = 5;  // Choix de l&#39;unité de texture
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var unite = 5;  // Choix de l&#39;unité de texture
 gl.activeTexture(gl.TEXTURE0 + unite);
 gl.bindTexture(gl.TEXTURE_2D, tex);
 </code></pre><p>Et de dire au shader à quelle unité on a lié notre texture</p>
-<pre class="prettyprint"><code>gl.uniform1i(emplacementDeMonSampler, unite);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.uniform1i(emplacementDeMonSampler, unite);
 </code></pre><h3 id="les-varyings">Les varyings</h3>
 <p>Une varying est un moyen de passer une valeur d&#39;un shader de vertex à un shader de fragment 
 comment nous l&#39;avons vu <a href="webgl-how-it-works.html">WebGL - Comment ça marche</a>.</p>
@@ -389,7 +416,7 @@ comment nous l&#39;avons vu <a href="webgl-how-it-works.html">WebGL - Comment ç
 On la renseigne dans le shader de vertex. Quand WebGL colore les pixels les valeurs interpolées 
 sont envoyées au shader de fragment.</p>
 <p>Shader de vertex</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 
 uniform vec4 u_decalage;
 
@@ -400,7 +427,7 @@ void main() {
 +  v_positionDecalee = a_position + u_decalage;
 }
 </code></pre><p>Shader de fragment</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 +varying vec4 v_positionDecalee;
 
@@ -415,59 +442,59 @@ pour les utiliser comme couleurs n&#39;a pas de sens. Mais ça fonctionne et les
 <p>GLSL signifie Graphics Library Shader Language. C&#39;est le langage dans lequel les shaders 
 sont écrits. Il a des façons de faire qui n&#39;ont rien à voir avec le javascript. Il est 
 conçu pour les opérations propres aux calculs graphiques. Par exemple il a des types 
-natifs comme <code>vec2</code>, <code>vec3</code>, et <code>vec4</code> qui représentent respectivement 2 valeurs, 3 valeurs et 4 valeurs. 
-De même il a <code>mat2</code>, <code>mat3</code> et <code>mat4</code> qui représentent des matrices carrées 2x2, 3x3, et 4x4. 
-On peut faire nativement des opérations comme multiplier un <code>vec</code> par un scalaire.</p>
-<pre class="prettyprint"><code>vec4 a = vec4(1, 2, 3, 4);
+natifs comme <code class="notranslate" translate="no">vec2</code>, <code class="notranslate" translate="no">vec3</code>, et <code class="notranslate" translate="no">vec4</code> qui représentent respectivement 2 valeurs, 3 valeurs et 4 valeurs. 
+De même il a <code class="notranslate" translate="no">mat2</code>, <code class="notranslate" translate="no">mat3</code> et <code class="notranslate" translate="no">mat4</code> qui représentent des matrices carrées 2x2, 3x3, et 4x4. 
+On peut faire nativement des opérations comme multiplier un <code class="notranslate" translate="no">vec</code> par un scalaire.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4 a = vec4(1, 2, 3, 4);
 vec4 b = a * 2.0;
 // b vaut vec4(2, 4, 6, 8);
 </code></pre><p>GLSL peut faire des multiplications de matrices avec d&#39;autres matrices ou encore avec des vecteurs</p>
-<pre class="prettyprint"><code>mat4 a = ???
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">mat4 a = ???
 mat4 b = ???
 mat4 c = a * b;
 
 vec4 v = ???
 vec4 y = c * v;
 </code></pre><p>Il a aussi plusieurs sélecteurs pour choisir facilement les valeurs d&#39;un vec. Pour un vec4 :</p>
-<pre class="prettyprint"><code>vec4 v;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4 v;
 </code></pre><ul>
-<li><code>v.x</code> est identique à <code>v.s</code>, à <code>v.r</code> et à <code>v[0]</code>.</li>
-<li><code>v.y</code> est identique à <code>v.t</code>, à <code>v.g</code> et à <code>v[1]</code>.</li>
-<li><code>v.z</code> est identique à <code>v.p</code>, à <code>v.b</code> et à <code>v[2]</code>.</li>
-<li><code>v.w</code> est identique à <code>v.q</code>, à <code>v.a</code> et à <code>v[3]</code>.</li>
+<li><code class="notranslate" translate="no">v.x</code> est identique à <code class="notranslate" translate="no">v.s</code>, à <code class="notranslate" translate="no">v.r</code> et à <code class="notranslate" translate="no">v[0]</code>.</li>
+<li><code class="notranslate" translate="no">v.y</code> est identique à <code class="notranslate" translate="no">v.t</code>, à <code class="notranslate" translate="no">v.g</code> et à <code class="notranslate" translate="no">v[1]</code>.</li>
+<li><code class="notranslate" translate="no">v.z</code> est identique à <code class="notranslate" translate="no">v.p</code>, à <code class="notranslate" translate="no">v.b</code> et à <code class="notranslate" translate="no">v[2]</code>.</li>
+<li><code class="notranslate" translate="no">v.w</code> est identique à <code class="notranslate" translate="no">v.q</code>, à <code class="notranslate" translate="no">v.a</code> et à <code class="notranslate" translate="no">v[3]</code>.</li>
 </ul>
 <p>Ce qui permet de <em>mixer</em> les composantes d&#39;un vec, donc de les exclure ou de les répéter</p>
-<pre class="prettyprint"><code>v.yyyy
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">v.yyyy
 </code></pre><p>est identique à</p>
-<pre class="prettyprint"><code>vec4(v.y, v.y, v.y, v.y)
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4(v.y, v.y, v.y, v.y)
 </code></pre><p>De même</p>
-<pre class="prettyprint"><code>v.bgra
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">v.bgra
 </code></pre><p>est identique à</p>
-<pre class="prettyprint"><code>vec4(v.b, v.g, v.r, v.a)
-</code></pre><p>en construisant un <code>vec</code> ou une <code>mat</code> on peut fournir plusieurs composantes d&#39;un coup. Par exemple</p>
-<pre class="prettyprint"><code>vec4(v.rgb, 1)
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4(v.b, v.g, v.r, v.a)
+</code></pre><p>en construisant un <code class="notranslate" translate="no">vec</code> ou une <code class="notranslate" translate="no">mat</code> on peut fournir plusieurs composantes d&#39;un coup. Par exemple</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4(v.rgb, 1)
 </code></pre><p>est identique à</p>
-<pre class="prettyprint"><code>vec4(v.r, v.g, v.b, 1)
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4(v.r, v.g, v.b, 1)
 </code></pre><p>Une chose à laquelle vous vous ferez sûrement avoir quelque fois, c&#39;est à quel point le GLSL est strict sur les types :</p>
-<pre class="prettyprint"><code>float f = 1;  // Crash du programme et message console : ERROR 1 is an int. You can&#39;t assign an int to a float
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">float f = 1;  // Crash du programme et message console : ERROR 1 is an int. You can&#39;t assign an int to a float
 </code></pre><p>La bonne façon de faire pour ça :</p>
-<pre class="prettyprint"><code>float f = 1.0;      // indiquer une décimale bien sûr
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">float f = 1.0;      // indiquer une décimale bien sûr
 float f = float(1)  // ou transformer l&#39;entier en décimale
-</code></pre><p>L&#39;exemple précédent de <code>vec4(v.rgb, 1)</code> reste valide car <code>vec4</code> convertit naturellement ses composantes en décimales, 
-comme <code>float(1)</code>.</p>
+</code></pre><p>L&#39;exemple précédent de <code class="notranslate" translate="no">vec4(v.rgb, 1)</code> reste valide car <code class="notranslate" translate="no">vec4</code> convertit naturellement ses composantes en décimales, 
+comme <code class="notranslate" translate="no">float(1)</code>.</p>
 <p>GLSL a aussi un tas de fonctions natives. Nombre d&#39;entre elles agissent sur plusieurs composantes 
 d&#39;un coup. Par exemple :</p>
-<pre class="prettyprint"><code>T sin(T angle)
-</code></pre><p>T signifie que la valeur peut être un <code>float</code>, un <code>vec2</code>, un <code>vec3</code> ou un <code>vec4</code>. Si on lui donne un <code>vec4</code> on reçoit un <code>vec4</code> en retour, 
-avec le sinus de chacun de ses composants. En d&#39;autres termes si <code>v</code> est un <code>vec4</code> alors</p>
-<pre class="prettyprint"><code>vec4 s = sin(v);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">T sin(T angle)
+</code></pre><p>T signifie que la valeur peut être un <code class="notranslate" translate="no">float</code>, un <code class="notranslate" translate="no">vec2</code>, un <code class="notranslate" translate="no">vec3</code> ou un <code class="notranslate" translate="no">vec4</code>. Si on lui donne un <code class="notranslate" translate="no">vec4</code> on reçoit un <code class="notranslate" translate="no">vec4</code> en retour, 
+avec le sinus de chacun de ses composants. En d&#39;autres termes si <code class="notranslate" translate="no">v</code> est un <code class="notranslate" translate="no">vec4</code> alors</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4 s = sin(v);
 </code></pre><p>est identique à</p>
-<pre class="prettyprint"><code>vec4 s = vec4(sin(v.x), sin(v.y), sin(v.z), sin(v.w));
-</code></pre><p>Parfois un argument est un float est le reste <code>T</code>. Ca signifie que le float sera appliqué à tous les composants. 
-Par exemple si <code>v1</code> et <code>v2</code> sont des <code>vec4</code> et <code>f</code> est un float</p>
-<pre class="prettyprint"><code>vec4 m = mix(v1, v2, f);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4 s = vec4(sin(v.x), sin(v.y), sin(v.z), sin(v.w));
+</code></pre><p>Parfois un argument est un float est le reste <code class="notranslate" translate="no">T</code>. Ca signifie que le float sera appliqué à tous les composants. 
+Par exemple si <code class="notranslate" translate="no">v1</code> et <code class="notranslate" translate="no">v2</code> sont des <code class="notranslate" translate="no">vec4</code> et <code class="notranslate" translate="no">f</code> est un float</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4 m = mix(v1, v2, f);
 </code></pre><p>est identique à</p>
-<pre class="prettyprint"><code>vec4 m = vec4(
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4 m = vec4(
   mix(v1.x, v2.x, f),
   mix(v1.y, v2.y, f),
   mix(v1.z, v2.z, f),
@@ -475,7 +502,7 @@ Par exemple si <code>v1</code> et <code>v2</code> sont des <code>vec4</code> et 
 </code></pre><p>Il y a une liste de toutes les fonctions GLSL sur la dernière page  de <a href="https://www.khronos.org/files/webgl/webgl-reference-card-1_0.pdf">la référence WebGL</a>. Si vous aimez les bon gros contenus bruts vous pouvez tenter <a href="https://www.khronos.org/files/opengles_shading_language.pdf">la spéc GLSL</a>.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>C&#39;est le bout de cette série d&#39;articles. WebGL c&#39;est surtout écrire des shaders, 
-fournir les données à ces shaders et enfin exécuter <code>gl.drawArrays</code> ou <code>gl.drawElements</code> 
+fournir les données à ces shaders et enfin exécuter <code class="notranslate" translate="no">gl.drawArrays</code> ou <code class="notranslate" translate="no">gl.drawElements</code> 
 pour que WebGL en déduise les vertices en appelant le shader de vertex pour chacun d&#39;entre eux, et 
 colorie les pixels avec le fragment shader.</p>
 <p>En fait les shaders demandent plusieurs lignes de code. Ces lignes sont les mêmes dans la plupart des programmes 
@@ -588,6 +615,10 @@ Si vous voulez apprendre les translations, rotations et changements d&#39;échel
         <ul>
           <li><a href="/webgl/lessons/fr/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/fr/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -596,6 +627,11 @@ Si vous voulez apprendre les translations, rotations et changements d&#39;échel
 <li><a href="/webgl/lessons/fr/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/fr/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/fr/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/fr/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Divers</li>
         <ul>
           <li><a href="/webgl/lessons/fr/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -603,8 +639,6 @@ Si vous voulez apprendre les translations, rotations et changements d&#39;échel
 <li><a href="/webgl/lessons/fr/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/fr/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/fr/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/fr/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/fr/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/fr/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/fr/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/fr/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -616,11 +650,14 @@ Si vous voulez apprendre les translations, rotations et changements d&#39;échel
 <li><a href="/webgl/lessons/fr/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/fr/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/fr/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/fr/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/fr/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/fr/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/fr/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/fr/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/fr/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/fr/webgl-references.html">References</a></li>
         </ul></ul>
@@ -658,9 +695,17 @@ Si vous voulez apprendre les translations, rotations et changements d&#39;échel
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

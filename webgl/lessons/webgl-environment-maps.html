@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="How to implement environment maps." />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-environment-maps_en.jpg" />
+<meta name="description" content="How to implement environment maps.">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-environment-maps_en.jpg">
 
-<meta property="og:title" content="WebGL Environment Maps (reflections)" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-environment-maps_en.jpg" />
-<meta property="og:description" content="How to implement environment maps." />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-environment-maps.html" />
+<meta property="og:title" content="WebGL Environment Maps (reflections)">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-environment-maps_en.jpg">
+<meta property="og:description" content="How to implement environment maps.">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-environment-maps.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL Environment Maps (reflections)" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-environment-maps.html" />
-<meta name="twitter:description" content="How to implement environment maps." />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-environment-maps_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL Environment Maps (reflections)">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-environment-maps.html">
+<meta name="twitter:description" content="How to implement environment maps.">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-environment-maps_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL Environment Maps (reflections)</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-environment-maps.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-environment-maps.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-environment-maps.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-environment-maps.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-environment-maps.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-environment-maps.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-environment-maps.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-environment-maps.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -236,7 +263,7 @@ space in the 6 directions of the cubemap.</p>
 </div>
 
 <p>Based on <a href="webgl-cube-maps.html">the code in the previous article</a> let&#39;s load those 6 images instead of the images we generated</p>
-<pre class="prettyprint"><code class="lang-js">// Create a texture.
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// Create a texture.
 var texture = gl.createTexture();
 gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
 
@@ -294,7 +321,7 @@ gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
 gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
 </code></pre>
 <p>Note that for every face we initialize it with a 512x512 blank image by passing
-<code>null</code> to <code>texImage2D</code>. Cubemaps must have all 6 faces, all 6 faces must be the
+<code class="notranslate" translate="no">null</code> to <code class="notranslate" translate="no">texImage2D</code>. Cubemaps must have all 6 faces, all 6 faces must be the
 same size and be square. If they are not the texture will not render. But, we&#39;re
 loading 6 images. We&#39;d like to start rendering immediately so we allocate all 6
 faces then start loading the images. As each image arrives we upload it to the
@@ -309,7 +336,7 @@ the eye/camera to that position on the surface of the object, which direction
 will it reflect off the that surface. We can then use that direction to get a
 color from the cubemap.</p>
 <p>The formula to reflect is</p>
-<pre class="prettyprint"><code>reflectionDir = eyeToSurfaceDir – 
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">reflectionDir = eyeToSurfaceDir – 
     2 ∗ dot(surfaceNormal, eyeToSurfaceDir) ∗ surfaceNormal
 </code></pre><p>Thinking about what we can see it&#39;s true. Recall from the <a href="webgl-3d-lighting-directional.html">lighting articles</a>
 that a dot product of 2 vectors returns the cosine of the angle between the 2
@@ -368,7 +395,7 @@ from the cubemap let&#39;s change the shaders to do that.</p>
 <p>First in the vertex shader we&#39;ll compute the world position and world oriented
 normal of the vertices and pass those to the fragment shader as varyings. This
 is similar to what we did in <a href="webgl-3d-lighting-spot.html">the article on spotlights</a>.</p>
-<pre class="prettyprint"><code class="lang-glsl">attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">attribute vec4 a_position;
 attribute vec3 a_normal;
 
 uniform mat4 u_projection;
@@ -389,14 +416,14 @@ void main() {
   v_worldNormal = mat3(u_world) * a_normal;
 }
 </code></pre>
-<p>Then in the fragment shader we normalize the <code>worldNormal</code> since it&#39;s being
+<p>Then in the fragment shader we normalize the <code class="notranslate" translate="no">worldNormal</code> since it&#39;s being
 interpolated across the surface between vertices. We pass in the world position
 of the camera and by subtracting that from the world position of the surface we
-get the <code>eyeToSurfaceDir</code>.</p>
-<p>And finally we use <code>reflect</code> which is a built in GLSL function that implements
+get the <code class="notranslate" translate="no">eyeToSurfaceDir</code>.</p>
+<p>And finally we use <code class="notranslate" translate="no">reflect</code> which is a built in GLSL function that implements
 the formula we went over above. We use the result to get a color from the
 cubemap.</p>
-<pre class="prettyprint"><code class="lang-glsl">precision highp float;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">precision highp float;
 
 // Passed in from the vertex shader.
 varying vec3 v_worldPosition;
@@ -421,7 +448,7 @@ the cube appear flat. In the previous example just to see the cubemap work we
 repurposed the cube&#39;s positions but in this case we need actual normals for a
 cube like we covered in <a href="webgl-3d-lighting-directional.html">the article on lighting</a></p>
 <p>At init time</p>
-<pre class="prettyprint"><code class="lang-js">// Create a buffer to put normals in
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// Create a buffer to put normals in
 var normalBuffer = gl.createBuffer();
 // Bind it to ARRAY_BUFFER (think of it as ARRAY_BUFFER = normalBuffer)
 gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
@@ -429,7 +456,7 @@ gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
 setNormals(gl);
 </code></pre>
 <p>and at render time </p>
-<pre class="prettyprint"><code class="lang-js">// Bind the normal buffer.
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// Bind the normal buffer.
 gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
 
 // Tell the attribute how to get data out of normalBuffer (ARRAY_BUFFER)
@@ -442,14 +469,14 @@ gl.vertexAttribPointer(
     normalLocation, size, type, normalize, stride, offset)
 </code></pre>
 <p>And of course we need to look up the uniform locations at init time</p>
-<pre class="prettyprint"><code class="lang-js">var projectionLocation = gl.getUniformLocation(program, &quot;u_projection&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">var projectionLocation = gl.getUniformLocation(program, &quot;u_projection&quot;);
 var viewLocation = gl.getUniformLocation(program, &quot;u_view&quot;);
 var worldLocation = gl.getUniformLocation(program, &quot;u_world&quot;);
 var textureLocation = gl.getUniformLocation(program, &quot;u_texture&quot;);
 var worldCameraPositionLocation = gl.getUniformLocation(program, &quot;u_worldCameraPosition&quot;);
 </code></pre>
 <p>and set them at render time</p>
-<pre class="prettyprint"><code class="lang-js">// Compute the projection matrix
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// Compute the projection matrix
 var aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 var projectionMatrix =
     m4.perspective(fieldOfViewRadians, aspect, 1, 2000);
@@ -588,6 +615,10 @@ gl.uniform1i(textureLocation, 0);
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -596,6 +627,11 @@ gl.uniform1i(textureLocation, 0);
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -603,8 +639,6 @@ gl.uniform1i(textureLocation, 0);
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -616,11 +650,14 @@ gl.uniform1i(textureLocation, 0);
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -663,9 +700,17 @@ gl.uniform1i(textureLocation, 0);
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

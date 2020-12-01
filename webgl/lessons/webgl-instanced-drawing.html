@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Drawing Multiple Instances of the same Object" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-instanced-drawing_en.jpg" />
+<meta name="description" content="Drawing Multiple Instances of the same Object">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-instanced-drawing_en.jpg">
 
-<meta property="og:title" content="WebGL Optimization - Instanced Drawing" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-instanced-drawing_en.jpg" />
-<meta property="og:description" content="Drawing Multiple Instances of the same Object" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-instanced-drawing.html" />
+<meta property="og:title" content="WebGL Optimization - Instanced Drawing">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-instanced-drawing_en.jpg">
+<meta property="og:description" content="Drawing Multiple Instances of the same Object">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-instanced-drawing.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL Optimization - Instanced Drawing" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-instanced-drawing.html" />
-<meta name="twitter:description" content="Drawing Multiple Instances of the same Object" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-instanced-drawing_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL Optimization - Instanced Drawing">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-instanced-drawing.html">
+<meta name="twitter:description" content="Drawing Multiple Instances of the same Object">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-instanced-drawing_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL Optimization - Instanced Drawing</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-instanced-drawing.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-instanced-drawing.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-instanced-drawing.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-instanced-drawing.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-instanced-drawing.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-instanced-drawing.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-instanced-drawing.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-instanced-drawing.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -222,7 +249,7 @@ same thing.</p>
 <p>Starting with code <em>similar</em> to what we ended up with at
 the end of <a href="webgl-3d-orthographic.html">the article on orthographic projection</a>
 we start with these 2 shaders</p>
-<pre class="prettyprint"><code class="lang-html">&lt;!-- vertex shader --&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-html">&lt;!-- vertex shader --&gt;
 &lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec4 a_position;
 uniform mat4 matrix;
@@ -234,7 +261,7 @@ void main() {
 &lt;/script&gt;
 </code></pre>
 <p>and </p>
-<pre class="prettyprint"><code class="lang-html">&lt;!-- fragment shader --&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-html">&lt;!-- fragment shader --&gt;
 &lt;script id=&quot;fragment-shader-3d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
 precision mediump float;
 
@@ -251,7 +278,7 @@ a fairly flexible arrangement. The fragment shader just uses
 a color we pass in via a uniform.</p>
 <p>To draw we need to compile the shaders, link them together
 and look up the locations of the attributes and uniforms.</p>
-<pre class="prettyprint"><code class="lang-js">const program = webglUtils.createProgramFromScripts(
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const program = webglUtils.createProgramFromScripts(
     gl, [&#39;vertex-shader-3d&#39;, &#39;fragment-shader-3d&#39;]);
 
 const positionLoc = gl.getAttribLocation(program, &#39;a_position&#39;);
@@ -259,7 +286,7 @@ const colorLoc = gl.getUniformLocation(program, &#39;color&#39;);
 const matrixLoc = gl.getUniformLocation(program, &#39;matrix&#39;);
 </code></pre>
 <p>Then we need to supply data for the positions via a buffer.</p>
-<pre class="prettyprint"><code class="lang-js">const positionBuffer = gl.createBuffer();
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const positionBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
     -0.1,  0.4,
@@ -279,7 +306,7 @@ const numVertices = 12;
 </code></pre>
 <p>Let&#39;s draw 5 instances. We&#39;ll make 5 matrixes and 5 colors for
 each instance.</p>
-<pre class="prettyprint"><code class="lang-js">const numInstances = 5;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const numInstances = 5;
 const matrices = [
   m4.identity(),
   m4.identity(),
@@ -300,7 +327,7 @@ const colors = [
 and then loop over the 5 instances, computing a new matrix
 for each one, setting the matrix uniform and color
 and then drawing.</p>
-<pre class="prettyprint"><code class="lang-js">function render(time) {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function render(time) {
   time *= 0.001; // seconds
 
   gl.useProgram(program);
@@ -349,12 +376,12 @@ in the matrices we already created.</p>
 </div>
 
 </p>
-<p>That took 5 calls each to <code>gl.uniform4v</code>, <code>gl.uniformMatrix4fv</code>,
-and <code>gl.drawArrays</code> for a total of 15 WebGL calls. If our
+<p>That took 5 calls each to <code class="notranslate" translate="no">gl.uniform4v</code>, <code class="notranslate" translate="no">gl.uniformMatrix4fv</code>,
+and <code class="notranslate" translate="no">gl.drawArrays</code> for a total of 15 WebGL calls. If our
 shaders were more complex, like the shaders in
 <a href="webgl-3d-lighting-spot.html">the article on spot lighting</a>
-we&#39;d have at least 7 calls per object, 6 calls to <code>gl.uniformXXX</code>
-and one call to <code>gl.drawArrays</code>. If we were drawing 400 objects
+we&#39;d have at least 7 calls per object, 6 calls to <code class="notranslate" translate="no">gl.uniformXXX</code>
+and one call to <code class="notranslate" translate="no">gl.drawArrays</code>. If we were drawing 400 objects
 that would be 2800 WebGL calls.</p>
 <p>Instancing is a way to reduce those calls. It works by
 letting you tell WebGL how many times you want the same
@@ -363,16 +390,16 @@ you designate if that attribute will advance to the <em>next value</em>
 from its assigned buffer every time the vertex shader is
 called (the default), or only every N instances where N is usually
 1.</p>
-<p>So for example instead of supplying <code>matrix</code> and <code>color</code>
-from a uniform, we would instead supply them via <code>attribute</code>s.
+<p>So for example instead of supplying <code class="notranslate" translate="no">matrix</code> and <code class="notranslate" translate="no">color</code>
+from a uniform, we would instead supply them via <code class="notranslate" translate="no">attribute</code>s.
 We&#39;d put the matrix and color for each instance in a buffer,
 set up the attributes to pull data from those buffers, and
 tell WebGL, only advance to the next value once per instance.</p>
 <p>Let&#39;s do it!</p>
 <p>The first thing we need to do is check for and enable this
 optional feature of WebGL. It&#39;s called
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays"><code>ANGLE_instanced_arrays</code></a>.</p>
-<pre class="prettyprint"><code class="lang-js">const canvas = document.querySelector(&#39;#canvas&#39;);
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays"><code class="notranslate" translate="no">ANGLE_instanced_arrays</code></a>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const canvas = document.querySelector(&#39;#canvas&#39;);
 const gl = canvas.getContext(&#39;webgl&#39;);
 if (!gl) {
   return;
@@ -383,9 +410,9 @@ if (!gl) {
 +  return alert(&#39;need ANGLE_instanced_arrays&#39;);
 +}
 </code></pre>
-<p>Next we&#39;ll change the shaders to use attributes for <code>matrix</code>
-and <code>color</code> instead of uniforms.</p>
-<pre class="prettyprint"><code class="lang-html">&lt;!-- vertex shader --&gt;
+<p>Next we&#39;ll change the shaders to use attributes for <code class="notranslate" translate="no">matrix</code>
+and <code class="notranslate" translate="no">color</code> instead of uniforms.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-html">&lt;!-- vertex shader --&gt;
 &lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec4 a_position;
 -uniform mat4 matrix;
@@ -404,7 +431,7 @@ void main() {
 &lt;/script&gt;
 </code></pre>
 <p>and </p>
-<pre class="prettyprint"><code class="lang-html">&lt;!-- fragment shader --&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-html">&lt;!-- fragment shader --&gt;
 &lt;script id=&quot;fragment-shader-3d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
 precision mediump float;
 
@@ -422,7 +449,7 @@ void main() {
 get the color from an attribute in the vertex shader
 and pass it to the fragment shader via a varying.</p>
 <p>Next we need to look up the locations of these attributes.</p>
-<pre class="prettyprint"><code class="lang-js">const program = webglUtils.createProgramFromScripts(
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const program = webglUtils.createProgramFromScripts(
     gl, [&#39;vertex-shader-3d&#39;, &#39;fragment-shader-3d&#39;]);
 
 const positionLoc = gl.getAttribLocation(program, &#39;a_position&#39;);
@@ -433,14 +460,14 @@ const positionLoc = gl.getAttribLocation(program, &#39;a_position&#39;);
 </code></pre>
 <p>Now, we need a buffer hold the matrices at will get applied
 to the attribute. Since a buffer is best updated in one
-<em>chuck</em> we&#39;ll put all of our matrices in the same <code>Float32Array</code></p>
-<pre class="prettyprint"><code class="lang-js">// setup matrixes, one per instance
+<em>chuck</em> we&#39;ll put all of our matrices in the same <code class="notranslate" translate="no">Float32Array</code></p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// setup matrixes, one per instance
 const numInstances = 5;
 +// make a typed array with one view per matrix
 +const matrixData = new Float32Array(numInstances * 16);
 </code></pre>
-<p>We&#39;ll then make <code>Float32Array</code> views, one for each matrix.</p>
-<pre class="prettyprint"><code class="lang-js">-const matrices = [
+<p>We&#39;ll then make <code class="notranslate" translate="no">Float32Array</code> views, one for each matrix.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">-const matrices = [
 -  m4.identity(),
 -  m4.identity(),
 -  m4.identity(),
@@ -458,23 +485,23 @@ for (let i = 0; i &lt; numInstances; ++i) {
 }
 </code></pre>
 <p>This way when we want to reference the data for all the matrixes
-we can use <code>matrixData</code> but when we want any individual matrix
-we can use <code>matrices[ndx]</code>.</p>
+we can use <code class="notranslate" translate="no">matrixData</code> but when we want any individual matrix
+we can use <code class="notranslate" translate="no">matrices[ndx]</code>.</p>
 <p>We also need to create a buffer on the GPU for this data.
 We only need to allocate the buffer at this point, we don&#39;t
-need to supply data so the 2nd parameter to <code>gl.bufferData</code>
+need to supply data so the 2nd parameter to <code class="notranslate" translate="no">gl.bufferData</code>
 is a size which just allocates the buffer.</p>
-<pre class="prettyprint"><code class="lang-js">const matrixBuffer = gl.createBuffer();
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const matrixBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, matrixBuffer);
 // just allocate the buffer
 gl.bufferData(gl.ARRAY_BUFFER, matrixData.byteLength, gl.DYNAMIC_DRAW);
 </code></pre>
-<p>Notice we passed <code>gl.DYNAMIC_DRAW</code> as the last parameter. This is a <em>hint</em>
+<p>Notice we passed <code class="notranslate" translate="no">gl.DYNAMIC_DRAW</code> as the last parameter. This is a <em>hint</em>
 to WebGL that we&#39;re going to change this data often.</p>
 <p>Next we need our colors also in a buffer. This data will not
 be changing, at least in this example, so we&#39;ll just upload
 the data.</p>
-<pre class="prettyprint"><code class="lang-js">-const colors = [
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">-const colors = [
 -  [ 1, 0, 0, 1, ],  // red
 -  [ 0, 1, 0, 1, ],  // green
 -  [ 0, 0, 1, 1, ],  // blue
@@ -497,7 +524,7 @@ the data.</p>
 <p>At draw time instead of looping over each instance,
 setting the matrix and color uniforms, and then calling draw
 we&#39;ll first compute the matrix for each instance.</p>
-<pre class="prettyprint"><code class="lang-js">// update all the matrices
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// update all the matrices
 matrices.forEach((mat, ndx) =&gt; {
   m4.translation(-0.5 + ndx * 0.25, 0, 0, mat);
   m4.zRotate(mat, time * (0.1 + 0.1 * ndx), mat);
@@ -515,17 +542,17 @@ matrices.forEach((mat, ndx) =&gt; {
 });
 </code></pre>
 <p>Because our matrix library takes an optional destination matrix
-and because our matrices are just <code>Float32Array</code> views into
-the same larger <code>Float32Array</code>, when we&#39;re done all the matrix
+and because our matrices are just <code class="notranslate" translate="no">Float32Array</code> views into
+the same larger <code class="notranslate" translate="no">Float32Array</code>, when we&#39;re done all the matrix
 data is ready to upload to the GPU directly.</p>
-<pre class="prettyprint"><code class="lang-js">// upload the new matrix data
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// upload the new matrix data
 gl.bindBuffer(gl.ARRAY_BUFFER, matrixBuffer);
 gl.bufferSubData(gl.ARRAY_BUFFER, 0, matrixData);
 </code></pre>
 <p>Now we need to set up the attributes for the matrices and colors.
-The matrix attribute is a <code>mat4</code>. A <code>mat4</code> actually uses
+The matrix attribute is a <code class="notranslate" translate="no">mat4</code>. A <code class="notranslate" translate="no">mat4</code> actually uses
 4 attribute slots.</p>
-<pre class="prettyprint"><code class="lang-js">const bytesPerMatrix = 4 * 16;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const bytesPerMatrix = 4 * 16;
 for (let i = 0; i &lt; 4; ++i) {
   const loc = matrixLoc + i;
   gl.enableVertexAttribArray(loc);
@@ -544,13 +571,13 @@ for (let i = 0; i &lt; 4; ++i) {
 }
 </code></pre>
 <p>The most important point relative to instanced drawing is
-the call to <code>ext.vertexAttribDivisorANGLE</code>. It sets this
+the call to <code class="notranslate" translate="no">ext.vertexAttribDivisorANGLE</code>. It sets this
 attribute to only advance to the next value once per instance.
-This means the <code>matrix</code> attributes will use the first matrix for
+This means the <code class="notranslate" translate="no">matrix</code> attributes will use the first matrix for
 every vertex for the first instance, the second matrix for the
 second instance and so on.</p>
 <p>We also need to setup the color attribute</p>
-<pre class="prettyprint"><code class="lang-js">// set attribute for color
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// set attribute for color
 gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 gl.enableVertexAttribArray(colorLoc);
 gl.vertexAttribPointer(colorLoc, 4, gl.FLOAT, false, 0, 0);
@@ -562,7 +589,7 @@ on these 2 attributes if we want to use them to draw something
 else we&#39;d need to set them back to their default of 0 <strong>or, better</strong>
 we should use <a href="webgl-attributes.html#vaos">vertex array objects</a>.</p>
 <p>Finally we can draw all instances in a single draw call.</p>
-<pre class="prettyprint"><code class="lang-js">ext.drawArraysInstancedANGLE(
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">ext.drawArraysInstancedANGLE(
   gl.TRIANGLES,
   0,             // offset
   numVertices,   // num vertices per instance
@@ -590,7 +617,7 @@ to demonstrate instanced drawing. If you wanted a projection and/or
 a view matrix we could add the calculation to JavaScript. That would
 mean more work for JavaScript. The more obvious way would be to add
 one or two more uniforms to the vertex shader.</p>
-<pre class="prettyprint"><code class="lang-html">&lt;!-- vertex shader --&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-html">&lt;!-- vertex shader --&gt;
 &lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec4 a_position;
 attribute vec4 color;
@@ -611,14 +638,14 @@ void main() {
 &lt;/script&gt;
 </code></pre>
 <p>and then look up their locations at init time</p>
-<pre class="prettyprint"><code class="lang-js">const positionLoc = gl.getAttribLocation(program, &#39;a_position&#39;);
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const positionLoc = gl.getAttribLocation(program, &#39;a_position&#39;);
 const colorLoc = gl.getAttribLocation(program, &#39;color&#39;);
 const matrixLoc = gl.getAttribLocation(program, &#39;matrix&#39;);
 +const projectionLoc = gl.getUniformLocation(program, &#39;projection&#39;);
 +const viewLoc = gl.getUniformLocation(program, &#39;view&#39;);
 </code></pre>
 <p>and set them appropriately at render time.</p>
-<pre class="prettyprint"><code class="lang-js">gl.useProgram(program);
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.useProgram(program);
 
 +// set the view and projection matrices since
 +// they are shared by all instances
@@ -737,6 +764,10 @@ const matrixLoc = gl.getAttribLocation(program, &#39;matrix&#39;);
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -745,6 +776,11 @@ const matrixLoc = gl.getAttribLocation(program, &#39;matrix&#39;);
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -752,8 +788,6 @@ const matrixLoc = gl.getAttribLocation(program, &#39;matrix&#39;);
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -765,11 +799,14 @@ const matrixLoc = gl.getAttribLocation(program, &#39;matrix&#39;);
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -812,9 +849,17 @@ const matrixLoc = gl.getAttribLocation(program, &#39;matrix&#39;);
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

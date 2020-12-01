@@ -19,6 +19,7 @@ import {
   formatWebGLObject,
   formatWebGLObjectOrCanvas,
   formatWebGLObjectOrDefaultVAO,
+  formatWebGLObjectOrDefaultTFO,
 } from './context-wrapper.js';
 
 const glEnumToString = twgl.glEnumToString;
@@ -793,6 +794,27 @@ export function getStateTables(isWebGL2) {
     ],
   };
 
+  const uniformBufferState = {
+    states: [
+      {
+          pname: 'UNIFORM_BUFFER_BINDING',
+          setter: ['bindBuffer'],
+          formatter: formatWebGLObject,
+          help: `
+          This is a bind point for working with buffers that will
+          be used for uniform blocks.
+
+          Set with
+
+          ---js
+          gl.bindBuffer(gl.UNIFORM_BUFFER, someUniformBlockBuffer);
+          ---
+          `,
+      },
+    ],
+  };
+
+
   const transformFeedbackState = {
     states: [
       {
@@ -812,7 +834,7 @@ export function getStateTables(isWebGL2) {
       }, {
           pname: 'TRANSFORM_FEEDBACK_BINDING',
           setter: ['bindTransformFeedback'],
-          formatter: formatWebGLObject,
+          formatter: formatWebGLObjectOrDefaultTFO,
           help: `
           This is a bind point for working with a transform feedback
 
@@ -1073,10 +1095,10 @@ export function getStateTables(isWebGL2) {
     ],
   };
 
-  const drawBuffersState = {
+  const framebufferState = {
     help: `
-    **NOTE: draw buffer state is *per* framebuffer state
-    with the canvas having its own draw buffer state.**
+    **NOTE: draw/read buffer state is *per* framebuffer state
+    with the canvas having its own draw/read buffer state.**
 
     draw buffer state is set for whatever is bound as the 
     current --DRAW_FRAMEBUFFER-- by calling --gl.drawBuffers--.
@@ -1099,6 +1121,15 @@ export function getStateTables(isWebGL2) {
         gl.COLOR_ATTACHMENT3,  // write to 3
     ]);
     ---
+
+    read buffer state is set for whatever is bound as the
+    current --READ_FRAMEBUFFER-- by calling --gl.readBuffer--.
+
+    ---js
+    // bind some 4 attachment framebuffer as the READ framebuffer
+    gl.framebuffer(gl.READ_FRAMEBUFFER, fourAttachmentFramebuffer); 
+    gl.readBuffer(gl.COLOR_ATTACHMENT3);  // read from the 3rd attachment
+    ---
     `,
     states: [],
   };
@@ -1106,7 +1137,7 @@ export function getStateTables(isWebGL2) {
   if (isWebGL2) {
     const maxDrawBuffers = gl.getParameter(gl.MAX_DRAW_BUFFERS);
     for (let i = 0; i < maxDrawBuffers; ++i) {
-      drawBuffersState.states.push({
+      framebufferState.states.push({
         pname: `DRAW_BUFFER${i}`,
         formatter: formatEnumNone,
         help: `
@@ -1127,13 +1158,24 @@ export function getStateTables(isWebGL2) {
         `,
       });
     }
+    framebufferState.states.push({
+      pname: `READ_BUFFER`,
+      formatter: formatEnumNone,
+      help: `
+      Sets which attachment --readPixel-- reads from.
+      ---js
+      gl.framebuffer(gl.READ_FRAMEBUFFER, fourAttachmentFramebuffer); 
+      gl.readBuffer(gl.COLOR_ATTACHMENT3),  // read from attachment 3
+      ---
+      `,
+    });
   }
 
   return {
     shaderState,
     programState,
     textureState,
-    drawBuffersState,
+    framebufferState,
     vertexArrayState,
     activeTexNote,
     globalState: {
@@ -1145,6 +1187,7 @@ export function getStateTables(isWebGL2) {
       commonState,
       miscState,
       transformFeedbackState,
+      uniformBufferState,
     },
   };
 }

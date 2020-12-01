@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Реализация функции drawImage в canvas 2D средствами WebGL" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_ru.jpg" />
+<meta name="description" content="Реализация функции drawImage в canvas 2D средствами WebGL">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_ru.jpg">
 
-<meta property="og:title" content="Реализация DrawImage в WebGL" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_ru.jpg" />
-<meta property="og:description" content="Реализация функции drawImage в canvas 2D средствами WebGL" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-drawimage.html" />
+<meta property="og:title" content="Реализация DrawImage в WebGL">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_ru.jpg">
+<meta property="og:description" content="Реализация функции drawImage в canvas 2D средствами WebGL">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-drawimage.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="Реализация DrawImage в WebGL" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-drawimage.html" />
-<meta name="twitter:description" content="Реализация функции drawImage в canvas 2D средствами WebGL" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="Реализация DrawImage в WebGL">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-drawimage.html">
+<meta name="twitter:description" content="Реализация функции drawImage в canvas 2D средствами WebGL">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>Реализация DrawImage в WebGL</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-drawimage.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -221,8 +248,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 линий и прочего, но если у вас есть только функция для отображения
 2D-изображения на экране, это уже покроет большинство 2D-игр.</p>
 <p>В программном интерфейсе Canvas 2D содержится очень гибкая функция для
-отрисовки изображения под названием <code>drawImage</code>. У неё есть 3 версии.</p>
-<pre class="prettyprint"><code>ctx.drawImage(image, dstX, dstY);
+отрисовки изображения под названием <code class="notranslate" translate="no">drawImage</code>. У неё есть 3 версии.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, dstX, dstY);
 ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
 ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
                      dstX, dstY, dstWidth, dstHeight);
@@ -234,10 +261,10 @@ ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
 творчески подойти к написанию шейдера, а затем всё так же творчески
 применить этот шейдер для решения задачи.</p>
 <p>Начнём с первой версии функции.</p>
-<pre class="prettyprint"><code>ctx.drawImage(image, x, y);
-</code></pre><p>Она отрисовывает изображение в координатах <code>x, y</code>, размеры равны размерам
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, x, y);
+</code></pre><p>Она отрисовывает изображение в координатах <code class="notranslate" translate="no">x, y</code>, размеры равны размерам
 изображения. Для создания аналогичной функции на WebGL мы могли бы создать
-вершины <code>x, y</code>, <code>x + width, y</code>, <code>x, y + height</code> и <code>x + width, y + height</code>,
+вершины <code class="notranslate" translate="no">x, y</code>, <code class="notranslate" translate="no">x + width, y</code>, <code class="notranslate" translate="no">x, y + height</code> и <code class="notranslate" translate="no">x + width, y + height</code>,
 а при генерации различных изображений в различных координатах мы бы
 задавали соответствующий набор вершин.</p>
 <p>Но более распространённый способ - использование квадрантов. Мы задаём
@@ -245,7 +272,7 @@ ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
 для масштабирования и переноса, чтобы квадрант расположился в нужном
 нам месте.</p>
 <p>Перейдём к коду. Для начала нам понадобится простой вершинный шейдер.</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 attribute vec2 a_texcoord;
 
 uniform mat4 u_matrix;
@@ -257,7 +284,7 @@ void main() {
    v_texcoord = a_texcoord;
 }
 </code></pre><p>И простой фрагментный шейдер.</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 varying vec2 v_texcoord;
 
@@ -267,7 +294,7 @@ void main() {
    gl_FragColor = texture2D(u_texture, v_texcoord);
 }
 </code></pre><p>А теперь сама функция.</p>
-<pre class="prettyprint"><code>// В отличие от изображений, у текстур нет определённой ширины и высоты,
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// В отличие от изображений, у текстур нет определённой ширины и высоты,
 // поэтому мы сами установим ширину и высоту текстуры
 function drawImage(tex, texWidth, texHeight, dstX, dstY) {
   gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -303,7 +330,7 @@ function drawImage(tex, texWidth, texHeight, dstX, dstY) {
   gl.drawArrays(gl.TRIANGLES, 0, 6);
 }
 </code></pre><p>Теперь загрузим несколько изображений в текстуры.</p>
-<pre class="prettyprint"><code>// создаём объект с информацией о текстуре { width: w, height: h, texture: tex }
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// создаём объект с информацией о текстуре { width: w, height: h, texture: tex }
 // Текстура изначально будет размером 1х1 пиксель,
 // затем размеры изменятся под загружаемое изображение
 function loadImageAndCreateTextureInfo(url) {
@@ -338,7 +365,7 @@ var textureInfos = [
   loadImageAndCreateTextureInfo(&#39;resources/keyboard.jpg&#39;),
 ];
 </code></pre><p>Отобразим изображения в случайных местах.</p>
-<pre class="prettyprint"><code>var drawInfos = [];
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var drawInfos = [];
 var numToDraw = 9;
 var speed = 60;
 for (var ii = 0; ii &lt; numToDraw; ++ii) {
@@ -390,7 +417,7 @@ function render(time) {
   var deltaTime = Math.min(0.1, now - then);
   then = now;
 
-  update(time);
+  update(deltaTime);
   draw();
 
   requestAnimationFrame(render);
@@ -403,11 +430,11 @@ requestAnimationFrame(render);
 </div>
 
 </p>
-<p>Займёмся второй версией функции <code>drawImage</code></p>
-<pre class="prettyprint"><code>ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
-</code></pre><p>Никакой принципиальной разницы здесь нет. Мы просто используем <code>dstWidth</code>
-и <code>dstHeight</code> вместо <code>texWidth</code> и <code>texHeight</code>.</p>
-<pre class="prettyprint"><code>*function drawImage(
+<p>Займёмся второй версией функции <code class="notranslate" translate="no">drawImage</code></p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
+</code></pre><p>Никакой принципиальной разницы здесь нет. Мы просто используем <code class="notranslate" translate="no">dstWidth</code>
+и <code class="notranslate" translate="no">dstHeight</code> вместо <code class="notranslate" translate="no">texWidth</code> и <code class="notranslate" translate="no">texHeight</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*function drawImage(
 *    tex, texWidth, texHeight,
 *    dstX, dstY, dstWidth, dstHeight) {
 +  if (dstWidth === undefined) {
@@ -452,8 +479,8 @@ requestAnimationFrame(render);
 </div>
 
 </p>
-<p>Это было просто. Но как насчет третьей версии <code>drawImage</code>?</p>
-<pre class="prettyprint"><code>ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
+<p>Это было просто. Но как насчет третьей версии <code class="notranslate" translate="no">drawImage</code>?</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
                      dstX, dstY, dstWidth, dstHeight);
 </code></pre><p>Для выбора фрагмента текстуры нам нужно поработать с текстурными координатами.
 Работа текстурных координат <a href="webgl-3d-textures.html">рассмотрена в статье о текстурах</a>.
@@ -463,7 +490,7 @@ requestAnimationFrame(render);
 через матрицы координатами вершин.</p>
 <p>Давайте добавим матрицу текстуры в вершинный шейдер, а затем умножим
 текстурные координаты на эту матрицу.</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 attribute vec2 a_texcoord;
 
 uniform mat4 u_matrix;
@@ -476,13 +503,13 @@ void main() {
 *   v_texcoord = (u_textureMatrix * vec4(a_texcoord, 0, 1)).xy;
 }
 </code></pre><p>Теперь получим ссылку на матрицу текстуры.</p>
-<pre class="prettyprint"><code>var matrixLocation = gl.getUniformLocation(program, &quot;u_matrix&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var matrixLocation = gl.getUniformLocation(program, &quot;u_matrix&quot;);
 +var textureMatrixLocation = gl.getUniformLocation(program, &quot;u_textureMatrix&quot;);
-</code></pre><p>Затем внутри <code>drawImage</code> необходимо необходимо задать значение этой матрицы,
+</code></pre><p>Затем внутри <code class="notranslate" translate="no">drawImage</code> необходимо необходимо задать значение этой матрицы,
 чтобы она вырезала нужную часть текстуры. Мы знаем, что текстурные координаты -
 это по сути единичный квадрант, поэтому работа с ним очень похожа на работу с
 координатами вершин.</p>
-<pre class="prettyprint"><code>*function drawImage(
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*function drawImage(
 *    tex, texWidth, texHeight,
 *    srcX, srcY, srcWidth, srcHeight,
 *    dstX, dstY, dstWidth, dstHeight) {
@@ -550,11 +577,11 @@ void main() {
 
 </p>
 <p>В отличии от функции canvas из его 2D API наша версия функции на WebGL
-имеет расширенные возможности, которыех нет в canvas-функции <code>drawImage</code>.</p>
+имеет расширенные возможности, которыех нет в canvas-функции <code class="notranslate" translate="no">drawImage</code>.</p>
 <p>Например, мы можем передать отрицательные значения ширины или высоты как
 для исходного изображения, так и для итогового. Отрицательное значение
-<code>srcWidth</code> выберет пиксели слева от <code>srcX</code>. А отрицательное <code>dstWidth</code>
-возьмёт пиксели слева от <code>dstX</code>. В 2D-функции canvas отрицательные значения -
+<code class="notranslate" translate="no">srcWidth</code> выберет пиксели слева от <code class="notranslate" translate="no">srcX</code>. А отрицательное <code class="notranslate" translate="no">dstWidth</code>
+возьмёт пиксели слева от <code class="notranslate" translate="no">dstX</code>. В 2D-функции canvas отрицательные значения -
 это ошибки в лучшем случае, а в худшем - непредсказуемое поведение.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-04.html"></iframe>
@@ -566,7 +593,7 @@ void main() {
 <a href="webgl-2d-matrices.html">выполнять любую математику с матрицами</a>.</p>
 <p>Например, мы можем вращать текстурные координаты вокруг центра текстуры.</p>
 <p>Изменим код текстурной матрицы следующим образом</p>
-<pre class="prettyprint"><code>*  // По аналогии с проекционной матрицей нам нужно переместиться из текстурного
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*  // По аналогии с проекционной матрицей нам нужно переместиться из текстурного
 *  // пространства (0..1). Эта матрица перенесёт нас в пиксельное пространство.
 *  var texMatrix = m4.scaling(1 / texWidth, 1 / texHeight, 1);
 *
@@ -592,11 +619,11 @@ void main() {
 </p>
 <p>Здесь видно одну проблему. Из-за поворота мы иногда попадаем за край текстуры.
 Этот край начинает повторяться, пока не достигнет края картинки, это происходит
-за счёт заданного значения <code>CLAMP_TO_EDGE</code> .</p>
+за счёт заданного значения <code class="notranslate" translate="no">CLAMP_TO_EDGE</code> .</p>
 <p>Мы могли бы исправить эту ситуацию, отменив в шейдере отрисовку пикселей за
-пределами диапазона (0, 1). Функция <code>discard</code> немедленно выходит из шейдера
+пределами диапазона (0, 1). Функция <code class="notranslate" translate="no">discard</code> немедленно выходит из шейдера
 без отрисовки пикселя.</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 varying vec2 v_texcoord;
 
@@ -619,7 +646,7 @@ void main() {
 
 </p>
 <p>Или, возможно, вы предпочтёте сплошной цвет за краями текстуры.</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 varying vec2 v_texcoord;
 
@@ -778,6 +805,10 @@ void main() {
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -786,6 +817,11 @@ void main() {
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -793,8 +829,6 @@ void main() {
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -806,11 +840,14 @@ void main() {
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -848,9 +885,17 @@ void main() {
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

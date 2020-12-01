@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="基本から最初のWebGLのレッスン" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-fundamentals_ja.jpg" />
+<meta name="description" content="基本から最初のWebGLのレッスン">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-fundamentals_ja.jpg">
 
-<meta property="og:title" content="WebGLの基本" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-fundamentals_ja.jpg" />
-<meta property="og:description" content="基本から最初のWebGLのレッスン" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-fundamentals.html" />
+<meta property="og:title" content="WebGLの基本">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-fundamentals_ja.jpg">
+<meta property="og:description" content="基本から最初のWebGLのレッスン">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-fundamentals.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGLの基本" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-fundamentals.html" />
-<meta name="twitter:description" content="基本から最初のWebGLのレッスン" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-fundamentals_ja.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGLの基本">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-fundamentals.html">
+<meta name="twitter:description" content="基本から最初のWebGLのレッスン">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-fundamentals_ja.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGLの基本</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-fundamentals.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-fundamentals.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-fundamentals.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-fundamentals.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-fundamentals.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-fundamentals.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-fundamentals.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-fundamentals.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ja/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -226,7 +253,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 フラグメントシェーダーの役割は描くピクセルごとに色の計算をすることである。</p>
 <p>その２つの関数を起動する前にWebGL API経由でその関数の状況を指定する
 ことが必要である。書きたい形ごとにWebGLの色々な状況を設定して、
-そして<code>gl.drawArrays</code>か<code>gl.drawElements</code>の関数を呼び出したらGPUでシェーダーが起動する。</p>
+そして<code class="notranslate" translate="no">gl.drawArrays</code>か<code class="notranslate" translate="no">gl.drawElements</code>の関数を呼び出したらGPUでシェーダーが起動する。</p>
 <p>そのシェーダーの関数に提供したいデータはGPUにアップロードしなければいけない。
 それは４つの方法がある。</p>
 <ol>
@@ -247,7 +274,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </li>
 <li><p>テクスチャー</p>
 <p>テクスチャーは自由にデータを読める配列です。
-よくテくスチャーにイメージとか写真とかか絵のデータを入れるが、
+よくテクスチャーにイメージとか写真とかか絵のデータを入れるが、
 テクスチャーはただのデータ配列なので色以外のデータを入れることも可能である。</p>
 </li>
 <li><p>ヴァリイング（varying)</p>
@@ -264,7 +291,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <p>クリップ空間座標はキャンバスの要素（canvas）のサイズに関係がなく、いつも−１から＋１になる。
 以下は一番単純なWebGLの例である。</p>
 <p>まず頂点シェーダーから始めよう。</p>
-<pre class="prettyprint"><code>// バッファーからデータを取る属性
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// バッファーからデータを取る属性
 attribute vec4 a_position;
 
 // 全てのシェーダーは「main」の関数がある
@@ -275,7 +302,7 @@ void main() {
 }
 </code></pre><p>このコードを起動したらどのように動くか、
 GLSLの代わりにJavaScriptで書かれていたとしたら以下のように動く、と想像してみるとよいだろう。</p>
-<pre class="prettyprint"><code>// *** 擬似コード!! ***
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// *** 擬似コード!! ***
 
 var positionBuffer = [
   0, 0, 0, 0,
@@ -297,11 +324,11 @@ drawArrays(..., offset, count) {
      ...
      doSomethingWith_gl_Position();
 }
-</code></pre><p>実際にはGLSLのシェーダーでのデータ<code>positionBuffer</code>はバイナリに変換しなければならないので、
-バッファーがらデータを取り込む際の計算方法は異なる。
+</code></pre><p>実際にはGLSLのシェーダーでのデータ<code class="notranslate" translate="no">positionBuffer</code>はバイナリに変換しなければならないので、
+バッファーからデータを取り込む際の計算方法は異なる。
 でも、頂点シェーダーはこのように動くと考えてよい。</p>
 <p>次はフラグメントシェーダーが必要だ。</p>
-<pre class="prettyprint"><code>// フラグメントシェーダーは既定の精度がないので選択することが必要である。
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// フラグメントシェーダーは既定の精度がないので選択することが必要である。
 // 「mediump」は一般的な既定の設定である。それは「中間の精度」の意味である。
 precision mediump float;
 
@@ -310,22 +337,22 @@ void main() {
   // フラグメントシェーダーの役割である
   gl_FragColor = vec4(1, 0, 0.5, 1); // 赤紫
 }
-</code></pre><p>上記では<code>gl_FragColor</code>に<code>1, 0, 0.5, 1</code>に割り当てている。それは赤＝１，緑＝０、青＝０．５、透明度（アルファ）＝１。
+</code></pre><p>上記では<code class="notranslate" translate="no">gl_FragColor</code>に<code class="notranslate" translate="no">1, 0, 0.5, 1</code>に割り当てている。それは赤＝１，緑＝０、青＝０．５、透明度（アルファ）＝１。
 WebGLでは、色は０〜１で指定する。</p>
 <p>２つのシェーダーを書いたのでWebGLを始めよう！</p>
 <p>まずHTMLのCanvas要素が必要である</p>
-<pre class="prettyprint"><code>&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;canvas id=&quot;c&quot;&gt;&lt;/canvas&gt;
 </code></pre><p>それをJavaScriptで調べられる</p>
-<pre class="prettyprint"><code>var canvas = document.querySelector(&quot;#c&quot;);
-</code></pre><p>それで<code>WebGLRenderingContext</code>を作成出来る</p>
-<pre class="prettyprint"><code> var gl = canvas.getContext(&quot;webgl&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var canvas = document.querySelector(&quot;#c&quot;);
+</code></pre><p>それで<code class="notranslate" translate="no">WebGLRenderingContext</code>を作成出来る</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> var gl = canvas.getContext(&quot;webgl&quot;);
  if (!gl) {
     // no webgl for you!
     ...
 </code></pre><p>そして先のシェーダーをコンパイルしてGPUにアップロードすることが必要なのでstringに入れることが必要である。
 GLSLのstringをする方法はいくつかある。文字列の連結とか、AJAXでダウンロードすることとか、複数行テンプレートstring(multiline template strings)とか。
 今回は、typeがJavaScriptではないscript要素に入れる方法をとる。</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;notjs&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;notjs&quot;&gt;
 
   // バッファーからデータを取る属性
   attribute vec4 a_position;
@@ -355,7 +382,7 @@ GLSLのstringをする方法はいくつかある。文字列の連結とか、A
 </code></pre><p>本格的な三次元のエンジンは色々な方法で動的にコードを組み合わせてGLSLシェーダーを生成する。
 しかし、このサイトであまり複雑なシェーダーを使わないので、シェーダー・コードを動的に組み合わせて生成する必要はない。</p>
 <p>次に、シェーダーを作成し、GLSLのコードをアップロードし、シェーダーをコンパイルする関数が必要である。</p>
-<pre class="prettyprint"><code>function createShader(gl, type, source) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function createShader(gl, type, source) {
   // シェーダーを作成
   var shader = gl.createShader(type);
   // GLSLのコードをGPUにアップロード
@@ -374,13 +401,13 @@ GLSLのstringをする方法はいくつかある。文字列の連結とか、A
   gl.deleteShader(shader);
 }
 </code></pre><p>出来たら、その関数でシェーダー２つを作成出来る</p>
-<pre class="prettyprint"><code>var vertexShaderSource = document.querySelector(&quot;#vertex-shader-2d&quot;).text;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var vertexShaderSource = document.querySelector(&quot;#vertex-shader-2d&quot;).text;
 var fragmentShaderSource = document.querySelector(&quot;#fragment-shader-2d&quot;).text;
 
 var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
 var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
 </code></pre><p>それでその２つのシェーダーをプログラム(<em>program</em>)にリンク(<em>link</em>)する</p>
-<pre class="prettyprint"><code>function createProgram(gl, vertexShader, fragmentShader) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function createProgram(gl, vertexShader, fragmentShader) {
   // プログラムを作成
   var program = gl.createProgram();
   // プログラムに頂点シェーダーを付ける
@@ -401,34 +428,34 @@ var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
   gl.deleteProgram(program);
 }
 </code></pre><p>それを呼び出す</p>
-<pre class="prettyprint"><code>var program = createProgram(gl, vertexShader, fragmentShader);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var program = createProgram(gl, vertexShader, fragmentShader);
 </code></pre><p>GLSLのプログラムを作成して、GPUにアップロードが出来たら、それにデータを与えることが必要である。
 WebGL APIの役割のほとんどはGLSLプログラムにデータを与えることと動きの状況を設定することである。
-今回のGLSLプログラムのインプットは<code>a_position</code>の属性しかない。
-作成したプログラムに最初するべきことは属性のローケーションを調べることである</p>
-<pre class="prettyprint"><code>var positionAttributeLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
-</code></pre><p>属性のローケーションを調べるのは描画する時ではなく、プログラムの初期化の時に行った方がいい。</p>
+今回のGLSLプログラムのインプットは<code class="notranslate" translate="no">a_position</code>の属性しかない。
+作成したプログラムに最初するべきことは属性のロケーションを調べることである</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var positionAttributeLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
+</code></pre><p>属性のロケーションを調べるのは描画する時ではなく、プログラムの初期化の時に行った方がいい。</p>
 <p>属性はバッファーからデータを取るので、バッファーを作成しなければならない。</p>
-<pre class="prettyprint"><code>var positionBuffer = gl.createBuffer();
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var positionBuffer = gl.createBuffer();
 </code></pre><p>WebGLのリソース（資源）を操るためグローバル結び点（bind point)に結び付けることが必要である。
 結び点はWebGLの中のグローバル変数のようなものである。リソースを結び点に結びつけたら、その後
-結び点でリソースを操る。さて、<code>positionBuffer</code>を結びつけよう。</p>
-<pre class="prettyprint"><code>gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-</code></pre><p>そして、<code>ARRAY_BUFFER</code>という結び点を参照して、データをバッファーに入れる。</p>
-<pre class="prettyprint"><code>// 三点の二次元頂点
+結び点でリソースを操る。さて、<code class="notranslate" translate="no">positionBuffer</code>を結びつけよう。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+</code></pre><p>そして、<code class="notranslate" translate="no">ARRAY_BUFFER</code>という結び点を参照して、データをバッファーに入れる。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 三点の二次元頂点
 var positions = [
   0, 0,
   0, 0.5,
   0.7, 0,
 ];
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-</code></pre><p>ここでは色々なことが行われている。まず<code>positions</code>というJavaScriptの配列がある。WebGLは強く
-定型化されたデータが要るので、 <code>new Float32Array(positions)</code>の部分は32ビット数値配列を
-作成して、それに<code>positions</code>の内容をコピーする。それで<code>gl.bufferData</code>はそのデータをGPUに
-ある<code>positionBuffer</code>にアップロードする。<code>positionBuffer</code>が<code>ARRAY_BUFFER</code>に結び付いている
-ので<code>positionBuffer</code>はコピーの目標になっている。</p>
-<p><code>gl.bufferData</code>の最後の引数、<code>gl.STATIC_DRAW</code>は、そのデータをどのように使うのかという、WebGLに対する
-ヒントである。<code>gl.STATIC_DRAW</code>は、「このデータはあまり更新しない」という意味である。</p>
+</code></pre><p>ここでは色々なことが行われている。まず<code class="notranslate" translate="no">positions</code>というJavaScriptの配列がある。WebGLは強く
+型付けされたデータが要るので、 <code class="notranslate" translate="no">new Float32Array(positions)</code>の部分は32ビット数値配列を
+作成して、それに<code class="notranslate" translate="no">positions</code>の内容をコピーする。それで<code class="notranslate" translate="no">gl.bufferData</code>はそのデータをGPUに
+ある<code class="notranslate" translate="no">positionBuffer</code>にアップロードする。<code class="notranslate" translate="no">positionBuffer</code>が<code class="notranslate" translate="no">ARRAY_BUFFER</code>に結び付いている
+ので<code class="notranslate" translate="no">positionBuffer</code>はコピーの目標になっている。</p>
+<p><code class="notranslate" translate="no">gl.bufferData</code>の最後の引数、<code class="notranslate" translate="no">gl.STATIC_DRAW</code>は、そのデータをどのように使うのかという、WebGLに対する
+ヒントである。<code class="notranslate" translate="no">gl.STATIC_DRAW</code>は、「このデータはあまり更新しない」という意味である。</p>
 <p>今までのコードが<em>初期化のコード</em>である。ウェブページをロードした時、一回だけ実行される。
 下記のコードは<em>描画するコード</em>である。描画してほしい時に都度呼び出すコードである。</p>
 <h2 id="-">描画</h2>
@@ -439,23 +466,23 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 <a href="webgl-resizing-the-canvas.html">ここで説明しているヘルパー関数</a>を利用している。</p>
 <p>ここにあるサンプルでは自分のウインドウで起動する場合、キャンバスのサイズは400x300になるが、
 iframeの中で起動する場合iframeのサイズに合わせられる。CSSで決定しているのでどちらにも対処出来る。</p>
-<pre class="prettyprint"><code>webglUtils.resizeCanvasToDisplaySize(gl.canvas);
-</code></pre><p>クリップ空間上の値である<code>gl_Position</code>を、画面空間上のピクセルにどうやって変換するのかWebGLに教える必要がある。
-そのためキャンバスのサイズを<code>gl.viewport</code>に渡す。</p>
-<pre class="prettyprint"><code>gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-</code></pre><p>これは−1〜+１のクリップ空間から、ｘ軸は「0〜<code>gl.canvas.width</code>」に、y軸は「0〜<code>gl.canvas.height</code>」に変換するように、WebGLに設定するものである。</p>
-<p>キャンバスをクリアする。<code>0, 0, 0, 0</code>は赤、緑、青、アルファ（透明度）なので、今回はキャンバスを透明にクリアする。</p>
-<pre class="prettyprint"><code>// キャンバスをクリアする
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+</code></pre><p>クリップ空間上の値である<code class="notranslate" translate="no">gl_Position</code>を、画面空間上のピクセルにどうやって変換するのかWebGLに教える必要がある。
+そのためキャンバスのサイズを<code class="notranslate" translate="no">gl.viewport</code>に渡す。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+</code></pre><p>これは−1〜+１のクリップ空間から、ｘ軸は「0〜<code class="notranslate" translate="no">gl.canvas.width</code>」に、y軸は「0〜<code class="notranslate" translate="no">gl.canvas.height</code>」に変換するように、WebGLに設定するものである。</p>
+<p>キャンバスをクリアする。<code class="notranslate" translate="no">0, 0, 0, 0</code>は赤、緑、青、アルファ（透明度）なので、今回はキャンバスを透明にクリアする。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// キャンバスをクリアする
 gl.clearColor(0, 0, 0, 0);
 gl.clear(gl.COLOR_BUFFER_BIT);
 </code></pre><p>WebGLにどのシェーダー・プログラムを起動してほしいか教える。</p>
-<pre class="prettyprint"><code>// 作成したプログラム（シェーダー2つ）を設定する
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 作成したプログラム（シェーダー2つ）を設定する
 gl.useProgram(program);
 </code></pre><p>次にWebGLにどうやってデータを上記で作ったバッファーからシェーダーの属性に読み込むかを教えることが必要である。
 まず属性オンにする。</p>
-<pre class="prettyprint"><code>gl.enableVertexAttribArray(positionAttributeLocation);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.enableVertexAttribArray(positionAttributeLocation);
 </code></pre><p>そしてデータの取り方を設定する。</p>
-<pre class="prettyprint"><code>// positionBufferをARRAY_BUFFERに結び付ける
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// positionBufferをARRAY_BUFFERに結び付ける
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
 // 属性にどうやってpositionBuffer（ARRAY_BUFFER)からデータを取り込むか。
@@ -467,37 +494,37 @@ var stride = 0;        // シェーダーを呼び出すごとに進む距離
 var offset = 0;        // バッファーの頭から取り始める
 gl.vertexAttribPointer(
     positionAttributeLocation, size, type, normalize, stride, offset)
-</code></pre><p><code>gl.vertexAttribPointer</code>の隠れている点が<code>ARRAY_BUFFER</code>に結び付いているバッファーを属性にも
-結び付ける。つまり<code>positionBuffer</code>はこの属性に結び付く。<code>ARRAY_BUFFER</code>に他のバッファーを
-結び付けても、属性はまだ<code>positionBuffer</code>に結び付いている。</p>
-<p>GLSLの頂点シェーダーの立場から<code>a_position</code>は<code>vec4</code>である。</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
-</code></pre><p><code>vec4</code>は４つの値がある。JavaScriptで表現するなら<code>a_position = {x: 0, y: 0, z: 0, w: 0}</code>に近い形になる。
-上記では<code>size = 2</code>とした。属性の規定値は<code>0, 0, 0, 1</code>なので、この属性の最初の2つの値（xとy）はバッファーから取る。
+</code></pre><p><code class="notranslate" translate="no">gl.vertexAttribPointer</code>の隠れている点が<code class="notranslate" translate="no">ARRAY_BUFFER</code>に結び付いているバッファーを属性にも
+結び付ける。つまり<code class="notranslate" translate="no">positionBuffer</code>はこの属性に結び付く。<code class="notranslate" translate="no">ARRAY_BUFFER</code>に他のバッファーを
+結び付けても、属性はまだ<code class="notranslate" translate="no">positionBuffer</code>に結び付いている。</p>
+<p>GLSLの頂点シェーダーの立場から<code class="notranslate" translate="no">a_position</code>は<code class="notranslate" translate="no">vec4</code>である。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
+</code></pre><p><code class="notranslate" translate="no">vec4</code>は４つの値がある。JavaScriptで表現するなら<code class="notranslate" translate="no">a_position = {x: 0, y: 0, z: 0, w: 0}</code>に近い形になる。
+上記では<code class="notranslate" translate="no">size = 2</code>とした。属性の規定値は<code class="notranslate" translate="no">0, 0, 0, 1</code>なので、この属性の最初の2つの値（xとy）はバッファーから取る。
 zとwは既定値の0、1になる。</p>
 <p>上記の全ての後やっとWebGLにシェーダーを起動することを頼める。</p>
-<pre class="prettyprint"><code>var primitiveType = gl.TRIANGLES;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var primitiveType = gl.TRIANGLES;
 var offset = 0;
 var count = 3;
 gl.drawArrays(primitiveType, offset, count);
-</code></pre><p><code>count</code>は３になっているので頂点シェーダーは三回呼び出される。初回頂点シェーダーの属性の
-<code>a_position.x</code>と<code>a_position.y</code>は<code>positionBuffer</code>の最初の2つの値になる。二回目、<code>a_position.xy</code>は
+</code></pre><p><code class="notranslate" translate="no">count</code>は３になっているので頂点シェーダーは三回呼び出される。初回頂点シェーダーの属性の
+<code class="notranslate" translate="no">a_position.x</code>と<code class="notranslate" translate="no">a_position.y</code>は<code class="notranslate" translate="no">positionBuffer</code>の最初の2つの値になる。二回目、<code class="notranslate" translate="no">a_position.xy</code>は
 二番目の2つの値になる。三回目は最後の2つの値になる。</p>
-<p><code>primitiveType</code>は<code>gl.TRIANGLES</code>にしたので、頂点シェーダーは三回呼び出されるごとに、
-WebGLは<code>gl_Position</code>に割り当てられた３つの値で三角形を描画する。キャンバスがどんなサイズで
+<p><code class="notranslate" translate="no">primitiveType</code>は<code class="notranslate" translate="no">gl.TRIANGLES</code>にしたので、頂点シェーダーは三回呼び出されるごとに、
+WebGLは<code class="notranslate" translate="no">gl_Position</code>に割り当てられた３つの値で三角形を描画する。キャンバスがどんなサイズで
 あってもその値は-1~+1クリップ空間座標である。</p>
-<p>この頂点シェーダーは、ただ<code>positionBuffer</code>の値を<code>gl_Position</code>にコピーしているので、三角形はこのクリップ空間座標に描画される。</p>
-<pre class="prettyprint"><code>  0, 0,
+<p>この頂点シェーダーは、ただ<code class="notranslate" translate="no">positionBuffer</code>の値を<code class="notranslate" translate="no">gl_Position</code>にコピーしているので、三角形はこのクリップ空間座標に描画される。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  0, 0,
   0, 0.5,
   0.7, 0,
 </code></pre><p>キャンバスのサイズが400x300のピクセルならWebGLはこのように頂点のクリップ空間から画面空間に変化する。</p>
-<pre class="prettyprint"><code> クリップ空間          画面空間
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> クリップ空間          画面空間
    0, 0       -&gt;   200, 150
    0, 0.5     -&gt;   200, 225
  0.7, 0       -&gt;   340, 150
 </code></pre><p>その座標でWebGLは三角形を描画する。ピクセルごとにフラグメントシェーダーを呼び出す。
-フラグメントシェーダーはただ<code>gl_FragColor</code>を<code>1, 0, 0.5, 1</code>とする。キャンバスの色はRGBの各チャンネルにつき
-8ビットなので、WebGLは<code>[255, 0, 127, 255]</code>をキャンバスに書き込む。</p>
+フラグメントシェーダーはただ<code class="notranslate" translate="no">gl_FragColor</code>を<code class="notranslate" translate="no">1, 0, 0.5, 1</code>とする。キャンバスの色はRGBの各チャンネルにつき
+8ビットなので、WebGLは<code class="notranslate" translate="no">[255, 0, 127, 255]</code>をキャンバスに書き込む。</p>
 <p>これはライブサンプルである。</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-fundamentals.html"></iframe>
@@ -512,10 +539,10 @@ WebGLは<code>gl_Position</code>に割り当てられた３つの値で三角形
 でX軸は-1〜+1である。だから０は真ん中で正の値はその右になる。
 上の方に位置する理由はクリップ空間のY軸が-1＝下端で、+1＝上端なので、0＝真ん中で正の値は
 その上になるからである。</p>
-<p>2次元のものならクリップ空間よりよく使われているピクセル空間の方が楽なので、<code>position</code>の座標を
+<p>2次元のものならクリップ空間よりよく使われているピクセル空間の方が楽なので、<code class="notranslate" translate="no">position</code>の座標を
 ピクセルで与えて、ピクセル座標からクリップ空間に自動で変換するように、シェーダーの計算の仕方を変更しよう。
 これは変更されたシェーダー：</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;notjs&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;notjs&quot;&gt;
 
 -  attribute vec4 a_position;
 *  attribute vec2 a_position;
@@ -538,16 +565,16 @@ WebGLは<code>gl_Position</code>に割り当てられた３つの値で三角形
 &lt;/script&gt;
 </code></pre><p>この変更に関して留意したい点：</p>
 <ul>
-<li><p><code>x</code>と<code>y</code>しか使ってないので<code>a_position</code>を<code>vec2</code>にした。 <code>vec2</code>は<code>vec4</code>に似てるがxとyしかない。</p>
+<li><p><code class="notranslate" translate="no">x</code>と<code class="notranslate" translate="no">y</code>しか使ってないので<code class="notranslate" translate="no">a_position</code>を<code class="notranslate" translate="no">vec2</code>にした。 <code class="notranslate" translate="no">vec2</code>は<code class="notranslate" translate="no">vec4</code>に似てるがxとyしかない。</p>
 </li>
-<li><p><code>u_resolution</code>というユニフォームを追加した。ユニフォームを設定するためにそのロケーションを調べることが必要である。</p>
-<pre class="prettyprint"><code>var resolutionUniformLocation = gl.getUniformLocation(program, &quot;u_resolution&quot;);
+<li><p><code class="notranslate" translate="no">u_resolution</code>というユニフォームを追加した。ユニフォームを設定するためにそのロケーションを調べることが必要である。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var resolutionUniformLocation = gl.getUniformLocation(program, &quot;u_resolution&quot;);
 </code></pre></li>
 </ul>
-<p>それ以外は上記のコメントでご理解頂けるだろう。<code>u_resolution</code>をキャンバスの解像度に設定すれば、
-この頂点シェーダーが計算して<code>positionBuffer</code>に入っているピクセル座標をクリップ空間に変換する。</p>
+<p>それ以外は上記のコメントでご理解頂けるだろう。<code class="notranslate" translate="no">u_resolution</code>をキャンバスの解像度に設定すれば、
+この頂点シェーダーが計算して<code class="notranslate" translate="no">positionBuffer</code>に入っているピクセル座標をクリップ空間に変換する。</p>
 <p>これで頂点座標をクリップ空間からピクセルに変更出来る。今回3つの頂点で出来ている三角形2つで四角形を描画する。</p>
-<pre class="prettyprint"><code>var positions = [
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var positions = [
 *  10, 20,
 *  80, 20,
 *  10, 30,
@@ -556,18 +583,18 @@ WebGLは<code>gl_Position</code>に割り当てられた３つの値で三角形
 *  80, 30,
 ];
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-</code></pre><p>どのプログラムを利用するかを定義してから、ユニフォームの値を設定出来る。<code>gl.useProgram</code>は、上記の<code>gl.bindBuffer</code>
-と同じように、どのシェーダー・プログラムを使うかを定義する。その後<code>gl.uniform〜</code>の関数の全ては現行のプログラムの
+</code></pre><p>どのプログラムを利用するかを定義してから、ユニフォームの値を設定出来る。<code class="notranslate" translate="no">gl.useProgram</code>は、上記の<code class="notranslate" translate="no">gl.bindBuffer</code>
+と同じように、どのシェーダー・プログラムを使うかを定義する。その後<code class="notranslate" translate="no">gl.uniform〜</code>の関数の全ては現行のプログラムの
 ユニフォームを設定出来る。</p>
-<pre class="prettyprint"><code>gl.useProgram(program);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.useProgram(program);
 
 ...
 
 // resolutionを設定する
 gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
-</code></pre><p>そして勿論２つの三角形を描画するため、先ほど頂点シェーダーを6回呼び出すことが必要なので<code>count</code>は
-<code>6</code>にする。</p>
-<pre class="prettyprint"><code>// 描画する
+</code></pre><p>そして勿論２つの三角形を描画するため、先ほど頂点シェーダーを6回呼び出すことが必要なので<code class="notranslate" translate="no">count</code>は
+<code class="notranslate" translate="no">6</code>にする。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 描画する
 var primitiveType = gl.TRIANGLES;
 var offset = 0;
 *var count = 6;
@@ -580,11 +607,11 @@ gl.drawArrays(primitiveType, offset, count);
 
 </p>
 <p>Note: このサンプルとその後の全てのサンプルは、シェーダーのコンパイルとリンクの為の関数を
-含んでいる<a href="/webgl/resources/webgl-utils.js"><code>webgl-utils.js</code></a>というライブラリを使っている。
+含んでいる<a href="/webgl/resources/webgl-utils.js"><code class="notranslate" translate="no">webgl-utils.js</code></a>というライブラリを使っている。
 サンプルを煩雑にさせたくないので、<a href="webgl-boilerplate.html">ボイラプレート・コード・ライブラリ</a>にした。</p>
 <p>前回と同じく、目立つのはこの四角形は下の方に位置していることだろう。WebGLは0,0を左下とみなしている。
 2次元APIで一般的なように左上を0,0にしたければクリップ空間のｙ座標をひっくり返す。</p>
-<pre class="prettyprint"><code>*   gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*   gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
 </code></pre><p>それで四角形は期待通りになる。</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-rectangle-top-left.html"></iframe>
@@ -595,7 +622,7 @@ gl.drawArrays(primitiveType, offset, count);
 <p>四角形を定義している部分を関数にして、呼び出すときにサイズが設定出来るようにしよう。更に、描く色も設定出来る
 ようにする。</p>
 <p>まずフラグメントシェーダーを、色ユニフォームが使えるようにする。</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;notjs&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;fragment-shader-2d&quot; type=&quot;notjs&quot;&gt;
   precision mediump float;
 
 +  uniform vec4 u_color;
@@ -605,7 +632,7 @@ gl.drawArrays(primitiveType, offset, count);
   }
 &lt;/script&gt;
 </code></pre><p>そして、次にあるのは50個の四角形をランダムなサイズとランダムな色で描画するコードである。</p>
-<pre class="prettyprint"><code>  var colorUniformLocation = gl.getUniformLocation(program, &quot;u_color&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  var colorUniformLocation = gl.getUniformLocation(program, &quot;u_color&quot;);
   ...
 
   // 50個のランダム四角形をランダム色で描画する
@@ -663,12 +690,12 @@ function setRectangle(gl, x, y, width, height) {
 <p>気が付いて欲しい点はWebGLが結構単純なAPIということである。
 まあ、ここまでの流れは「単純」とは言えないが、WebGLがやっていること自体は単純なことである。
 ただプログラマーが書いた２つの関数（頂点シェーダーとフラグメントシェーダー）で三角形、線、
-点を描画する。三次元する為にはもっと複雑になるかもしれないが、その複雑さは、あなた、つまりプログラマーの手で、「より複雑なシェーダー」として追加される。
+点を描画する。三次元にする為にはもっと複雑になるかもしれないが、その複雑さは、あなた、つまりプログラマーの手で、「より複雑なシェーダー」として追加される。
 WebGLはただ単純な描画をするAPIである。</p>
 <p>今回のサンプルでは1つの属性と2つのユニフォームでデータを提供した。
 一般的には複数の属性と多くのユニフォームを使う。この記事の上の方で<em>ヴァリイング</em>と<em>テクスチャー</em>を紹介した。
 それらについていずれ説明しよう。</p>
-<p>次に行く前に言っていおきたいのだが、<em>ほとんどの</em>アプリケーションでは、このサンプルの<code>setRectangle</code>のようにバッファーのデータを更新することは一般的ではない。
+<p>次に行く前に言っていおきたいのだが、<em>ほとんどの</em>アプリケーションでは、このサンプルの<code class="notranslate" translate="no">setRectangle</code>のようにバッファーのデータを更新することは一般的ではない。
 しかし、GLSLならちょっとだけ数学を使えば出来ることと、データはピクセル座標で提供することで、
 簡単に説明出来ると思った。それは駄目な方法ではない。この方法が適切であるあるケースはいくつもあるのだが、
 <a href="webgl-2d-translation.html">WebGLで形状を移動、回転、拡大縮小する、より一般的な方法</a>についても一読しておくことをお勧めする。</p>
@@ -681,7 +708,7 @@ WebGLはただ単純な描画をするAPIである。</p>
 <div class="webgl_bottombar">
 <h3>type=”notjs”はどいう意味？</h3>
 <p>
-<code>&lt;script&gt;</code>タグの内容は通常JavaScriptである。<code>type</code>は無しとか、<code>type=”javascript”</code>とか、<code>type=”text/javascript”</code>にしたら、ブラウザがタグ内容をJavaScriptとして解析する。それ以外にしたらブラウザがタグの内容を無視する。つまり<code>type=”notjs”</code>とか、<code>type=”foobar”</code>などはブラウザに意味がない。だからシェーダーのコードscriptタグに入れて簡単に編集が出来るようになる。
+<code class="notranslate" translate="no">&lt;script&gt;</code>タグの内容は通常JavaScriptである。<code class="notranslate" translate="no">type</code>は無しとか、<code class="notranslate" translate="no">type=”javascript”</code>とか、<code class="notranslate" translate="no">type=”text/javascript”</code>にしたら、ブラウザがタグ内容をJavaScriptとして解析する。それ以外にしたらブラウザがタグの内容を無視する。つまり<code class="notranslate" translate="no">type=”notjs”</code>とか、<code class="notranslate" translate="no">type=”foobar”</code>などはブラウザに意味がない。だからシェーダーのコードscriptタグに入れて簡単に編集が出来るようになる。
 </p>
 <p>
 ストリングを連結する方法もある
@@ -814,6 +841,10 @@ AJAXでダウンロードする方法もあるが、これは遅くて非同期�
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -822,6 +853,11 @@ AJAXでダウンロードする方法もあるが、これは遅くて非同期�
 <li><a href="/webgl/lessons/ja/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ja/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>その他のトピック</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-setup-and-installation.html">WebGLの開発環境</a></li>
@@ -829,8 +865,6 @@ AJAXでダウンロードする方法もあるが、これは遅くて非同期�
 <li><a href="/webgl/lessons/ja/webgl-resizing-the-canvas.html">WebGLとcanvasのリサイズ</a></li>
 <li><a href="/webgl/lessons/ja/webgl-animation.html">アニメーション</a></li>
 <li><a href="/webgl/lessons/ja/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ja/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ja/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ja/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -842,11 +876,14 @@ AJAXでダウンロードする方法もあるが、これは遅くて非同期�
 <li><a href="/webgl/lessons/ja/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ja/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ja/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ja/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ja/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ja/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ja/webgl-references.html">References</a></li>
         </ul></ul>
@@ -884,9 +921,17 @@ AJAXでダウンロードする方法もあるが、これは遅くて非同期�
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

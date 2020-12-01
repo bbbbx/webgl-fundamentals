@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="What are attributes in WebGL?" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-attributes_en.jpg" />
+<meta name="description" content="What are attributes in WebGL?">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-attributes_en.jpg">
 
-<meta property="og:title" content="WebGL Attributes" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-attributes_en.jpg" />
-<meta property="og:description" content="What are attributes in WebGL?" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-attributes.html" />
+<meta property="og:title" content="WebGL Attributes">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-attributes_en.jpg">
+<meta property="og:description" content="What are attributes in WebGL?">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-attributes.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL Attributes" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-attributes.html" />
-<meta name="twitter:description" content="What are attributes in WebGL?" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-attributes_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL Attributes">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-attributes.html">
+<meta name="twitter:description" content="What are attributes in WebGL?">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-attributes_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL Attributes</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-attributes.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-attributes.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-attributes.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-attributes.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-attributes.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-attributes.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-attributes.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-attributes.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -218,11 +245,11 @@ of how attribute state is setup in WebGL. There is <a href="webgl-texture-units.
 and <a href="https://webglfundamentals.org/webgl/lessons/webgl-shaders-and-glsl.html">WebGL Shaders and GLSL</a>. </p>
 <h2 id="attributes">Attributes</h2>
 <p>In WebGL attributes are inputs to a vertex shader that get their data from buffers.
-WebGL will execute a user supplied vertex shader N times when either <code>gl.drawArrays</code> or <code>gl.drawElements</code> is called. 
+WebGL will execute a user supplied vertex shader N times when either <code class="notranslate" translate="no">gl.drawArrays</code> or <code class="notranslate" translate="no">gl.drawElements</code> is called. 
 For each iteration the attributes define how to pull the data out of the buffers bound to them 
 and supply them to the attributes inside the vertex shader.</p>
 <p>If they were implemented in JavaScript they would look something like this</p>
-<pre class="prettyprint"><code class="lang-js">// pseudo code
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// pseudo code
 const gl = {
   arrayBuffer: null,
   vertexArray: {
@@ -241,8 +268,8 @@ const gl = {
 }
 </code></pre>
 <p>As you can see above there are 8 attributes.</p>
-<p>When you call <code>gl.enableVertexAttribArray(location)</code> or <code>gl.disableVertexAttribArray</code> you can think of it like this</p>
-<pre class="prettyprint"><code class="lang-js">// pseudo code
+<p>When you call <code class="notranslate" translate="no">gl.enableVertexAttribArray(location)</code> or <code class="notranslate" translate="no">gl.disableVertexAttribArray</code> you can think of it like this</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// pseudo code
 gl.enableVertexAttribArray = function(location) {
   const attrib = gl.vertexArray.attributes[location];
   attrib.enable = true;
@@ -254,9 +281,9 @@ gl.disableVertexAttribArray = function(location) {
 };
 </code></pre>
 <p>In other words location directly refers to the index of an attribute.</p>
-<p>Similarly <code>gl.vertexAttribPointer</code> is used to set almost all the rest
+<p>Similarly <code class="notranslate" translate="no">gl.vertexAttribPointer</code> is used to set almost all the rest
 of an attribute&#39;s settings. It would be implemented something like this</p>
-<pre class="prettyprint"><code class="lang-js">// pseudo code
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// pseudo code
 gl.vertexAttribPointer = function(location, size, type, normalize, stride, offset) {
   const attrib = gl.vertexArray.attributes[location];
   attrib.size = size;
@@ -267,11 +294,11 @@ gl.vertexAttribPointer = function(location, size, type, normalize, stride, offse
   attrib.buffer = gl.arrayBuffer;  // !!!! &lt;-----
 };
 </code></pre>
-<p>Notice that when we call <code>gl.vertexAttribPointer</code> that <code>attrib.buffer</code> 
-is set to whatever the current <code>gl.arrayBuffer</code> is set to. 
-<code>gl.arrayBuffer</code> in the pseudo code above would be set by 
-calling <code>gl.bindBuffer(gl.ARRAY_BUFFER, someBuffer)</code>.</p>
-<pre class="prettyprint"><code class="lang-js">// pseudo code
+<p>Notice that when we call <code class="notranslate" translate="no">gl.vertexAttribPointer</code> that <code class="notranslate" translate="no">attrib.buffer</code> 
+is set to whatever the current <code class="notranslate" translate="no">gl.arrayBuffer</code> is set to. 
+<code class="notranslate" translate="no">gl.arrayBuffer</code> in the pseudo code above would be set by 
+calling <code class="notranslate" translate="no">gl.bindBuffer(gl.ARRAY_BUFFER, someBuffer)</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// pseudo code
 gl.bindBuffer = function(target, buffer) {
   switch (target) {
     case ARRAY_BUFFER:
@@ -284,7 +311,7 @@ gl.bindBuffer = function(target, buffer) {
 };
 </code></pre>
 <p>So, next up we have vertex shaders. In vertex shader you declare attributes. Example:</p>
-<pre class="prettyprint"><code class="lang-glsl">attribute vec4 position;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">attribute vec4 position;
 attribute vec2 texcoord;
 attribute vec3 normal;
 
@@ -295,64 +322,64 @@ void main() {
 }
 </code></pre>
 <p>When you link a vertex shader with a fragment shader by calling
-<code>gl.linkProgram(someProgram)</code> WebGL (the driver/GPU/browser) decide on their own
+<code class="notranslate" translate="no">gl.linkProgram(someProgram)</code> WebGL (the driver/GPU/browser) decide on their own
 which index/location to use for each attribute. Unless you manually assign
 locations (see below) you have no idea which ones they&#39;re going to pick. It&#39;s up
 to the browser/driver/GPU. So, you have to ask it which attribute did you use
 for position, texcoord, and normal?. You do this by calling
-<code>gl.getAttribLocation</code></p>
-<pre class="prettyprint"><code class="lang-js">const positionLoc = gl.getAttribLocation(program, &#39;position&#39;);
+<code class="notranslate" translate="no">gl.getAttribLocation</code></p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const positionLoc = gl.getAttribLocation(program, &#39;position&#39;);
 const texcoordLoc = gl.getAttribLocation(program, &#39;texcoord&#39;);
 const normalLoc = gl.getAttribLocation(program, &#39;normal&#39;);
 </code></pre>
-<p>Let&#39;s say <code>positionLoc</code> = <code>5</code>. That means when the vertex shader executes (when
-you call <code>gl.drawArrays</code> or<code>gl.drawElements</code>) the vertex shader expects you to
+<p>Let&#39;s say <code class="notranslate" translate="no">positionLoc</code> = <code class="notranslate" translate="no">5</code>. That means when the vertex shader executes (when
+you call <code class="notranslate" translate="no">gl.drawArrays</code> or<code class="notranslate" translate="no">gl.drawElements</code>) the vertex shader expects you to
 have setup attribute 5 with the correct type, size, offset, stride, buffer etc.</p>
 <p>Note that BEFORE you link the program you can choose the locations by calling
-<code>gl.bindAttribLocation(program, location, nameOfAttribute)</code>. Example:</p>
-<pre class="prettyprint"><code class="lang-js">// Tell `gl.linkProgram` to assign `position` to use attribute #7
+<code class="notranslate" translate="no">gl.bindAttribLocation(program, location, nameOfAttribute)</code>. Example:</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// Tell `gl.linkProgram` to assign `position` to use attribute #7
 gl.bindAttribLocation(program, 7, &#39;position&#39;);
 </code></pre>
 <h2 id="full-attribute-state">Full Attribute State</h2>
 <p>Missing from the description above is that each attribute also has a default
 value. It is left out above because it is uncommon to use it.</p>
-<pre class="prettyprint"><code class="lang-js">attributes: [
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">attributes: [
    { enable: ?, type: ?, size: ?, normalize: ?, stride: ?, offset: ?, buffer: ?,
    　divisor: 0, value: [0, 0, 0, 1], },
    { enable: ?, type: ?, size: ?, normalize: ?, stride: ?, offset: ?, buffer: ?,
    　divisor: 0, value: [0, 0, 0, 1], },
    ..
 </code></pre>
-<p>You can set each attribute&#39;s value with the various <code>gl.vertexAttribXXX</code>
-functions. The value is used when <code>enable</code> is false. When enable is true data for
+<p>You can set each attribute&#39;s value with the various <code class="notranslate" translate="no">gl.vertexAttribXXX</code>
+functions. The value is used when <code class="notranslate" translate="no">enable</code> is false. When enable is true data for
 the attribute is pulled from the assigned buffer.</p>
 <p><a id="vaos"></a></p>
 <h2 id="vertex-array-objects-vao-s">Vertex Array Objects (VAO)s</h2>
-<p>WebGL has an extension, <code>OES_vertex_array_object</code></p>
-<p>In the diagram above the <code>OES_vertex_array_object</code> extension lets you create and
-replace the <code>vertexArray</code>. In other words</p>
-<pre class="prettyprint"><code class="lang-js">const vao = ext.createVertexArrayOES();
+<p>WebGL has an extension, <code class="notranslate" translate="no">OES_vertex_array_object</code></p>
+<p>In the diagram above the <code class="notranslate" translate="no">OES_vertex_array_object</code> extension lets you create and
+replace the <code class="notranslate" translate="no">vertexArray</code>. In other words</p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const vao = ext.createVertexArrayOES();
 </code></pre>
-<p>creates the object you see attached to <code>gl.vertexArray</code> in the <em>pseudo code</em>
-above. Calling <code>ext.bindVertexArrayOES(vao)</code> assigns your created vertex array
+<p>creates the object you see attached to <code class="notranslate" translate="no">gl.vertexArray</code> in the <em>pseudo code</em>
+above. Calling <code class="notranslate" translate="no">ext.bindVertexArrayOES(vao)</code> assigns your created vertex array
 object as the current vertex array.</p>
-<pre class="prettyprint"><code class="lang-js">// pseudo code
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// pseudo code
 ext.bindVertexArrayOES = function(vao) {
   gl.vertexArray = vao ? vao : defaultVAO;
 };
 </code></pre>
-<p>This lets you set all of the attributes and the <code>ELEMENT_ARRAY_BUFFER</code> in the
+<p>This lets you set all of the attributes and the <code class="notranslate" translate="no">ELEMENT_ARRAY_BUFFER</code> in the
 current VAO so that when you want to draw a particular shape it&#39;s one call to
-<code>ext.bindVertexArrayOES</code> to effectively setup
+<code class="notranslate" translate="no">ext.bindVertexArrayOES</code> to effectively setup
 all attributes where as without the extension it would be up to one call to both
-<code>gl.bindBuffer</code>, <code>gl.vertexAttribPointer</code> (and possibly
-<code>gl.enableVertexAttribArray</code>) <strong>per attribute</strong>.</p>
+<code class="notranslate" translate="no">gl.bindBuffer</code>, <code class="notranslate" translate="no">gl.vertexAttribPointer</code> (and possibly
+<code class="notranslate" translate="no">gl.enableVertexAttribArray</code>) <strong>per attribute</strong>.</p>
 <p>You can see it&#39;s arguably a good thing to use vertex array objects. 
 To use them though often requires more organization. For example let&#39;s stay you want to 
-draw a cube with <code>gl.TRIANGLES</code> with one shader and then again with <code>gl.LINES</code>
+draw a cube with <code class="notranslate" translate="no">gl.TRIANGLES</code> with one shader and then again with <code class="notranslate" translate="no">gl.LINES</code>
 with a different shader. Let&#39;s say when you draw with triangles you use
 normals for lighting so you declare attributes in your shader like this:</p>
-<pre class="prettyprint"><code class="lang-glsl">// lighting-shader
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">// lighting-shader
 // shader for cube drawn with triangles
 
 attribute vec4 a_position;
@@ -364,25 +391,25 @@ attribute vec3 a_normal;
 do something similar to the first shaders on <a href="webgl-fundamentals.html">the first page</a> of these
 tutorials. You declare a uniform for color. That means in your
 vertex shader you only need position</p>
-<pre class="prettyprint"><code class="lang-glsl">// solid-shader
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">// solid-shader
 // shader for cube with lines
 
 attribute vec4 a_position;
 </code></pre>
 <p>We have no idea what attribute locations will be decided for each shader.
 Let&#39;s assume for lighting-shader above the locations are</p>
-<pre class="prettyprint"><code>a_position location = 1
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">a_position location = 1
 a_normal location = 0
 </code></pre><p>and for the solid-shader which only has one attribute it&#39;s</p>
-<pre class="prettyprint"><code>a_position location = 0
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">a_position location = 0
 </code></pre><p>It&#39;s clear when switching shaders we&#39;ll need to setup our attributes differently.
-One shader expects <code>a_position</code>&#39;s data to appear on attribute 0. The other shader
+One shader expects <code class="notranslate" translate="no">a_position</code>&#39;s data to appear on attribute 0. The other shader
 expects it to appear on attribute 1.</p>
 <p>Resetting up the attributes is extra work. Worse, the entire point of using a
 vertex array object is to save us not having to do that work. To fix this issue
 we&#39;d bind the locations before linking the shader programs. </p>
 <p>We&#39;d tell WebGL</p>
-<pre class="prettyprint"><code class="lang-js">gl.bindAttribLocation(solidProgram, 0, &#39;a_position&#39;);
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">gl.bindAttribLocation(solidProgram, 0, &#39;a_position&#39;);
 gl.bindAttribLocation(lightingProgram, 0, &#39;a_position&#39;);
 gl.bindAttribLocation(lightingProgram, 1, &#39;a_normal&#39;);
 </code></pre>
@@ -392,7 +419,7 @@ Now we can use the same VAO for both shaders. </p>
 <p>WebGL requires that at least 8 attributes are supported but a particular
 computer/browser/implementation/driver can support more. You can find out
 how many are supported by calling</p>
-<pre class="prettyprint"><code class="lang-js">const maxAttributes = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const maxAttributes = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
 </code></pre>
 <p>If you decide to use more than 8 you probably want to check how
 many are actually supported and inform the user if their
@@ -501,6 +528,10 @@ machine doesn&#39;t have enough or else fallback to simpler shaders.</p>
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -509,6 +540,11 @@ machine doesn&#39;t have enough or else fallback to simpler shaders.</p>
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -516,8 +552,6 @@ machine doesn&#39;t have enough or else fallback to simpler shaders.</p>
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -529,11 +563,14 @@ machine doesn&#39;t have enough or else fallback to simpler shaders.</p>
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -576,9 +613,17 @@ machine doesn&#39;t have enough or else fallback to simpler shaders.</p>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

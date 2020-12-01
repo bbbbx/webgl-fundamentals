@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="2D에서 회전하는 방법" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_ko.jpg" />
+<meta name="description" content="2D에서 회전하는 방법">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_ko.jpg">
 
-<meta property="og:title" content="WebGL 2D 회전" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_ko.jpg" />
-<meta property="og:description" content="2D에서 회전하는 방법" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-rotation.html" />
+<meta property="og:title" content="WebGL 2D 회전">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_ko.jpg">
+<meta property="og:description" content="2D에서 회전하는 방법">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-rotation.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 2D 회전" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-rotation.html" />
-<meta name="twitter:description" content="2D에서 회전하는 방법" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_ko.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 2D 회전">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-rotation.html">
+<meta name="twitter:description" content="2D에서 회전하는 방법">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_ko.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 2D 회전</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/ko/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-rotation.html">
+
 
 
 
@@ -120,32 +132,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ko/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +176,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +197,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +215,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -236,7 +264,7 @@ X와 Y는 원 위에 있는 점의 위치를 나타내는데요.
 그러므로 &quot;unit circle&quot;에 어떤 값으로 곱할 수 있고 마법이 일어나서 회전하는 걸 제외하고는 1을 곱하는 것과 마찬가지입니다.</p>
 <p>unit circle 위에 있는 어떤 점에서 X와 Y의 값을 가져와서 <a href="webgl-2d-translation.html">이전 예제</a>의 geometry에 곱하려고 하는데요.</p>
 <p>shader에 다시 작성한 내용은 다음과 같습니다.</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform vec2 u_resolution;
@@ -252,7 +280,7 @@ void main() {
   // 이동 추가
 *  vec2 position = rotatedPosition + u_translation;
 </code></pre><p>그리고 JavaScript를 재작성하면 두 값을 전달할 수 있습니다.</p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
 
 +  var rotationLocation = gl.getUniformLocation(program, &quot;u_rotation&quot;);
 
@@ -283,13 +311,13 @@ void main() {
 원 위에 있는 핸들을 드래그해서 회전시키거나 슬라이더를 드래그해서 이동시켜보세요.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-geometry-rotation.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-2d-geometry-rotation.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-2d-geometry-rotation.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
 <p>왜 동작할까요?
 음, 수식을 봅시다.</p>
-<pre class="prettyprint"><code>rotatedX = a_position.x * u_rotation.y + a_position.y * u_rotation.x;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">rotatedX = a_position.x * u_rotation.y + a_position.y * u_rotation.x;
 rotatedY = a_position.y * u_rotation.y - a_position.x * u_rotation.x;
 </code></pre><p>사각형이 하나 있고 그걸 회전시키고 싶다고 해봅시다.
 회전시키기 전 우측 상단 모서리는 3.0, 9.0 인데요.
@@ -317,17 +345,17 @@ unit circle 위에 12시부터 시계 방향 30도 간격으로 점을 찍어봅
 <p>unit circle 위에 있는 점들은 또 다른 이름을 가지고 있는데요.
 바로 sine 그리고 cosine 입니다.
 그래서 주어진 어떤 각에 대해 우리는 이처럼 sine과 cosine을 찾을 수 있습니다.</p>
-<pre class="prettyprint"><code>function printSineAndCosineForAnAngle(angleInDegrees) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function printSineAndCosineForAnAngle(angleInDegrees) {
   var angleInRadians = angleInDegrees * Math.PI / 180;
   var s = Math.sin(angleInRadians);
   var c = Math.cos(angleInRadians);
   console.log(&quot;s = &quot; + s + &quot; c = &quot; + c);
 }
-</code></pre><p>JavaScript console에 코드를 복사 붙여넣고 <code>printSineAndCosignForAngle(30)</code>라고 치면 <code>s = 0.49 c = 0.87</code>라는 출력을 볼 수 있습니다.
+</code></pre><p>JavaScript console에 코드를 복사 붙여넣고 <code class="notranslate" translate="no">printSineAndCosignForAngle(30)</code>라고 치면 <code class="notranslate" translate="no">s = 0.49 c = 0.87</code>라는 출력을 볼 수 있습니다.
 (참고로 저는 반올림했습니다)</p>
 <p>모든 것을 함께 넣으면 도형을 원하는 각도로 회전할 수 있습니다.
 그저 회전하려는 각도의 sine과 cosine으로 rotation을 설정하면 됩니다. </p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
   var angleInRadians = angleInDegrees * Math.PI / 180;
   rotation[0] = Math.sin(angleInRadians);
   rotation[1] = Math.cos(angleInRadians);
@@ -335,7 +363,7 @@ unit circle 위에 12시부터 시계 방향 30도 간격으로 점을 찍어봅
 슬라이더를 드래그해서 이동하거나 회전시켜보세요.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-geometry-rotation-angle.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-2d-geometry-rotation-angle.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-2d-geometry-rotation-angle.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
@@ -364,8 +392,8 @@ Degree는 수학을 어렵게 만들고 Radian은 수학을 쉽게 만듭니다.
 원에는 360도가 있지만 radian으로는 2π만 있습니다.
 따라서 한바퀴는 2π radian이고 반바퀴는 1π radian입니다.
 1/4바퀴는 90도면서 1/2π radian 이죠.
-그러니 어떤 것을 90도 회전하고 싶다면 <code>Math.PI * 0.5</code>를 쓰세요.
-만약 45도로 회전하고 싶다면 <code>Math.PI * 0.25</code> 등으로 쓸 수 있습니다.
+그러니 어떤 것을 90도 회전하고 싶다면 <code class="notranslate" translate="no">Math.PI * 0.5</code>를 쓰세요.
+만약 45도로 회전하고 싶다면 <code class="notranslate" translate="no">Math.PI * 0.25</code> 등으로 쓸 수 있습니다.
 </p>
 <p>
 각도, 원 또는 회전을 포함하는 거의 모든 수학은 radian으로 생각하기 시작하면 매우 간단하게 동작합니다.
@@ -391,19 +419,19 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
         <div id="toc">
           <ul>  <li>기초</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-fundamentals.html">WebGL 기초</a></li>
-<li><a href="/webgl/lessons/ko/webgl-how-it-works.html">WebGL 작동 원리</a></li>
-<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">WebGL 셰이더와 GLSL</a></li>
-<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL State Diagram</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-fundamentals.html">기초</a></li>
+<li><a href="/webgl/lessons/ko/webgl-how-it-works.html">작동 원리</a></li>
+<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">Shader 그리고 GLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL 상태 다이어그램</a></li>
         </ul>
   <li>이미지 처리</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">WebGL 이미지 처리</a></li>
-<li><a href="/webgl/lessons/ko/webgl-image-processing-continued.html">WebGL 이미지 처리 심화</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">이미지 처리</a></li>
+<li><a href="/webgl/lessons/ko/webgl-image-processing-continued.html">이미지 처리 심화</a></li>
         </ul>
-  <li>2D 이동, 회전, 크기 조절, 행렬 수학</li>
+  <li>2D translation, rotation, scale, 행렬 수학</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-2d-translation.html">WebGL 2D 이동</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-2d-translation.html">2D Translation</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-rotation.html">WebGL 2D 회전</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-scale.html">WebGL 2D 크기</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-matrices.html">WebGL 2D 행렬</a></li>
@@ -420,7 +448,7 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
 <li><a href="/webgl/lessons/ko/webgl-3d-lighting-point.html">Point Lighting</a></li>
 <li><a href="/webgl/lessons/ko/webgl-3d-lighting-spot.html">Spot Lighting</a></li>
         </ul>
-  <li>Structure and Organization</li>
+  <li>구조 및 조직</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-less-code-more-fun.html">Less Code, More Fun</a></li>
 <li><a href="/webgl/lessons/ko/webgl-drawing-multiple-things.html">Drawing Multiple Things</a></li>
@@ -432,7 +460,7 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
 <li><a href="/webgl/lessons/ko/webgl-load-obj.html">Loading .obj files</a></li>
 <li><a href="/webgl/lessons/ko/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
-  <li>텍스처</li>
+  <li>Texture</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-3d-textures.html">Textures</a></li>
 <li><a href="/webgl/lessons/ko/webgl-data-textures.html">Data Textures</a></li>
@@ -441,7 +469,7 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
 <li><a href="/webgl/lessons/ko/webgl-3d-perspective-correct-texturemapping.html">Perspective Correct Texture Mapping</a></li>
 <li><a href="/webgl/lessons/ko/webgl-planar-projection-mapping.html">Planar and Perspective Projection Mapping</a></li>
         </ul>
-  <li>텍스처로 렌더링하기</li>
+  <li>Texture로 렌더링</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-render-to-texture.html">Render to Texture</a></li>
         </ul>
@@ -466,34 +494,41 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
 <li><a href="/webgl/lessons/ko/webgl-fog.html">Fog</a></li>
 <li><a href="/webgl/lessons/ko/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
-  <li>Text</li>
+  <li>글자</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-text-html.html">Text - HTML</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-canvas2d.html">Text - Canvas 2D</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-texture.html">Text - Using a Texture</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
         </ul>
-  <li>텍스처</li>
+  <li>Texture</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-gpgpu.html">GPGPU</a></li>
         </ul>
-  <li>팁</li>
+        </ul>
+  <li>Tip</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/ko/webgl-drawing-without-data.html">Drawing Without Data</a></li>
 <li><a href="/webgl/lessons/ko/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ko/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
-  <li>기타</li>
+  <li>최적화</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
+  <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-setup-and-installation.html">WebGL 설치</a></li>
 <li><a href="/webgl/lessons/ko/webgl-boilerplate.html">WebGL Boilerplate</a></li>
 <li><a href="/webgl/lessons/ko/webgl-resizing-the-canvas.html">WebGL Canvas 크기 조정</a></li>
 <li><a href="/webgl/lessons/ko/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/ko/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ko/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ko/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ko/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ko/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -505,11 +540,14 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
 <li><a href="/webgl/lessons/ko/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ko/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ko/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ko/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ko/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>참고</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ko/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ko/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ko/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ko/webgl-references.html">References</a></li>
         </ul></ul>
@@ -526,7 +564,7 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
     <div>질문은? <a href="https://stackoverflow.com/questions/tagged/webgl">Stackoverflow</a>에서 물어봐주세요.</div>
     <div>이슈/버그는? <a href="https://github.com/gfxfundamentals/webgl-fundamentals/issues">Github</a>에 이슈를 만들어주세요.</div>
     <div class="lesson-comment-notes">
-       코드 블록에 <b>&lt;pre&gt;&lt;code&gt;</b>코드는 여기에<b>&lt;/code&gt;&lt;/pre&gt;</b>를 사용해주세요
+      코드 블록은 <b>&lt;pre&gt;&lt;code&gt;</b>여기에 코드 입력<b>&lt;/code&gt;&lt;/pre&gt;</b>를 사용해주세요
     </div>
   
 
@@ -553,9 +591,17 @@ UI display를 제외하고 degree가 아닌 radian을 사용해보세요.
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Using images across domains" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-cors-permission_en.jpg" />
+<meta name="description" content="Using images across domains">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-cors-permission_en.jpg">
 
-<meta property="og:title" content="WebGL - Cross Origin Images" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-cors-permission_en.jpg" />
-<meta property="og:description" content="Using images across domains" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-cors-permission.html" />
+<meta property="og:title" content="WebGL - Cross Origin Images">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-cors-permission_en.jpg">
+<meta property="og:description" content="Using images across domains">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-cors-permission.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL - Cross Origin Images" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-cors-permission.html" />
-<meta name="twitter:description" content="Using images across domains" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-cors-permission_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL - Cross Origin Images">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-cors-permission.html">
+<meta name="twitter:description" content="Using images across domains">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-cors-permission_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL - Cross Origin Images</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-cors-permission.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-cors-permission.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-cors-permission.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-cors-permission.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-cors-permission.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-cors-permission.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-cors-permission.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-cors-permission.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -220,7 +247,7 @@ example the article about <a href="webgl-image-processing.html">image processing
 article about <a href="webgl-3d-textures.html">textures</a> and the article about
 <a href="webgl-2d-drawimage.html">implementing 2d drawImage</a>.</p>
 <p>Typically we download an image something like this</p>
-<pre class="prettyprint"><code>// creates a texture info { width: w, height: h, texture: tex }
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// creates a texture info { width: w, height: h, texture: tex }
 // The texture will start with 1x1 pixels and be updated
 // when the image has loaded
 function loadImageAndCreateTextureInfo(url) {
@@ -255,15 +282,15 @@ function loadImageAndCreateTextureInfo(url) {
 </code></pre><p>The problem is images might have private data in them (for example a captcha, a signature, a naked picture, ...).
 A webpage often has ads and other things not in direct control of the page and so the browser needs to prevent
 those things from looking at the contents of these private images.</p>
-<p>Just using <code>&lt;img src=&quot;private.jpg&quot;&gt;</code> is not a problem because although the image will get displayed by
+<p>Just using <code class="notranslate" translate="no">&lt;img src=&quot;private.jpg&quot;&gt;</code> is not a problem because although the image will get displayed by
 the browser a script can not see the data inside the image. <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">The Canvas2D API</a>
 has a way to see inside the image. First you draw the image into the canvas</p>
-<pre class="prettyprint"><code>ctx.drawImage(someImg, 0, 0);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(someImg, 0, 0);
 </code></pre><p>Then you get the data</p>
-<pre class="prettyprint"><code>var data = ctx.getImageData(0, 0, width, heigh);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var data = ctx.getImageData(0, 0, width, heigh);
 </code></pre><p>But, if the image you drew came from a different domain the browser will mark the canvas as <em>tainted</em> and
-you&#39;ll get a security error when you call <code>ctx.getImageData</code></p>
-<p>WebGL has to take it even one step further. In WebGL <code>gl.readPixels</code> is the equivalent call to <code>ctx.getImageData</code>
+you&#39;ll get a security error when you call <code class="notranslate" translate="no">ctx.getImageData</code></p>
+<p>WebGL has to take it even one step further. In WebGL <code class="notranslate" translate="no">gl.readPixels</code> is the equivalent call to <code class="notranslate" translate="no">ctx.getImageData</code>
 so you&#39;d think maybe just blocking that would be enough but it turns out even if you can&#39;t read the pixels
 directly you can make shaders that take longer to run based on the colors in the image. Using that information
 you can use timing to effectively look inside the image indirectly and find out its contents.</p>
@@ -280,29 +307,29 @@ Notice the texture never loads and we get an error</p>
 <h2 id="enter-cors">Enter CORS</h2>
 <p>CORS = Cross Origin Resource Sharing. It&#39;s a way for the webpage to ask the image server for permission
 to use the image.</p>
-<p>To do this we set the <code>crossOrigin</code> attribute to something and then when the browser tries to get the
+<p>To do this we set the <code class="notranslate" translate="no">crossOrigin</code> attribute to something and then when the browser tries to get the
 image from the server, if it&#39;s not the same domain, the browser will ask for CORS permission.</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">...
 +    img.crossOrigin = &quot;&quot;;   // ask for CORS permission
     img.src = url;
-</code></pre><p>There are 3 values you can set <code>crossOrigin</code> to. One is <code>undefined</code> which is the default which means
-&quot;do not ask for permission&quot;. Another is <code>&quot;anonymous&quot;</code> which means ask for permission but don&#39;t send extra info.
-The last is <code>&quot;use-credentials&quot;</code> which means send cookies and other info the server might look at to decide
-whether or not it give permission. If <code>crossOrigin</code> is set to any other value it&#39;s the same as setting
-it to <code>anonymous</code>.</p>
+</code></pre><p>There are 3 values you can set <code class="notranslate" translate="no">crossOrigin</code> to. One is <code class="notranslate" translate="no">undefined</code> which is the default which means
+&quot;do not ask for permission&quot;. Another is <code class="notranslate" translate="no">&quot;anonymous&quot;</code> which means ask for permission but don&#39;t send extra info.
+The last is <code class="notranslate" translate="no">&quot;use-credentials&quot;</code> which means send cookies and other info the server might look at to decide
+whether or not it give permission. If <code class="notranslate" translate="no">crossOrigin</code> is set to any other value it&#39;s the same as setting
+it to <code class="notranslate" translate="no">anonymous</code>.</p>
 <p>Why don&#39;t we just always see that permission? Because asking for permission takes 2 HTTP requests so it&#39;s
 slower than not asking. If we know we&#39;re on the same domain or we know we won&#39;t use the image for anything
-except img tags and or canvas2d then we don&#39;t want to set <code>crossOrigin</code> because it
+except img tags and or canvas2d then we don&#39;t want to set <code class="notranslate" translate="no">crossOrigin</code> because it
 will make things slower.</p>
 <p>We can make a function that checks if the image we&#39;re trying to load is on the same origin and if
-so sets the <code>crossOrigin</code> attribute.</p>
-<pre class="prettyprint"><code>function requestCORSIfNotSameOrigin(img, url) {
+so sets the <code class="notranslate" translate="no">crossOrigin</code> attribute.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function requestCORSIfNotSameOrigin(img, url) {
   if ((new URL(url, window.location.href)).origin !== window.location.origin) {
     img.crossOrigin = &quot;&quot;;
   }
 }
 </code></pre><p>And we can use it like this</p>
-<pre class="prettyprint"><code>...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">...
 +requestCORSIfNotSameOrigin(img, url);
 img.src = url;
 </code></pre><p><div class="webgl_example_container">
@@ -316,7 +343,7 @@ That is up to the server. Github pages give permission, flickr.com gives permiss
 imgur.com gives permission, but most websites do not. To give permission the server
 sends certain headers when sending the image.</p>
 <p>It&#39;s also important to note that the server giving permission is not enough. If the
-image is from another domain you must set the <code>crossOrigin</code> attribute or else you
+image is from another domain you must set the <code class="notranslate" translate="no">crossOrigin</code> attribute or else you
 will not be able to use the image even if the server sends the correct headers.</p>
 <div class="webgl_bottombar">
 <h3>Making Apache grant CORS permission</h3>
@@ -326,7 +353,7 @@ you can grant blanket CORS support by putting</p>
     Header set Access-Control-Allow-Origin "*"
 </pre>
 <p>
-In the appropriate <code>.htaccess</code> file.
+In the appropriate <code class="notranslate" translate="no">.htaccess</code> file.
 </p>
 </div>
 
@@ -434,6 +461,10 @@ In the appropriate <code>.htaccess</code> file.
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -442,6 +473,11 @@ In the appropriate <code>.htaccess</code> file.
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -449,8 +485,6 @@ In the appropriate <code>.htaccess</code> file.
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -462,11 +496,14 @@ In the appropriate <code>.htaccess</code> file.
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -509,9 +546,17 @@ In the appropriate <code>.htaccess</code> file.
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

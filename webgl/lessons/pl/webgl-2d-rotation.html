@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Jak obracać w dwóch wymiarach" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_pl.jpg" />
+<meta name="description" content="Jak obracać w dwóch wymiarach">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_pl.jpg">
 
-<meta property="og:title" content="Obrót dwuwymiarowy w WebGL" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_pl.jpg" />
-<meta property="og:description" content="Jak obracać w dwóch wymiarach" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-rotation.html" />
+<meta property="og:title" content="Obrót dwuwymiarowy w WebGL">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_pl.jpg">
+<meta property="og:description" content="Jak obracać w dwóch wymiarach">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-rotation.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="Obrót dwuwymiarowy w WebGL" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-rotation.html" />
-<meta name="twitter:description" content="Jak obracać w dwóch wymiarach" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_pl.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="Obrót dwuwymiarowy w WebGL">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-rotation.html">
+<meta name="twitter:description" content="Jak obracać w dwóch wymiarach">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-rotation_pl.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>Obrót dwuwymiarowy w WebGL</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-rotation.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-rotation.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/pl/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -309,7 +336,7 @@ function printSineAndCosineForAnAngle(angleInDegrees) {
 }
 </pre>
 
-<p>Jeśli skopiujesz powyższy kod i wkleisz do konsoli JavaScript, a następnie wywołasz funkcję <code>printSineAndCosignForAngle(30)</code> zobaczysz, że to wypisze <code>s = 0.49 c= 0.87</code> (zauważ, że zaokrągliłem liczby.)</p>
+<p>Jeśli skopiujesz powyższy kod i wkleisz do konsoli JavaScript, a następnie wywołasz funkcję <code class="notranslate" translate="no">printSineAndCosignForAngle(30)</code> zobaczysz, że to wypisze <code class="notranslate" translate="no">s = 0.49 c= 0.87</code> (zauważ, że zaokrągliłem liczby.)</p>
 <p>Łącząc to wszystko w całość możesz obracać swoją geometrię o dowolny kąt jakiego potrzebujesz. Po prostu podajesz jako argument funkcji sinus i cosinus kąt o jaki chcesz obrócić.</p>
 <pre class="prettyprint showlinemods">
   ...
@@ -334,7 +361,7 @@ Radiany są jednostkami miary często używanymi w dyskusjach o okręgach, obrot
 Prawdopodobnie jesteś świadom, że jednostki miar zgodne z systemem SI są prostsze niż jednostki wykorzystywane w czasach minionych.  By przeliczyć z cali na stopy dzielilibyśmy przez 12.  By przeliczyć z cali na jardy dzielilibyśmy przez 36. Nie wiem jak ty, ale ja nie potrafię dzielić przez 36 w pamięci. Jednostki układu SI są prostsze. By przejść z milimetrów na centymetry dzielimy przez 10. By przejść z milimetrów na metry dzielimy przez 1000. **Potrafię** dzielić przez 1000 w pamięci.
 </p>
 <p>
-W przypadku radianów i stopni jest podobnie. Stopnie czynią matematykę trudną. Radiany czynią ją prostą. Istnieje 360 stopni w kącie pełnym, a tylko 2π radianów.  Pełny obrót to 2π radianów. A półobrót to 1π radianów. A ćwierćobrót to 90 stopni lub 1/2π radianów. Zatem: jeśli chcesz obrócić coś o 90 stopni po prostu użyj <code>Math.PI * 0.5</code>. Jeśli chcesz obrócić to o 45 stopni użyj <code>Math.PI * 0.25</code> etc.
+W przypadku radianów i stopni jest podobnie. Stopnie czynią matematykę trudną. Radiany czynią ją prostą. Istnieje 360 stopni w kącie pełnym, a tylko 2π radianów.  Pełny obrót to 2π radianów. A półobrót to 1π radianów. A ćwierćobrót to 90 stopni lub 1/2π radianów. Zatem: jeśli chcesz obrócić coś o 90 stopni po prostu użyj <code class="notranslate" translate="no">Math.PI * 0.5</code>. Jeśli chcesz obrócić to o 45 stopni użyj <code class="notranslate" translate="no">Math.PI * 0.25</code> etc.
 </p>
 <p>
 Najczęściej spotykane w matematycznych dyskusjach kąty, okręgi i obroty zachowują się bardzo prosto, gdy myślisz o nich w radianach. Daj im szansę. Używaj radianów, a nie stopni; z wyjątkiem prezentacji w interfejsie użytkownika.
@@ -446,6 +473,10 @@ Najczęściej spotykane w matematycznych dyskusjach kąty, okręgi i obroty zach
         <ul>
           <li><a href="/webgl/lessons/pl/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/pl/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -454,6 +485,11 @@ Najczęściej spotykane w matematycznych dyskusjach kąty, okręgi i obroty zach
 <li><a href="/webgl/lessons/pl/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/pl/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/pl/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/pl/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Różności</li>
         <ul>
           <li><a href="/webgl/lessons/pl/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -461,8 +497,6 @@ Najczęściej spotykane w matematycznych dyskusjach kąty, okręgi i obroty zach
 <li><a href="/webgl/lessons/pl/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/pl/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/pl/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/pl/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/pl/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/pl/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/pl/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/pl/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -474,11 +508,14 @@ Najczęściej spotykane w matematycznych dyskusjach kąty, okręgi i obroty zach
 <li><a href="/webgl/lessons/pl/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/pl/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/pl/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/pl/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/pl/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/pl/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/pl/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/pl/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/pl/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/pl/webgl-references.html">References</a></li>
         </ul></ul>
@@ -516,9 +553,17 @@ Najczęściej spotykane w matematycznych dyskusjach kąty, okręgi i obroty zach
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

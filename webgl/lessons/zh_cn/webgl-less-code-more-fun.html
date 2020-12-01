@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="让编写WebGL代码少点啰嗦" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_zh-cn.jpg" />
+<meta name="description" content="让编写WebGL代码少点啰嗦">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_zh-cn.jpg">
 
-<meta property="og:title" content="WebGL 码少趣多" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_zh-cn.jpg" />
-<meta property="og:description" content="让编写WebGL代码少点啰嗦" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-less-code-more-fun.html" />
+<meta property="og:title" content="WebGL 码少趣多">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_zh-cn.jpg">
+<meta property="og:description" content="让编写WebGL代码少点啰嗦">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-less-code-more-fun.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 码少趣多" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-less-code-more-fun.html" />
-<meta name="twitter:description" content="让编写WebGL代码少点啰嗦" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_zh-cn.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 码少趣多">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-less-code-more-fun.html">
+<meta name="twitter:description" content="让编写WebGL代码少点啰嗦">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_zh-cn.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 码少趣多</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-less-code-more-fun.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/zh_cn/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -219,7 +246,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <p>假设我们有<a href="webgl-boilerplate.html">这样一个典型的WebGL着色程序模板</a>，
 有这样一对着色器。</p>
 <p>顶点着色器：</p>
-<pre class="prettyprint"><code>uniform mat4 u_worldViewProjection;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">uniform mat4 u_worldViewProjection;
 uniform vec3 u_lightWorldPos;
 uniform mat4 u_world;
 uniform mat4 u_viewInverse;
@@ -244,7 +271,7 @@ void main() {
   gl_Position = v_position;
 }
 </code></pre><p>片断着色器：</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 varying vec4 v_position;
 varying vec2 v_texCoord;
@@ -281,7 +308,7 @@ void main() {
   gl_FragColor = outColor;
 }
 </code></pre><p>你要在代码中像这样找到所有要设置的变量。</p>
-<pre class="prettyprint"><code>// 初始化时
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 初始化时
 var u_worldViewProjectionLoc   = gl.getUniformLocation(program, &quot;u_worldViewProjection&quot;);
 var u_lightWorldPosLoc         = gl.getUniformLocation(program, &quot;u_lightWorldPos&quot;);
 var u_worldLoc                 = gl.getUniformLocation(program, &quot;u_world&quot;);
@@ -350,7 +377,7 @@ gl.drawArrays(...);
 首先可以一次获取WebGL中需要的所有属性和全局变量的位置，
 然后在一个方法中设置它们，我们可以传递一个JavaScript对象给这个方法。
 如果理解了这一步操作，我们的代码应该会变成这样</p>
-<pre class="prettyprint"><code>// 初始化时
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 初始化时
 var uniformSetters = webglUtils.createUniformSetters(gl, program);
 var attribSetters  = webglUtils.createAttributeSetters(gl, program);
 
@@ -387,7 +414,7 @@ webglUtils.setUniforms(uniformSetters, uniforms);
 gl.drawArrays(...);
 </code></pre><p>这样看起来就简单，清晰，代码量少一些了。</p>
 <p>如果需要你也可以使用多个JavaScript对象，例如</p>
-<pre class="prettyprint"><code>// 初始化时
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 初始化时
 var uniformSetters = webglUtils.createUniformSetters(gl, program);
 var attribSetters  = webglUtils.createAttributeSetters(gl, program);
 
@@ -460,10 +487,10 @@ objects.forEach(function(object) {
 </div>
 
 </p>
-<p>继续让代码更少一点，在之前的代码中我们用自己创建的缓冲设置 <code>attribs</code> ，
+<p>继续让代码更少一点，在之前的代码中我们用自己创建的缓冲设置 <code class="notranslate" translate="no">attribs</code> ，
 创建缓冲的代码没有列出来，假设你想创建一个位置，
 法向量和纹理坐标的缓冲，你可能需要写这些代码</p>
-<pre class="prettyprint"><code>// 一个三角形
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 一个三角形
 var positions = [0, -10, 0, 10, 10, 0, -10, 10, 0];
 var texcoords = [0.5, 0, 1, 1, 0, 1];
 var normals   = [0, 0, 1, 0, 0, 1, 0, 0, 1];
@@ -480,7 +507,7 @@ var normalBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(normals), gl.STATIC_DRAW);
 </code></pre><p>看起来像是这种简化形式。</p>
-<pre class="prettyprint"><code>// 一个三角形
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 一个三角形
 var arrays = {
    position: { numComponents: 3, data: [0, -10, 0, 10, 10, 0, -10, 10, 0], },
    texcoord: { numComponents: 2, data: [0.5, 0, 1, 1, 0, 1],               },
@@ -489,7 +516,7 @@ var arrays = {
 
 var bufferInfo = createBufferInfoFromArrays(gl, arrays);
 </code></pre><p>代码少多了！现在我们可以在渲染时这样写</p>
-<pre class="prettyprint"><code>// 设置所有需要的缓冲和属性
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 设置所有需要的缓冲和属性
 webglUtils.setBuffersAndAttributes(gl, attribSetters, bufferInfo);
 
 ...
@@ -503,10 +530,10 @@ gl.drawArrays(gl.TRIANGLES, 0, bufferInfo.numElements);
 </div>
 
 </p>
-<p>甚至在你使用索引时也可以这样做，<code>webglUtils.setBuffersAndAttributes</code>
-会设置所有属性并使用你提供的 <code>indices</code> 设置 <code>ELEMENT_ARRAY_BUFFER</code>，
-所以你需要调用 <code>gl.drawElements</code>。</p>
-<pre class="prettyprint"><code>// 有索引的矩形
+<p>甚至在你使用索引时也可以这样做，<code class="notranslate" translate="no">webglUtils.setBuffersAndAttributes</code>
+会设置所有属性并使用你提供的 <code class="notranslate" translate="no">indices</code> 设置 <code class="notranslate" translate="no">ELEMENT_ARRAY_BUFFER</code>，
+所以你需要调用 <code class="notranslate" translate="no">gl.drawElements</code>。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 有索引的矩形
 var arrays = {
    position: { numComponents: 3, data: [0, 0, 0, 10, 0, 0, 0, 10, 0, 10, 10, 0], },
    texcoord: { numComponents: 2, data: [0, 0, 0, 1, 1, 0, 1, 1],                 },
@@ -515,8 +542,8 @@ var arrays = {
 };
 
 var bufferInfo = webglUtils.createBufferInfoFromArrays(gl, arrays);
-</code></pre><p>在渲染时将调用 <code>gl.drawElements</code> 代替 <code>gl.drawArrays</code>。</p>
-<pre class="prettyprint"><code>// 设置所有需要的缓冲和属性
+</code></pre><p>在渲染时将调用 <code class="notranslate" translate="no">gl.drawElements</code> 代替 <code class="notranslate" translate="no">gl.drawArrays</code>。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 设置所有需要的缓冲和属性
 webglUtils.setBuffersAndAttributes(gl, attribSetters, bufferInfo);
 
 ...
@@ -530,8 +557,8 @@ gl.drawElements(gl.TRIANGLES, bufferInfo.numElements, gl.UNSIGNED_SHORT, 0);
 </div>
 
 </p>
-<p><code>createBufferInfoFromArrays</code>方法本质上创建了类似这样的一个对象</p>
-<pre class="prettyprint"><code> bufferInfo = {
+<p><code class="notranslate" translate="no">createBufferInfoFromArrays</code>方法本质上创建了类似这样的一个对象</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> bufferInfo = {
    numElements: 4,        // 或者其他元素的实际个数
    indices: WebGLBuffer,  // 如果没有索引这个属性就不存在
    attribs: {
@@ -540,11 +567,11 @@ gl.drawElements(gl.TRIANGLES, bufferInfo.numElements, gl.UNSIGNED_SHORT, 0);
      a_texcoord: { buffer: WebGLBuffer, numComponents: 2, },
    },
  };
-</code></pre><p>然后 <code>webglUtils.setBuffersAndAttributes</code> 使用通过这个对象设置所有的缓冲和属性。</p>
-<p>最后是我认为的最后一步，假定 <code>position</code> 总是有三个单位长度 (x, y, z)，
-<code>texcoords</code> 总是有 2 个单位长度，索引 3 个单位长度，法向量 3 个单位长度，
+</code></pre><p>然后 <code class="notranslate" translate="no">webglUtils.setBuffersAndAttributes</code> 使用通过这个对象设置所有的缓冲和属性。</p>
+<p>最后是我认为的最后一步，假定 <code class="notranslate" translate="no">position</code> 总是有三个单位长度 (x, y, z)，
+<code class="notranslate" translate="no">texcoords</code> 总是有 2 个单位长度，索引 3 个单位长度，法向量 3 个单位长度，
 然后让程序推测出单元的个数。</p>
-<pre class="prettyprint"><code>// 有索引的矩形
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 有索引的矩形
 var arrays = {
    position: [0, 0, 0, 10, 0, 0, 0, 10, 0, 10, 10, 0],
    texcoord: [0, 0, 0, 1, 1, 0, 1, 1],
@@ -564,17 +591,17 @@ var arrays = {
 如果出错了我可以像前一个例子中那样声明单元个数，取决于个人。
 有些人喜欢事情按照他们的思路实现，越简单越好。</p>
 <p>为什么不按照属性在着色器中的类型来确定单元的个数？
-因为当我们使用 <code>vec4</code> 时大多数情况下只从缓冲中提供 3 个单位长度的数据  (x, y, z)，
-WebGL会自动设置 <code>w = 1</code>。所以这就意味着我们不能轻易推断出用户的真实意愿，
+因为当我们使用 <code class="notranslate" translate="no">vec4</code> 时大多数情况下只从缓冲中提供 3 个单位长度的数据  (x, y, z)，
+WebGL会自动设置 <code class="notranslate" translate="no">w = 1</code>。所以这就意味着我们不能轻易推断出用户的真实意愿，
 因为他们在着色器中定义的单位长度可能和提供的长度不相符。</p>
 <p>还有这样一个形式</p>
-<pre class="prettyprint"><code>var program = webglUtils.createProgramFromScripts(gl, [&quot;vertexshader&quot;, &quot;fragmentshader&quot;]);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var program = webglUtils.createProgramFromScripts(gl, [&quot;vertexshader&quot;, &quot;fragmentshader&quot;]);
 var uniformSetters = webglUtils.createUniformSetters(gl, program);
 var attribSetters  = webglUtils.createAttributeSetters(gl, program);
 </code></pre><p>可以简化成这样</p>
-<pre class="prettyprint"><code>var programInfo = webglUtils.createProgramInfo(gl, [&quot;vertexshader&quot;, &quot;fragmentshader&quot;]);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var programInfo = webglUtils.createProgramInfo(gl, [&quot;vertexshader&quot;, &quot;fragmentshader&quot;]);
 </code></pre><p>返回类似这样的对象</p>
-<pre class="prettyprint"><code>programInfo = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">programInfo = {
    program: WebGLProgram,  // 刚编译的程序
    uniformSetters: ...,    // webglUtils.createUniformSetters 返回的 setter
    attribSetters: ...,     // webglUtils.createAttribSetters 返回的 setter
@@ -589,9 +616,9 @@ var attribSetters  = webglUtils.createAttributeSetters(gl, program);
 <p>总之，这是我在写WebGL程序时喜欢的模式，这些教程中的例子我会使用标准的
 <strong>啰唆</strong>的方式，这样就不会让别人因为我自己的模式感到迷惑。
 在某些时候标准形式过于复杂，所以在接下来的课程中可能会使用这种模式。</p>
-<p>你也可以在你的代码中使用这种风格，例子中使用的方法 <code>createUniformSetters</code>,
- <code>createAttributeSetters</code>, <code>createBufferInfoFromArrays</code>, <code>setUniforms</code>,
-和 <code>setBuffersAndAttributes</code> 都在 <a href="https://github.com/gfxfundamentals/webgl-fundamentals/blob/master/webgl/resources/webgl-utils.js"><code>webgl-utils.js</code></a>中。
+<p>你也可以在你的代码中使用这种风格，例子中使用的方法 <code class="notranslate" translate="no">createUniformSetters</code>,
+ <code class="notranslate" translate="no">createAttributeSetters</code>, <code class="notranslate" translate="no">createBufferInfoFromArrays</code>, <code class="notranslate" translate="no">setUniforms</code>,
+和 <code class="notranslate" translate="no">setBuffersAndAttributes</code> 都在 <a href="https://github.com/gfxfundamentals/webgl-fundamentals/blob/master/webgl/resources/webgl-utils.js"><code class="notranslate" translate="no">webgl-utils.js</code></a>中。
 如果你想更有组织的使用，可以看看 <a href="https://twgljs.org">TWGL.js</a>。</p>
 <p>接下来，<a href="webgl-drawing-multiple-things.html">绘制多个物体</a>。</p>
 <div class="webgl_bottombar">
@@ -647,14 +674,14 @@ void main() {
 *  gl_FragColor = vec4(0,1,0,1);  // &lt;!--- 就是绿色
 }
 </pre>
-<p>注意到我添加了一行，直接将 <code>gl_FragColor</code> 设置为固定颜色。
+<p>注意到我添加了一行，直接将 <code class="notranslate" translate="no">gl_FragColor</code> 设置为固定颜色。
 大多数驱动会发现之前的行没有为结果做贡献，优化后就会把没用的变量移除，
-下次我运行程序调用<code>createUniformSetters</code>就不会为<code>u_ambient</code>
-创建 setter，所以 <code>uniformSetters.u_ambient()</code> 就会报错。
+下次我运行程序调用<code class="notranslate" translate="no">createUniformSetters</code>就不会为<code class="notranslate" translate="no">u_ambient</code>
+创建 setter，所以 <code class="notranslate" translate="no">uniformSetters.u_ambient()</code> 就会报错。
 <pre class="prettyprint">
 TypeError: undefined is not a function
 </pre>
-<p><code>setUniforms</code> 可以避免这种错误，它只会设置存在的全局变量。</p>
+<p><code class="notranslate" translate="no">setUniforms</code> 可以避免这种错误，它只会设置存在的全局变量。</p>
 </div>
 
     </div>
@@ -712,8 +739,8 @@ TypeError: undefined is not a function
   <li>几何</li>
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-3d-geometry-lathe.html">WebGL 三维几何加工</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-load-obj.html">Loading .obj files</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-load-obj.html">WebGL 加载 .obj 文件</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-load-obj-w-mtl.html">WebGL 加载带 .mtl 的 .obj 文件</a></li>
         </ul>
   <li>纹理</li>
         <ul>
@@ -738,7 +765,7 @@ TypeError: undefined is not a function
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-2d-drawimage.html">WebGL 二维DrawImage</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-2d-matrix-stack.html">WebGL 二维矩阵栈</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-sprites.html">Sprites</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-sprites.html">精灵</a></li>
         </ul>
   <li>三维</li>
         <ul>
@@ -760,13 +787,22 @@ TypeError: undefined is not a function
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/zh_cn/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
-          <li><a href="/webgl/lessons/zh_cn/webgl-smallest-programs.html">Smallest Programs</a></li>
+          <li><a href="/webgl/lessons/zh_cn/webgl-smallest-programs.html">WebGL 最小的程序</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-drawing-without-data.html">Drawing Without Data</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-pulling-vertices.html">Pulling Vertices</a></li>
+        </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/zh_cn/webgl-indexed-vertices.html">顶点索引 （gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-instanced-drawing.html">实例化绘制</a></li>
         </ul>
   <li>杂项</li>
         <ul>
@@ -774,27 +810,28 @@ TypeError: undefined is not a function
 <li><a href="/webgl/lessons/zh_cn/webgl-boilerplate.html">WebGL 样板</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-resizing-the-canvas.html">WebGL 重置画布尺寸</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-animation.html">WebGL 动画</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-instanced-drawing.html">实例化绘制</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-points-lines-triangles.html">WebGL 点、线和三角</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-and-alpha.html">WebGL 和阿尔法通道</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-2d-vs-3d-library.html">WebGL 2D vs 3D 库</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-anti-patterns.html">WebGL 错误模式</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-matrix-vs-math.html">WebGL 矩阵 vs 数学中的矩阵</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-precision-issues.html">Precision Issues</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#screenshot">Taking a screenshot</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#screenshot">截屏</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#preservedrawingbuffer">防止画布被清空</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#tabindex">在画布中获取键盘输入</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#html-background">将 WebGL 作为 HTML 的背景</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-cross-platform-issues.html">WebGL 跨平台相关问题</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
-          <li><a href="/webgl/lessons/zh_cn/webgl-attributes.html">Attributes</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-texture-units.html">Texture Units</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-readpixels.html">readPixels</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-references.html">References</a></li>
+          <li><a href="/webgl/lessons/zh_cn/webgl-attributes.html">WebGL 属性</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-texture-units.html">WebGL 纹理单元</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-framebuffers.html">Framebuffers</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-readpixels.html">WebGL readPixels</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-references.html">WebGL 参考</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">API 帮助文档</a></li>
@@ -830,9 +867,17 @@ TypeError: undefined is not a function
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

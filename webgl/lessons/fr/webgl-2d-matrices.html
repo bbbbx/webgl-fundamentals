@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Comment les matrices sont utilisées en graphisme" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_fr.jpg" />
+<meta name="description" content="Comment les matrices sont utilisées en graphisme">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_fr.jpg">
 
-<meta property="og:title" content="WebGL 2D - Matrices" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_fr.jpg" />
-<meta property="og:description" content="Comment les matrices sont utilisées en graphisme" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrices.html" />
+<meta property="og:title" content="WebGL 2D - Matrices">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_fr.jpg">
+<meta property="og:description" content="Comment les matrices sont utilisées en graphisme">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrices.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 2D - Matrices" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrices.html" />
-<meta name="twitter:description" content="Comment les matrices sont utilisées en graphisme" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_fr.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 2D - Matrices">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrices.html">
+<meta name="twitter:description" content="Comment les matrices sont utilisées en graphisme">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_fr.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 2D - Matrices</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-matrices.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/fr/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -310,9 +337,9 @@ nouveauY = y * sy;
 
 <p>Et c&#39;est pareil que ce qu&#39;on avait dans <a href="webgl-2d-scale.html">l&#39;article sur le changement d&#39;échelle</a> !</p>
 <p>Maintenant je parie que vous fixez toujours l&#39;écran en pensant &quot;Alors quoi ?! C&#39;est quoi le truc ?&quot; Ca a l&#39;air d&#39;un beaucoup plus gros boulot pour faire ce qu&#39;on faisait déjà.</p>
-<p>C&#39;est là que la magie arrive. Il se trouve qu&#39;on peut multiplier des matrices ensemble. Et qu&#39;on peut appliquer toutes les transformations d&#39;un coup. Imaginons qu&#39;on a une fonction, <code>multiplierMatrices</code>, qui prend deux matrices, les multiplie et retourne la matrice finale.</p>
+<p>C&#39;est là que la magie arrive. Il se trouve qu&#39;on peut multiplier des matrices ensemble. Et qu&#39;on peut appliquer toutes les transformations d&#39;un coup. Imaginons qu&#39;on a une fonction, <code class="notranslate" translate="no">multiplierMatrices</code>, qui prend deux matrices, les multiplie et retourne la matrice finale.</p>
 <p>Pour rendre les choses plus claires faisons des fonctions pour fabriquer des matrices pour le déplacement, la rotation et l&#39;échelle :</p>
-<pre class="prettyprint"><code>function deplacer(tx, ty) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function deplacer(tx, ty) {
   return [
     1, 0, 0,
     0, 1, 0,
@@ -338,7 +365,7 @@ function changerEchelle(sx, sy) {
   ];
 }
 </code></pre><p>Maintenant changeons le shader. Le shader actuel est :</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;shader-de-vertex-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;shader-de-vertex-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform vec2 u_resolution;
@@ -359,7 +386,7 @@ void main() {
   vec2 position = positionTournee + u_deplacement;
   ...
 </code></pre><p>Notre nouveau shader va être beaucoup plus simple</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;shader-de-vertex-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;shader-de-vertex-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform vec2 u_resolution;
@@ -370,7 +397,7 @@ void main() {
   vec2 position = (u_matrice * vec3(a_position, 1)).xy;
   ...
 </code></pre><p>Et voilà comment on l&#39;utilise :</p>
-<pre class="prettyprint"><code>  // Rend la scène
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Rend la scène
   function rendreScene() {
     // Efface le canvas
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -398,7 +425,7 @@ void main() {
 
 </p>
 <p>Mais, vous vous demandez peut-être encore, alors quoi ? Ca n&#39;a pas l&#39;air plus pratique. Mais maintenant si on veut changer l&#39;ordre des transformations on n&#39;a pas besoin d&#39;écrire un nouveau shader. On a juste à changer l&#39;ordre de nos fonctions. </p>
-<pre class="prettyprint"><code>    ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">    ...
     // Multiplie les matrices
     var matrice = multiplierMatrices(matriceDeplacement, matriceRotation);
     matrice = multiplierMatrices(matrice, matriceEchelle);
@@ -411,7 +438,7 @@ void main() {
 
 </p>
 <p>Pouvoir multiplier par des matrices comme ça est particulièrement important dans les hiérarchies d&#39;animation comme des bras sur un corps, des lunes autour d&#39;une planète autour d&#39;un soleil, ou les branches d&#39;un arbre. Pour un exemple simple avec une animation hiérarchique dessinons notre &quot;F&quot; cinq fois mais chaque fois, partons de la matrice du F précédent. </p>
-<pre class="prettyprint"><code>  // Rend la scène
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Rend la scène
   function rendreScene() {
     // Efface le canvas
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -437,14 +464,14 @@ void main() {
       gl.drawArrays(gl.TRIANGLES, 0, 18);
     }
   }
-</code></pre><p>Pour faire ça on a eu besoin de la fonction <code>matriceIdentite</code>, qui retourne une matrice identité. Une matrice identité est une matrice qui représente &quot;1.0&quot;, c&#39;est-à-dire qu&#39;en la multipliant, il ne se passe rien. Tout comme</p>
+</code></pre><p>Pour faire ça on a eu besoin de la fonction <code class="notranslate" translate="no">matriceIdentite</code>, qui retourne une matrice identité. Une matrice identité est une matrice qui représente &quot;1.0&quot;, c&#39;est-à-dire qu&#39;en la multipliant, il ne se passe rien. Tout comme</p>
 <div class="webgl_center">X * 1 = X</div>
 
 <p>de même</p>
 <div class="webgl_center">matriceX * identite = matriceX</div>
 
 <p>Voilà le code pour faire une matrice identité :</p>
-<pre class="prettyprint"><code>function matriceIdentite() {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function matriceIdentite() {
   return [
     1, 0, 0,
     0, 1, 0,
@@ -460,7 +487,7 @@ void main() {
 </p>
 <p>Voyons un autre exemple. Jusque là dans tous les exemples notre &quot;F&quot; tourne autour de son coin gauche. C&#39;est parce que les opérations qu&#39;on a utilisées faisaient des rotations autour de l&#39;origine et que ce coin gauche, c&#39;est l&#39;origine (0,0).</p>
 <p>Mais maintenant, parce qu&#39;on sait faire des opérations matricielles on peut choisir un ordre d&#39;application des transformations et déplacer l&#39;origine avant le reste des opérations :</p>
-<pre class="prettyprint"><code>    // créé une matrice qui va déplacer l&#39;origine du F vers son centre :
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">    // créé une matrice qui va déplacer l&#39;origine du F vers son centre :
     var matriceDeplacementOrigine = deplacer(-50, -75);
     ...
 
@@ -477,7 +504,7 @@ void main() {
 </p>
 <p>Avec cette technique vous pouvez tourner et changer d&#39;échelle depuis n&#39;importe quel point. Maintenant vous savez comment Photoshop ou Flash vous laissent changer un centre de rotation.</p>
 <p>Allons plus loin dans cette folie. Si on revient au premier article <a href="webgl-fundamentals.html">WebGL - Les bases</a> vous vous rappelez peut-être qu&#39;on avait un code dans nos shaders pour convertir des coordonnées d&#39;écran aux coordonnées d&#39;espace de projection (clipspace). Ca ressemblait à ça :</p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
   // convertit le rectangle de l&#39;espace des pixels à 0.0 &gt; 1.0
   vec2 zeroAUn = position / u_resolution;
 
@@ -489,7 +516,7 @@ void main() {
 
   gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
 </code></pre><p>Si vous regardez chaque étape, en fait, &quot;convertit le rectangle de l&#39;espace des pixels à 0.0 &gt; 1.0&quot;, est un changement d&#39;échelle. Pareil pour la seconde étape. La troisième est un déplacement et la dernière un changement d&#39;échelle par -1. On peut du coup faire ceci dans une matrice qu&#39;on envoie au shader. On pourrait faire deux matrices d&#39;échelle, une pour l&#39;échelle 1.0 / résolution, une autre pour l&#39;échelle 2.0, une troisième pour le déplacement (-1.0,-1.0) et une quatrième pour changer l&#39;échelle Y à -1.0, enfin multiplier tout ça. Mais à la place, parce que les maths c&#39;est sensé être simple, on va juste écrire une fonction qui retourne une matrice de &#39;projection&#39; pour une résolution donnée directement.</p>
-<pre class="prettyprint"><code>function projeter2D(largeur, hauteur) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function projeter2D(largeur, hauteur) {
   // Note: Cette matrice inverse l&#39;axe Y, il regarde vers le bas
   return [
     2 / largeur, 0, 0,
@@ -498,7 +525,7 @@ void main() {
   ];
 }
 </code></pre><p>Maintenant on peut simplifier le shader davantage. Voici le nouveau shader de vertex :</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;shader-de-vertex-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;shader-de-vertex-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform mat3 u_matrice;
@@ -509,7 +536,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>Et en javascript il reste à multiplier par la matrice de projection :</p>
-<pre class="prettyprint"><code>  // Rend la scène
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Rend la scène
   function rendreScene() {
     ...
     // Calcule les matrices
@@ -532,9 +559,9 @@ void main() {
 </p>
 <p>J&#39;espère que ces posts aident à démystifier les matrices. <a href="webgl-3d-orthographic.html">On peut passer à la 3D</a>. En 3D les matrices suivent les mêmes principes. J&#39;ai démarré avec la 2D pour rendre ça plus facile à comprendre. </p>
 <div class="webgl_bottombar">
-<h3>Que signifient <code>clientWidth</code> et <code>clientHeight</code>?</h3>
-<p>Jusqu'à maintenant quand je faisais référence aux dimensions du canvas j'utilisais <code>canvas.width</code> et <code>canvas.height</code>
-mais dans <code>projeter2D</code> j'ai préféré <code>canvas.clientWidth</code> et <code>canvas.clientHeight</code>. Pourquoi ?</p>
+<h3>Que signifient <code class="notranslate" translate="no">clientWidth</code> et <code class="notranslate" translate="no">clientHeight</code>?</h3>
+<p>Jusqu'à maintenant quand je faisais référence aux dimensions du canvas j'utilisais <code class="notranslate" translate="no">canvas.width</code> et <code class="notranslate" translate="no">canvas.height</code>
+mais dans <code class="notranslate" translate="no">projeter2D</code> j'ai préféré <code class="notranslate" translate="no">canvas.clientWidth</code> et <code class="notranslate" translate="no">canvas.clientHeight</code>. Pourquoi ?</p>
 <p>Les matrices de projection ont besoin de connaître les dimensions du canvas pour créer un espace de projection qui ne déforme pas l'objet. 
 Mais, dans le navigateur, il y a deux types de pixels qu'on doit gérer. Le premier est le nombre de pixels dans le canvas. Par exemple un canvas défini comme ça </p>
 <pre class="prettyprint">
@@ -561,21 +588,21 @@ Par exemple si on a le canvas suivant, avec ce style appliqué :</p>
 </pre>
 <p>Le canvas va être affiché dans tout son contenant parent, quel que soit sa propre taille, 400x300 ou une autre.</p>
 <p>Voici deux exemples qui définissent la taille d'affichage CSS pour étirer le canvas sur toute la page. Le premier utilise 
-<code>canvas.width</code> et <code>canvas.height</code>. Ouvrez-le dans une nouvelle fenêtre et redimensionnez-là. Le <code>F</code> n'a plus le bon aspect, il est déformé.</p>
+<code class="notranslate" translate="no">canvas.width</code> et <code class="notranslate" translate="no">canvas.height</code>. Ouvrez-le dans une nouvelle fenêtre et redimensionnez-là. Le <code class="notranslate" translate="no">F</code> n'a plus le bon aspect, il est déformé.</p>
 <div class="webgl_example_container">
   <iframe class="webgl_example" style="width:  500px; height: 150px;" src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-canvas-width-height.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-canvas-width-height.html" target="_blank">Cliquer ici pour ouvrir dans une nouvelle fenêtre</a>
 </div>
 
 
-<p>Dans le second exemple on utilise <code>canvas.clientWidth</code> et <code>canvas.clientHeight</code>. <code>canvas.clientWidth</code> et <code>canvas.clientHeight</code> reprennent la taille avec laquelle le canvas est effectivement affiché dans le navigateur donc dans ce cas, même s'il n'a toujours que 400x300 pixels, puisqu'on définit l'aspect en se basant sur l'aspect réel du canvas, le <code>F</code> n'est plus déformé.</p>
+<p>Dans le second exemple on utilise <code class="notranslate" translate="no">canvas.clientWidth</code> et <code class="notranslate" translate="no">canvas.clientHeight</code>. <code class="notranslate" translate="no">canvas.clientWidth</code> et <code class="notranslate" translate="no">canvas.clientHeight</code> reprennent la taille avec laquelle le canvas est effectivement affiché dans le navigateur donc dans ce cas, même s'il n'a toujours que 400x300 pixels, puisqu'on définit l'aspect en se basant sur l'aspect réel du canvas, le <code class="notranslate" translate="no">F</code> n'est plus déformé.</p>
 <div class="webgl_example_container">
   <iframe class="webgl_example" style="width:  500px; height: 150px;" src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-canvas-clientwidth-clientheight.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-canvas-clientwidth-clientheight.html" target="_blank">Cliquer ici pour ouvrir dans une nouvelle fenêtre</a>
 </div>
 
 
-<p>La plupart des applis qui permettent le redimensionnement du canvas essaient de vérifier si <code>canvas.clientWidth</code> et <code>canvas.clientHeight</code> valent <code>canvas.width</code> et <code>canvas.height</code> parce qu'ils veulent qu'un pixel du canvas vale un pixel sur l'écran. Mais comme on l'a vu plus haut, ce n'est pas toujours le cas. Donc, dans la plupart des cas, c'est plus correct de calculer une matrice de projection en calculant l'aspect depuis <code>canvas.clientHeight</code> et <code>canvas.clientWidth</code>.
+<p>La plupart des applis qui permettent le redimensionnement du canvas essaient de vérifier si <code class="notranslate" translate="no">canvas.clientWidth</code> et <code class="notranslate" translate="no">canvas.clientHeight</code> valent <code class="notranslate" translate="no">canvas.width</code> et <code class="notranslate" translate="no">canvas.height</code> parce qu'ils veulent qu'un pixel du canvas vale un pixel sur l'écran. Mais comme on l'a vu plus haut, ce n'est pas toujours le cas. Donc, dans la plupart des cas, c'est plus correct de calculer une matrice de projection en calculant l'aspect depuis <code class="notranslate" translate="no">canvas.clientHeight</code> et <code class="notranslate" translate="no">canvas.clientWidth</code>.
 </p>
 </div>
 
@@ -683,6 +710,10 @@ Par exemple si on a le canvas suivant, avec ce style appliqué :</p>
         <ul>
           <li><a href="/webgl/lessons/fr/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/fr/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -691,6 +722,11 @@ Par exemple si on a le canvas suivant, avec ce style appliqué :</p>
 <li><a href="/webgl/lessons/fr/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/fr/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/fr/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/fr/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Divers</li>
         <ul>
           <li><a href="/webgl/lessons/fr/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -698,8 +734,6 @@ Par exemple si on a le canvas suivant, avec ce style appliqué :</p>
 <li><a href="/webgl/lessons/fr/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/fr/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/fr/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/fr/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/fr/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/fr/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/fr/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/fr/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -711,11 +745,14 @@ Par exemple si on a le canvas suivant, avec ce style appliqué :</p>
 <li><a href="/webgl/lessons/fr/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/fr/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/fr/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/fr/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/fr/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/fr/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/fr/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/fr/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/fr/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/fr/webgl-references.html">References</a></li>
         </ul></ul>
@@ -753,9 +790,17 @@ Par exemple si on a le canvas suivant, avec ce style appliqué :</p>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

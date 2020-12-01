@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Как выполнить перенос в 2D" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-translation_ru.jpg" />
+<meta name="description" content="Как выполнить перенос в 2D">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-translation_ru.jpg">
 
-<meta property="og:title" content="2D-перенос в WebGL" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-translation_ru.jpg" />
-<meta property="og:description" content="Как выполнить перенос в 2D" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-translation.html" />
+<meta property="og:title" content="2D-перенос в WebGL">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-translation_ru.jpg">
+<meta property="og:description" content="Как выполнить перенос в 2D">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-translation.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="2D-перенос в WebGL" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-translation.html" />
-<meta name="twitter:description" content="Как выполнить перенос в 2D" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-translation_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="2D-перенос в WebGL">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-translation.html">
+<meta name="twitter:description" content="Как выполнить перенос в 2D">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-translation_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>2D-перенос в WebGL</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-translation.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-translation.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-translation.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-translation.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-translation.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-translation.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-translation.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-translation.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -227,13 +254,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <a href="webgl-fundamentals.html">предыдущем примере</a>.</p>
 <p>Для начала заведём переменные для значений переноса, ширины, высоты и
 цвета прямоугольника</p>
-<pre class="prettyprint"><code>  var translation = [0, 0];
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  var translation = [0, 0];
   var width = 100;
   var height = 30;
   var color = [Math.random(), Math.random(), Math.random(), 1];
 </code></pre><p>Далее нам понадобится функция, чтобы всё перерисовывать. Мы сможем
 вызывать эту функцию после изменения значения переноса.</p>
-<pre class="prettyprint"><code>  // Отрисовка сцены.
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Отрисовка сцены.
   function drawScene() {
     webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
@@ -278,7 +305,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     gl.drawArrays(primitiveType, offset, count);
   }
 </code></pre><p>В примере ниже я прикрепил пару слайдеров, которые устанавливают
-<code>translation[0]</code> и <code>translation[1]</code> и вызывают <code>drawScene</code> каждый раз
+<code class="notranslate" translate="no">translation[0]</code> и <code class="notranslate" translate="no">translation[1]</code> и вызывают <code class="notranslate" translate="no">drawScene</code> каждый раз
 при их изменении. Потяните за слайдер для переноса прямоугольника.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-rectangle-translate.html"></iframe>
@@ -290,9 +317,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 объектом более сложной формы.</p>
 <p>Скажем, мы хотим отобразить букву &#39;F&#39;, которая состоит из 6 треугольников:</p>
 <p><img src="../../resources/polygon-f.svg" width="200" height="270" class="webgl_center"></p>
-<p>Исходя из нашего текущего кода нам нужно изменить функцию <code>setRectangle</code>
+<p>Исходя из нашего текущего кода нам нужно изменить функцию <code class="notranslate" translate="no">setRectangle</code>
 примерно следующим образом:</p>
-<pre class="prettyprint"><code>// Заполняем буфер значениями, описывающими букву &#39;F&#39;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Заполняем буфер значениями, описывающими букву &#39;F&#39;
 function setGeometry(gl, x, y) {
   var width = 100;
   var height = 150;
@@ -332,7 +359,7 @@ function setGeometry(gl, x, y) {
 отрисовке JavaScript&#39;у придётся заново генерировать все точки.</p>
 <p>Есть более простой способ. Нужно просто осуществлять перенос геометрии в шейдере.</p>
 <p>Так будет выглядеть шейдер:</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform vec2 u_resolution;
@@ -346,7 +373,7 @@ void main() {
 *   vec2 zeroToOne = position / u_resolution;
    ...
 </code></pre><p>Код тоже немного изменится. Во-первых, нам нужно задать геометрию всего один раз.</p>
-<pre class="prettyprint"><code>// Заполняем буфер значениями, описывающими букву &#39;F&#39;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Заполняем буфер значениями, описывающими букву &#39;F&#39;
 function setGeometry(gl) {
   gl.bufferData(
       gl.ARRAY_BUFFER,
@@ -378,8 +405,8 @@ function setGeometry(gl) {
       gl.STATIC_DRAW);
 }
 </code></pre><p>А затем перед отрисовкой нам нужно просто задавать необходимое значение
-переноса для переменной <code>u_translation</code>.</p>
-<pre class="prettyprint"><code>  ...
+переноса для переменной <code class="notranslate" translate="no">u_translation</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
 
 + var translationLocation = gl.getUniformLocation(
 +            program, &quot;u_translation&quot;);
@@ -408,8 +435,8 @@ function setGeometry(gl) {
 *    var count = 18;
     gl.drawArrays(primitiveType, offset, count);
   }
-</code></pre><p>Заметьте, что <code>setGeometry</code> вызывается лишь один раз. Она более
-не находится внутри <code>drawScene</code>.</p>
+</code></pre><p>Заметьте, что <code class="notranslate" translate="no">setGeometry</code> вызывается лишь один раз. Она более
+не находится внутри <code class="notranslate" translate="no">drawScene</code>.</p>
 <p>И вот готовый пример. Для изменения значения переноса потяните
 за слайдер.</p>
 <p><div class="webgl_example_container">
@@ -530,6 +557,10 @@ function setGeometry(gl) {
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -538,6 +569,11 @@ function setGeometry(gl) {
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -545,8 +581,6 @@ function setGeometry(gl) {
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -558,11 +592,14 @@ function setGeometry(gl) {
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -600,9 +637,17 @@ function setGeometry(gl) {
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="How to do WebGL development" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-setup-and-installation_en.jpg" />
+<meta name="description" content="How to do WebGL development">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-setup-and-installation_en.jpg">
 
-<meta property="og:title" content="WebGL Setup and Installation" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-setup-and-installation_en.jpg" />
-<meta property="og:description" content="How to do WebGL development" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-setup-and-installation.html" />
+<meta property="og:title" content="WebGL Setup and Installation">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-setup-and-installation_en.jpg">
+<meta property="og:description" content="How to do WebGL development">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-setup-and-installation.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL Setup and Installation" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-setup-and-installation.html" />
-<meta name="twitter:description" content="How to do WebGL development" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-setup-and-installation_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL Setup and Installation">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-setup-and-installation.html">
+<meta name="twitter:description" content="How to do WebGL development">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-setup-and-installation_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL Setup and Installation</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-setup-and-installation.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-setup-and-installation.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-setup-and-installation.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-setup-and-installation.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-setup-and-installation.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-setup-and-installation.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-setup-and-installation.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-setup-and-installation.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -215,7 +242,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <p>Technically you don&#39;t need anything other than a web browser to do WebGL
 development. Go to <a href="https://jsfiddle.net/greggman/8djzyjL3/">jsfiddle.net</a> or <a href="https://jsbin.com">jsbin.com</a>
 or <a href="https://codepen.io/greggman/pen/YGQjVV">codepen.io</a> and just start applying the lessons here.</p>
-<p>On all of them you can reference external scripts by adding a <code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code>
+<p>On all of them you can reference external scripts by adding a <code class="notranslate" translate="no">&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code>
 tag pair if you want to use external scripts.</p>
 <p>Still, there are limits. WebGL has stronger restrictions than Canvas2D for loading images
 which means you can&#39;t easily access images from around the web for your WebGL work.
@@ -238,24 +265,24 @@ servers are actually extremely simple</a>.</p>
 
 </p>
 <p>Just point it at the folder where you unzipped the files, click &quot;Start&quot;, then go to
-in your browser <a href="http://localhost:8080/webgl/"><code>http://localhost:8080/webgl/</code></a> and choose
+in your browser <a href="http://localhost:8080/webgl/"><code class="notranslate" translate="no">http://localhost:8080/webgl/</code></a> and choose
 a sample.</p>
 <p>If you prefer the command line, another way is to use <a href="https://nodejs.org">node.js</a>.
 Download it, install it, then open a command prompt / console / terminal window. If you&#39;re on Windows the installer
 will add a special &quot;Node Command Prompt&quot; so use that.</p>
-<p>Then install <a href="https://github.com/greggman/servez-cli"><code>servez</code></a> by typing</p>
-<pre class="prettyprint"><code>npm -g install servez
+<p>Then install <a href="https://github.com/greggman/servez-cli"><code class="notranslate" translate="no">servez</code></a> by typing</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">npm -g install servez
 </code></pre><p>If you&#39;re on OSX use</p>
-<pre class="prettyprint"><code>sudo npm -g install servez
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">sudo npm -g install servez
 </code></pre><p>Once you&#39;ve done that type</p>
-<pre class="prettyprint"><code>servez path/to/folder/where/you/unzipped/files
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">servez path/to/folder/where/you/unzipped/files
 </code></pre><p>It should print something like</p>
 <p><div class="webgl_image ">
   <img class="" src="/webgl/lessons/resources/servez-response.png">
 </div>
 
 </p>
-<p>Then in your browser go to <a href="http://localhost:8080/webgl/"><code>http://localhost:8080/webgl/</code></a>.</p>
+<p>Then in your browser go to <a href="http://localhost:8080/webgl/"><code class="notranslate" translate="no">http://localhost:8080/webgl/</code></a>.</p>
 <p>If you don&#39;t specify a path then servez will serve the current folder.</p>
 <h2 id="using-your-browsers-developer-tools">Using your Browsers Developer Tools</h2>
 <p>Most browser have extensive developer tools built in.</p>
@@ -274,21 +301,68 @@ an error message. Read the error message closely and you should get a clue where
 
 </p>
 <h2 id="webgl-helpers">WebGL Helpers</h2>
-<p>There are various WebGL Inspectors / Helpers. <a href="https://benvanik.github.io/WebGL-Inspector/">Here&#39;s one for Chrome</a>.</p>
+<p><a href="https://greggman.github.io/webgl-helpers/">Here</a> are some scripts you might find
+useful. In particular just add this to your page before your other scripts</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script src=&quot;https://greggman.github.io/webgl-helpers/webgl-gl-error-check.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>and your program will throw an exception if it gets a WebGL error and if you&#39;re lucky
+print more info.</p>
+<p>There are various WebGL Inspectors. 
+<a href="https://spector.babylonjs.com/">Here&#39;s one for Chrome and Firefox</a>.</p>
 <p><div class="webgl_image ">
-  <img class="" src="https://benvanik.github.io/WebGL-Inspector/images/screenshots/1-Trace.gif">
+  <img class="" src="https://camo.githubusercontent.com/5bbc9caf2fc0ecc2eebf615fa8348146b37b08fe/68747470733a2f2f73706563746f72646f632e626162796c6f6e6a732e636f6d2f70696374757265732f7469746c652e706e67">
 </div>
 
 </p>
-<p><a href="https://hacks.mozilla.org/2014/03/introducing-the-canvas-debugger-in-firefox-developer-tools/">Firefox also has a similar one</a>.
-It needs to be enabled in <code>about:flags</code> and might require the <a href="https://www.mozilla.org/en-US/firefox/developer/">Firefox Developer Edition</a>.</p>
-<p>They may or may not be helpful. Most of them are designed for animated samples and will capture a frame
-and let you see all the WebGL calls that made that frame. That&#39;s great if you already have something
-working or if you had something working and it broke. But it&#39;s not so great if your issue is during
-initialization which they don&#39;t catch or if you&#39;re not using animation, as in drawing something every frame.
-Still they can be very useful. I&#39;ll often click on a draw call, and check the uniforms. If I see a
-bunch of <code>NaN</code> (NaN = Not a Number) then I can usually track down the code that set that uniform and
-find the bug.</p>
+<p>Note: <a href="https://github.com/BabylonJS/Spector.js/blob/master/readme.md">READ THE DOCS</a>!</p>
+<p>The extension version of spector.js captures frames. What this is means is it only
+works if your WebGL app successfully initializes itself and then renders in a
+<code class="notranslate" translate="no">requestAnimationFrame</code> loop. You click the &quot;record&quot; button and it captures
+all the WebGL API calls for one &quot;frame&quot;.</p>
+<p>This means without some work it won&#39;t help you find issues during initialization.</p>
+<p>To workaround that there are 2 methods.</p>
+<ol>
+<li><p>Use it as a library, not as an extension. </p>
+<p>See <a href="https://github.com/BabylonJS/Spector.js/blob/master/readme.md">the docs</a>. This way you can tell it &quot;Capture the WebGL API commands now!&quot;</p>
+</li>
+<li><p>Change your app so that it doesn&#39;t start until you click a button.</p>
+<p>This way you can go to the extension and pick &quot;record&quot; and then start your
+app. If your app doesn&#39;t animate then just add a few fake frames. Example:</p>
+</li>
+</ol>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-html">&lt;button type=&quot;button&quot;&gt;start&lt;/button&gt;
+&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;
+</code></pre>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function main() {
+  // Get A WebGL context
+  /** @type {HTMLCanvasElement} */
+  const canvas = document.querySelector(&quot;#canvas&quot;);
+  const gl = canvas.getContext(&quot;webgl&quot;);
+  if (!gl) {
+    return;
+  }
+
+  const startElem = document.querySelector(&#39;button&#39;);
+  startElem.addEventListener(&#39;click&#39;, start, {once: true});
+
+  function start() {
+    // run the initialization in rAF since spector only captures inside rAF events
+    requestAnimationFrame(() =&gt; {
+      // do all the initialization
+      init(gl);
+    });
+    // make so more frames so spector has something to look at.
+    requestAnimationFrame(() =&gt; {});
+    requestAnimationFrame(() =&gt; {});
+    requestAnimationFrame(() =&gt; {});
+  }
+}
+
+main();
+</code></pre>
+<p>Now you can click &quot;record&quot; in the spector.js extension, then click &quot;start&quot; in your page
+and spector will record your initialization.</p>
+<p>Safari also has a similar built in feature that has <a href="https://stackoverflow.com/questions/62446483/debugging-in-webgl">similar issues with similar workarounds</a>. </p>
+<p>When I use a helper like this I&#39;ll often click on a draw call, and check the uniforms. If I see a bunch of <code class="notranslate" translate="no">NaN</code> (NaN = Not a Number) then I can usually track down the code that set that uniform and find the bug.</p>
 <h2 id="inspect-the-code">Inspect the Code</h2>
 <p>Also always remember you can inspect the code. You can usually just pick view source</p>
 <p><div class="webgl_image ">
@@ -409,6 +483,10 @@ you can always view the source in the devtools</p>
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -417,6 +495,11 @@ you can always view the source in the devtools</p>
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -424,8 +507,6 @@ you can always view the source in the devtools</p>
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -437,11 +518,14 @@ you can always view the source in the devtools</p>
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -484,9 +568,17 @@ you can always view the source in the devtools</p>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="WebGLで指向性光源計算し方" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ja.jpg" />
+<meta name="description" content="WebGLで指向性光源計算し方">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ja.jpg">
 
-<meta property="og:title" content="WebGL三次元指向性光源" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ja.jpg" />
-<meta property="og:description" content="WebGLで指向性光源計算し方" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-lighting-directional.html" />
+<meta property="og:title" content="WebGL三次元指向性光源">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ja.jpg">
+<meta property="og:description" content="WebGLで指向性光源計算し方">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-lighting-directional.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL三次元指向性光源" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-lighting-directional.html" />
-<meta name="twitter:description" content="WebGLで指向性光源計算し方" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ja.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL三次元指向性光源">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-lighting-directional.html">
+<meta name="twitter:description" content="WebGLで指向性光源計算し方">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ja.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL三次元指向性光源</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-3d-lighting-directional.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ja/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -256,11 +283,11 @@ facing.</p>
 ＋Xは<span style="color: red;">赤</span>, 上は
 <span style="color: green;">緑</span>、そして＋Zは
 <span style="color: blue;">青</span>。</p>
-<p>照明する為に<a href="webgl-3d-camera.html">前回の記事の<code>F</code></a>に法線ベクトルを追加しよう！
-<code>F</code>は四角柱と同じように表面がXとYとZ軸と同調しているので結構簡単である。
-前を向いている面の法線ベクトルは<code>0, 0, 1</code>である。裏を向いている面の法線ベクトル<code>0, 0, -1</code>である。
-左を向いている法線ベクトルは<code>-1, 0, 0</code>である。右は<code>1, 0, 0</code>、上は<code>0, 1, 0</code>、下は<code>0, -1, 0</code>である。</p>
-<pre class="prettyprint"><code>function setNormals(gl) {
+<p>照明する為に<a href="webgl-3d-camera.html">前回の記事の<code class="notranslate" translate="no">F</code></a>に法線ベクトルを追加しよう！
+<code class="notranslate" translate="no">F</code>は四角柱と同じように表面がXとYとZ軸と同調しているので結構簡単である。
+前を向いている面の法線ベクトルは<code class="notranslate" translate="no">0, 0, 1</code>である。裏を向いている面の法線ベクトル<code class="notranslate" translate="no">0, 0, -1</code>である。
+左を向いている法線ベクトルは<code class="notranslate" translate="no">-1, 0, 0</code>である。右は<code class="notranslate" translate="no">1, 0, 0</code>、上は<code class="notranslate" translate="no">0, 1, 0</code>、下は<code class="notranslate" translate="no">0, -1, 0</code>である。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function setNormals(gl) {
   var normals = new Float32Array([
           // 前面の左縦列
           0, 0, 1,
@@ -393,7 +420,7 @@ facing.</p>
   gl.bufferData(gl.ARRAY_BUFFER, normals, gl.STATIC_DRAW);
 }
 </code></pre><p>そしてそれをセットアップする。その間照明を分かり易くする為に頂点の色を抜く。</p>
-<pre class="prettyprint"><code>// データはどれの属性に与えなければいけないかを調べる。
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// データはどれの属性に与えなければいけないかを調べる。
 var positionLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
 -var colorLocation = gl.getAttribLocation(program, &quot;a_color&quot;);
 +var normalLocation = gl.getAttribLocation(program, &quot;a_normal&quot;);
@@ -412,7 +439,7 @@ var positionLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
 +// バッファーに法線ベクトルを入れる。
 +setNormals(gl);
 </code></pre><p>そして描画する時</p>
-<pre class="prettyprint"><code>-// 色の属性オンにする。
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">-// 色の属性オンにする。
 -gl.enableVertexAttribArray(colorLocation);
 -
 -// colorBufferをARRAY_BUFFERに結び付ける。
@@ -445,7 +472,7 @@ var positionLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
 +    normalLocation, size, type, normalize, stride, offset)
 </code></pre><p>シェーダーに法線ベクトルを使わせよう</p>
 <p>まず、頂点シェーダーで法線ベクトルをピクセルシェーダーに伝えるように更新する。</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 -attribute vec4 a_color;
 +attribute vec3 a_normal;
 
@@ -465,7 +492,7 @@ void main() {
 +  v_normal = a_normal;
 }
 </code></pre><p>そして、ピクセルシェーダーで光線の方向と法線ベクトルの内積を計算する。</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 // 頂点シェーダーに渡された。
 -varying vec4 v_color;
@@ -487,14 +514,14 @@ void main() {
 +   // 色部分だけ照明に掛けよう（アルファ/透明の部分を無視）
 +   gl_FragColor.rgb *= light;
 }
-</code></pre><p><code>u_color</code>と<code>u_reverseLightDirection</code>のユニフォム・ロケーションを調べなきゃ。</p>
-<pre class="prettyprint"><code>  // ユニフォムを調べる。
+</code></pre><p><code class="notranslate" translate="no">u_color</code>と<code class="notranslate" translate="no">u_reverseLightDirection</code>のユニフォム・ロケーションを調べなきゃ。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // ユニフォムを調べる。
   var matrixLocation = gl.getUniformLocation(program, &quot;u_matrix&quot;);
 +  var colorLocation = gl.getUniformLocation(program, &quot;u_color&quot;);
 +  var reverseLightDirectionLocation =
 +      gl.getUniformLocation(program, &quot;u_reverseLightDirection&quot;);
 </code></pre><p>そして、それを設定しなきゃ。</p>
-<pre class="prettyprint"><code>  // 行列を設定する。
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // 行列を設定する。
   gl.uniformMatrix4fv(matrixLocation, false, worldViewProjectionMatrix);
 
 +  // 色を設定する。
@@ -502,10 +529,10 @@ void main() {
 +
 +  // 光線の方向を設定する。
 +  gl.uniform3fv(reverseLightDirectionLocation, m4.normalize([0.5, 0.7, 1]));
-</code></pre><p>以前に説明した<code>m4.normalize</code>であるベクトルを単位ベクトルに出来る。この場合、
-<code>x = 0.5</code>が<code>+x</code>の意味は指向性光源が右から左に向いてることである。
-<code>y = 0.7</code>が<code>+y</code>の意味は指向性光源が上から下に向いてることである。
-<code>z = 1</code>が<code>+z</code>の意味は指向性光源が前から中を目指していることである。
+</code></pre><p>以前に説明した<code class="notranslate" translate="no">m4.normalize</code>であるベクトルを単位ベクトルに出来る。この場合、
+<code class="notranslate" translate="no">x = 0.5</code>が<code class="notranslate" translate="no">+x</code>の意味は指向性光源が右から左に向いてることである。
+<code class="notranslate" translate="no">y = 0.7</code>が<code class="notranslate" translate="no">+y</code>の意味は指向性光源が上から下に向いてることである。
+<code class="notranslate" translate="no">z = 1</code>が<code class="notranslate" translate="no">+z</code>の意味は指向性光源が前から中を目指していることである。
 お互いの相対値の意味は光線がほとんど中を目指していて、さらに左より下への方向性が強いことである。</p>
 <p>さあ、これである。</p>
 <p><div class="webgl_example_container">
@@ -514,14 +541,14 @@ void main() {
 </div>
 
 </p>
-<p><code>F</code>を回転してみるとちょっと可怪しいに気付くだろう。「F」が回転しているが、照明が変わらないことである。
+<p><code class="notranslate" translate="no">F</code>を回転してみるとちょっと可怪しいに気付くだろう。「F」が回転しているが、照明が変わらないことである。
 「F」を回転しながら照明に向いている部分は一番明るくなって欲しいだろう？</p>
 <p>それを直す為にオブジェクト座標を回転させるのと同じように、法線ベクトルも回転させなければいけない。
-<code>position</code>と同じように法線をある行列に掛ける必要がある。それはそう考えるとワールド行列を思い起こすだろう。
-今は<code>u_matrix</code>という一つの行列しか使われていない。行列を２つにしよう。一つは<code>u_world</code>として、
-それがワールド行列になる。もう一つと<code>u_worldViewProjection</code>として、
-それが今までの<code>u_matrix</code>と同じような行列になる。</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<code class="notranslate" translate="no">position</code>と同じように法線をある行列に掛ける必要がある。それはそう考えるとワールド行列を思い起こすだろう。
+今は<code class="notranslate" translate="no">u_matrix</code>という一つの行列しか使われていない。行列を２つにしよう。一つは<code class="notranslate" translate="no">u_world</code>として、
+それがワールド行列になる。もう一つと<code class="notranslate" translate="no">u_worldViewProjection</code>として、
+それが今までの<code class="notranslate" translate="no">u_matrix</code>と同じような行列になる。</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 attribute vec3 a_normal;
 
 *uniform mat4 u_worldViewProjection;
@@ -536,15 +563,15 @@ void main() {
 *  // 法線ベクトルの向きを計算して、ピクセルシェーダーに渡す。
 *  v_normal = mat3(u_world) * a_normal;
 }
-</code></pre><p><code>a_normal</code>を<code>mat3(u_world)</code>に掛けていることに注目して。
+</code></pre><p><code class="notranslate" translate="no">a_normal</code>を<code class="notranslate" translate="no">mat3(u_world)</code>に掛けていることに注目して。
 法線ベクトルは方向だけなので行列の移動する部分が要らない。行列の向き部分は上の3x3の部分である。</p>
 <p>ユニフォームを調べなきゃ。</p>
-<pre class="prettyprint"><code>  // ユニフォームを調べる。
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // ユニフォームを調べる。
 *  var worldViewProjectionLocation =
 *      gl.getUniformLocation(program, &quot;u_worldViewProjection&quot;);
 +  var worldLocation = gl.getUniformLocation(program, &quot;u_world&quot;);
 </code></pre><p>そして、行列を設定しているところの更新が必要である。</p>
-<pre class="prettyprint"><code>*// 行列を設定する。
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*// 行列を設定する。
 *gl.uniformMatrix4fv(
 *    worldViewProjectionLocation, false,
 *    worldViewProjectionMatrix);
@@ -558,7 +585,7 @@ void main() {
 </p>
 <p>「F」を回転してみて、指向性光源に向いている部分が明るくなることに注目して下さい。</p>
 <p>まだ問題があるが説明しにくいので図形で見よう。
-<code>normal</code>の向きを変更するために<code>u_world</code>の行列に掛けている。
+<code class="notranslate" translate="no">normal</code>の向きを変更するために<code class="notranslate" translate="no">u_world</code>の行列に掛けている。
 ワールド行列にスケールを掛けるとどうなるか？法線ベクトルはダメになる。</p>
 <p><div class="webgl_diagram_container">
   <iframe class="webgl_example " style="width: 600px; height: 300px;" src="/webgl/lessons/resources/normals-scaled.html"></iframe>
@@ -578,9 +605,9 @@ void main() {
 見えるはず。どっちが正しいか分かりやすくないかもしれないけど、他の表示のし方でworldInverseTranspose
 の方が正しいと分かるはず。</p>
 <p>この解決方法を実装するためにこういうふうに変更しよう。まず、シェーダーを更新する。
-技術的に<code>u_world</code>の値だけ変更出来るが、正しい意味がある変数の名前を付けた方がいい。
+技術的に<code class="notranslate" translate="no">u_world</code>の値だけ変更出来るが、正しい意味がある変数の名前を付けた方がいい。
 そうしないとコードが分かりにくくなる。</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 attribute vec3 a_normal;
 
 uniform mat4 u_worldViewProjection;
@@ -596,11 +623,11 @@ void main() {
 *  v_normal = mat3(u_worldInverseTranspose) * a_normal;
 }
 </code></pre><p>そして、それを調べなきゃ</p>
-<pre class="prettyprint"><code>-  var worldLocation = gl.getUniformLocation(program, &quot;u_world&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">-  var worldLocation = gl.getUniformLocation(program, &quot;u_world&quot;);
 +  var worldInverseTransposeLocation =
 +      gl.getUniformLocation(program, &quot;u_worldInverseTranspose&quot;);
 </code></pre><p>そして、計算して設定しなきゃ。</p>
-<pre class="prettyprint"><code>var worldViewProjectionMatrix = m4.multiply(viewProjectionMatrix, worldMatrix);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var worldViewProjectionMatrix = m4.multiply(viewProjectionMatrix, worldMatrix);
 var worldInverseMatrix = m4.inverse(worldMatrix);
 var worldInverseTransposeMatrix = m4.transpose(worldInverseMatrix);
 
@@ -613,7 +640,7 @@ gl.uniformMatrix4fv(
 +    worldInverseTransposeLocation, false,
 +    worldInverseTransposeMatrix);
 </code></pre><p>行列を転置するコードはこれである。</p>
-<pre class="prettyprint"><code>var m4 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m4 = {
   transpose: function(m) {
     return [
       m[0], m[4], m[8], m[12],
@@ -634,7 +661,7 @@ gl.uniformMatrix4fv(
 </p>
 <p>この照明の計算の第一歩は分かりやすかったかな〜。次回は<a href="webgl-3d-lighting-point.html">点光源である</a>。</p>
 <div class="webgl_bottombar">
-<h3><code>mat3(u_worldInverseTranspose) * a_normal</code>の代わり</h3>
+<h3><code class="notranslate" translate="no">mat3(u_worldInverseTranspose) * a_normal</code>の代わり</h3>
 <p>上のシェーダーにこのような行がある。</p>
 <pre class="prettyprint">
 v_normal = mat3(u_worldInverseTranspose) * a_normal;
@@ -643,16 +670,16 @@ v_normal = mat3(u_worldInverseTranspose) * a_normal;
 <pre class="prettyprint">
 v_normal = (u_worldInverseTranspose * vec4(a_normal, 0)).xyz;
 </pre>
-<p><code>w</code>を0にすると行列の移動する部分は0に掛けられる。なので移動の部分消されることになる。
-どっちの方が一般的か分からない。今回は<code>mat3</code>の方法の方が綺麗なような気がした。下のようにしたこともある。
+<p><code class="notranslate" translate="no">w</code>を0にすると行列の移動する部分は0に掛けられる。なので移動の部分消されることになる。
+どっちの方が一般的か分からない。今回は<code class="notranslate" translate="no">mat3</code>の方法の方が綺麗なような気がした。下のようにしたこともある。
 </p>
-<p>もう一つの方法として<code>u_worldInverseTranspose</code>を<code>mat3</code>にすることもあるが、
-そのようにしない方がいい理由が2つある。一つ目は<code>mat4</code>で<code>u_worldInverseTranspose</code>を
-使う場合もあるので<code>mat4</code>として渡せばmat4で必要な場合にも使える。
+<p>もう一つの方法として<code class="notranslate" translate="no">u_worldInverseTranspose</code>を<code class="notranslate" translate="no">mat3</code>にすることもあるが、
+そのようにしない方がいい理由が2つある。一つ目は<code class="notranslate" translate="no">mat4</code>で<code class="notranslate" translate="no">u_worldInverseTranspose</code>を
+使う場合もあるので<code class="notranslate" translate="no">mat4</code>として渡せばmat4で必要な場合にも使える。
 二つ目は今まで使っている行列数学ライブラリは
-<code>mat4</code>しか作れない。<code>mat3</code>のライブラリを作るのは面倒で、
+<code class="notranslate" translate="no">mat4</code>しか作れない。<code class="notranslate" translate="no">mat3</code>のライブラリを作るのは面倒で、
 mat4からmat3に変更することもコンピューターにさせたくないので、
-特別の理由がなければ<code>mat4</code>でいいと思う。</p>
+特別の理由がなければ<code class="notranslate" translate="no">mat4</code>でいいと思う。</p>
 </div>
 
     </div>
@@ -758,6 +785,10 @@ mat4からmat3に変更することもコンピューターにさせたくない
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -766,6 +797,11 @@ mat4からmat3に変更することもコンピューターにさせたくない
 <li><a href="/webgl/lessons/ja/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ja/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>その他のトピック</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-setup-and-installation.html">WebGLの開発環境</a></li>
@@ -773,8 +809,6 @@ mat4からmat3に変更することもコンピューターにさせたくない
 <li><a href="/webgl/lessons/ja/webgl-resizing-the-canvas.html">WebGLとcanvasのリサイズ</a></li>
 <li><a href="/webgl/lessons/ja/webgl-animation.html">アニメーション</a></li>
 <li><a href="/webgl/lessons/ja/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ja/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ja/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ja/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -786,11 +820,14 @@ mat4からmat3に変更することもコンピューターにさせたくない
 <li><a href="/webgl/lessons/ja/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ja/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ja/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ja/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ja/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ja/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ja/webgl-references.html">References</a></li>
         </ul></ul>
@@ -828,9 +865,17 @@ mat4からmat3に変更することもコンピューターにさせたくない
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Математика матриц на простых и подробных примерах." />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_ru.jpg" />
+<meta name="description" content="Математика матриц на простых и подробных примерах.">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_ru.jpg">
 
-<meta property="og:title" content="2D-матрицы WebGL" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_ru.jpg" />
-<meta property="og:description" content="Математика матриц на простых и подробных примерах." />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrices.html" />
+<meta property="og:title" content="2D-матрицы WebGL">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_ru.jpg">
+<meta property="og:description" content="Математика матриц на простых и подробных примерах.">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrices.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="2D-матрицы WebGL" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrices.html" />
-<meta name="twitter:description" content="Математика матриц на простых и подробных примерах." />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="2D-матрицы WebGL">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrices.html">
+<meta name="twitter:description" content="Математика матриц на простых и подробных примерах.">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrices_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>2D-матрицы WebGL</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrices.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-matrices.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -337,11 +364,11 @@ newY = y * sy;
 уже сделали ранее.</p>
 <p>И именно здесь появляется магия. Так получается, что мы можем умножить
 все матрицы и применить все трансформации сразу. Предположим, у нас есть
-функция <code>m3.multiply</code>, которая принимает две матрицы, умножает их и
+функция <code class="notranslate" translate="no">m3.multiply</code>, которая принимает две матрицы, умножает их и
 возвращает результат.</p>
 <p>Чтобы внести ясность, напишем функции для создания матриц переноса,
 поворота и масштабирования.</p>
-<pre class="prettyprint"><code>var m3 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m3 = {
   translation: function(tx, ty) {
     return [
       1, 0, 0,
@@ -369,7 +396,7 @@ newY = y * sy;
   },
 };
 </code></pre><p>Теперь внесём изменения в шейдер. Код прежнего шейдера выглядел так:</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform vec2 u_resolution;
@@ -390,7 +417,7 @@ void main() {
   vec2 position = rotatedPosition + u_translation;
   ...
 </code></pre><p>Код нового шейдера намного проще</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform vec2 u_resolution;
@@ -401,7 +428,7 @@ void main() {
   vec2 position = (u_matrix * vec3(a_position, 1)).xy;
   ...
 </code></pre><p>И вот как мы используем его в JavaScript:</p>
-<pre class="prettyprint"><code>  // Отрисовка сцены
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Отрисовка сцены
   function drawScene() {
 
     ,,,
@@ -434,7 +461,7 @@ void main() {
 преимущество. Дело ещё в том, что для изменения порядка трансформаций
 нам не нужно менять код шейдера. Достаточно изменить порядок умножения
 матриц.</p>
-<pre class="prettyprint"><code>    ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">    ...
     // Умножаем матрицы
     var matrix = m3.multiply(scaleMatrix, rotationMatrix);
     matrix = m3.multiply(matrix, translationMatrix);
@@ -450,7 +477,7 @@ void main() {
 руки относительно тела, спутники относительно планеты вокруг солнца, или
 ветви дерева. Для простого примера иерархической анимации нарисуем &#39;F&#39; 5
 раз, каждый раз начиная с матрицы предыдущей &#39;F&#39;.</p>
-<pre class="prettyprint"><code>  // Отрисовка сцены
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Отрисовка сцены
   function drawScene() {
     // Очищаем canvas
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -476,7 +503,7 @@ void main() {
       gl.drawArrays(gl.TRIANGLES, 0, 18);
     }
   }
-</code></pre><p>У нас появилась новая функция <code>m3.identity</code>, которая создаёт единичную
+</code></pre><p>У нас появилась новая функция <code class="notranslate" translate="no">m3.identity</code>, которая создаёт единичную
 матрицу. Единичная матрица - это матрица, которая фактически представляет
 собой единицу, то есть при умножении матрицы на единичную матрицу ничего
 не изменится. Прямо как</p>
@@ -486,7 +513,7 @@ void main() {
 <div class="webgl_center">matrixX * identity = matrixX</div>
 
 <p>Вот код, создающий единичную матрицу</p>
-<pre class="prettyprint"><code>var m3 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m3 = {
   identity function() {
     return [
       1, 0, 0,
@@ -510,7 +537,7 @@ void main() {
 координат (0, 0).</p>
 <p>Но теперь, используя матрицы, мы можем задавать порядок применения
 трансформаций и сместить таким образом начало координат.</p>
-<pre class="prettyprint"><code>    // создаём матрицу, которая переместит начало координат в центр буквы &#39;F&#39;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">    // создаём матрицу, которая переместит начало координат в центр буквы &#39;F&#39;
     var moveOriginMatrix = m3.translation(-50, -75);
     ...
 
@@ -531,7 +558,7 @@ void main() {
 <p>Теперь пойдём ещё дальше. Если вы вернётесь к первой статье про
 <a href="webgl-fundamentals.html">Основы WebGL</a>, вы можете вспомнить код шейдера,
 который конвертировал пиксели в координаты пространства отсечения:</p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
   // преобразуем положение в пикселях к диапазону от 0.0 до 1.0
   vec2 zeroToOne = position / u_resolution;
 
@@ -552,7 +579,7 @@ void main() {
 умножить все эти матрицы, но так как вычисления здесь очень простые, мы
 просто можем написать функцию, которая сразу создаёт &#39;проекционную&#39;
 матрицу для заданного разрешения.</p>
-<pre class="prettyprint"><code>var m3 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m3 = {
   projection: function(width, height) {
     // Эта матрица переворачивает Y, чтобы 0 был наверху
     return [
@@ -565,7 +592,7 @@ void main() {
   ...
 </code></pre><p>Теперь шейдер можно сделать ещё проще. Так будет выглядеть полностью
 новый вершинный шейдер.</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform mat3 u_matrix;
@@ -576,7 +603,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>В JavaScript нам нужно умножить на проекционную матрицу.</p>
-<pre class="prettyprint"><code>  // Отрисовка сцены
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Отрисовка сцены
   function drawScene() {
     ...
 
@@ -605,7 +632,7 @@ void main() {
 <p>Прежде, чем мы продолжим, давайте немного упростим код. Мы можем не просто умножать
 отдельно созданные матрицы, а создать соответствующие операции трансформации. Например,
 мы могли бы написать следующие функции:</p>
-<pre class="prettyprint"><code>var m3 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m3 = {
 
   ...
 
@@ -625,7 +652,7 @@ void main() {
 
 };
 </code></pre><p>С помощью этих функций 7 строк кода, рассмотренных выше, превратятся в 4 строки:</p>
-<pre class="prettyprint"><code>// Вычисление матриц
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Вычисление матриц
 var matrix = m3.projection(gl.canvas.clientWidth, gl.canvas.clientHeight);
 matrix = m3.translate(matrix, translation[0], translation[1]);
 matrix = m3.rotate(matrix, angleInRadians);
@@ -638,9 +665,9 @@ matrix = m3.scale(matrix, scale[0], scale[1]);
 
 </p>
 <p>И последнее, что касается порядка следования матриц. В первом примере у нас было</p>
-<pre class="prettyprint"><code>translation * rotation * scale
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">translation * rotation * scale
 </code></pre><p>а во втором</p>
-<pre class="prettyprint"><code>scale * rotation * translation
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">scale * rotation * translation
 </code></pre><p>И вы видели, как они отличаются.</p>
 <p>Если отследить весь путь преобразования матрицами, то вы начинаете с координат
 пространства отсечения, и каждая матрица вносит изменение в это пространство:</p>
@@ -648,24 +675,24 @@ matrix = m3.scale(matrix, scale[0], scale[1]);
 <blockquote>
 <p>Мы в пространстве отсечения, координаты должны передаваться тоже в нём.</p>
 </blockquote>
-<p>Шаг 2:  <code>matrix = m3.projection(gl.canvas.clientWidth, gl.canvas.clientHeight)</code>;</p>
+<p>Шаг 2:  <code class="notranslate" translate="no">matrix = m3.projection(gl.canvas.clientWidth, gl.canvas.clientHeight)</code>;</p>
 <blockquote>
 <p>Мы в пиксельном пространстве. Координаты должны передаваться тоже в пикселях.</p>
 </blockquote>
-<p>Шаг 3:  <code>matrix = m3.translate(matrix, tx, ty);</code></p>
+<p>Шаг 3:  <code class="notranslate" translate="no">matrix = m3.translate(matrix, tx, ty);</code></p>
 <blockquote>
 <p>Начало координат теперь в tx, ty (пространство сдвинулось)</p>
 </blockquote>
-<p>Шаг 4:  <code>matrix = m3.rotate(matrix, rotationInRadians);</code></p>
+<p>Шаг 4:  <code class="notranslate" translate="no">matrix = m3.rotate(matrix, rotationInRadians);</code></p>
 <blockquote>
 <p>Пространство повернулось вокруг tx, ty</p>
 </blockquote>
-<p>Шаг 5:  <code>matrix = m3.scale(matrix, sx, sy);</code></p>
+<p>Шаг 5:  <code class="notranslate" translate="no">matrix = m3.scale(matrix, sx, sy);</code></p>
 <blockquote>
 <p>Повёрнутое пространство с центром в tx, ty теперь масштабируется</p>
 </blockquote>
-<p>Затем в шейдере мы выполняем <code>gl_Position = matrix * position;</code>
-и значения <code>position</code> теперь находятся в этом конечном пространстве.</p>
+<p>Затем в шейдере мы выполняем <code class="notranslate" translate="no">gl_Position = matrix * position;</code>
+и значения <code class="notranslate" translate="no">position</code> теперь находятся в этом конечном пространстве.</p>
 <p>Надеюсь, статья помогла снять завесу тайны с математики матриц.
 Если вы хотите продолжить тему 2D, советую ознакомиться с
 <a href="webgl-2d-drawimage.html">WebGL 2D - DrawImage</a> и следующий за ним
@@ -676,9 +703,9 @@ matrix = m3.scale(matrix, scale[0], scale[1]);
 <p>Также, если вы хотите стать экспертом в области матриц, рекомендую
 <a href="https://www.youtube.com/watch?v=kjBOesZCoqc&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">ознакомиться с этими замечательными видео</a>.</p>
 <div class="webgl_bottombar">
-<h3>Что такое <code>clientWidth</code> и <code>clientHeight</code>?</h3>
-<p>До этого момента для получения размеров canvas я использовал <code>canvas.width</code> и <code>canvas.height</code>,
-но немного ранее при вызове <code>m3.projection</code> я использовал <code>canvas.clientWidth</code> и <code>canvas.clientHeight</code> вместо них. Почему же?</p>
+<h3>Что такое <code class="notranslate" translate="no">clientWidth</code> и <code class="notranslate" translate="no">clientHeight</code>?</h3>
+<p>До этого момента для получения размеров canvas я использовал <code class="notranslate" translate="no">canvas.width</code> и <code class="notranslate" translate="no">canvas.height</code>,
+но немного ранее при вызове <code class="notranslate" translate="no">m3.projection</code> я использовал <code class="notranslate" translate="no">canvas.clientWidth</code> и <code class="notranslate" translate="no">canvas.clientHeight</code> вместо них. Почему же?</p>
 
 <p>Проекционные матрицы отвечают за то, как конвертировать пространство отсечения (-1 до +1 во всех измерениях)
 в пиксели. Но в браузере есть 2 типа пикселей, с которыми мы работаем. Один тип - количество пикселей в самом
@@ -707,7 +734,7 @@ canvas. Например, если canvas задан следующим обра
 </pre>
 <p>Canvas займет весь отведённый ему контейнер, а это не 400x300.</p>
 <p>Рассмотрим два примера, где canvas'у задан размер 100% черз CSS, чтобы растянуть canvas на всю
-страницу. Первый использует <code>canvas.width</code> и <code>canvas.height</code>. Откройте его в
+страницу. Первый использует <code class="notranslate" translate="no">canvas.width</code> и <code class="notranslate" translate="no">canvas.height</code>. Откройте его в
 новом окне и измените размер окна. Как видите, 'F' не сохраняет пропорции и искажается.</p>
 <div class="webgl_example_container">
   <iframe class="webgl_example" style="width:  500px; height: 150px;" src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-canvas-width-height.html"></iframe>
@@ -715,8 +742,8 @@ canvas. Например, если canvas задан следующим обра
 </div>
 
 
-<p>Во втором примере мы используем <code>canvas.clientWidth</code> и <code>canvas.clientHeight</code>.
-<code>canvas.clientWidth</code> и <code>canvas.clientHeight</code> возвращают размер canvas, который
+<p>Во втором примере мы используем <code class="notranslate" translate="no">canvas.clientWidth</code> и <code class="notranslate" translate="no">canvas.clientHeight</code>.
+<code class="notranslate" translate="no">canvas.clientWidth</code> и <code class="notranslate" translate="no">canvas.clientHeight</code> возвращают размер canvas, который
 в итоге отобразится браузером на странице, поэтому несмотря на то, что в canvas по-прежнему содержится
 400x300 пикселей, 'F' будет отображаться корректно, так как соотношение сторон будет рассчитываться из
 конечного размера элемента браузера.</p>
@@ -727,10 +754,10 @@ canvas. Например, если canvas задан следующим обра
 
 
 <p>Большинство приложений, допускающих менять размеры canvas, пытаются поддерживать равенство
-<code>canvas.width</code> и <code>canvas.height</code> с <code>canvas.clientWidth</code> и <code>canvas.clientHeight</code>,
+<code class="notranslate" translate="no">canvas.width</code> и <code class="notranslate" translate="no">canvas.height</code> с <code class="notranslate" translate="no">canvas.clientWidth</code> и <code class="notranslate" translate="no">canvas.clientHeight</code>,
 чтобы один пиксель canvas соответствовал одному пикселю, отображённому в браузере. Но, как мы видели
-выше, это не единственное решение. Практически в любом случае использование <code>canvas.clientHeight</code>
-и <code>canvas.clientWidth</code> для вычисления соотношения сторон будет более корректным с технической
+выше, это не единственное решение. Практически в любом случае использование <code class="notranslate" translate="no">canvas.clientHeight</code>
+и <code class="notranslate" translate="no">canvas.clientWidth</code> для вычисления соотношения сторон будет более корректным с технической
 точки зрения.</p>
 </div>
 
@@ -837,6 +864,10 @@ canvas. Например, если canvas задан следующим обра
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -845,6 +876,11 @@ canvas. Например, если canvas задан следующим обра
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -852,8 +888,6 @@ canvas. Например, если canvas задан следующим обра
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -865,11 +899,14 @@ canvas. Например, если canvas задан следующим обра
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -907,9 +944,17 @@ canvas. Например, если canvas задан следующим обра
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

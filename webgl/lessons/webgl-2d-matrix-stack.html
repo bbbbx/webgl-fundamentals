@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="How to implement canvas 2d&#x27;s translate/rotate/scale functions in WebGL" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_en.jpg" />
+<meta name="description" content="How to implement canvas 2d&#x27;s translate/rotate/scale functions in WebGL">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_en.jpg">
 
-<meta property="og:title" content="WebGL Implementing A Matrix Stack" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_en.jpg" />
-<meta property="og:description" content="How to implement canvas 2d&#x27;s translate/rotate/scale functions in WebGL" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrix-stack.html" />
+<meta property="og:title" content="WebGL Implementing A Matrix Stack">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_en.jpg">
+<meta property="og:description" content="How to implement canvas 2d&#x27;s translate/rotate/scale functions in WebGL">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrix-stack.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL Implementing A Matrix Stack" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrix-stack.html" />
-<meta name="twitter:description" content="How to implement canvas 2d&#x27;s translate/rotate/scale functions in WebGL" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL Implementing A Matrix Stack">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrix-stack.html">
+<meta name="twitter:description" content="How to implement canvas 2d&#x27;s translate/rotate/scale functions in WebGL">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL Implementing A Matrix Stack</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-matrix-stack.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -216,20 +243,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 DrawImage</a>.  If you haven&#39;t read that I suggest
 <a href="webgl-2d-drawimage.html">you start there</a>.</p>
 <p>In that last article we implemented the WebGL equivalent of Canvas 2D&#39;s
-<code>drawImage</code> function including its ability to specify both the source
+<code class="notranslate" translate="no">drawImage</code> function including its ability to specify both the source
 rectangle and the destination rectangle.</p>
 <p>What we haven&#39;t done yet is let us rotate and/or scale it from any
 arbitrary point.  We could do that by adding more arguments, at a minimum
 we&#39;d to specify a center point, a rotation and an x and y scale.
 Fortunately there&#39;s a more generic and useful way.  The way the Canvas 2D
 API does that is with a matrix stack.  The matrix stack functions of the
-Canvas 2D API are <code>save</code>, <code>restore</code>, <code>translate</code>, <code>rotate</code>, and <code>scale</code>.</p>
+Canvas 2D API are <code class="notranslate" translate="no">save</code>, <code class="notranslate" translate="no">restore</code>, <code class="notranslate" translate="no">translate</code>, <code class="notranslate" translate="no">rotate</code>, and <code class="notranslate" translate="no">scale</code>.</p>
 <p>A matrix stack is pretty simple to implement. We make a stack of matrices. We make functions to
 multiply the top matrix of the stack using by either a translation, rotation, or scale matrix
 <a href="webgl-2d-matrices.html">using the functions we created earlier</a>.</p>
 <p>Here&#39;s the implementation</p>
-<p>First the constructor and the <code>save</code> and <code>restore</code> functions</p>
-<pre class="prettyprint"><code>function MatrixStack() {
+<p>First the constructor and the <code class="notranslate" translate="no">save</code> and <code class="notranslate" translate="no">restore</code> functions</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function MatrixStack() {
   this.stack = [];
 
   // since the stack is empty this will put an initial matrix in it
@@ -250,7 +277,7 @@ MatrixStack.prototype.save = function() {
   this.stack.push(this.getCurrentMatrix());
 };
 </code></pre><p>We also need functions for getting and setting the top matrix</p>
-<pre class="prettyprint"><code>// Gets a copy of the current matrix (top of the stack)
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Gets a copy of the current matrix (top of the stack)
 MatrixStack.prototype.getCurrentMatrix = function() {
   return this.stack[this.stack.length - 1].slice();
 };
@@ -259,9 +286,9 @@ MatrixStack.prototype.getCurrentMatrix = function() {
 MatrixStack.prototype.setCurrentMatrix = function(m) {
   return this.stack[this.stack.length - 1] = m;
 };
-</code></pre><p>Finally we need to implement <code>translate</code>, <code>rotate</code>, and <code>scale</code> using our
+</code></pre><p>Finally we need to implement <code class="notranslate" translate="no">translate</code>, <code class="notranslate" translate="no">rotate</code>, and <code class="notranslate" translate="no">scale</code> using our
 previous matrix functions.</p>
-<pre class="prettyprint"><code>// Translates the current matrix
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Translates the current matrix
 MatrixStack.prototype.translate = function(x, y, z) {
   var m = this.getCurrentMatrix();
   this.setCurrentMatrix(m4.translate(m, x, y, z));
@@ -278,11 +305,11 @@ MatrixStack.prototype.scale = function(x, y, z) {
   var m = this.getCurrentMatrix();
   this.setCurrentMatrix(m4.scale(m, x, y, z));
 };
-</code></pre><p>Note we&#39;re using the 3d matrix math functions.  We could just use <code>0</code> for
-<code>z</code> on translation and <code>1</code> for <code>z</code> on scale but I find that I&#39;m so used to
-using the 2d functions from Canvas 2d that I often forget to specify <code>z</code>
-an then the code breaks so let&#39;s make <code>z</code> optional</p>
-<pre class="prettyprint"><code>// Translates the current matrix
+</code></pre><p>Note we&#39;re using the 3d matrix math functions.  We could just use <code class="notranslate" translate="no">0</code> for
+<code class="notranslate" translate="no">z</code> on translation and <code class="notranslate" translate="no">1</code> for <code class="notranslate" translate="no">z</code> on scale but I find that I&#39;m so used to
+using the 2d functions from Canvas 2d that I often forget to specify <code class="notranslate" translate="no">z</code>
+an then the code breaks so let&#39;s make <code class="notranslate" translate="no">z</code> optional</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Translates the current matrix
 MatrixStack.prototype.translate = function(x, y, z) {
 +  if (z === undefined) {
 +    z = 0;
@@ -301,9 +328,9 @@ MatrixStack.prototype.scale = function(x, y, z) {
   var m = this.getCurrentMatrix();
   this.setCurrentMatrix(m4.scale(m, x, y, z));
 };
-</code></pre><p>Using our <a href="webgl-2d-drawimage.html"><code>drawImage</code> from the previous lesson</a>
+</code></pre><p>Using our <a href="webgl-2d-drawimage.html"><code class="notranslate" translate="no">drawImage</code> from the previous lesson</a>
 we had these lines</p>
-<pre class="prettyprint"><code>// this matrix will convert from pixels to clip space
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// this matrix will convert from pixels to clip space
 var matrix = m4.orthographic(0, gl.canvas.width, gl.canvas.height, 0, -1, 1);
 
 // this matrix will translate our quad to dstX, dstY
@@ -313,9 +340,9 @@ matrix = m4.translate(matrix, dstX, dstY, 0);
 // from 1 unit to texWidth, texHeight units
 matrix = m4.scale(matrix, dstWidth, dstHeight, 1);
 </code></pre><p>We just need to create a matrix stack</p>
-<pre class="prettyprint"><code>var matrixStack = new MatrixStack();
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var matrixStack = new MatrixStack();
 </code></pre><p>and multiply in the top matrix from our stack in</p>
-<pre class="prettyprint"><code>// this matrix will convert from pixels to clip space
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// this matrix will convert from pixels to clip space
 var matrix = m4.orthographic(0, gl.canvas.width, gl.canvas.height, 0, -1, 1);
 
 +// this matrix moves the origin to the one represented by
@@ -336,7 +363,7 @@ canvas the origin (0,0) is at the top left corner.</p>
 an image at 0,0 will draw it starting at the center of the canvas</p>
 <p>Let&#39;s take <a href="webgl-2d-drawimage.html">our previous example</a> and just draw a
 single image</p>
-<pre class="prettyprint"><code>var textureInfo = loadImageAndCreateTextureInfo(&#39;resources/star.jpg&#39;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var textureInfo = loadImageAndCreateTextureInfo(&#39;resources/star.jpg&#39;);
 
 function draw(time) {
   gl.clear(gl.COLOR_BUFFER_BIT);
@@ -360,11 +387,11 @@ function draw(time) {
 </div>
 
 </p>
-<p>you can see even though we&#39;re passing <code>0, 0</code> to <code>drawImage</code> since we use
-<code>matrixStack.translate</code> to move the origin to the center of the canvas
+<p>you can see even though we&#39;re passing <code class="notranslate" translate="no">0, 0</code> to <code class="notranslate" translate="no">drawImage</code> since we use
+<code class="notranslate" translate="no">matrixStack.translate</code> to move the origin to the center of the canvas
 the image is drawn and rotates around that center.</p>
 <p>Let&#39;s move the center of rotation to center of the image</p>
-<pre class="prettyprint"><code>matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
 matrixStack.rotateZ(time);
 +matrixStack.translate(textureInfo.width / -2, textureInfo.height / -2);
 </code></pre><p>And now it rotates around the center of the image in the center of the canvas</p>
@@ -375,7 +402,7 @@ matrixStack.rotateZ(time);
 
 </p>
 <p>Let&#39;s draw the same image at each corner rotating on different corners</p>
-<pre class="prettyprint"><code>matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
 matrixStack.rotateZ(time);
 
 +matrixStack.save();
@@ -469,27 +496,27 @@ matrixStack.rotateZ(time);
 </div>
 
 </p>
-<p>If you think of the various matrix stack functions, <code>translate</code>,
-<code>rotateZ</code>, and <code>scale</code> as moving the origin then the way I think of
+<p>If you think of the various matrix stack functions, <code class="notranslate" translate="no">translate</code>,
+<code class="notranslate" translate="no">rotateZ</code>, and <code class="notranslate" translate="no">scale</code> as moving the origin then the way I think of
 setting the center of rotation is <em>where would I have to move the origin
 so that when I call drawImage a certain part of the image is <strong>at</strong> the
 previous origin?</em></p>
 <p>In other words let&#39;s say on a 400x300 canvas I call
-<code>matrixStack.translate(220, 150)</code>.  At that point the origin is at 220,
-150 and all drawing will be relative that point.  If we call <code>drawImage</code>
-with <code>0, 0</code> this is where the image will be drawn.</p>
+<code class="notranslate" translate="no">matrixStack.translate(220, 150)</code>.  At that point the origin is at 220,
+150 and all drawing will be relative that point.  If we call <code class="notranslate" translate="no">drawImage</code>
+with <code class="notranslate" translate="no">0, 0</code> this is where the image will be drawn.</p>
 <p><img class="webgl_center" width="400" src="resources/matrixstack-before.svg" /></p>
 <p>Lets say we want the center of rotation to be the bottom right.  In that
 case where would be have to move the origin so that when we call
-<code>drawImage</code> the point we want to be the center of rotation is at the
+<code class="notranslate" translate="no">drawImage</code> the point we want to be the center of rotation is at the
 current origin?  For the bottom right of the texture that would be
-<code>-textureWidth, -textureHeight</code> so now when we call <code>drawImage</code> with <code>0,
+<code class="notranslate" translate="no">-textureWidth, -textureHeight</code> so now when we call <code class="notranslate" translate="no">drawImage</code> with <code class="notranslate" translate="no">0,
 0</code> the texture would be drawn here and it&#39;s bottom right corner as at the
 previous origin.</p>
 <p><img class="webgl_center" width="400" src="resources/matrixstack-after.svg" /></p>
 <p>At any point whatever we did before that on the matrix stack it doesn&#39;t
 matter.  We did a bunch of stuff to move or scale or rotate the origin but
-just before we call <code>drawImage</code> wherever the origin happens to be at the
+just before we call <code class="notranslate" translate="no">drawImage</code> wherever the origin happens to be at the
 moment is irrelevant.  It&#39;s the new origin so we just have to decide where
 to move that origin relative where the texture would be drawn if we had
 nothing before it on the stack.</p>
@@ -601,6 +628,10 @@ node.  A matrix stack is effectively another version that same process.</p>
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -609,6 +640,11 @@ node.  A matrix stack is effectively another version that same process.</p>
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -616,8 +652,6 @@ node.  A matrix stack is effectively another version that same process.</p>
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -629,11 +663,14 @@ node.  A matrix stack is effectively another version that same process.</p>
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -676,9 +713,17 @@ node.  A matrix stack is effectively another version that same process.</p>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="정사영으로 시작하는 WebGL에서 3D 하는 방법" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ko.jpg" />
+<meta name="description" content="정사영으로 시작하는 WebGL에서 3D 하는 방법">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ko.jpg">
 
-<meta property="og:title" content="WebGL - Orthographic 3D" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ko.jpg" />
-<meta property="og:description" content="정사영으로 시작하는 WebGL에서 3D 하는 방법" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-orthographic.html" />
+<meta property="og:title" content="WebGL - Orthographic 3D">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ko.jpg">
+<meta property="og:description" content="정사영으로 시작하는 WebGL에서 3D 하는 방법">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-orthographic.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL - Orthographic 3D" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-orthographic.html" />
-<meta name="twitter:description" content="정사영으로 시작하는 WebGL에서 3D 하는 방법" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ko.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL - Orthographic 3D">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-orthographic.html">
+<meta name="twitter:description" content="정사영으로 시작하는 WebGL에서 3D 하는 방법">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-orthographic_ko.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL - Orthographic 3D</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/ko/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-orthographic.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-3d-orthographic.html">
+
 
 
 
@@ -120,32 +132,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ko/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +176,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +197,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +215,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -216,7 +244,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 첫 번째는 <a href="webgl-fundamentals.html">기초로 시작했고</a> 이전에는 <a href="webgl-2d-matrices.html">2D 행렬에 대해</a> 다뤘습니다.
 혹시 읽지 않으셨다면 해당 글들을 먼저 읽어주세요.</p>
 <p>마지막 글에서 우리는 2D 행렬이 어떻게 동작하는지 살펴봤습니다.
-이동, 회전, 크기, 그리고 심지어 픽셀에서 clip 공간으로 투영하는 것은 모두 1 행렬 그리고 마법같은 행렬 수학으로 처리할 수 있는 방법에 대해 얘기했었는데요.
+translation, rotation, scale, 그리고 심지어 픽셀에서 clip 공간으로 투영하는 것은 모두 1 행렬 그리고 마법같은 행렬 수학으로 처리할 수 있는 방법에 대해 얘기했었는데요.
 거기서 3D를 수행하는 것은 하나의 작은 단계일 뿐입니다.</p>
 <p>이전 2D 예제에서는 3x3 행렬을 곱한 2D 점(x, y)들을 가졌었는데요.
 3D를 수행하기 위해서는 3D 점(x, y, z)들과 4x4 행렬이 필요합니다.</p>
@@ -224,7 +252,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 다시 F를 사용할 거지만 이번엔 3D &#39;F&#39; 입니다.</p>
 <p>먼저 해야할 일은 3D를 제어하도록 vertex shader를 수정하는 건데요.
 여기 기존 vertex shader가 있습니다.</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-2d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec2 a_position;
 
 uniform mat3 u_matrix;
@@ -235,7 +263,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>그리고 이게 새로운 것인데</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 *attribute vec4 a_position;
 
 *uniform mat4 u_matrix;
@@ -246,10 +274,10 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>더 간단해졌습니다!
-2D와 마찬가지로 <code>x</code>와 <code>y</code>를 제공하고 <code>z</code>를 1로 설정했습니다.
-3D에서는 <code>x</code>, <code>y</code>, 그리고 <code>z</code>가 제공되어야 하고 <code>w</code>가 1이어야 하지만 <code>w</code>의 기본값이 1이라는 사실을 이용합시다.</p>
+2D와 마찬가지로 <code class="notranslate" translate="no">x</code>와 <code class="notranslate" translate="no">y</code>를 제공하고 <code class="notranslate" translate="no">z</code>를 1로 설정했습니다.
+3D에서는 <code class="notranslate" translate="no">x</code>, <code class="notranslate" translate="no">y</code>, 그리고 <code class="notranslate" translate="no">z</code>가 제공되어야 하고 <code class="notranslate" translate="no">w</code>가 1이어야 하지만 <code class="notranslate" translate="no">w</code>의 기본값이 1이라는 사실을 이용합시다.</p>
 <p>그런 다음 3D 데이터를 제공해야 합니다.</p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
 
   // attribute에게 positionBuffer(ARRAY_BUFFER)에서 데이터 가져오는 방법을 알려줍니다.
 *  var size = 3;          // 반복마다 세 구성 요소
@@ -300,7 +328,7 @@ function setGeometry(gl) {
 }
 </code></pre><p>다음으로 모든 행렬 함수를 2D에서 3D로 바꿔야 합니다.</p>
 <p>여기 m3.translation, m3.rotation, 그리고 m3.scaling의 2D 버전입니다.</p>
-<pre class="prettyprint"><code>var m3 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m3 = {
   translation: function translation(tx, ty) {
     return [
       1, 0, 0,
@@ -328,7 +356,7 @@ function setGeometry(gl) {
   },
 };
 </code></pre><p>그리고 여기 업데이트된 3D 버전입니다.</p>
-<pre class="prettyprint"><code>var m4 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m4 = {
   translation: function(tx, ty, tz) {
     return [
        1,  0,  0,  0,
@@ -410,7 +438,7 @@ function setGeometry(gl) {
 <iframe class="external_diagram" src="../resources/axis-diagram.html" style="width: 540px; height: 280px;"></iframe>
 
 <p>마찬가지로 단순한 함수들을 만들어 봅시다.</p>
-<pre class="prettyprint"><code>  translate: function(m, tx, ty, tz) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  translate: function(m, tx, ty, tz) {
     return m4.multiply(m, m4.translation(tx, ty, tz));
   },
 
@@ -431,7 +459,7 @@ function setGeometry(gl) {
   },
 </code></pre><p>또한 투영 함수를 업데이트해야 합니다.
 이게 기존 것이고</p>
-<pre class="prettyprint"><code>  projection: function (width, height) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  projection: function (width, height) {
     // 참고: 이 행렬은 Y축을 뒤집으므로 0이 상단입니다.
     return [
       2 / width, 0, 0,
@@ -442,7 +470,7 @@ function setGeometry(gl) {
 }
 </code></pre><p>픽셀에서 clip 공간으로 변환되었습니다.
 3D로 확장하기 위한 첫 번째 시도는</p>
-<pre class="prettyprint"><code>  projection: function(width, height, depth) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  projection: function(width, height, depth) {
     // 참고: 이 행렬은 Y축을 뒤집으므로 0이 상단입니다.
     return [
        2 / width, 0, 0, 0,
@@ -453,9 +481,9 @@ function setGeometry(gl) {
   },
 </code></pre><p>X와 Y를 픽셀에서 clip 공간으로 변환해줘야 했던 것처럼, Z도 동일한 작업을 해줘야 합니다.
 이 경우에는 Z축 픽셀 단위도 만들고 있는데요.
-저는 <code>depth</code>에 대해 <code>width</code>와 비슷한 값을 넘길 것이므로 공간은 0에서 <code>width</code>의 픽셀 너비와, 0에서 <code>height</code>의 픽셀 높이가 되지만, <code>depth</code>는 <code>-depth / 2</code>에서 <code>+depth / 2</code>가 됩니다.</p>
+저는 <code class="notranslate" translate="no">depth</code>에 대해 <code class="notranslate" translate="no">width</code>와 비슷한 값을 넘길 것이므로 공간은 0에서 <code class="notranslate" translate="no">width</code>의 픽셀 너비와, 0에서 <code class="notranslate" translate="no">height</code>의 픽셀 높이가 되지만, <code class="notranslate" translate="no">depth</code>는 <code class="notranslate" translate="no">-depth / 2</code>에서 <code class="notranslate" translate="no">+depth / 2</code>가 됩니다.</p>
 <p>마지막으로 행렬을 계산하는 코드를 업데이트 해줘야 합니다.</p>
-<pre class="prettyprint"><code>  // 행렬 계산
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // 행렬 계산
 *  var matrix = m4.projection(gl.canvas.clientWidth, gl.canvas.clientHeight, 400);
 *  matrix = m4.translate(matrix, translation[0], translation[1], translation[2]);
 *  matrix = m4.xRotate(matrix, rotation[0]);
@@ -468,7 +496,7 @@ function setGeometry(gl) {
 </code></pre><p>그리고 여기 예제입니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-3d-step1.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step1.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step1.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
@@ -482,7 +510,7 @@ function setGeometry(gl) {
 사각형 당 삼각형 2개 그리고 삼각형 당 꼭지점 3개인 사각형 16개는 96개의 꼭지점이 있습니다.
 이것들 전부를 보고 싶다면 예제의 출처를 봐주세요.</p>
 <p>우리는 더 많은 점들을 그려야 하므로</p>
-<pre class="prettyprint"><code>    // geometry 그리기
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">    // geometry 그리기
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
 *    var count = 16 * 6;
@@ -490,7 +518,7 @@ function setGeometry(gl) {
 </code></pre><p>그리고 여기 해당 버전입니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-3d-step2.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step2.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step2.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
@@ -498,7 +526,7 @@ function setGeometry(gl) {
 이제 각 사각형 별로 다른 색을 입혀봅시다.
 이를 위해 vertex shader에 다른 attribute를 추가하고 varying으로 vertex shader에서 fragment shader로 전달할겁니다.</p>
 <p>여기 새로운 vertex shader 입니다.</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;vertex-shader-3d&quot; type=&quot;x-shader/x-vertex&quot;&gt;
 attribute vec4 a_position;
 +attribute vec4 a_color;
 
@@ -515,7 +543,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>그리고 fragment shader에서 그 색을 써야 하는데</p>
-<pre class="prettyprint"><code>&lt;script id=&quot;fragment-shader-3d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script id=&quot;fragment-shader-3d&quot; type=&quot;x-shader/x-fragment&quot;&gt;
 precision mediump float;
 
 +// vertex shader로부터 전달
@@ -526,7 +554,7 @@ void main() {
 }
 &lt;/script&gt;
 </code></pre><p>색상을 제공하기 위해 attribute 위치를 찾고, 다른 버퍼와 attribute를 설정해서 색상을 지정해야 합니다.</p>
-<pre class="prettyprint"><code>  ...
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  ...
   var colorLocation = gl.getAttribLocation(program, &quot;a_color&quot;);
 
   ...
@@ -560,7 +588,7 @@ function setColors(gl) {
       gl.STATIC_DRAW);
 }
 </code></pre><p>그런 다음 렌더링할 때 색상 attribute에게 색상 버퍼에서 색상 얻는 방법을 알려줘야 하는데</p>
-<pre class="prettyprint"><code>// 색상 attribute 활성화
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 색상 attribute 활성화
 gl.enableVertexAttribArray(colorLocation);
 
 // 색상 버퍼 할당
@@ -583,7 +611,7 @@ gl.vertexAttribPointer(
 </code></pre><p>이제 이걸 얻게 됩니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-3d-step3.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step3.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step3.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
@@ -600,8 +628,8 @@ gl.vertexAttribPointer(
 <p><img src="../resources/triangle-winding.svg" class="webgl_center" width="400" /></p>
 <p>WebGL은 정면 혹은 후면 삼각형만 그릴 수 있습니다.</p>
 <p>이 기능을 활성화시킬 수 있는데 다음과 같이</p>
-<pre class="prettyprint"><code>  gl.enable(gl.CULL_FACE);
-</code></pre><p>이걸 <code>drawScene</code> 함수에 넣읍시다.
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  gl.enable(gl.CULL_FACE);
+</code></pre><p>이걸 <code class="notranslate" translate="no">drawScene</code> 함수에 넣읍시다.
 이 기능을 켜면, WebGL은 기본적으로 뒷면의 삼각형을 &quot;culling&quot; 하는데요.
 이 경우 &quot;Culling&quot;은 &quot;not drawing&quot;을 말하는 멋진 단어입니다.</p>
 <p>참고로 WebGL에서 삼각형이 시계 혹은 반시계 방향으로 진행되는지는 clip 공간에서 해당 삼각형의 꼭지점에 따라 달라지는데요.
@@ -613,7 +641,7 @@ CULL_FACE가 비활성화되었으므로 시계 방향(앞)과 반시계 방향(
 <p>CULL_FACE를 켰을 때 이런 것을 얻는데</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-3d-step4.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step4.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step4.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
@@ -623,17 +651,17 @@ CULL_FACE가 비활성화되었으므로 시계 방향(앞)과 반시계 방향(
 다행히 이걸 고치는 것은 쉽습니다.
 그저 뒷면을 찾아 꼭지점 2개를 교환하면 됩니다.
 예를들어 뒷면 삼각형 하나가 있다면</p>
-<pre class="prettyprint"><code>           1,   2,   3,
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">           1,   2,   3,
           40,  50,  60,
          700, 800, 900,
 </code></pre><p>그냥 마지막 꼭지점 2개를 앞으로 오도록 교환해주면 됩니다.</p>
-<pre class="prettyprint"><code>           1,   2,   3,
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">           1,   2,   3,
          700, 800, 900,
           40,  50,  60,
 </code></pre><p>모든 후면 삼각형을 고치면 문제가 발생하는데</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-3d-step5.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step5.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step5.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
@@ -650,9 +678,9 @@ WebGL이 색상 픽셀을 그리기 전에 해당 depth 픽셀을 검사합니�
 아니면 fragment shader의 색상을 가진 새로운 색상 픽셀들을 모두 그리고 새로운 depth 값으로 depth 픽셀을 그립니다.
 즉, 다른 픽셀들 뒤에 있는 픽셀들은 그려지지 않을겁니다.</p>
 <p>다음과 같이 culling 기능을 켜기만 하면 이 기능을 사용할 수 있습니다.</p>
-<pre class="prettyprint"><code>  gl.enable(gl.DEPTH_TEST);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  gl.enable(gl.DEPTH_TEST);
 </code></pre><p>또한 그리기 전에 depth 버퍼를 1.0으로 초기화해야 합니다.</p>
-<pre class="prettyprint"><code>  // 화면 그리기
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // 화면 그리기
   function drawScene() {
     ...
 
@@ -663,14 +691,14 @@ WebGL이 색상 픽셀을 그리기 전에 해당 depth 픽셀을 검사합니�
 </code></pre><p>그리고 이제 3D를 얻습니다!</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-3d-step6.html"></iframe>
-  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step6.html" target="_blank">새 창을 여시려면 여기를 클릭하세요</a>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-3d-step6.html" target="_blank">새 창을 열려면 여기를 클릭</a>
 </div>
 
 </p>
 <p>한가지 사소한 일이 있는데요.
-대부분의 3D 수학 라이브러리에는 clip 공간에서 픽셀 공간으로 변환을 수행하는 <code>projection</code> 함수가 없습니다.
-오히려 일반적으로 <code>ortho</code>나 <code>orthographic</code>이라고 불리는 함수가 이렇게 있는데</p>
-<pre class="prettyprint"><code>var m4 = {
+대부분의 3D 수학 라이브러리에는 clip 공간에서 픽셀 공간으로 변환을 수행하는 <code class="notranslate" translate="no">projection</code> 함수가 없습니다.
+오히려 일반적으로 <code class="notranslate" translate="no">ortho</code>나 <code class="notranslate" translate="no">orthographic</code>이라고 불리는 함수가 이렇게 있는데</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m4 = {
   orthographic: function(left, right, bottom, top, near, far) {
     return [
       2 / (right - left), 0, 0, 0,
@@ -683,10 +711,10 @@ WebGL이 색상 픽셀을 그리기 전에 해당 depth 픽셀을 검사합니�
       1,
     ];
   }
-</code></pre><p>너비, 높이, 그리고 깊이만을 매개변수로 가지는 우리의 단순한 <code>projection</code> 함수와 달리
+</code></pre><p>너비, 높이, 그리고 깊이만을 매개변수로 가지는 우리의 단순한 <code class="notranslate" translate="no">projection</code> 함수와 달리
 좀 더 일반적인 orthographic projection 함수는 더 많은 유연성을 제공하기 위해 left, right, bottom, top, near, 그리고 far을 전달할 수 있습니다.
 원래 projection 함수와 똑같이 사용하기 위해서는 호출을 다음과 같이</p>
-<pre class="prettyprint"><code>var left = 0;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var left = 0;
 var right = gl.canvas.clientWidth;
 var bottom = gl.canvas.clientHeight;
 var top = 0;
@@ -761,19 +789,19 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
         <div id="toc">
           <ul>  <li>기초</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-fundamentals.html">WebGL 기초</a></li>
-<li><a href="/webgl/lessons/ko/webgl-how-it-works.html">WebGL 작동 원리</a></li>
-<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">WebGL 셰이더와 GLSL</a></li>
-<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL State Diagram</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-fundamentals.html">기초</a></li>
+<li><a href="/webgl/lessons/ko/webgl-how-it-works.html">작동 원리</a></li>
+<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">Shader 그리고 GLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL 상태 다이어그램</a></li>
         </ul>
   <li>이미지 처리</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">WebGL 이미지 처리</a></li>
-<li><a href="/webgl/lessons/ko/webgl-image-processing-continued.html">WebGL 이미지 처리 심화</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">이미지 처리</a></li>
+<li><a href="/webgl/lessons/ko/webgl-image-processing-continued.html">이미지 처리 심화</a></li>
         </ul>
-  <li>2D 이동, 회전, 크기 조절, 행렬 수학</li>
+  <li>2D translation, rotation, scale, 행렬 수학</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-2d-translation.html">WebGL 2D 이동</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-2d-translation.html">2D Translation</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-rotation.html">WebGL 2D 회전</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-scale.html">WebGL 2D 크기</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-matrices.html">WebGL 2D 행렬</a></li>
@@ -790,7 +818,7 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
 <li><a href="/webgl/lessons/ko/webgl-3d-lighting-point.html">Point Lighting</a></li>
 <li><a href="/webgl/lessons/ko/webgl-3d-lighting-spot.html">Spot Lighting</a></li>
         </ul>
-  <li>Structure and Organization</li>
+  <li>구조 및 조직</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-less-code-more-fun.html">Less Code, More Fun</a></li>
 <li><a href="/webgl/lessons/ko/webgl-drawing-multiple-things.html">Drawing Multiple Things</a></li>
@@ -802,7 +830,7 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
 <li><a href="/webgl/lessons/ko/webgl-load-obj.html">Loading .obj files</a></li>
 <li><a href="/webgl/lessons/ko/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
-  <li>텍스처</li>
+  <li>Texture</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-3d-textures.html">Textures</a></li>
 <li><a href="/webgl/lessons/ko/webgl-data-textures.html">Data Textures</a></li>
@@ -811,7 +839,7 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
 <li><a href="/webgl/lessons/ko/webgl-3d-perspective-correct-texturemapping.html">Perspective Correct Texture Mapping</a></li>
 <li><a href="/webgl/lessons/ko/webgl-planar-projection-mapping.html">Planar and Perspective Projection Mapping</a></li>
         </ul>
-  <li>텍스처로 렌더링하기</li>
+  <li>Texture로 렌더링</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-render-to-texture.html">Render to Texture</a></li>
         </ul>
@@ -836,34 +864,41 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
 <li><a href="/webgl/lessons/ko/webgl-fog.html">Fog</a></li>
 <li><a href="/webgl/lessons/ko/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
-  <li>Text</li>
+  <li>글자</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-text-html.html">Text - HTML</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-canvas2d.html">Text - Canvas 2D</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-texture.html">Text - Using a Texture</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
         </ul>
-  <li>텍스처</li>
+  <li>Texture</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-gpgpu.html">GPGPU</a></li>
         </ul>
-  <li>팁</li>
+        </ul>
+  <li>Tip</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/ko/webgl-drawing-without-data.html">Drawing Without Data</a></li>
 <li><a href="/webgl/lessons/ko/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ko/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
-  <li>기타</li>
+  <li>최적화</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
+  <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-setup-and-installation.html">WebGL 설치</a></li>
 <li><a href="/webgl/lessons/ko/webgl-boilerplate.html">WebGL Boilerplate</a></li>
 <li><a href="/webgl/lessons/ko/webgl-resizing-the-canvas.html">WebGL Canvas 크기 조정</a></li>
 <li><a href="/webgl/lessons/ko/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/ko/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ko/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ko/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ko/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ko/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -875,11 +910,14 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
 <li><a href="/webgl/lessons/ko/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ko/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ko/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ko/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ko/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>참고</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ko/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ko/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ko/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ko/webgl-references.html">References</a></li>
         </ul></ul>
@@ -896,7 +934,7 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
     <div>질문은? <a href="https://stackoverflow.com/questions/tagged/webgl">Stackoverflow</a>에서 물어봐주세요.</div>
     <div>이슈/버그는? <a href="https://github.com/gfxfundamentals/webgl-fundamentals/issues">Github</a>에 이슈를 만들어주세요.</div>
     <div class="lesson-comment-notes">
-       코드 블록에 <b>&lt;pre&gt;&lt;code&gt;</b>코드는 여기에<b>&lt;/code&gt;&lt;/pre&gt;</b>를 사용해주세요
+      코드 블록은 <b>&lt;pre&gt;&lt;code&gt;</b>여기에 코드 입력<b>&lt;/code&gt;&lt;/pre&gt;</b>를 사용해주세요
     </div>
   
 
@@ -923,9 +961,17 @@ x와 y는 전달했고 z는 1이 필요했지만 z의 기본 값은 0이므로 �
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

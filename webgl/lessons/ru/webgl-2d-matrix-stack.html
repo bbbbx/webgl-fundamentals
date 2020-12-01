@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Реализация функции canvas для переноса/поворота/масштабирования на WebGL" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_ru.jpg" />
+<meta name="description" content="Реализация функции canvas для переноса/поворота/масштабирования на WebGL">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_ru.jpg">
 
-<meta property="og:title" content="WebGL 2D - стек матриц" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_ru.jpg" />
-<meta property="og:description" content="Реализация функции canvas для переноса/поворота/масштабирования на WebGL" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrix-stack.html" />
+<meta property="og:title" content="WebGL 2D - стек матриц">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_ru.jpg">
+<meta property="og:description" content="Реализация функции canvas для переноса/поворота/масштабирования на WebGL">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrix-stack.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 2D - стек матриц" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrix-stack.html" />
-<meta name="twitter:description" content="Реализация функции canvas для переноса/поворота/масштабирования на WebGL" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 2D - стек матриц">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrix-stack.html">
+<meta name="twitter:description" content="Реализация функции canvas для переноса/поворота/масштабирования на WebGL">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-2d-matrix-stack_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 2D - стек матриц</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-2d-matrix-stack.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-matrix-stack.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -214,7 +241,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <div class="lesson-main">
       <p>Эта статья продолжает статью о <a href="webgl-2d-drawimage.html">функции DrawImage в WebGL</a>.
 Если вы её ещё не читали, рекомендую <a href="webgl-2d-drawimage.html">ознакомиться сначала с ней</a>.</p>
-<p>В предыдущей статье мы реализовали аналог 2D-фукнции canvas <code>drawImage</code>,
+<p>В предыдущей статье мы реализовали аналог 2D-фукнции canvas <code class="notranslate" translate="no">drawImage</code>,
 включая возможность указания обрезающего прямоугольника как исходного
 изображения, так и конечного.</p>
 <p>У нас впереди реализация функций поворота и/или масштабирования из любой
@@ -222,15 +249,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 функцию - как минимум, для указания центральной точки, величины вращения,
 а также масштабирования по x и y. К счастью, есть более распространённый
 и удобный способ. API-функции 2D-canvas используют для этих целей стек
-матриц. Функциями стека матриц Canvas 2D API являются <code>save</code>, <code>restore</code>,
-<code>translate</code>, <code>rotate</code> и <code>scale</code>.</p>
+матриц. Функциями стека матриц Canvas 2D API являются <code class="notranslate" translate="no">save</code>, <code class="notranslate" translate="no">restore</code>,
+<code class="notranslate" translate="no">translate</code>, <code class="notranslate" translate="no">rotate</code> и <code class="notranslate" translate="no">scale</code>.</p>
 <p>Реализовать стек матриц довольно просто. Нам просто нужно сделать стек,
 состоящий из матриц. Мы сделаем функции для умножения верхней матрицы из
 стека на матрицу переноса, поворота или масштабирования, используя
 <a href="webgl-2d-matrices.html">функции, которые мы создали ранее</a>.</p>
 <p>Далее идёт реализация.</p>
-<p>Сначала конструктор и функции <code>save</code> и <code>restore</code>.</p>
-<pre class="prettyprint"><code>function MatrixStack() {
+<p>Сначала конструктор и функции <code class="notranslate" translate="no">save</code> и <code class="notranslate" translate="no">restore</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function MatrixStack() {
   this.stack = [];
 
   // стек пуст, поэтому просто поместим в него начальную матрицу
@@ -251,7 +278,7 @@ MatrixStack.prototype.save = function() {
   this.stack.push(this.getCurrentMatrix());
 };
 </code></pre><p>Также нам понадобятся функции для получения и установки верхней матрицы.</p>
-<pre class="prettyprint"><code>// получаем копию текущей матрицы (верхушки стека)
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// получаем копию текущей матрицы (верхушки стека)
 MatrixStack.prototype.getCurrentMatrix = function() {
   return this.stack[this.stack.length - 1].slice();
 };
@@ -260,9 +287,9 @@ MatrixStack.prototype.getCurrentMatrix = function() {
 MatrixStack.prototype.setCurrentMatrix = function(m) {
   return this.stack[this.stack.length - 1] = m;
 };
-</code></pre><p>Наконец, нам нужно реализовать функции <code>translate</code>, <code>rotate</code> и <code>scale</code>,
+</code></pre><p>Наконец, нам нужно реализовать функции <code class="notranslate" translate="no">translate</code>, <code class="notranslate" translate="no">rotate</code> и <code class="notranslate" translate="no">scale</code>,
 используя наши предыдущие функции матриц.</p>
-<pre class="prettyprint"><code>// перенос текущей матрицы
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// перенос текущей матрицы
 MatrixStack.prototype.translate = function(x, y, z) {
   var m = this.getCurrentMatrix();
   this.setCurrentMatrix(m4.translate(m, x, y, z));
@@ -280,10 +307,10 @@ MatrixStack.prototype.scale = function(x, y, z) {
   this.setCurrentMatrix(m4.scale(m, x, y, z));
 };
 </code></pre><p>Обратите внимание, что мы используем математику функций для 3D. Мы могли
-бы использовать <code>0</code> для <code>z</code> при переносе и <code>1</code> для <code>z</code> при масштабировании,
-но я привык к 2d-функциям canvas и часто забывал указывать <code>z</code>, что приводило
-к ошибкам в коде. Поэтому давайте сделаем <code>z</code> опциональным параметром.</p>
-<pre class="prettyprint"><code>// перенос текущей матрицы
+бы использовать <code class="notranslate" translate="no">0</code> для <code class="notranslate" translate="no">z</code> при переносе и <code class="notranslate" translate="no">1</code> для <code class="notranslate" translate="no">z</code> при масштабировании,
+но я привык к 2d-функциям canvas и часто забывал указывать <code class="notranslate" translate="no">z</code>, что приводило
+к ошибкам в коде. Поэтому давайте сделаем <code class="notranslate" translate="no">z</code> опциональным параметром.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// перенос текущей матрицы
 MatrixStack.prototype.translate = function(x, y, z) {
 +  if (z === undefined) {
 +    z = 0;
@@ -302,9 +329,9 @@ MatrixStack.prototype.scale = function(x, y, z) {
   var m = this.getCurrentMatrix();
   this.setCurrentMatrix(m4.scale(m, x, y, z));
 };
-</code></pre><p>Теперь, используя функцию <a href="webgl-2d-drawimage.html"><code>drawImage</code> из предыдущей статьи</a>,
+</code></pre><p>Теперь, используя функцию <a href="webgl-2d-drawimage.html"><code class="notranslate" translate="no">drawImage</code> из предыдущей статьи</a>,
 мы получим следующий код</p>
-<pre class="prettyprint"><code>// матрица для конвертации из пикселей в пространство отсечения
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// матрица для конвертации из пикселей в пространство отсечения
 var matrix = m4.orthographic(0, gl.canvas.width, gl.canvas.height, 0, -1, 1);
 
 // матрица переноса квадранта в координаты dstX, dstY
@@ -314,9 +341,9 @@ matrix = m4.translate(matrix, dstX, dstY, 0);
 // до размеров texWidth, texHeight
 matrix = m4.scale(matrix, dstWidth, dstHeight, 1);
 </code></pre><p>Нам нужно просто создать стек матриц</p>
-<pre class="prettyprint"><code>var matrixStack = new MatrixStack();
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var matrixStack = new MatrixStack();
 </code></pre><p>и умножить матрицу на текущую матрицу стека</p>
-<pre class="prettyprint"><code>// матрица для конвертации из пикселей в пространство отсечения
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// матрица для конвертации из пикселей в пространство отсечения
 var matrix = m4.orthographic(0, gl.canvas.width, gl.canvas.height, 0, -1, 1);
 
 +// эта матрица сместит начало координат в положение,
@@ -338,7 +365,7 @@ matrix = m4.scale(matrix, dstWidth, dstHeight, 1);
 отрисуем изображение в 0,0, то изображение отрисуется в центре canvas.</p>
 <p>Возьмём <a href="webgl-2d-drawimage.html">наш предыдущий пример</a> и нарисуем
 одно изображение.</p>
-<pre class="prettyprint"><code>var textureInfo = loadImageAndCreateTextureInfo(&#39;resources/star.jpg&#39;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var textureInfo = loadImageAndCreateTextureInfo(&#39;resources/star.jpg&#39;);
 
 function draw(time) {
   gl.clear(gl.COLOR_BUFFER_BIT);
@@ -362,11 +389,11 @@ function draw(time) {
 </div>
 
 </p>
-<p>Как вы видите, несмотря на передачу <code>0, 0</code> в функцию <code>drawImage</code>,
+<p>Как вы видите, несмотря на передачу <code class="notranslate" translate="no">0, 0</code> в функцию <code class="notranslate" translate="no">drawImage</code>,
 изображение отрисовывается и вращается вокруг центра canvas, так как
-мы использовали <code>matrixStack.translate</code> для смещения начала координат.</p>
+мы использовали <code class="notranslate" translate="no">matrixStack.translate</code> для смещения начала координат.</p>
 <p>Сместим центр вращения в центр изображения.</p>
-<pre class="prettyprint"><code>matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
 matrixStack.rotateZ(time);
 +matrixStack.translate(textureInfo.width / -2, textureInfo.height / -2);
 </code></pre><p>И теперь вращение происходит вокруг центра изображения в центре canvas.</p>
@@ -377,7 +404,7 @@ matrixStack.rotateZ(time);
 
 </p>
 <p>Добавим ещё таких же изображений в углах, каждое со своим вращением.</p>
-<pre class="prettyprint"><code>matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">matrixStack.translate(gl.canvas.width / 2, gl.canvas.height / 2);
 matrixStack.rotateZ(time);
 
 +matrixStack.save();
@@ -471,27 +498,27 @@ matrixStack.rotateZ(time);
 </div>
 
 </p>
-<p>Можно сказать, различные функции стека матриц, такие как <code>translate</code>,
-<code>rotateZ</code> и <code>scale</code>, смещают начало координат, в то время как установка
+<p>Можно сказать, различные функции стека матриц, такие как <code class="notranslate" translate="no">translate</code>,
+<code class="notranslate" translate="no">rotateZ</code> и <code class="notranslate" translate="no">scale</code>, смещают начало координат, в то время как установка
 центра поворота - это <em>место, куда нужно сместить начало координат,
 чтобы при вызове drawImage определённая часть изображения была бы
 <strong>в</strong> предыдущем центре координат</em>.</p>
 <p>Другими словами, если canvas имеет размер 400x300, то мы вызываем
-<code>matrixStack.translate(220, 150)</code>. В этом случае начало координат
+<code class="notranslate" translate="no">matrixStack.translate(220, 150)</code>. В этом случае начало координат
 будет находиться в точке 220,150, и вся отрисовка будет происходить
-относительно этой точки. Если мы вызовем <code>drawImage</code> в координатах
-<code>0, 0</code>, то изображение отрисуется со смещением.</p>
+относительно этой точки. Если мы вызовем <code class="notranslate" translate="no">drawImage</code> в координатах
+<code class="notranslate" translate="no">0, 0</code>, то изображение отрисуется со смещением.</p>
 <p><img class="webgl_center" width="400" src="../resources/matrixstack-before.svg" /></p>
 <p>Скажем, нам нужно, чтобы центр поворота был в нижнем правом углу. В этом
-случае куда нам нужно сместить начало координат, чтобы при вызове <code>drawImage</code>
+случае куда нам нужно сместить начало координат, чтобы при вызове <code class="notranslate" translate="no">drawImage</code>
 нужная нам точка центра поворота оказалась в текущем начале координат? Для
-нижнего правого угла текстуры это будет <code>-textureWidth, -textureHeight</code>,
-поэтому сейчас при вызове <code>drawImage</code> с параметром <code>0,0</code> нижний правый угол
+нижнего правого угла текстуры это будет <code class="notranslate" translate="no">-textureWidth, -textureHeight</code>,
+поэтому сейчас при вызове <code class="notranslate" translate="no">drawImage</code> с параметром <code class="notranslate" translate="no">0,0</code> нижний правый угол
 текстуры окажется в предыдущем начале координат.</p>
 <p><img class="webgl_center" width="400" src="../resources/matrixstack-after.svg" /></p>
 <p>Что бы ни происходило до этого со стеком матриц, это не важно. Мы выполняли
 перемещение, масштабирование и поворот начала координат, но прямо перед
-вызовом <code>drawImage</code> не имеет значения, где находится центр координат. Это
+вызовом <code class="notranslate" translate="no">drawImage</code> не имеет значения, где находится центр координат. Это
 уже новый центр координат, поэтому нам просто нужно определить, куда сместить
 центр относительно места отрисовки текстуры, как-будто до этого со стеком
 ничего не было.</p>
@@ -603,6 +630,10 @@ matrixStack.rotateZ(time);
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -611,6 +642,11 @@ matrixStack.rotateZ(time);
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -618,8 +654,6 @@ matrixStack.rotateZ(time);
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -631,11 +665,14 @@ matrixStack.rotateZ(time);
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -673,9 +710,17 @@ matrixStack.rotateZ(time);
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

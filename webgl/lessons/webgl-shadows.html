@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="How to compute shadows" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shadows_en.jpg" />
+<meta name="description" content="How to compute shadows">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shadows_en.jpg">
 
-<meta property="og:title" content="WebGL Shadows" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shadows_en.jpg" />
-<meta property="og:description" content="How to compute shadows" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-shadows.html" />
+<meta property="og:title" content="WebGL Shadows">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shadows_en.jpg">
+<meta property="og:description" content="How to compute shadows">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/webgl-shadows.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL Shadows" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-shadows.html" />
-<meta name="twitter:description" content="How to compute shadows" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shadows_en.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL Shadows">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/webgl-shadows.html">
+<meta name="twitter:description" content="How to compute shadows">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-shadows_en.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL Shadows</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-shadows.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-shadows.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-shadows.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-shadows.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-shadows.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-shadows.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-shadows.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-shadows.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -231,9 +258,9 @@ you need to already understand the following topics.</p>
 <a href="webgl-less-code-more-fun.html">less code more fun</a>
 as it uses the library mentioned there so as to
 unclutter the example. If you don&#39;t understand
-when a function named <code>webglUtils.setBuffersAndAttributes</code>
+when a function named <code class="notranslate" translate="no">webglUtils.setBuffersAndAttributes</code>
 what it means to set the buffers and attributes, or when
-a function named <code>webglUtils.setUniforms</code> what it means
+a function named <code class="notranslate" translate="no">webglUtils.setUniforms</code> what it means
 to set uniforms, etc... then you should probably to go further back and
 <a href="webgl-fundamentals.html">read the fundamentals</a>.</p>
 <p>So first off there is more than one way to draw shadows.
@@ -283,11 +310,11 @@ but instead of loading a texture we&#39;ll <a href="webgl-render-to-texture.html
 In <a href="webgl-render-to-texture.html">that article</a>
  we used a depth renderbuffer. That gave us a depth buffer for helping
 to sort pixels but we can&#39;t use a depth renderbuffer as a texture. Fortunately there
-is an optional WebGL extension called <code>WEBGL_depth_texture</code> we can try to enable
+is an optional WebGL extension called <code class="notranslate" translate="no">WEBGL_depth_texture</code> we can try to enable
 that will give us depth textures. With a depth texture we can attach it to a framebuffer
 and then later use the texture as input to a shader. The code to check for 
 and enable the extension is:</p>
-<pre class="prettyprint"><code class="lang-js">function main() {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function main() {
   // Get A WebGL context
   /** @type {HTMLCanvasElement} */
   const canvas = document.querySelector(&#39;#canvas&#39;);
@@ -304,8 +331,8 @@ and enable the extension is:</p>
 <p>Now, similarly to the 
 <a href="webgl-render-to-texture.html">article on rendering to a texture</a>
 we create a texture then a framebuffer and a attach the texture to the framebuffer
-as a <code>DEPTH_ATTACHMENT</code>. </p>
-<pre class="prettyprint"><code class="lang-js">const depthTexture = gl.createTexture();
+as a <code class="notranslate" translate="no">DEPTH_ATTACHMENT</code>. </p>
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const depthTexture = gl.createTexture();
 const depthTextureSize = 512;
 gl.bindTexture(gl.TEXTURE_2D, depthTexture);
 gl.texImage2D(
@@ -335,7 +362,7 @@ gl.framebufferTexture2D(
 <p><a href="#attachment-combinations">For a bunch of reasons</a> we also need to create
 a color texture and attach it as a color attachment even though we won&#39;t
 actually use it.</p>
-<pre class="prettyprint"><code class="lang-js">// create a color texture of the same size as the depth texture
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">// create a color texture of the same size as the depth texture
 const unusedTexture = gl.createTexture();
 gl.bindTexture(gl.TEXTURE_2D, unusedTexture);
 gl.texImage2D(
@@ -365,9 +392,9 @@ gl.framebufferTexture2D(
 <p>To use the depth texture we need to able to render the scene more than once with different
 shaders. Once with a simple shader just to render to the depth texture and
 then again with our current shader that projects a texture.</p>
-<p>So first let&#39;s change <code>drawScene</code> so we can pass it the program we want
+<p>So first let&#39;s change <code class="notranslate" translate="no">drawScene</code> so we can pass it the program we want
 to render with</p>
-<pre class="prettyprint"><code class="lang-js">-function drawScene(projectionMatrix, cameraMatrix, textureMatrix) {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">-function drawScene(projectionMatrix, cameraMatrix, textureMatrix) {
 +function drawScene(projectionMatrix, cameraMatrix, textureMatrix, programInfo) {
   // Make a view matrix from the camera matrix.
   const viewMatrix = m4.inverse(cameraMatrix);
@@ -416,7 +443,7 @@ to render with</p>
 </code></pre>
 <p>Now let&#39;s use it to draw the scene from the point of view of the light
 and then again with the depth texture</p>
-<pre class="prettyprint"><code class="lang-js">function render() {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function render() {
   webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
   gl.enable(gl.CULL_FACE);
@@ -485,8 +512,8 @@ and then again with the depth texture</p>
 +  drawScene(projectionMatrix, cameraMatrix, textureMatrix, textureProgramInfo); 
 }
 </code></pre>
-<p>Note I renamed <code>textureWorldMatrix</code> to <code>lightWorldMatrix</code> and
-<code>textureProjectionMatrix</code> to <code>lightProjectionMatrix</code>. They are really the
+<p>Note I renamed <code class="notranslate" translate="no">textureWorldMatrix</code> to <code class="notranslate" translate="no">lightWorldMatrix</code> and
+<code class="notranslate" translate="no">textureProjectionMatrix</code> to <code class="notranslate" translate="no">lightProjectionMatrix</code>. They are really the
 same thing but before we were projecting a texture through arbitrary space.
 Now we&#39;re trying to project a shadow map from a light. The math is the same
 but it seemed appropriate to rename the variables.</p>
@@ -498,7 +525,7 @@ we need when rendering to the depth texture.</p>
 projecting the texture into the scene. 
 When we reference the depth texture in a shader only the red
 value is valid so we&#39;ll just repeat it for red, green, and blue.</p>
-<pre class="prettyprint"><code class="lang-glsl">void main() {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">void main() {
   vec3 projectedTexcoord = v_projectedTexcoord.xyz / v_projectedTexcoord.w;
   bool inRange = 
       projectedTexcoord.x &gt;= 0.0 &amp;&amp;
@@ -515,7 +542,7 @@ value is valid so we&#39;ll just repeat it for red, green, and blue.</p>
 }
 </code></pre>
 <p>While we&#39;re at it let&#39;s add a cube to the scene</p>
-<pre class="prettyprint"><code class="lang-js">+const cubeBufferInfo = primitives.createCubeBufferInfo(
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">+const cubeBufferInfo = primitives.createCubeBufferInfo(
 +    gl,
 +    2,  // size
 +);
@@ -550,7 +577,7 @@ function drawScene(projectionMatrix, cameraMatrix, textureMatrix, programInfo) {
 </code></pre>
 <p>and let&#39;s tweak the settings. We&#39;ll move the camera
 and widen the field of view for the texture projection to cover more of the scene</p>
-<pre class="prettyprint"><code class="lang-js">const settings = {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const settings = {
 -  cameraX: 2.5,
 +  cameraX: 6,
   cameraY: 5,
@@ -568,7 +595,7 @@ and widen the field of view for the texture projection to cover more of the scen
 };
 </code></pre>
 <p>note: I moved the code that draws the line cube that shows the
-frustum outside of the <code>drawScene</code> function.</p>
+frustum outside of the <code class="notranslate" translate="no">drawScene</code> function.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-shadows-depth-texture.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-shadows-depth-texture.html" target="_blank">click here to open in a separate window</a>
@@ -577,8 +604,8 @@ frustum outside of the <code>drawScene</code> function.</p>
 </p>
 <p>This is exactly the same as the top example except instead
 of loading an image we&#39;re generating a depth texture by
-rendering the scene to it. If you want to verify adjust <code>cameraX</code>
-back to 2.5 and <code>fieldOfView</code> to 45 and it should look the same
+rendering the scene to it. If you want to verify adjust <code class="notranslate" translate="no">cameraX</code>
+back to 2.5 and <code class="notranslate" translate="no">fieldOfView</code> to 45 and it should look the same
 as above except with our new depth texture being projected
 instead of a loaded image.</p>
 <p>Depth values go from 0.0 to 1.0 representing their position
@@ -590,7 +617,7 @@ the depth texture to check if the Z position from the depth texture
 is closer or further from the light then the depth of the pixel we&#39;re
 being asked to draw. If the depth from the depth texture is closer than something
 was blocking the light and this pixel is in a shadow.</p>
-<pre class="prettyprint"><code class="lang-glsl">void main() {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">void main() {
   vec3 projectedTexcoord = v_projectedTexcoord.xyz / v_projectedTexcoord.w;
 +  float currentDepth = projectedTexcoord.z;
 
@@ -609,7 +636,7 @@ was blocking the light and this pixel is in a shadow.</p>
 +  gl_FragColor = vec4(texColor.rgb * shadowLight, texColor.a);
 }
 </code></pre>
-<p>Above if the <code>projectedDepth</code> is less than the <code>currentDepth</code> then
+<p>Above if the <code class="notranslate" translate="no">projectedDepth</code> is less than the <code class="notranslate" translate="no">currentDepth</code> then
 the from the point of view of the light something was closer to
 the light so this pixel we&#39;re about to draw is in shadow.</p>
 <p>If we run this we&#39;ll get a shadow</p>
@@ -628,10 +655,10 @@ in that it&#39;s a texture, a grid of pixels, it was projected from the
 point of view of the light but we&#39;re comparing it to values from the
 the point of view of the camera. That means the grid of values in the
 depth map is not aligned with our camera and
-so when we compute <code>currentDepth</code> there are times when one value
-will be slightly more or slightly less than <code>projectedDepth</code>.</p>
+so when we compute <code class="notranslate" translate="no">currentDepth</code> there are times when one value
+will be slightly more or slightly less than <code class="notranslate" translate="no">projectedDepth</code>.</p>
 <p>Let&#39;s add a bias. </p>
-<pre class="prettyprint"><code class="lang-glsl">...
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">...
 
 +uniform float u_bias;
 
@@ -654,7 +681,7 @@ void main() {
 }
 </code></pre>
 <p>And we need to set it</p>
-<pre class="prettyprint"><code class="lang-js">const settings = {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">const settings = {
   cameraX: 2.75,
   cameraY: 5,
   posX: 2.5,
@@ -703,7 +730,7 @@ the patterns appear.</p>
 from <a href="webgl-3d-lighting-spot.html">the article on spot lights</a>.</p>
 <p>First let&#39;s paste in the needed parts to the vertex shader directly
 from <a href="webgl-3d-lighting-spot.html">that article</a>.</p>
-<pre class="prettyprint"><code class="lang-glsl">attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">attribute vec4 a_position;
 attribute vec2 a_texcoord;
 +attribute vec3 a_normal;
 
@@ -749,7 +776,7 @@ void main() {
 }
 </code></pre>
 <p>Then the fragment shader</p>
-<pre class="prettyprint"><code class="lang-glsl">precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">precision mediump float;
 
 // Passed in from the vertex shader.
 varying vec2 v_texcoord;
@@ -805,10 +832,10 @@ void main() {
 +      texColor.a);
 }
 </code></pre>
-<p>Notice we just use <code>shadowLight</code> to adjust the affect of the <code>light</code> and
-<code>specular</code>. If an object is in shadow than there is no light.</p>
+<p>Notice we just use <code class="notranslate" translate="no">shadowLight</code> to adjust the affect of the <code class="notranslate" translate="no">light</code> and
+<code class="notranslate" translate="no">specular</code>. If an object is in shadow than there is no light.</p>
 <p>We just need to set the uniforms </p>
-<pre class="prettyprint"><code class="lang-js">-function drawScene(projectionMatrix, cameraMatrix, textureMatrix, programInfo) {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">-function drawScene(projectionMatrix, cameraMatrix, textureMatrix, programInfo) {
 +function drawScene(
 +    projectionMatrix,
 +    cameraMatrix,
@@ -867,14 +894,14 @@ function render() {
 the innerLimit and outerLimit settings are in dot space (cosine space) and that
 we only need half the field of view since they extend around the direction of the light.
 Also recall from <a href="webgl-3d-camera.html">the camera article</a> the 3rd row of 4x4 matrix
-is the Z axis so pulling out the first 3 values of the 3rd row from the <code>lightWorldMatrix</code>
+is the Z axis so pulling out the first 3 values of the 3rd row from the <code class="notranslate" translate="no">lightWorldMatrix</code>
 gives us the -Z direction of the light. We want the positive direction so we flip it.
 Similarly the same article tells us the 4th row is the world position so we can get
 the lightWorldPosition and viewWorldPosition (also known as the camera world position)
 by pulling them out of the their respective matrices. Of course we could have also
 got them by exposing more settings or passing more variables.</p>
 <p>Let&#39;s also clear the background to black and set the frustum lines to white</p>
-<pre class="prettyprint"><code class="lang-js">function render() {
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">function render() {
 
   ...
 
@@ -911,7 +938,7 @@ got them by exposing more settings or passing more variables.</p>
 <a href="webgl-3d-lighting-directional.html">the article on directional lights</a>
 and change our projection from perspective to orthographic.</p>
 <p>First the vertex shader</p>
-<pre class="prettyprint"><code class="lang-glsl">attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">attribute vec4 a_position;
 attribute vec2 a_texcoord;
 +attribute vec3 a_normal;
 
@@ -957,7 +984,7 @@ void main() {
 }
 </code></pre>
 <p>Then the fragment shader</p>
-<pre class="prettyprint"><code class="lang-glsl">precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">precision mediump float;
 
 // Passed in from the vertex shader.
 varying vec2 v_texcoord;
@@ -1017,7 +1044,7 @@ void main() {
 }
 </code></pre>
 <p>and the uniforms</p>
-<pre class="prettyprint"><code class="lang-js">  // set uniforms that are the same for both the sphere and plane
+<pre class="prettyprint notranslate" translate="no"><code class="lang-js">  // set uniforms that are the same for both the sphere and plane
   // note: any values with no corresponding uniform in the shader
   // are ignored.
   webglUtils.setUniforms(programInfo, {
@@ -1080,9 +1107,9 @@ The WebGL committee saw that and decided to require that WebGL implementations s
 at least 3 common combinations. From <a href="https://www.khronos.org/registry/webgl/specs/latest/1.0/#6.8">Section 6.8 of the WebGL spec</a> they are:
 <blockquote>
 <ul>
-  <li><code>COLOR_ATTACHMENT0</code> = <code>RGBA</code>/<code>UNSIGNED_BYTE</code> texture</li>
-  <li><code>COLOR_ATTACHMENT0</code> = <code>RGBA</code>/<code>UNSIGNED_BYTE</code> texture + <code>DEPTH_ATTACHMENT</code> = <code>DEPTH_COMPONENT16</code> renderbuffer</li>
-  <li><code>COLOR_ATTACHMENT0</code> = <code>RGBA</code>/<code>UNSIGNED_BYTE</code> texture + <code>DEPTH_STENCIL_ATTACHMENT</code> = <code>DEPTH_STENCIL</code> renderbuffer</li>
+  <li><code class="notranslate" translate="no">COLOR_ATTACHMENT0</code> = <code class="notranslate" translate="no">RGBA</code>/<code class="notranslate" translate="no">UNSIGNED_BYTE</code> texture</li>
+  <li><code class="notranslate" translate="no">COLOR_ATTACHMENT0</code> = <code class="notranslate" translate="no">RGBA</code>/<code class="notranslate" translate="no">UNSIGNED_BYTE</code> texture + <code class="notranslate" translate="no">DEPTH_ATTACHMENT</code> = <code class="notranslate" translate="no">DEPTH_COMPONENT16</code> renderbuffer</li>
+  <li><code class="notranslate" translate="no">COLOR_ATTACHMENT0</code> = <code class="notranslate" translate="no">RGBA</code>/<code class="notranslate" translate="no">UNSIGNED_BYTE</code> texture + <code class="notranslate" translate="no">DEPTH_STENCIL_ATTACHMENT</code> = <code class="notranslate" translate="no">DEPTH_STENCIL</code> renderbuffer</li>
 </blockquote>
 <p>
 Later the <a href="https://www.khronos.org/registry/webgl/extensions/WEBGL_depth_texture/">WEBGL_depth_texture</a> extensions was created.
@@ -1098,7 +1125,7 @@ that using a depth texture will ever work, at least according to the spec.
 <p>In practice it appears that most drivers themselves work with just a depth
 texture attached and no other attachments. Unfortunately Safari, at least as of
 February 2020, does not allow that combination to work. It requires there be a
-color attachment as well, most likely it requires an <code>RGBA</code>/<code>UNSIGNED_BYTE</code>
+color attachment as well, most likely it requires an <code class="notranslate" translate="no">RGBA</code>/<code class="notranslate" translate="no">UNSIGNED_BYTE</code>
 color attachment. The fact that it fails without it is within the specs above.
 </p>
 <p>All that is the long way of saying we need the unused color texture to work
@@ -1213,6 +1240,10 @@ So, in WebGL1, we need to add the unused color texture and then cross our finger
         <ul>
           <li><a href="/webgl/lessons/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -1221,6 +1252,11 @@ So, in WebGL1, we need to add the unused color texture and then cross our finger
 <li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Misc</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-setup-and-installation.html">Setup And Installation</a></li>
@@ -1228,8 +1264,6 @@ So, in WebGL1, we need to add the unused color texture and then cross our finger
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL and Alpha</a></li>
@@ -1241,11 +1275,14 @@ So, in WebGL1, we need to add the unused color texture and then cross our finger
 <li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
@@ -1288,9 +1325,17 @@ So, in WebGL1, we need to add the unused color texture and then cross our finger
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

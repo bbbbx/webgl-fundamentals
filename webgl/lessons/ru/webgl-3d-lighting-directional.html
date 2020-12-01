@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Реализация направленного освещения в WebGL" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ru.jpg" />
+<meta name="description" content="Реализация направленного освещения в WebGL">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ru.jpg">
 
-<meta property="og:title" content="WebGL 3D - Направленное освещение" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ru.jpg" />
-<meta property="og:description" content="Реализация направленного освещения в WebGL" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-lighting-directional.html" />
+<meta property="og:title" content="WebGL 3D - Направленное освещение">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ru.jpg">
+<meta property="og:description" content="Реализация направленного освещения в WebGL">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-lighting-directional.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 3D - Направленное освещение" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-lighting-directional.html" />
-<meta name="twitter:description" content="Реализация направленного освещения в WebGL" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 3D - Направленное освещение">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-lighting-directional.html">
+<meta name="twitter:description" content="Реализация направленного освещения в WebGL">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-lighting-directional_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 3D - Направленное освещение</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-lighting-directional.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-3d-lighting-directional.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -264,13 +291,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 является <span style="color: green;">зелёным</span>, а положительное
 значение z становится <span style="color: blue;">синим</span>.</p>
 <p>Добавим нормали к <a href="webgl-3d-camera.html">нашему предыдущему примеру</a>
-для создания освещения. Так как буква <code>F</code> очень угловатая и все грани
+для создания освещения. Так как буква <code class="notranslate" translate="no">F</code> очень угловатая и все грани
 выровнены по осям x, y или z, это будет очень просто. Грани, смотрящие
-вперёд, будут иметь нормали <code>0, 0, 1</code>. Грани, направленные назад, будут
-иметь нормали <code>0, 0, -1</code>. Направленные влево грани получат нормали
-<code>-1, 0, 0</code>, направленные вправо - <code>1, 0, 0</code>, вверх - <code>0, 1, 0</code>, а вниз
-<code>0, -1, 0</code>.</p>
-<pre class="prettyprint"><code>function setNormals(gl) {
+вперёд, будут иметь нормали <code class="notranslate" translate="no">0, 0, 1</code>. Грани, направленные назад, будут
+иметь нормали <code class="notranslate" translate="no">0, 0, -1</code>. Направленные влево грани получат нормали
+<code class="notranslate" translate="no">-1, 0, 0</code>, направленные вправо - <code class="notranslate" translate="no">1, 0, 0</code>, вверх - <code class="notranslate" translate="no">0, 1, 0</code>, а вниз
+<code class="notranslate" translate="no">0, -1, 0</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function setNormals(gl) {
   var normals = new Float32Array([
           // лицо левого столба
           0, 0, 1,
@@ -403,7 +430,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 }
 </code></pre><p>Для того, чтобы можно было лучше рассмотреть освещение, уберём
 цвета в вершинах.</p>
-<pre class="prettyprint"><code>// получаем ссылки на атрибуты
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// получаем ссылки на атрибуты
 var positionLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
 -var colorLocation = gl.getAttribLocation(program, &quot;a_color&quot;);
 +var normalLocation = gl.getAttribLocation(program, &quot;a_normal&quot;);
@@ -424,7 +451,7 @@ var positionLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
 +// Записываем данные в буфер
 +setNormals(gl);
 </code></pre><p>И при рендеринге</p>
-<pre class="prettyprint"><code>-// Включаем атрибут цвета
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">-// Включаем атрибут цвета
 -gl.enableVertexAttribArray(colorLocation);
 -
 -// Привязываем буфер цвета
@@ -455,7 +482,7 @@ var positionLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
 +    normalLocation, size, type, normalize, stride, offset)
 </code></pre><p>Теперь нужно использовать эти данные в шейдерах.</p>
 <p>Сначала в вершинном шейдере нам нужно передать нормали во фрагментный шейдер.</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 -attribute vec4 a_color;
 +attribute vec3 a_normal;
 
@@ -476,7 +503,7 @@ void main() {
 }
 </code></pre><p>А во фрагментном шейдере выполним скалярное умножение направления
 света и нормали.</p>
-<pre class="prettyprint"><code>precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">precision mediump float;
 
 // Передаются из вершинного шейдера
 -varying vec4 v_color;
@@ -499,14 +526,14 @@ void main() {
 +   // освещения
 +   gl_FragColor.rgb *= light;
 }
-</code></pre><p>Затем получаем ссылку на <code>u_color</code> и <code>u_reverseLightDirection</code>.</p>
-<pre class="prettyprint"><code>  // получаем ссылку на uniform-переменные
+</code></pre><p>Затем получаем ссылку на <code class="notranslate" translate="no">u_color</code> и <code class="notranslate" translate="no">u_reverseLightDirection</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // получаем ссылку на uniform-переменные
   var matrixLocation = gl.getUniformLocation(program, &quot;u_matrix&quot;);
 +  var colorLocation = gl.getUniformLocation(program, &quot;u_color&quot;);
 +  var reverseLightDirectionLocation =
 +      gl.getUniformLocation(program, &quot;u_reverseLightDirection&quot;);
 </code></pre><p>и задаём им значения</p>
-<pre class="prettyprint"><code>  // Задаём значение матрицы
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // Задаём значение матрицы
   gl.uniformMatrix4fv(matrixLocation, false, worldViewProjectionMatrix);
 
 +  // Устанавливаем цвет
@@ -514,11 +541,11 @@ void main() {
 +
 +  // Задаём направление света
 +  gl.uniform3fv(reverseLightDirectionLocation, m4.normalize([0.5, 0.7, 1]));
-</code></pre><p>Функция <code>normalize</code>, которую мы рассматривали ранее, преобразует любое переданное в
+</code></pre><p>Функция <code class="notranslate" translate="no">normalize</code>, которую мы рассматривали ранее, преобразует любое переданное в
 неё значение в единичный вектор. В рассмотренном примере используются следующие значения:
-<code>x = 0.5</code>, положительное значение <code>x</code> означает, что свет находится справа и направлен влево;
-<code>y = 0.7</code>, положительное значение <code>y</code> означает, что свет находится сверху и направлен вниз;
-<code>z = 1</code>, положительное значение <code>z</code> означает, что свет находится впереди и указывает на сцену.
+<code class="notranslate" translate="no">x = 0.5</code>, положительное значение <code class="notranslate" translate="no">x</code> означает, что свет находится справа и направлен влево;
+<code class="notranslate" translate="no">y = 0.7</code>, положительное значение <code class="notranslate" translate="no">y</code> означает, что свет находится сверху и направлен вниз;
+<code class="notranslate" translate="no">z = 1</code>, положительное значение <code class="notranslate" translate="no">z</code> означает, что свет находится впереди и указывает на сцену.
 Относительные значения задают направление света главным образом на сцену -
 сильнее вниз и немного меньше влево.</p>
 <p>И вот результат.</p>
@@ -532,11 +559,11 @@ void main() {
 Но самыми яркими должны быть те части, которые направлены на камеру.</p>
 <p>Для того, чтобы исправить эту ситуацию, нам нужно переориентировать нормали
 при изменении положения объекта. Как и в случае с вершинами, мы можем умножить
-нормали на матрицу. Наиболее очевидным выбором будет <code>мировая</code> матрица.
-Сейчас мы передаём одну матрицу <code>u_matrix</code>. А будем передавать 2 матрицы.
-Одна, <code>u_world</code>, будет мировой матрицей. Другая, <code>u_worldViewProjection</code>,
-будет выполнять роль прежней <code>u_matrix</code>.</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+нормали на матрицу. Наиболее очевидным выбором будет <code class="notranslate" translate="no">мировая</code> матрица.
+Сейчас мы передаём одну матрицу <code class="notranslate" translate="no">u_matrix</code>. А будем передавать 2 матрицы.
+Одна, <code class="notranslate" translate="no">u_world</code>, будет мировой матрицей. Другая, <code class="notranslate" translate="no">u_worldViewProjection</code>,
+будет выполнять роль прежней <code class="notranslate" translate="no">u_matrix</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 attribute vec3 a_normal;
 
 *uniform mat4 u_worldViewProjection;
@@ -551,16 +578,16 @@ void main() {
 *  // Направляем нормали и передаём во фрагментный шейдер
 *  v_normal = mat3(u_world) * a_normal;
 }
-</code></pre><p>Заметьте, что мы умножаем <code>a_normal</code> на <code>mat3(u_world)</code>. Нормали -
+</code></pre><p>Заметьте, что мы умножаем <code class="notranslate" translate="no">a_normal</code> на <code class="notranslate" translate="no">mat3(u_world)</code>. Нормали -
 это направления, поэтому нам не важен перенос. Направление занимает
 лишь верхнюю часть 3х3 матрицы.</p>
 <p>Теперь получим ссылки на эти uniform-переменные</p>
-<pre class="prettyprint"><code>  // получаем ссылки на uniform-переменные
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // получаем ссылки на uniform-переменные
 *  var worldViewProjectionLocation =
 *      gl.getUniformLocation(program, &quot;u_worldViewProjection&quot;);
 +  var worldLocation = gl.getUniformLocation(program, &quot;u_world&quot;);
 </code></pre><p>Затем обновим код, который их устанавливает.</p>
-<pre class="prettyprint"><code>*// Задаём значения матрицам
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*// Задаём значения матрицам
 *gl.uniformMatrix4fv(
 *    worldViewProjectionLocation, false,
 *    worldViewProjectionMatrix);
@@ -574,8 +601,8 @@ void main() {
 </p>
 <p>Теперь при повороте F подсвечиваются те грани, которые направлены на наблюдателя.</p>
 <p>Существует одна проблема, которую я не могу показать на демо, поэтому
-покажу на картинке. Для переориентации нормалей мы умножаем <code>normal</code> на
-матрицу <code>u_world</code>. Но что произойдёт при масштабировании мировой матрицы?
+покажу на картинке. Для переориентации нормалей мы умножаем <code class="notranslate" translate="no">normal</code> на
+матрицу <code class="notranslate" translate="no">u_world</code>. Но что произойдёт при масштабировании мировой матрицы?
 Ответ - мы получим неверные нормали.</p>
 <p><div class="webgl_diagram_container">
   <iframe class="webgl_example " style="width: 600px; height: 300px;" src="/webgl/lessons/resources/normals-scaled.html"></iframe>
@@ -603,9 +630,9 @@ void main() {
 транспонированной от мировой матрицы.</p>
 <p>В соответствии с вышеизложенным изменим код нашего примера. Для начала
 обновим код шейдера. Технически мы могли бы просто обновить значение
-<code>u_world</code>, но лучше нам переименовать переменные, чтобы они отражали
+<code class="notranslate" translate="no">u_world</code>, но лучше нам переименовать переменные, чтобы они отражали
 своё предназначение и чтобы мы не запутывались.</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 attribute vec3 a_normal;
 
 uniform mat4 u_worldViewProjection;
@@ -621,11 +648,11 @@ void main() {
 *  v_normal = mat3(u_worldInverseTranspose) * a_normal;
 }
 </code></pre><p>Получаем ссылки на переменные</p>
-<pre class="prettyprint"><code>-  var worldLocation = gl.getUniformLocation(program, &quot;u_world&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">-  var worldLocation = gl.getUniformLocation(program, &quot;u_world&quot;);
 +  var worldInverseTransposeLocation =
 +      gl.getUniformLocation(program, &quot;u_worldInverseTranspose&quot;);
 </code></pre><p>А затем вычисляем значения и устанавливаем их переменным</p>
-<pre class="prettyprint"><code>var worldViewProjectionMatrix = m4.multiply(viewProjectionMatrix, worldMatrix);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var worldViewProjectionMatrix = m4.multiply(viewProjectionMatrix, worldMatrix);
 var worldInverseMatrix = m4.inverse(worldMatrix);
 var worldInverseTransposeMatrix = m4.transpose(worldInverseMatrix);
 
@@ -638,7 +665,7 @@ gl.uniformMatrix4fv(
 +    worldInverseTransposeLocation, false,
 +    worldInverseTransposeMatrix);
 </code></pre><p>Теперь код транспонирования матрицы</p>
-<pre class="prettyprint"><code>var m4 = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var m4 = {
   transpose: function(m) {
     return [
       m[0], m[4], m[8], m[12],
@@ -670,14 +697,14 @@ v_normal = mat3(u_worldInverseTranspose) * a_normal;
 <pre class="prettyprint">
 v_normal = (u_worldInverseTranspose * vec4(a_normal, 0)).xyz;
 </pre>
-<p>Установка <code>w</code> в значение 0 пред умножением приведёт к
+<p>Установка <code class="notranslate" translate="no">w</code> в значение 0 пред умножением приведёт к
 умножению значения переноса из матрицы на 0, то есть уберёт его. Думаю,
 что это более распространённый подход. Просто мне кажется, что mat3
 выглядит аккуратней, хотя я использовал и другой подход тоже.</p>
-<p>Ещё можно использовать тип <code>mat3</code> для <code>u_worldInverseTranspose</code>.
+<p>Ещё можно использовать тип <code class="notranslate" translate="no">mat3</code> для <code class="notranslate" translate="no">u_worldInverseTranspose</code>.
 Но есть 2 причины, почему так делать не следует. Во-первых, нам может
-понадобиться полная версия <code>u_worldInverseTranspose</code>, то есть
-в некоторых случаях нам нужна <code>mat4</code>. Во-вторых, все функции
+понадобиться полная версия <code class="notranslate" translate="no">u_worldInverseTranspose</code>, то есть
+в некоторых случаях нам нужна <code class="notranslate" translate="no">mat4</code>. Во-вторых, все функции
 JavaScript работают с матрицами 4x4. Делать второй набор функций для работы
 с матрицами 3x3 или даже конвертировать матрицы 4x4 в 3x3 (и всё только
 для того, чтобы покрыть этот единственный случай) - это не целесообразно.
@@ -787,6 +814,10 @@ JavaScript работают с матрицами 4x4. Делать второй
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -795,6 +826,11 @@ JavaScript работают с матрицами 4x4. Делать второй
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -802,8 +838,6 @@ JavaScript работают с матрицами 4x4. Делать второй
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -815,11 +849,14 @@ JavaScript работают с матрицами 4x4. Делать второй
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -857,9 +894,17 @@ JavaScript работают с матрицами 4x4. Делать второй
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

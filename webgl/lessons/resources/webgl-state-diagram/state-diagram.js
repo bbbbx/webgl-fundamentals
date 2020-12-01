@@ -15,6 +15,9 @@ import {
   getWebGLObjectInfo,
   setDefaultVAOInfo,
   getWebGLObjectInfoOrDefaultVAO,
+  setDefaultTFOInfo,
+  getWebGLObjectInfoOrDefaultTFO,
+  setCanvasInfo,
 } from './context-wrapper.js';
 import {
   expand,
@@ -57,6 +60,8 @@ import {
 } from './transform-feedback-ui.js';
 import { createGlobalUI } from './global-ui.js';
 import { highlightDocument } from './code-highlight.js';
+
+const glEnumToString = twgl.glEnumToString;
 
 export default function main({webglVersion, examples}) {
   globals.isWebGL2 = webglVersion === 'webgl2';
@@ -113,14 +118,31 @@ export default function main({webglVersion, examples}) {
 
   document.body.addEventListener('click', showHint);
 
+  const canvasElem = document.querySelector('#canvas');
+  canvasElem.classList.add('window-content');
+  const canvasDraggable = makeDraggable(canvasElem);
+  const canvasInfo = {
+    ui: {
+      elem: canvasElem,
+    },
+  };
+  setCanvasInfo(canvasInfo);
+
+  const defaultTFOInfo = {
+  };
+  if (globals.isWebGL2) {
+    defaultTFOInfo.ui = createTransformFeedbackDisplay(diagramElem, '*default*', null);
+    setDefaultTFOInfo(defaultTFOInfo);
+  }
+
   const defaultVAOInfo = {
     ui: createVertexArrayDisplay(diagramElem, '*default*', null),
   };
   setDefaultVAOInfo(defaultVAOInfo);
 
   globals.globalUI = createGlobalUI(document.querySelector('#global-state'));
-  const canvasDraggable = makeDraggable(document.querySelector('#canvas'));
   moveToFront(defaultVAOInfo.ui.elem.parentElement);
+
 
   function getUIById(id) {
     const [base, part] = id.split('.');
@@ -304,11 +326,13 @@ export default function main({webglVersion, examples}) {
         const {ui} = getWebGLObjectInfo(framebuffer);
         ui.updateState();
       } else {
-        globals.globalUI.drawBuffersState.updateState();
+        globals.globalUI.framebufferState.updateState();
       }
     });
     wrapFn('bindTransformFeedback', function(origFn, ...args) {
       origFn.call(this, ...args);
+      const {ui} = getCurrentTFOInfo();
+      moveToFront(ui.elem);
       const prog = gl.getParameter(gl.CURRENT_PROGRAM);
       updateProgramAttributesAndUniforms(prog);
     });
@@ -319,23 +343,27 @@ export default function main({webglVersion, examples}) {
     const updateUnit = (target, index, buffer, offset, size) => {
       let webglObject;
       switch (target) {
-        case gl.TRANSFORM_FEEDBACK_BUFFER:
+        case gl.TRANSFORM_FEEDBACK_BUFFER: {
           webglObject = gl.getParameter(gl.TRANSFORM_FEEDBACK_BINDING);
+          const {ui} = getWebGLObjectInfoOrDefaultTFO(webglObject);
+          ui.updateUnit(target, index, buffer, offset, size);
           break;
-        case gl.UNIFORM_BUFFER:
-          webglObject = gl.getParameter(gl.UNIFORM_BUFFER_BINDING);
+        }
+        case gl.UNIFORM_BUFFER: {
+          globals.globalUI.uniformBufferBindingsState.updateUniformBufferBinding(index);
+          const prog = gl.getParameter(gl.CURRENT_PROGRAM);
+          updateProgramAttributesAndUniforms(prog);
           break;
+        }
         default:
           throw new Error('unhandled buffer type');
       }
-      const {ui} = getWebGLObjectInfo(webglObject);
-      ui.updateUnit(target, index, buffer, offset, size);
     };
-    wrapFn('bindBufferBase', function(origFn, target, index, buffer, offset, size) {
+    wrapFn('bindBufferRange', function(origFn, target, index, buffer, offset, size) {
       origFn.call(this, target, index, buffer, offset, size);
       updateUnit(target, index, buffer, offset, size);
     });
-    wrapFn('bindBufferRange', function(origFn, target, index, buffer) {
+    wrapFn('bindBufferBase', function(origFn, target, index, buffer) {
       origFn.call(this, target, index, buffer);
       updateUnit(target, index, buffer);
     });
@@ -381,6 +409,9 @@ export default function main({webglVersion, examples}) {
       case gl.TRANSFORM_FEEDBACK_BUFFER:
         globals.globalUI.commonState.updateState();
         break;
+      case gl.UNIFORM_BUFFER:
+        globals.globalUI.uniformBufferBindingsState.updateState();
+        break;
       case gl.ELEMENT_ARRAY_BUFFER: {
         const {ui} = getCurrentVAOInfo();
         ui.updateState();
@@ -390,11 +421,32 @@ export default function main({webglVersion, examples}) {
         throw new Error('unhandled buffer bind point');
     }
   });
+  function getQueryForBufferBindPoint(gl, bindPoint) {
+    switch (bindPoint) {
+      case gl.ARRAY_BUFFER: return gl.ARRAY_BUFFER_BINDING;
+      case gl.ELEMENT_ARRAY_BUFFER: return gl.ELEMENT_ARRAY_BUFFER_BINDING;
+      case gl.UNIFORM_BUFFER: return gl.UNIFORM_BUFFER_BINDING;
+      case gl.TRANSFORM_FEEDBACK_BUFFER: return gl.TRANSFORM_FEEDBACK_BUFFER_BINDING;
+      default: throw new Error(`unsupported bind point: ${glEnumToString(gl, bindPoint)}`);
+    }
+  }
   wrapFn('bufferData', function(origFn, bindPoint, dataOrSize, hint) {
     origFn.call(this, bindPoint, dataOrSize, hint);
-    const buffer = gl.getParameter(bindPoint === gl.ARRAY_BUFFER ? gl.ARRAY_BUFFER_BINDING : gl.ELEMENT_ARRAY_BUFFER_BINDING);
+    const buffer = gl.getParameter(getQueryForBufferBindPoint(gl, bindPoint));
     const {ui} = getWebGLObjectInfo(buffer);
     ui.updateData(dataOrSize);
+    if (bindPoint === gl.UNIFORM_BUFFER) {
+      updateProgramAttributesAndUniforms(gl.getParameter(gl.CURRENT_PROGRAM));
+    }
+  });
+  wrapFn('bufferSubData', function(origFn, bindPoint, offset, data, ...args) {
+    origFn.call(this, bindPoint, offset, data, ...args);
+    const buffer = gl.getParameter(getQueryForBufferBindPoint(gl, bindPoint));
+    const {ui} = getWebGLObjectInfo(buffer);
+    ui.updateSubData(data, offset);
+    if (bindPoint === gl.UNIFORM_BUFFER) {
+      updateProgramAttributesAndUniforms(gl.getParameter(gl.CURRENT_PROGRAM));
+    }
   });
   function getCurrentVAOInfo() {
     const vertexArray = gl.getParameter(gl.VERTEX_ARRAY_BINDING);
@@ -426,6 +478,10 @@ export default function main({webglVersion, examples}) {
       info.ui.updateUniforms();
       info.ui.updateTransformFeedbackVaryings();
     }
+  }
+  function getCurrentTFOInfo() {
+    const transformFeedback = gl.getParameter(gl.TRANSFORM_FEEDBACK_BINDING);
+    return getWebGLObjectInfoOrDefaultTFO(transformFeedback);
   }
   wrapFn('bindVertexArray', function(origFn, vao) {
     origFn.call(this, vao);
@@ -514,6 +570,13 @@ export default function main({webglVersion, examples}) {
     wrapFn('resumeTransformFeedback', function(origFn, ...args) {
       origFn.call(this, ...args);
       pauseTransformFeedback = false;
+    });
+  }
+
+  if (globals.isWebGL2) {
+    wrapFn('uniformBlockBinding', function(origFn, program, programUniformBlockIndex, uniformBufferBindPointIndex) {
+      origFn.call(this, program, programUniformBlockIndex, uniformBufferBindPointIndex);
+      updateProgramAttributesAndUniforms(program);
     });
   }
 

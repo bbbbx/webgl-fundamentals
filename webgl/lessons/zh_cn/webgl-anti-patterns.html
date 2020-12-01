@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="WebGL中不应该这么做，为什么，应该这么做。" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-anti-patterns_zh-cn.jpg" />
+<meta name="description" content="WebGL中不应该这么做，为什么，应该这么做。">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-anti-patterns_zh-cn.jpg">
 
-<meta property="og:title" content="WebGL 反面模式" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-anti-patterns_zh-cn.jpg" />
-<meta property="og:description" content="WebGL中不应该这么做，为什么，应该这么做。" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-anti-patterns.html" />
+<meta property="og:title" content="WebGL 反面模式">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-anti-patterns_zh-cn.jpg">
+<meta property="og:description" content="WebGL中不应该这么做，为什么，应该这么做。">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-anti-patterns.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 反面模式" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-anti-patterns.html" />
-<meta name="twitter:description" content="WebGL中不应该这么做，为什么，应该这么做。" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-anti-patterns_zh-cn.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 反面模式">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-anti-patterns.html">
+<meta name="twitter:description" content="WebGL中不应该这么做，为什么，应该这么做。">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-anti-patterns_zh-cn.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 反面模式</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-anti-patterns.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-anti-patterns.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-anti-patterns.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-anti-patterns.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-anti-patterns.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-anti-patterns.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-anti-patterns.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-anti-patterns.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/zh_cn/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -214,8 +241,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <div class="lesson-main">
       <p>这里是一些WebGL的反面模式，反面模式就是一些你应该避免的做法</p>
 <ol>
-<li><p>将 <code>viewportWidth</code> 和 <code>viewportHeight</code> 属性放在 <code>WebGLRenderingContext</code> 对象上。</p>
-<p>有些代码添加了视图宽度和高度属性，并将它附加在 <code>WebGLRenderingContext</code> 上，像这样</p>
+<li><p>将 <code class="notranslate" translate="no">viewportWidth</code> 和 <code class="notranslate" translate="no">viewportHeight</code> 属性放在 <code class="notranslate" translate="no">WebGLRenderingContext</code> 对象上。</p>
+<p>有些代码添加了视图宽度和高度属性，并将它附加在 <code class="notranslate" translate="no">WebGLRenderingContext</code> 上，像这样</p>
 <pre class="prettyprint">
 gl = canvas.getContext("webgl");
 gl.viewportWidth = canvas.width;    // 不好!!!
@@ -229,9 +256,9 @@ gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
 
 <p><strong>为什么这样不好:</strong></p>
 <p>主要的错误就是多了两个属性，并且需要在画布尺寸改变的时候更新这些属性。
-假如你将画布的宽高设置为某值，但当用户改变窗口大小时 <code>gl.viewportWidth</code> &amp; <code>gl.viewportHeight</code>
+假如你将画布的宽高设置为某值，但当用户改变窗口大小时 <code class="notranslate" translate="no">gl.viewportWidth</code> &amp; <code class="notranslate" translate="no">gl.viewportHeight</code>
 就不是正确的值，你就需要重新设置它们。</p>
-<p>其次是假如一些WebGL新手看到你的代码，会把 <code>gl.viewportWidth</code> 和 <code>gl.viewportHeight</code>
+<p>其次是假如一些WebGL新手看到你的代码，会把 <code class="notranslate" translate="no">gl.viewportWidth</code> 和 <code class="notranslate" translate="no">gl.viewportHeight</code>
 当作WebGL规范的一部分，会给他们带来长时间影响或困惑。</p>
 <p><strong>应该怎么做:</strong></p>
 <p>为什么自己给自己找麻烦？WebGL上下文有它的宽和高，直接使用就行。</p>
@@ -241,11 +268,11 @@ gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
 gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 </pre>
 
-<p>甚至能解决使用 <code>gl.canvas.width</code> 和 <code>gl.canvas.height</code> 时无法解决的情况。
+<p>甚至能解决使用 <code class="notranslate" translate="no">gl.canvas.width</code> 和 <code class="notranslate" translate="no">gl.canvas.height</code> 时无法解决的情况。
 <a href="#drawingbuffer">具体原因看这里</a>。</p>
 </li>
-<li><p>使用 <code>canvas.width</code> 和 <code>canvas.height</code> 计算长宽比</p>
-<p>经常有代码使用 <code>canvas.width</code> 和 <code>canvas.height</code> 计算长宽比，像这样 </p>
+<li><p>使用 <code class="notranslate" translate="no">canvas.width</code> 和 <code class="notranslate" translate="no">canvas.height</code> 计算长宽比</p>
+<p>经常有代码使用 <code class="notranslate" translate="no">canvas.width</code> 和 <code class="notranslate" translate="no">canvas.height</code> 计算长宽比，像这样 </p>
 <pre class="prettyprint">
 var aspect = canvas.width / canvas.height;
 perspective(fieldOfView, aspect, zNear, zFar);
@@ -254,14 +281,14 @@ perspective(fieldOfView, aspect, zNear, zFar);
 <p><strong>为什么这样不好:</strong></p>
 <p>画布的宽和高属性与画布的显示尺寸无关，CSS控制画布的显示尺寸。</p>
 <p><strong>应该怎么做:</strong></p>
-<p>使用 <code>canvas.clientWidth</code> 和 <code>canvas.clientHeight</code>，这些值可以告诉你画布显示在屏幕上的实际尺寸。
+<p>使用 <code class="notranslate" translate="no">canvas.clientWidth</code> 和 <code class="notranslate" translate="no">canvas.clientHeight</code>，这些值可以告诉你画布显示在屏幕上的实际尺寸。
 这样就可以不用关心CSS设置，得到正确的长宽比。</p>
 <pre class="prettyprint">
 var aspect = canvas.clientWidth / canvas.clientHeight;
 perspective(projectionMatrix, fieldOfView, aspect, zNear, zFar);
 </pre>
 
-<p>这有一些示例，使用大小相同(<code>width=&quot;400&quot; height=&quot;300&quot;</code>)的画布，
+<p>这有一些示例，使用大小相同(<code class="notranslate" translate="no">width=&quot;400&quot; height=&quot;300&quot;</code>)的画布，
 但是用CSS告诉浏览器显示不同的尺寸，注意示例中的所有 &#39;F&#39; 都有正确的长宽比。</p>
 <p><div class="webgl_diagram_container">
   <iframe class="webgl_example " style="width: 150px; height: 200px;" src="/webgl/lessons/../webgl-canvas-clientwidth-clientheight.html"></iframe>
@@ -274,7 +301,7 @@ perspective(projectionMatrix, fieldOfView, aspect, zNear, zFar);
 </div>
 
 </p>
-<p>如果我们使用 <code>canvas.width</code> 和 <code>canvas.height</code>，结果就不是正确的了。</p>
+<p>如果我们使用 <code class="notranslate" translate="no">canvas.width</code> 和 <code class="notranslate" translate="no">canvas.height</code>，结果就不是正确的了。</p>
 <p><div class="webgl_diagram_container">
   <iframe class="webgl_example " style="width: 150px; height: 200px;" src="/webgl/lessons/../webgl-canvas-width-height.html"></iframe>
 </div>
@@ -287,8 +314,8 @@ perspective(projectionMatrix, fieldOfView, aspect, zNear, zFar);
 
 </p>
 </li>
-<li><p>使用 <code>window.innerWidth</code> 和 <code>window.innerHeight</code>计算任何东西</p>
-<p>大多数WebGL应用在任何地方都使用 <code>window.innerWidth</code> 和 <code>window.innerHeight</code>。
+<li><p>使用 <code class="notranslate" translate="no">window.innerWidth</code> 和 <code class="notranslate" translate="no">window.innerHeight</code>计算任何东西</p>
+<p>大多数WebGL应用在任何地方都使用 <code class="notranslate" translate="no">window.innerWidth</code> 和 <code class="notranslate" translate="no">window.innerHeight</code>。
 例如：</p>
 <pre class="prettyprint">
 canvas.width = window.innerWidth;                    // 不好!!
@@ -302,7 +329,7 @@ canvas.height = window.hinnerHeight;                 // 不好!!
 这样就不需要在新项目中修改所有的相关代码。</p>
 <p><strong>应该怎么做:</strong></p>
 <p>使用Web平台而不是对抗Web平台，它有自己的设计模式。
-使用CSS和 <code>clientWidth</code> 和 <code>clientHeight</code>。</p>
+使用CSS和 <code class="notranslate" translate="no">clientWidth</code> 和 <code class="notranslate" translate="no">clientHeight</code>。</p>
 <pre class="prettyprint">
 var width = gl.canvas.clientWidth;
 var height = gl.canvas.clientHeight;
@@ -311,24 +338,24 @@ gl.canvas.width = width;
 gl.canvas.height = height;
 </pre>
 
-<p>这有 9 个例子，都使用相同的代码，注意它们中没有一个使用了 <code>window.innerWidth</code> 或 <code>window.innerHeight</code>。</p>
+<p>这有 9 个例子，都使用相同的代码，注意它们中没有一个使用了 <code class="notranslate" translate="no">window.innerWidth</code> 或 <code class="notranslate" translate="no">window.innerHeight</code>。</p>
 <p><a href="../../webgl-same-code-canvas-fullscreen.html" target="_blank">使用CSS让一个画布全屏</a></p>
 <p><a href="../../webgl-same-code-canvas-partscreen.html" target="_blank">使画布宽度为 70%，给编辑器留下空间</a></p>
 <p><a href="../../webgl-same-code-canvas-embedded.html" target="_blank">将画布嵌入到段落中</a></p>
-<p><a href="../../webgl-same-code-canvas-embedded-border-box.html" target="_blank">使用<code>box-sizing: border-box;</code>将画布嵌入到段落中</a></p>
-<p><code>box-sizing: border-box;</code>将边框和内边距算入元素，而不是算在外面。换句话说，普通的盒模型定义一个 400x300 像素的元素，
+<p><a href="../../webgl-same-code-canvas-embedded-border-box.html" target="_blank">使用<code class="notranslate" translate="no">box-sizing: border-box;</code>将画布嵌入到段落中</a></p>
+<p><code class="notranslate" translate="no">box-sizing: border-box;</code>将边框和内边距算入元素，而不是算在外面。换句话说，普通的盒模型定义一个 400x300 像素的元素，
 边框为 15 像素，实际内容部分为 400x300 像素，并且外边有一个 15 像素宽的边框，这样总共就是 430x330 像素。在 box-sizing: border-box 模式下，
-边框算在内部，所以内容部分就为 370x270 像素，这也是使用 <code>clientWidth</code> 和 <code>clientHeight</code> 的另一个重要原因。如果设置边框为 <code>1em</code>，
+边框算在内部，所以内容部分就为 370x270 像素，这也是使用 <code class="notranslate" translate="no">clientWidth</code> 和 <code class="notranslate" translate="no">clientHeight</code> 的另一个重要原因。如果设置边框为 <code class="notranslate" translate="no">1em</code>，
 你就没办法知道画布的最终尺寸，它在不同的浏览器和字体下都不同。</p>
 <p><a href="../../webgl-same-code-container-fullscreen.html" target="_blank">使用CSS控制容器全屏，并使用代码插入一个画布到容器中</a></p>
 <p><a href="../../webgl-same-code-container-partscreen.html" target="_blank">使用一个宽度为 70% 的容器，并使用代码插入一个画布到容器中</a></p>
 <p><a href="../../webgl-same-code-container-embedded.html" target="_blank">在段落中嵌入一个容器，并使用代码插入一个画布到容器中</a></p>
-<p><a href="../../webgl-same-code-container-embedded-border-box.html" target="_blank">使用 <code>box-sizing: border-box;</code>在段落中嵌入一个容器，并使用代码插入一个画布到容器中</a></p>
+<p><a href="../../webgl-same-code-container-embedded-border-box.html" target="_blank">使用 <code class="notranslate" translate="no">box-sizing: border-box;</code>在段落中嵌入一个容器，并使用代码插入一个画布到容器中</a></p>
 <p><a href="../../webgl-same-code-body-only-fullscreen.html" target="_blank">一个页面使用CSS设置为全屏，并使用代码插入一个画布到页面中</a></p>
 <p>重点是，如果你拥抱Web技术并使用上面的技巧，就可以在多种情况中不需要改变代码。</p>
 </li>
-<li><p>使用 <code>&#39;resize&#39;</code> 事件改变画布的大小</p>
-<p>有些应用监听窗口的 <code>&#39;resize&#39;</code> 事件，像这样去重置画布大小。</p>
+<li><p>使用 <code class="notranslate" translate="no">&#39;resize&#39;</code> 事件改变画布的大小</p>
+<p>有些应用监听窗口的 <code class="notranslate" translate="no">&#39;resize&#39;</code> 事件，像这样去重置画布大小。</p>
 <pre class="prettyprint">
 window.addEventListener('resize', resizeTheCanvas);
 </pre>
@@ -340,9 +367,9 @@ window.onresize = resizeTheCanvas;
 
 <p><strong>为什么这样不好:</strong></p>
 <p>这样本身没什么问题，然而，对于<strong>大多数</strong>WebGL应用，它适用的情况比较少。
-尤其是 <code>&#39;resize&#39;</code> 只有在窗口重置大小的时候才能触发。在其他情况下画布改变大小就不管用了，
+尤其是 <code class="notranslate" translate="no">&#39;resize&#39;</code> 只有在窗口重置大小的时候才能触发。在其他情况下画布改变大小就不管用了，
 例如假设要制作一个三维编辑器，画布在左侧设置在右侧，你使用了一个拖动条可以改变两个部分的大小，
-在这种情况下你不会得到任何 <code>&#39;resize&#39;</code> 事件，相似的，如果一个页面中添加和移除一些内容，
+在这种情况下你不会得到任何 <code class="notranslate" translate="no">&#39;resize&#39;</code> 事件，相似的，如果一个页面中添加和移除一些内容，
 你也不会得到重置大小事件。</p>
 <p><strong>应该怎么做:</strong></p>
 <p>像大多数其他反面模式一样，可以用一种更通用的方式应多多种情况。
@@ -402,11 +429,11 @@ function checkRender() {
 checkRender();
 </pre>
 
-<p>这样每当 <code>needToRender</code> 为true时就会重置画布大小。
-这样在不需要持续绘制的应用中，就能处理画布问题。只需要在场景需要重新绘制时设置 <code>needToRender</code> 为true。</p>
+<p>这样每当 <code class="notranslate" translate="no">needToRender</code> 为true时就会重置画布大小。
+这样在不需要持续绘制的应用中，就能处理画布问题。只需要在场景需要重新绘制时设置 <code class="notranslate" translate="no">needToRender</code> 为true。</p>
 </li>
-<li><p>给 <code>WebGLObject</code> 添加属性</p>
-<p><code>WebGLObject</code> 是WebGL资源中的多种类型，比如 <code>WebGLBuffer</code> 或 <code>WebGLTexture</code>。
+<li><p>给 <code class="notranslate" translate="no">WebGLObject</code> 添加属性</p>
+<p><code class="notranslate" translate="no">WebGLObject</code> 是WebGL资源中的多种类型，比如 <code class="notranslate" translate="no">WebGLBuffer</code> 或 <code class="notranslate" translate="no">WebGLTexture</code>。
 一些应用为这些属性对象添加属性，例如像这样：</p>
 <pre class="prettyprint">
 var buffer = gl.createBuffer();
@@ -420,9 +447,9 @@ program.u_matrixLoc = gl.getUniformLocation(program, "u_matrix");  // 不好!!
 
 <p><strong>为什么这样不好:</strong></p>
 <p>原因是WebGL可能“丢失上下文”，这样在大多数情况下没问题，但假如浏览器发现太多GPU资源被使用时，
-可能会故意丢失<code>WebGLRenderingContext</code>的上下文用来释放一些空间，
+可能会故意丢失<code class="notranslate" translate="no">WebGLRenderingContext</code>的上下文用来释放一些空间，
 WebGL应用需要处理这样情况，比如 Google 地图。</p>
-<p>上方代码的问题是当上下文丢失，WebGL创建方法比如 <code>gl.createBuffer()</code> 会返回 <code>null</code>。
+<p>上方代码的问题是当上下文丢失，WebGL创建方法比如 <code class="notranslate" translate="no">gl.createBuffer()</code> 会返回 <code class="notranslate" translate="no">null</code>。
 等于让代码变成这样</p>
 <pre class="prettyprint">
 var buffer = null;
@@ -437,7 +464,7 @@ TypeError: Cannot set property 'itemSize' of null
 
 <p>尽管很多应用不关心丢失上下文后是否会中断，但在后续更新中才想到解决这个问题似乎就不是那么好了。</p>
 <p><strong>应该怎么做:</strong></p>
-<p>如果你想让 <code>WebGLObjects</code> 和一些相关信息关联，应该使用 JavaScript 对象，例如：</p>
+<p>如果你想让 <code class="notranslate" translate="no">WebGLObjects</code> 和一些相关信息关联，应该使用 JavaScript 对象，例如：</p>
 <pre class="prettyprint">
 var bufferInfo = {
   id: gl.createBuffer(),
@@ -462,7 +489,7 @@ GPU对矩形像素值(纹理, renderbuffer)的支持有限制。通常这个大�
 如果设计用于 2560x1600 的屏幕，限制可能是 4096 像素。
 </p><p>
 这样似乎很合理，但是如果你有多个显示器怎么办？假设我们有一个限制为 2048 的GPU，但是有两个 1920x1080 的显示器。
-你的代码想要设置<code>canvas.width</code>为<code>canvas.width</code>也就是 3840，会发生什么？</p>
+你的代码想要设置<code class="notranslate" translate="no">canvas.width</code>为<code class="notranslate" translate="no">canvas.width</code>也就是 3840，会发生什么？</p>
 <p>我想到的只有三种情况</p>
 <ol>
 <li>
@@ -486,7 +513,7 @@ GPU对矩形像素值(纹理, renderbuffer)的支持有限制。通常这个大�
 将画布尺寸硬编码限制为 4096。苹果的 5K iMac 受到了这个限制。大多数WebGL应用因为这个原因出现奇怪的显示结果。
 同样的很多开始学习WebGL的人，在使用多个显示器时会触发这个限制。</p>
 <p>
-所以，如果你想处理这些情况就像 #1 一样使用<code>gl.drawingBufferWidth</code> 和 <code>gl.drawingBufferHeight</code>。
+所以，如果你想处理这些情况就像 #1 一样使用<code class="notranslate" translate="no">gl.drawingBufferWidth</code> 和 <code class="notranslate" translate="no">gl.drawingBufferHeight</code>。
 对于大多数应用使用上方的设置就没什么问题。要注意的是如果你需要计算一些东西的话，就要通过这个知道drawingbuffer的实际尺寸，
 并将它带入计算。例如选择物体，换句话说从鼠标坐标转换到画布像素坐标。另一种就是任何一种需要知道drawingbuffer实际大小的后处理效果。
 </p>
@@ -553,8 +580,8 @@ GPU对矩形像素值(纹理, renderbuffer)的支持有限制。通常这个大�
   <li>几何</li>
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-3d-geometry-lathe.html">WebGL 三维几何加工</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-load-obj.html">Loading .obj files</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-load-obj.html">WebGL 加载 .obj 文件</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-load-obj-w-mtl.html">WebGL 加载带 .mtl 的 .obj 文件</a></li>
         </ul>
   <li>纹理</li>
         <ul>
@@ -579,7 +606,7 @@ GPU对矩形像素值(纹理, renderbuffer)的支持有限制。通常这个大�
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-2d-drawimage.html">WebGL 二维DrawImage</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-2d-matrix-stack.html">WebGL 二维矩阵栈</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-sprites.html">Sprites</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-sprites.html">精灵</a></li>
         </ul>
   <li>三维</li>
         <ul>
@@ -601,13 +628,22 @@ GPU对矩形像素值(纹理, renderbuffer)的支持有限制。通常这个大�
         <ul>
           <li><a href="/webgl/lessons/zh_cn/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/zh_cn/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
-          <li><a href="/webgl/lessons/zh_cn/webgl-smallest-programs.html">Smallest Programs</a></li>
+          <li><a href="/webgl/lessons/zh_cn/webgl-smallest-programs.html">WebGL 最小的程序</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-drawing-without-data.html">Drawing Without Data</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-pulling-vertices.html">Pulling Vertices</a></li>
+        </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/zh_cn/webgl-indexed-vertices.html">顶点索引 （gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-instanced-drawing.html">实例化绘制</a></li>
         </ul>
   <li>杂项</li>
         <ul>
@@ -615,27 +651,28 @@ GPU对矩形像素值(纹理, renderbuffer)的支持有限制。通常这个大�
 <li><a href="/webgl/lessons/zh_cn/webgl-boilerplate.html">WebGL 样板</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-resizing-the-canvas.html">WebGL 重置画布尺寸</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-animation.html">WebGL 动画</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-instanced-drawing.html">实例化绘制</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-points-lines-triangles.html">WebGL 点、线和三角</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-and-alpha.html">WebGL 和阿尔法通道</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-2d-vs-3d-library.html">WebGL 2D vs 3D 库</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-anti-patterns.html">WebGL 错误模式</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-matrix-vs-math.html">WebGL 矩阵 vs 数学中的矩阵</a></li>
 <li><a href="/webgl/lessons/zh_cn/webgl-precision-issues.html">Precision Issues</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#screenshot">Taking a screenshot</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#screenshot">截屏</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#preservedrawingbuffer">防止画布被清空</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#tabindex">在画布中获取键盘输入</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-tips.html#html-background">将 WebGL 作为 HTML 的背景</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-cross-platform-issues.html">WebGL 跨平台相关问题</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
-          <li><a href="/webgl/lessons/zh_cn/webgl-attributes.html">Attributes</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-texture-units.html">Texture Units</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-readpixels.html">readPixels</a></li>
-<li><a href="/webgl/lessons/zh_cn/webgl-references.html">References</a></li>
+          <li><a href="/webgl/lessons/zh_cn/webgl-attributes.html">WebGL 属性</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-texture-units.html">WebGL 纹理单元</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-framebuffers.html">Framebuffers</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-readpixels.html">WebGL readPixels</a></li>
+<li><a href="/webgl/lessons/zh_cn/webgl-references.html">WebGL 参考</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">API 帮助文档</a></li>
@@ -671,9 +708,17 @@ GPU对矩形像素值(纹理, renderbuffer)的支持有限制。通常这个大�
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {

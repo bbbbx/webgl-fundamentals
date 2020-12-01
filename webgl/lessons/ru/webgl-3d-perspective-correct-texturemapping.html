@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Что скрывает за собой W" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-perspective-correct-texturemapping_ru.jpg" />
+<meta name="description" content="Что скрывает за собой W">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-perspective-correct-texturemapping_ru.jpg">
 
-<meta property="og:title" content="WebGL 3D - Перспективная коррекция текстур" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-perspective-correct-texturemapping_ru.jpg" />
-<meta property="og:description" content="Что скрывает за собой W" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-perspective-correct-texturemapping.html" />
+<meta property="og:title" content="WebGL 3D - Перспективная коррекция текстур">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-perspective-correct-texturemapping_ru.jpg">
+<meta property="og:description" content="Что скрывает за собой W">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-perspective-correct-texturemapping.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGL 3D - Перспективная коррекция текстур" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-perspective-correct-texturemapping.html" />
-<meta name="twitter:description" content="Что скрывает за собой W" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-perspective-correct-texturemapping_ru.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGL 3D - Перспективная коррекция текстур">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-perspective-correct-texturemapping.html">
+<meta name="twitter:description" content="Что скрывает за собой W">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-3d-perspective-correct-texturemapping_ru.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGL 3D - Перспективная коррекция текстур</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-3d-perspective-correct-texturemapping.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-3d-perspective-correct-texturemapping.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-3d-perspective-correct-texturemapping.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-3d-perspective-correct-texturemapping.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-3d-perspective-correct-texturemapping.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-3d-perspective-correct-texturemapping.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-3d-perspective-correct-texturemapping.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-3d-perspective-correct-texturemapping.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ru/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -226,7 +253,7 @@ WebGL отрисует треугольник. Во время отрисовк�
 цвет текущего пикселя. Цвет при этом будет интерполирован между тремя
 вершинами треугольника.</p>
 <p><div class="webgl_diagram_container">
-  <iframe class="webgl_example " style="width: 400px; height: 300px;" src="/webgl/lessons/resources/fragment-shader-anim.html"></iframe>
+  <iframe class="webgl_example " style="width: 600px; height: 400px;" src="/webgl/lessons/resources/fragment-shader-anim.html"></iframe>
   <div class="webgl_center">v_color интерполируется между v0, v1 и v2</div>
 </div>
 
@@ -235,7 +262,7 @@ WebGL отрисует треугольник. Во время отрисовк�
 треугольник в пространстве отсечения, где не было никакой математики. Мы просто
 передавали координаты в пространстве отсечения в простой вершинный шейдер, который
 выглядел следующим образом:</p>
-<pre class="prettyprint"><code>  // атрибут, который будет получать данные из буфера
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // атрибут, который будет получать данные из буфера
   attribute vec4 a_position;
 
   // все шейдеры имеют функцию main
@@ -246,7 +273,7 @@ WebGL отрисует треугольник. Во время отрисовк�
     gl_Position = a_position;
   }
 </code></pre><p>Был у нас и простой фрагментный шейдер, который отображал один и тот же цвет.</p>
-<pre class="prettyprint"><code>  // фрагментные шейдеры не имеют точности по умолчанию, поэтому нам необходимо её
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // фрагментные шейдеры не имеют точности по умолчанию, поэтому нам необходимо её
   // указать. mediump подойдёт для большинства случаев. Он означает &quot;средняя точность&quot;
   precision mediump float;
 
@@ -256,8 +283,8 @@ WebGL отрисует треугольник. Во время отрисовк�
     gl_FragColor = vec4(1, 0, 0.5, 1); // вернёт красновато-фиолетовый
   }
 </code></pre><p>Итак, отобразим 2 треугольника в пространстве отсечения. Мы передадим
-данные <code>X</code>, <code>Y</code>, <code>Z</code> и <code>W</code> для каждой вершины.</p>
-<pre class="prettyprint"><code>var positions = [
+данные <code class="notranslate" translate="no">X</code>, <code class="notranslate" translate="no">Y</code>, <code class="notranslate" translate="no">Z</code> и <code class="notranslate" translate="no">W</code> для каждой вершины.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var positions = [
   -.8, -.8, 0, 1,  // первый треугольник первого прямоугольника
    .8, -.8, 0, 1,
   -.8, -.2, 0, 1,
@@ -282,7 +309,7 @@ WebGL отрисует треугольник. Во время отрисовк�
 <p>Теперь добавим некоторую varying-переменную с плавающей точкой.
 Передадим её напрямую из вершинного шейдера во фрагментный
 шейдер.</p>
-<pre class="prettyprint"><code>  attribute vec4 a_position;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  attribute vec4 a_position;
 +  attribute float a_brightness;
 
 +  varying float v_brightness;
@@ -294,7 +321,7 @@ WebGL отрисует треугольник. Во время отрисовк�
 +    v_brightness = a_brightness;
   }
 </code></pre><p>Во фрагментном шейдере используем varying-переменную для получения цвета.</p>
-<pre class="prettyprint"><code>  precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  precision mediump float;
 
 +  // интерполированная переменная из вершинного шейдера
 +  varying float v_brightness;  
@@ -306,7 +333,7 @@ WebGL отрисует треугольник. Во время отрисовк�
 создадим буфер и поместим в него какие-нибудь значения - одно значение
 на одну вершину. Для вершин слева мы установим яркость в значение 0,
 а для правых вершин - в значение 1.</p>
-<pre class="prettyprint"><code>  // создаём буфер и помещаем в него 12 значений яркости
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // создаём буфер и помещаем в него 12 значений яркости
   var brightnessBuffer = gl.createBuffer();
 
   // привязываем буфер к ARRAY_BUFFER (можно сказать, что ARRAY_BUFFER = brightnessBuffer)
@@ -329,12 +356,12 @@ WebGL отрисует треугольник. Во время отрисовк�
   ];
 
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(brightness), gl.STATIC_DRAW);
-</code></pre><p>Затем получаем ссылку на атрибут <code>a_brightness</code> во время инициализации</p>
-<pre class="prettyprint"><code>  // сюда пойдут данные для вершин
+</code></pre><p>Затем получаем ссылку на атрибут <code class="notranslate" translate="no">a_brightness</code> во время инициализации</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // сюда пойдут данные для вершин
   var positionAttributeLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
 +  var brightnessAttributeLocation = gl.getAttribLocation(program, &quot;a_brightness&quot;);
 </code></pre><p>и устанавливаем значение атрибута при отрисовке</p>
-<pre class="prettyprint"><code>  // включаем атрибут
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  // включаем атрибут
   gl.enableVertexAttribArray(brightnessAttributeLocation);
 
   // привязываем буфер
@@ -349,8 +376,8 @@ WebGL отрисует треугольник. Во время отрисовк�
   gl.vertexAttribPointer(
       brightnessAttributeLocation, size, type, normalize, stride, offset);
 </code></pre><p>И теперь при отрисовке мы получим два прямоугольника, которые имеют чёрный
-цвет слева, где <code>brightness</code> равна нулю, и красный цвет справа, где
-<code>brightness</code> равна 1. Внутри прямоугольников цвет будет плавно переходить
+цвет слева, где <code class="notranslate" translate="no">brightness</code> равна нулю, и красный цвет справа, где
+<code class="notranslate" translate="no">brightness</code> равна 1. Внутри прямоугольников цвет будет плавно переходить
 от чёрного к красному (интерполяция varying-переменной).</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-clipspace-rectangles-with-varying.html"></iframe>
@@ -359,12 +386,12 @@ WebGL отрисует треугольник. Во время отрисовк�
 
 </p>
 <p>Идём дальше. Из <a href="webgl-3d-perspective.html">статьи о перспективе</a> мы знаем, что WebGL
-принимает значение, которое мы поместили в <code>gl_Position</code>, и делит это значение
-на <code>gl_Position.w</code>.</p>
-<p>Ранее в вершинах мы передавали <code>1</code> для <code>W</code>, но с нашим знанием о том,
-что WebGL разделит все значения на <code>W</code>, мы можем сделать нечто подобное
+принимает значение, которое мы поместили в <code class="notranslate" translate="no">gl_Position</code>, и делит это значение
+на <code class="notranslate" translate="no">gl_Position.w</code>.</p>
+<p>Ранее в вершинах мы передавали <code class="notranslate" translate="no">1</code> для <code class="notranslate" translate="no">W</code>, но с нашим знанием о том,
+что WebGL разделит все значения на <code class="notranslate" translate="no">W</code>, мы можем сделать нечто подобное
 и получить идентичный результат:</p>
-<pre class="prettyprint"><code>  var mult = 20;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  var mult = 20;
   var positions = [
       -.8,  .8, 0, 1,  // первый треугольник первого прямоугольника
        .8,  .8, 0, 1,
@@ -380,9 +407,9 @@ WebGL отрисует треугольник. Во время отрисовк�
        .8 * mult, -.2 * mult, 0, mult,
        .8 * mult, -.8 * mult, 0, mult,
   ];
-</code></pre><p>В отрывке кода выше мы умножаем <code>X</code> и <code>Y</code> всех правых точек второго
-прямоугольника на <code>mult</code>, а затем устанавливаем параметру <code>W</code> значение
-<code>mult</code>. WebGL разделит все значения на <code>W</code>, поэтому в итоге мы должны
+</code></pre><p>В отрывке кода выше мы умножаем <code class="notranslate" translate="no">X</code> и <code class="notranslate" translate="no">Y</code> всех правых точек второго
+прямоугольника на <code class="notranslate" translate="no">mult</code>, а затем устанавливаем параметру <code class="notranslate" translate="no">W</code> значение
+<code class="notranslate" translate="no">mult</code>. WebGL разделит все значения на <code class="notranslate" translate="no">W</code>, поэтому в итоге мы должны
 получить то же самое, так ведь?</p>
 <p>Взглянем на результат.</p>
 <p><div class="webgl_example_container">
@@ -392,13 +419,13 @@ WebGL отрисует треугольник. Во время отрисовк�
 
 </p>
 <p>Мы видим, что два прямоугольника отрисовались в том же месте, где были до
-этого. Это значит, что <code>X * MULT / MULT(W)</code> по-прежнему равно <code>X</code>, то же
-самое справедливо и для <code>Y</code>. Но цвет довольно сильно изменился. Что произошло?</p>
-<p>Оказывается, что WebGL использует <code>W</code> для перспективной коррекции текстуры,
+этого. Это значит, что <code class="notranslate" translate="no">X * MULT / MULT(W)</code> по-прежнему равно <code class="notranslate" translate="no">X</code>, то же
+самое справедливо и для <code class="notranslate" translate="no">Y</code>. Но цвет довольно сильно изменился. Что произошло?</p>
+<p>Оказывается, что WebGL использует <code class="notranslate" translate="no">W</code> для перспективной коррекции текстуры,
 а точнее для перспективной коррекции интерполяции значений varying-переменных.</p>
 <p>Для большей наглядности давайте изменим шейдер</p>
-<pre class="prettyprint"><code>gl_FragColor = vec4(fract(v_brightness * 10.), 0, 0, 1);  // красный
-</code></pre><p>Умножая <code>v_brightness</code> на 10, мы получим значение от 0 до 10. Функция <code>fract</code>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl_FragColor = vec4(fract(v_brightness * 10.), 0, 0, 1);  // красный
+</code></pre><p>Умножая <code class="notranslate" translate="no">v_brightness</code> на 10, мы получим значение от 0 до 10. Функция <code class="notranslate" translate="no">fract</code>
 оставит только дробную часть, которая будет переходить от 0 до 1, от 0 до 1,
 от 0 до 1 - и так 10 раз.</p>
 <p><div class="webgl_example_container">
@@ -410,16 +437,16 @@ WebGL отрисует треугольник. Во время отрисовк�
 <p>Теперь нам легко увидеть перспективу.</p>
 <p>Линейная интерполяция от одного значения до другого описывается
 следующей формулой:</p>
-<pre class="prettyprint"><code> result = (1 - t) * a + t * b
-</code></pre><p>где <code>t</code> изменяется от 0 до 1 и представляет собой определённое положение
-между <code>a</code> и <code>b</code>. Значение 0 соответствует <code>a</code>, а 1 соответствует <code>b</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> result = (1 - t) * a + t * b
+</code></pre><p>где <code class="notranslate" translate="no">t</code> изменяется от 0 до 1 и представляет собой определённое положение
+между <code class="notranslate" translate="no">a</code> и <code class="notranslate" translate="no">b</code>. Значение 0 соответствует <code class="notranslate" translate="no">a</code>, а 1 соответствует <code class="notranslate" translate="no">b</code>.</p>
 <p>Однако, для varying-переменных WebGL использует следующую формулу</p>
-<pre class="prettyprint"><code> result = (1 - t) * a / aW + t * b / bW
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> result = (1 - t) * a / aW + t * b / bW
           -----------------------------
              (1 - t) / aW + t / bW
-</code></pre><p>Здесь <code>aW</code> - это <code>W</code>, установленное в значение <code>gl_Position.w</code>, когда
-varying-переменная равна <code>a</code>. А <code>bW</code> - это значение <code>W</code>, установленное в
-значение <code>gl_Position.w</code>, когда varying-переменная равна <code>b</code>.</p>
+</code></pre><p>Здесь <code class="notranslate" translate="no">aW</code> - это <code class="notranslate" translate="no">W</code>, установленное в значение <code class="notranslate" translate="no">gl_Position.w</code>, когда
+varying-переменная равна <code class="notranslate" translate="no">a</code>. А <code class="notranslate" translate="no">bW</code> - это значение <code class="notranslate" translate="no">W</code>, установленное в
+значение <code class="notranslate" translate="no">gl_Position.w</code>, когда varying-переменная равна <code class="notranslate" translate="no">b</code>.</p>
 <p>Так ли всё это важно? Взглянем на простой куб с текстурой, на котором мы
 закончили <a href="webgl-3d-textures.html">статью о текстурах</a>. UV-координаты принимают
 значения от 0 до 1 на каждой стороне. Используется текстура размером 4х4 пикселя.</p>
@@ -430,8 +457,8 @@ varying-переменная равна <code>a</code>. А <code>bW</code> - э�
 
 </p>
 <p>Теперь изменим вершинный шейдер в этом примере таким образом, чтобы мы
-самостоятельно выполняли деление на <code>W</code>. Нам нужно добавить всего 1 строку:</p>
-<pre class="prettyprint"><code>attribute vec4 a_position;
+самостоятельно выполняли деление на <code class="notranslate" translate="no">W</code>. Нам нужно добавить всего 1 строку:</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">attribute vec4 a_position;
 attribute vec2 a_texcoord;
 
 uniform mat4 u_matrix;
@@ -448,8 +475,8 @@ void main() {
   // передаём текстурные координаты во фрагментный шейдер
   v_texcoord = a_texcoord;
 }
-</code></pre><p>Деление на <code>W</code> означает, что конечное значение <code>gl_Position.w</code>
-будет равно 1. Значения <code>X</code>, <code>Y</code> и <code>Z</code> будут такими же, как если
+</code></pre><p>Деление на <code class="notranslate" translate="no">W</code> означает, что конечное значение <code class="notranslate" translate="no">gl_Position.w</code>
+будет равно 1. Значения <code class="notranslate" translate="no">X</code>, <code class="notranslate" translate="no">Y</code> и <code class="notranslate" translate="no">Z</code> будут такими же, как если
 бы WebGL выполнял деление за нас. Посмотрим на результат.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-non-perspective-correct-cube.html"></iframe>
@@ -458,30 +485,30 @@ void main() {
 
 </p>
 <p>В итоге мы получили тот же 3D-куб, но текстуры заметно исказились.
-Дело в том, что если не передать <code>W</code>, WebGL не сможет выполнить
+Дело в том, что если не передать <code class="notranslate" translate="no">W</code>, WebGL не сможет выполнить
 перспективную коррекцию наложения текстуры. Точнее, WebGL не сможет
 корректно выполнить перспективную интерполяцию varying-переменных.</p>
 <p>Как вы помните из <a href="webgl-3d-perspective.html">статьи о матрицах перспективы</a>,
-значение <code>W</code> было нашим значением <code>Z</code>. При <code>W</code> равном <code>1</code> мы в итоге получаем
+значение <code class="notranslate" translate="no">W</code> было нашим значением <code class="notranslate" translate="no">Z</code>. При <code class="notranslate" translate="no">W</code> равном <code class="notranslate" translate="no">1</code> мы в итоге получаем
 линейную интерполяцию. То есть если взять уравнение выше</p>
-<pre class="prettyprint"><code> result = (1 - t) * a / aW + t * b / bW
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> result = (1 - t) * a / aW + t * b / bW
           -----------------------------
              (1 - t) / aW + t / bW
-</code></pre><p>и заменить все <code>W</code> на 1</p>
-<pre class="prettyprint"><code> result = (1 - t) * a / 1 + t * b / 1
+</code></pre><p>и заменить все <code class="notranslate" translate="no">W</code> на 1</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> result = (1 - t) * a / 1 + t * b / 1
           ---------------------------
              (1 - t) / 1 + t / 1
 </code></pre><p>учитывая, что деление на 1 можно отбросить</p>
-<pre class="prettyprint"><code> result = (1 - t) * a + t * b
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> result = (1 - t) * a + t * b
           -------------------
              (1 - t) + t
-</code></pre><p>далее <code>(1 - t) + t</code> упрощается до <code>1</code> и весь знаменатель уходит, у нас остаётся лишь</p>
-<pre class="prettyprint"><code> result = (1 - t) * a + t * b
+</code></pre><p>далее <code class="notranslate" translate="no">(1 - t) + t</code> упрощается до <code class="notranslate" translate="no">1</code> и весь знаменатель уходит, у нас остаётся лишь</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no"> result = (1 - t) * a + t * b
 </code></pre><p>что в точности повторяет уравнение линейной интерполяции, приведённое выше.</p>
 <p>Надеюсь, теперь стало понятно, почему WebGL использует матрицы 4х4 и вектора из
-четырёх элементов <code>X</code>, <code>Y</code>, <code>Z</code> и <code>W</code>. Значения <code>X</code> и <code>Y</code> делятся на <code>W</code> и мы
-получаем координаты пространства отсечения. Значение <code>Z</code> делится на <code>W</code>, в результате
-чего также получается координата по оси Z в пространстве отсечения. А <code>W</code> используется
+четырёх элементов <code class="notranslate" translate="no">X</code>, <code class="notranslate" translate="no">Y</code>, <code class="notranslate" translate="no">Z</code> и <code class="notranslate" translate="no">W</code>. Значения <code class="notranslate" translate="no">X</code> и <code class="notranslate" translate="no">Y</code> делятся на <code class="notranslate" translate="no">W</code> и мы
+получаем координаты пространства отсечения. Значение <code class="notranslate" translate="no">Z</code> делится на <code class="notranslate" translate="no">W</code>, в результате
+чего также получается координата по оси Z в пространстве отсечения. А <code class="notranslate" translate="no">W</code> используется
 при интерполяции значений varying-переменных и обеспечивает перспективную коррекцию
 при наложении текстур.</p>
 <div class="webgl_bottombar">
@@ -600,6 +627,10 @@ void main() {
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
@@ -608,6 +639,11 @@ void main() {
 <li><a href="/webgl/lessons/ru/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ru/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+        </ul>
   <li>Разное</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-setup-and-installation.html">WebGL Установка и настройка</a></li>
@@ -615,8 +651,6 @@ void main() {
 <li><a href="/webgl/lessons/ru/webgl-resizing-the-canvas.html">Изменение размера Canvas в WebGL</a></li>
 <li><a href="/webgl/lessons/ru/webgl-animation.html">WebGL - Анимация</a></li>
 <li><a href="/webgl/lessons/ru/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ru/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ru/webgl-instanced-drawing.html">Instanced Drawing</a></li>
 <li><a href="/webgl/lessons/ru/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ru/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ru/webgl-and-alpha.html">WebGL и прозрачность</a></li>
@@ -628,11 +662,14 @@ void main() {
 <li><a href="/webgl/lessons/ru/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ru/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ru/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ru/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ru/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ru/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ru/webgl-framebuffers.html">Framebuffers</a></li>
 <li><a href="/webgl/lessons/ru/webgl-readpixels.html">readPixels</a></li>
 <li><a href="/webgl/lessons/ru/webgl-references.html">References</a></li>
         </ul></ul>
@@ -670,9 +707,17 @@ void main() {
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
 (function() {
   if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {
